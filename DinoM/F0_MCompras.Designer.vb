@@ -281,7 +281,7 @@ Partial Class F0_MCompras
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(875, 0)
+        Me.PictureBox1.Location = New System.Drawing.Point(1061, 0)
         '
         'PanelDetalle
         '
@@ -754,7 +754,6 @@ Partial Class F0_MCompras
         '
         Me.swEmision.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.swEmision.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.swEmision.IsReadOnly = True
         Me.swEmision.Location = New System.Drawing.Point(592, 86)
         Me.swEmision.Name = "swEmision"
         Me.swEmision.OffBackColor = System.Drawing.Color.LawnGreen

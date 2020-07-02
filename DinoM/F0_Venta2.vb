@@ -351,10 +351,10 @@ Public Class F0_Venta2
         'Calcular montos
         Dim tMonto As DataTable = L_fnMostrarMontos(tbCodigo.Text)
         If tMonto.Rows.Count > 0 Then
-            tbMontoBs.Value = tMonto.Rows(0).Item("tgMontBs").ToString
             tbMontoDolar.Value = tMonto.Rows(0).Item("tgMontDol").ToString
             tbMontoTarej.Value = tMonto.Rows(0).Item("tgMontTare").ToString
             cbCambioDolar.Text = tMonto.Rows(0).Item("tgCambioDol").ToString
+            tbMontoBs.Value = tMonto.Rows(0).Item("tgMontBs").ToString
 
             If Convert.ToDecimal(tbTotalBs.Text) <> 0 And Convert.ToDecimal(txtMontoPagado1.Text) >= Convert.ToDecimal(tbTotalBs.Text) Then
                 txtCambio1.Text = Convert.ToDecimal(txtMontoPagado1.Text) - Convert.ToDecimal(tbTotalBs.Text)

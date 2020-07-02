@@ -104,7 +104,7 @@ Public Class F0_MCompras
         swTipoVenta.IsReadOnly = True
 
         tbNitProv.ReadOnly = True
-        'swEmision.IsReadOnly = True
+        swEmision.IsReadOnly = True
         swConsigna.IsReadOnly = True
         swRetencion.IsReadOnly = True
 
@@ -223,6 +223,33 @@ Public Class F0_MCompras
         End If
         tbProveedor.Focus()
         Table_Producto = Nothing
+
+        'Validar si es recibo o factura
+        If swEmision.Value = False Then
+            lbNFactura.Text = "Nro. Recibo:"
+            GroupPanelFactura2.Text = "DATOS RECIBO"
+            lbNAutoriz.Visible = False
+            tbNAutorizacion.Visible = False
+            lbCodCtrl.Visible = False
+            tbCodControl.Visible = False
+            lbNDui.Visible = False
+            tbNDui.Visible = False
+            lbSACF.Visible = False
+            tbSACF.Visible = False
+        Else
+            lbNFactura.Text = "Nro. Factura:"
+            GroupPanelFactura2.Text = "DATOS FACTURACIÓN"
+            lbNAutoriz.Visible = True
+            tbNAutorizacion.Visible = True
+            lbCodCtrl.Visible = True
+            tbCodControl.Visible = True
+            lbNDui.Visible = True
+            tbNDui.Visible = True
+            lbSACF.Visible = True
+            tbSACF.Visible = True
+
+        End If
+
     End Sub
     Public Sub _prMostrarRegistro(_N As Integer)
         '' grVentas.Row = _N
@@ -1801,7 +1828,6 @@ salirIf:
         End If
 
     End Sub
-
 
 #End Region
 

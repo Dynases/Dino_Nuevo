@@ -810,6 +810,9 @@
     <EmbeddedResource Include="F0_AnularFactura.resx">
       <DependentUpon>F0_AnularFactura.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F0_CierreCaja.resx">
+      <DependentUpon>F0_CierreCaja.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F0_Cobrar_Cliente.resx">
       <DependentUpon>F0_Cobrar_Cliente.vb</DependentUpon>
     </EmbeddedResource>
