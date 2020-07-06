@@ -22,12 +22,14 @@ Partial Class Pr_StockUtilidad
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Pr_StockUtilidad))
         Dim tbcatprecio_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim tbAlmacen_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.swTipoVenta = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.swConsolidado = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.date1 = New System.Windows.Forms.DateTimePicker()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -38,7 +40,7 @@ Partial Class Pr_StockUtilidad
         Me.tbcatprecio = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.tbAlmacen = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
-        Me.swConsolidado = New DevComponents.DotNetBar.Controls.SwitchButton()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -86,7 +88,7 @@ Partial Class Pr_StockUtilidad
         'SuperTabControlPanelRegistro
         '
         Me.SuperTabControlPanelRegistro.Margin = New System.Windows.Forms.Padding(4)
-        Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(852, 561)
+        Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(1330, 741)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelIzq, 0)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelPrincipal, 0)
@@ -105,7 +107,7 @@ Partial Class Pr_StockUtilidad
         'PanelInferior
         '
         Me.PanelInferior.Margin = New System.Windows.Forms.Padding(4)
-        Me.PanelInferior.Size = New System.Drawing.Size(852, 36)
+        Me.PanelInferior.Size = New System.Drawing.Size(1330, 36)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.Gold
         Me.PanelInferior.Style.BackColor2.Color = System.Drawing.Color.Gold
@@ -147,17 +149,17 @@ Partial Class Pr_StockUtilidad
         'PanelPrincipal
         '
         Me.PanelPrincipal.Margin = New System.Windows.Forms.Padding(4)
-        Me.PanelPrincipal.Size = New System.Drawing.Size(489, 525)
+        Me.PanelPrincipal.Size = New System.Drawing.Size(967, 705)
         '
         'MPanelUserAct
         '
-        Me.MPanelUserAct.Location = New System.Drawing.Point(652, 0)
+        Me.MPanelUserAct.Location = New System.Drawing.Point(1130, 0)
         Me.MPanelUserAct.Margin = New System.Windows.Forms.Padding(4)
         '
         'MReportViewer
         '
         Me.MReportViewer.Margin = New System.Windows.Forms.Padding(4)
-        Me.MReportViewer.Size = New System.Drawing.Size(489, 525)
+        Me.MReportViewer.Size = New System.Drawing.Size(967, 705)
         '
         'MGPFiltros
         '
@@ -243,10 +245,30 @@ Partial Class Pr_StockUtilidad
         Me.GroupBox2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.Location = New System.Drawing.Point(0, 68)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(357, 362)
+        Me.GroupBox2.Size = New System.Drawing.Size(357, 542)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Datos"
+        '
+        'swConsolidado
+        '
+        '
+        '
+        '
+        Me.swConsolidado.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.swConsolidado.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.swConsolidado.Location = New System.Drawing.Point(152, 12)
+        Me.swConsolidado.Name = "swConsolidado"
+        Me.swConsolidado.OffBackColor = System.Drawing.Color.DarkSlateGray
+        Me.swConsolidado.OffText = "TODOS"
+        Me.swConsolidado.OffTextColor = System.Drawing.Color.White
+        Me.swConsolidado.OnBackColor = System.Drawing.Color.LimeGreen
+        Me.swConsolidado.OnText = "UNICO"
+        Me.swConsolidado.Size = New System.Drawing.Size(162, 22)
+        Me.swConsolidado.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.swConsolidado.TabIndex = 7
+        Me.swConsolidado.Value = True
+        Me.swConsolidado.ValueObject = "Y"
         '
         'date1
         '
@@ -390,31 +412,16 @@ Partial Class Pr_StockUtilidad
         Me.LabelX3.TabIndex = 241
         Me.LabelX3.Text = "Almacen:"
         '
-        'swConsolidado
+        'Timer1
         '
-        '
-        '
-        '
-        Me.swConsolidado.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.swConsolidado.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.swConsolidado.Location = New System.Drawing.Point(152, 12)
-        Me.swConsolidado.Name = "swConsolidado"
-        Me.swConsolidado.OffBackColor = System.Drawing.Color.DarkSlateGray
-        Me.swConsolidado.OffText = "TODOS"
-        Me.swConsolidado.OffTextColor = System.Drawing.Color.White
-        Me.swConsolidado.OnBackColor = System.Drawing.Color.LimeGreen
-        Me.swConsolidado.OnText = "UNICO"
-        Me.swConsolidado.Size = New System.Drawing.Size(162, 22)
-        Me.swConsolidado.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.swConsolidado.TabIndex = 7
-        Me.swConsolidado.Value = True
-        Me.swConsolidado.ValueObject = "Y"
+        Me.Timer1.Enabled = True
+        Me.Timer1.Interval = 500
         '
         'Pr_StockUtilidad
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(884, 561)
+        Me.ClientSize = New System.Drawing.Size(1362, 741)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "Pr_StockUtilidad"
@@ -458,4 +465,5 @@ Partial Class Pr_StockUtilidad
     Friend WithEvents CheckBox1 As CheckBox
     Friend WithEvents date1 As DateTimePicker
     Friend WithEvents swConsolidado As DevComponents.DotNetBar.Controls.SwitchButton
+    Friend WithEvents Timer1 As Timer
 End Class

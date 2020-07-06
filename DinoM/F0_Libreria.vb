@@ -18,6 +18,7 @@ Imports System.Reflection
 Imports System.Runtime.InteropServices
 
 Public Class F0_Libreria
+    Dim _Inter As Integer = 0
 #Region "Variables Globales"
     Dim precio As DataTable
     Dim Bin As New MemoryStream
@@ -60,7 +61,7 @@ Public Class F0_Libreria
     Public Sub _prCargarPrecios()
 
     End Sub
- 
+
     Private Sub _prCargarComboLibreria(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo)
         Dim dt As New DataTable
         dt = L_fnGeneralProgramas()
@@ -203,7 +204,7 @@ Public Class F0_Libreria
             End With
         End If
 
-       
+
 
         With grLibreria
             .DefaultFilterRowComparison = FilterConditionOperator.Contains
@@ -261,7 +262,7 @@ Public Class F0_Libreria
         'End If
 
     End Sub
-  
+
 
 
 #End Region
@@ -283,7 +284,7 @@ Public Class F0_Libreria
             _prInhabiliitar()
         Else
             _modulo.Select()
-            _tab.Close()
+            Me.Close()
         End If
     End Sub
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs)
@@ -328,7 +329,7 @@ Public Class F0_Libreria
                                       eToastGlowColor.Green,
                                       eToastPosition.TopCenter
                                       )
-            
+
 
             _prInhabiliitar()
 
@@ -372,4 +373,16 @@ Public Class F0_Libreria
         End If
         Return 1
     End Function
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        _Inter = _Inter + 1
+        If _Inter = 1 Then
+            Me.WindowState = FormWindowState.Normal
+
+        Else
+            Me.Opacity = 100
+            Timer1.Enabled = False
+        End If
+
+    End Sub
 End Class

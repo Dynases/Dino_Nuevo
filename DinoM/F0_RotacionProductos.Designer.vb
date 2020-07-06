@@ -22,16 +22,17 @@ Partial Class F0_RotacionProductos
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim cbAno_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F0_RotacionProductos))
         Dim cbMeses_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim cbAlmacen_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
-        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series3 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
-        Dim ChartArea4 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend4 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series4 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.SuperTabControl1 = New DevComponents.DotNetBar.SuperTabControl()
         Me.SuperTabControlPanel1 = New DevComponents.DotNetBar.SuperTabControlPanel()
@@ -39,6 +40,7 @@ Partial Class F0_RotacionProductos
         Me.GroupPanel2 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Dgs_Rotacion = New DevComponents.DotNetBar.SuperGrid.SuperGridControl()
         Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
+        Me.ButtonX1 = New DevComponents.DotNetBar.ButtonX()
         Me.tbCantProducto = New DevComponents.Editors.IntegerInput()
         Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
         Me.tbcantMeses = New DevComponents.Editors.IntegerInput()
@@ -51,12 +53,12 @@ Partial Class F0_RotacionProductos
         Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
         Me.SuperTabItem1 = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel2 = New DevComponents.DotNetBar.SuperTabControlPanel()
+        Me.Ch_Pie = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.SuperTabItem2 = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel3 = New DevComponents.DotNetBar.SuperTabControlPanel()
-        Me.SuperTabItem3 = New DevComponents.DotNetBar.SuperTabItem()
-        Me.Ch_Pie = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.Ch_Barra = New System.Windows.Forms.DataVisualization.Charting.Chart()
-        Me.ButtonX1 = New DevComponents.DotNetBar.ButtonX()
+        Me.SuperTabItem3 = New DevComponents.DotNetBar.SuperTabItem()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
         CType(Me.SuperTabControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabControl1.SuspendLayout()
@@ -70,8 +72,8 @@ Partial Class F0_RotacionProductos
         CType(Me.cbMeses, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbAlmacen, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabControlPanel2.SuspendLayout()
-        Me.SuperTabControlPanel3.SuspendLayout()
         CType(Me.Ch_Pie, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SuperTabControlPanel3.SuspendLayout()
         CType(Me.Ch_Barra, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -81,8 +83,9 @@ Partial Class F0_RotacionProductos
         Me.Panel1.Controls.Add(Me.SuperTabControl1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1707, 588)
+        Me.Panel1.Size = New System.Drawing.Size(1362, 741)
         Me.Panel1.TabIndex = 0
         '
         'SuperTabControl1
@@ -105,11 +108,12 @@ Partial Class F0_RotacionProductos
         Me.SuperTabControl1.Controls.Add(Me.SuperTabControlPanel3)
         Me.SuperTabControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SuperTabControl1.Location = New System.Drawing.Point(0, 0)
+        Me.SuperTabControl1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.SuperTabControl1.Name = "SuperTabControl1"
         Me.SuperTabControl1.ReorderTabsEnabled = True
         Me.SuperTabControl1.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold)
         Me.SuperTabControl1.SelectedTabIndex = 0
-        Me.SuperTabControl1.Size = New System.Drawing.Size(1707, 588)
+        Me.SuperTabControl1.Size = New System.Drawing.Size(1362, 741)
         Me.SuperTabControl1.TabFont = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SuperTabControl1.TabIndex = 0
         Me.SuperTabControl1.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabItem1, Me.SuperTabItem2, Me.SuperTabItem3})
@@ -120,9 +124,10 @@ Partial Class F0_RotacionProductos
         '
         Me.SuperTabControlPanel1.Controls.Add(Me.Panel2)
         Me.SuperTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SuperTabControlPanel1.Location = New System.Drawing.Point(0, 25)
+        Me.SuperTabControlPanel1.Location = New System.Drawing.Point(0, 22)
+        Me.SuperTabControlPanel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.SuperTabControlPanel1.Name = "SuperTabControlPanel1"
-        Me.SuperTabControlPanel1.Size = New System.Drawing.Size(1707, 563)
+        Me.SuperTabControlPanel1.Size = New System.Drawing.Size(1362, 719)
         Me.SuperTabControlPanel1.TabIndex = 1
         Me.SuperTabControlPanel1.TabItem = Me.SuperTabItem1
         '
@@ -132,8 +137,9 @@ Partial Class F0_RotacionProductos
         Me.Panel2.Controls.Add(Me.GroupPanel1)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1707, 563)
+        Me.Panel2.Size = New System.Drawing.Size(1362, 719)
         Me.Panel2.TabIndex = 0
         '
         'GroupPanel2
@@ -144,9 +150,10 @@ Partial Class F0_RotacionProductos
         Me.GroupPanel2.DisabledBackColor = System.Drawing.Color.Empty
         Me.GroupPanel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupPanel2.Font = New System.Drawing.Font("Georgia", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupPanel2.Location = New System.Drawing.Point(0, 132)
+        Me.GroupPanel2.Location = New System.Drawing.Point(0, 107)
+        Me.GroupPanel2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.GroupPanel2.Name = "GroupPanel2"
-        Me.GroupPanel2.Size = New System.Drawing.Size(1707, 431)
+        Me.GroupPanel2.Size = New System.Drawing.Size(1362, 612)
         '
         '
         '
@@ -184,12 +191,13 @@ Partial Class F0_RotacionProductos
         Me.Dgs_Rotacion.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Dgs_Rotacion.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed
         Me.Dgs_Rotacion.Location = New System.Drawing.Point(0, 0)
+        Me.Dgs_Rotacion.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Dgs_Rotacion.Name = "Dgs_Rotacion"
         '
         '
         '
         Me.Dgs_Rotacion.PrimaryGrid.DefaultVisualStyles.HeaderStyles.Default.Font = New System.Drawing.Font("Open Sans", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Dgs_Rotacion.Size = New System.Drawing.Size(1701, 403)
+        Me.Dgs_Rotacion.Size = New System.Drawing.Size(1356, 588)
         Me.Dgs_Rotacion.TabIndex = 0
         Me.Dgs_Rotacion.Text = "SuperGridControl1"
         '
@@ -212,8 +220,9 @@ Partial Class F0_RotacionProductos
         Me.GroupPanel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.GroupPanel1.Font = New System.Drawing.Font("Georgia", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanel1.Location = New System.Drawing.Point(0, 0)
+        Me.GroupPanel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.GroupPanel1.Name = "GroupPanel1"
-        Me.GroupPanel1.Size = New System.Drawing.Size(1707, 132)
+        Me.GroupPanel1.Size = New System.Drawing.Size(1362, 107)
         '
         '
         '
@@ -245,6 +254,23 @@ Partial Class F0_RotacionProductos
         Me.GroupPanel1.TabIndex = 0
         Me.GroupPanel1.Text = "DATOS"
         '
+        'ButtonX1
+        '
+        Me.ButtonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.ButtonX1.BackColor = System.Drawing.Color.Transparent
+        Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange
+        Me.ButtonX1.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonX1.Image = Global.DinoM.My.Resources.Resources.reload_5
+        Me.ButtonX1.ImageFixedSize = New System.Drawing.Size(48, 48)
+        Me.ButtonX1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.ButtonX1.Location = New System.Drawing.Point(924, 3)
+        Me.ButtonX1.Name = "ButtonX1"
+        Me.ButtonX1.Size = New System.Drawing.Size(80, 73)
+        Me.ButtonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.ButtonX1.TabIndex = 257
+        Me.ButtonX1.Text = "GENERAR"
+        Me.ButtonX1.TextColor = System.Drawing.Color.Black
+        '
         'tbCantProducto
         '
         '
@@ -254,9 +280,10 @@ Partial Class F0_RotacionProductos
         Me.tbCantProducto.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbCantProducto.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
         Me.tbCantProducto.Font = New System.Drawing.Font("Open Sans", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbCantProducto.Location = New System.Drawing.Point(1132, 26)
+        Me.tbCantProducto.Location = New System.Drawing.Point(849, 21)
+        Me.tbCantProducto.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.tbCantProducto.Name = "tbCantProducto"
-        Me.tbCantProducto.Size = New System.Drawing.Size(71, 31)
+        Me.tbCantProducto.Size = New System.Drawing.Size(53, 26)
         Me.tbCantProducto.TabIndex = 256
         '
         'LabelX5
@@ -269,11 +296,10 @@ Partial Class F0_RotacionProductos
         Me.LabelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX5.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX5.Location = New System.Drawing.Point(1006, 29)
-        Me.LabelX5.Margin = New System.Windows.Forms.Padding(4)
+        Me.LabelX5.Location = New System.Drawing.Point(754, 24)
         Me.LabelX5.Name = "LabelX5"
         Me.LabelX5.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX5.Size = New System.Drawing.Size(119, 20)
+        Me.LabelX5.Size = New System.Drawing.Size(96, 16)
         Me.LabelX5.TabIndex = 255
         Me.LabelX5.Text = "Cant Producto:"
         '
@@ -286,9 +312,10 @@ Partial Class F0_RotacionProductos
         Me.tbcantMeses.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbcantMeses.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
         Me.tbcantMeses.Font = New System.Drawing.Font("Open Sans", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbcantMeses.Location = New System.Drawing.Point(924, 26)
+        Me.tbcantMeses.Location = New System.Drawing.Point(693, 21)
+        Me.tbcantMeses.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.tbcantMeses.Name = "tbcantMeses"
-        Me.tbcantMeses.Size = New System.Drawing.Size(75, 31)
+        Me.tbcantMeses.Size = New System.Drawing.Size(56, 26)
         Me.tbcantMeses.TabIndex = 254
         '
         'LabelX3
@@ -301,11 +328,10 @@ Partial Class F0_RotacionProductos
         Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX3.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX3.Location = New System.Drawing.Point(821, 26)
-        Me.LabelX3.Margin = New System.Windows.Forms.Padding(4)
+        Me.LabelX3.Location = New System.Drawing.Point(616, 21)
         Me.LabelX3.Name = "LabelX3"
         Me.LabelX3.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX3.Size = New System.Drawing.Size(96, 20)
+        Me.LabelX3.Size = New System.Drawing.Size(77, 16)
         Me.LabelX3.TabIndex = 253
         Me.LabelX3.Text = "Cant Meses:"
         '
@@ -315,14 +341,13 @@ Partial Class F0_RotacionProductos
         cbAno_DesignTimeLayout.LayoutString = resources.GetString("cbAno_DesignTimeLayout.LayoutString")
         Me.cbAno.DesignTimeLayout = cbAno_DesignTimeLayout
         Me.cbAno.Font = New System.Drawing.Font("Open Sans Light", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbAno.Location = New System.Drawing.Point(704, 26)
-        Me.cbAno.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbAno.Location = New System.Drawing.Point(528, 21)
         Me.cbAno.Name = "cbAno"
         Me.cbAno.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.cbAno.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.cbAno.SelectedIndex = -1
         Me.cbAno.SelectedItem = Nothing
-        Me.cbAno.Size = New System.Drawing.Size(100, 30)
+        Me.cbAno.Size = New System.Drawing.Size(75, 25)
         Me.cbAno.TabIndex = 252
         Me.cbAno.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -336,11 +361,10 @@ Partial Class F0_RotacionProductos
         Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX2.Location = New System.Drawing.Point(657, 26)
-        Me.LabelX2.Margin = New System.Windows.Forms.Padding(4)
+        Me.LabelX2.Location = New System.Drawing.Point(493, 21)
         Me.LabelX2.Name = "LabelX2"
         Me.LabelX2.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX2.Size = New System.Drawing.Size(39, 20)
+        Me.LabelX2.Size = New System.Drawing.Size(32, 16)
         Me.LabelX2.TabIndex = 251
         Me.LabelX2.Text = "Año:"
         '
@@ -350,14 +374,13 @@ Partial Class F0_RotacionProductos
         cbMeses_DesignTimeLayout.LayoutString = resources.GetString("cbMeses_DesignTimeLayout.LayoutString")
         Me.cbMeses.DesignTimeLayout = cbMeses_DesignTimeLayout
         Me.cbMeses.Font = New System.Drawing.Font("Open Sans Light", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbMeses.Location = New System.Drawing.Point(447, 26)
-        Me.cbMeses.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbMeses.Location = New System.Drawing.Point(335, 21)
         Me.cbMeses.Name = "cbMeses"
         Me.cbMeses.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.cbMeses.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.cbMeses.SelectedIndex = -1
         Me.cbMeses.SelectedItem = Nothing
-        Me.cbMeses.Size = New System.Drawing.Size(200, 30)
+        Me.cbMeses.Size = New System.Drawing.Size(150, 25)
         Me.cbMeses.TabIndex = 250
         Me.cbMeses.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -371,11 +394,10 @@ Partial Class F0_RotacionProductos
         Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX1.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX1.Location = New System.Drawing.Point(342, 26)
-        Me.LabelX1.Margin = New System.Windows.Forms.Padding(4)
+        Me.LabelX1.Location = New System.Drawing.Point(256, 21)
         Me.LabelX1.Name = "LabelX1"
         Me.LabelX1.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX1.Size = New System.Drawing.Size(97, 20)
+        Me.LabelX1.Size = New System.Drawing.Size(78, 16)
         Me.LabelX1.TabIndex = 249
         Me.LabelX1.Text = "Ultimo Mes:"
         '
@@ -385,14 +407,13 @@ Partial Class F0_RotacionProductos
         cbAlmacen_DesignTimeLayout.LayoutString = resources.GetString("cbAlmacen_DesignTimeLayout.LayoutString")
         Me.cbAlmacen.DesignTimeLayout = cbAlmacen_DesignTimeLayout
         Me.cbAlmacen.Font = New System.Drawing.Font("Open Sans Light", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbAlmacen.Location = New System.Drawing.Point(97, 26)
-        Me.cbAlmacen.Margin = New System.Windows.Forms.Padding(4)
+        Me.cbAlmacen.Location = New System.Drawing.Point(73, 21)
         Me.cbAlmacen.Name = "cbAlmacen"
         Me.cbAlmacen.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.cbAlmacen.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.cbAlmacen.SelectedIndex = -1
         Me.cbAlmacen.SelectedItem = Nothing
-        Me.cbAlmacen.Size = New System.Drawing.Size(219, 30)
+        Me.cbAlmacen.Size = New System.Drawing.Size(164, 25)
         Me.cbAlmacen.TabIndex = 248
         Me.cbAlmacen.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -406,11 +427,10 @@ Partial Class F0_RotacionProductos
         Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX4.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX4.Location = New System.Drawing.Point(10, 26)
-        Me.LabelX4.Margin = New System.Windows.Forms.Padding(4)
+        Me.LabelX4.Location = New System.Drawing.Point(8, 21)
         Me.LabelX4.Name = "LabelX4"
         Me.LabelX4.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX4.Size = New System.Drawing.Size(76, 20)
+        Me.LabelX4.Size = New System.Drawing.Size(61, 16)
         Me.LabelX4.TabIndex = 234
         Me.LabelX4.Text = "Almacen:"
         '
@@ -425,11 +445,30 @@ Partial Class F0_RotacionProductos
         '
         Me.SuperTabControlPanel2.Controls.Add(Me.Ch_Pie)
         Me.SuperTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SuperTabControlPanel2.Location = New System.Drawing.Point(0, 25)
+        Me.SuperTabControlPanel2.Location = New System.Drawing.Point(0, 20)
+        Me.SuperTabControlPanel2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.SuperTabControlPanel2.Name = "SuperTabControlPanel2"
-        Me.SuperTabControlPanel2.Size = New System.Drawing.Size(1707, 563)
+        Me.SuperTabControlPanel2.Size = New System.Drawing.Size(1280, 457)
         Me.SuperTabControlPanel2.TabIndex = 0
         Me.SuperTabControlPanel2.TabItem = Me.SuperTabItem2
+        '
+        'Ch_Pie
+        '
+        ChartArea1.Name = "ChartArea1"
+        Me.Ch_Pie.ChartAreas.Add(ChartArea1)
+        Me.Ch_Pie.Dock = System.Windows.Forms.DockStyle.Fill
+        Legend1.Name = "Legend1"
+        Me.Ch_Pie.Legends.Add(Legend1)
+        Me.Ch_Pie.Location = New System.Drawing.Point(0, 0)
+        Me.Ch_Pie.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Ch_Pie.Name = "Ch_Pie"
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Me.Ch_Pie.Series.Add(Series1)
+        Me.Ch_Pie.Size = New System.Drawing.Size(1280, 457)
+        Me.Ch_Pie.TabIndex = 0
+        Me.Ch_Pie.Text = "Chart1"
         '
         'SuperTabItem2
         '
@@ -442,11 +481,30 @@ Partial Class F0_RotacionProductos
         '
         Me.SuperTabControlPanel3.Controls.Add(Me.Ch_Barra)
         Me.SuperTabControlPanel3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SuperTabControlPanel3.Location = New System.Drawing.Point(0, 25)
+        Me.SuperTabControlPanel3.Location = New System.Drawing.Point(0, 20)
+        Me.SuperTabControlPanel3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.SuperTabControlPanel3.Name = "SuperTabControlPanel3"
-        Me.SuperTabControlPanel3.Size = New System.Drawing.Size(1707, 563)
+        Me.SuperTabControlPanel3.Size = New System.Drawing.Size(1280, 457)
         Me.SuperTabControlPanel3.TabIndex = 0
         Me.SuperTabControlPanel3.TabItem = Me.SuperTabItem3
+        '
+        'Ch_Barra
+        '
+        ChartArea2.Name = "ChartArea1"
+        Me.Ch_Barra.ChartAreas.Add(ChartArea2)
+        Me.Ch_Barra.Dock = System.Windows.Forms.DockStyle.Fill
+        Legend2.Name = "Legend1"
+        Me.Ch_Barra.Legends.Add(Legend2)
+        Me.Ch_Barra.Location = New System.Drawing.Point(0, 0)
+        Me.Ch_Barra.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Ch_Barra.Name = "Ch_Barra"
+        Series2.ChartArea = "ChartArea1"
+        Series2.Legend = "Legend1"
+        Series2.Name = "Series1"
+        Me.Ch_Barra.Series.Add(Series2)
+        Me.Ch_Barra.Size = New System.Drawing.Size(1280, 457)
+        Me.Ch_Barra.TabIndex = 0
+        Me.Ch_Barra.Text = "Chart1"
         '
         'SuperTabItem3
         '
@@ -455,68 +513,23 @@ Partial Class F0_RotacionProductos
         Me.SuperTabItem3.Name = "SuperTabItem3"
         Me.SuperTabItem3.Text = "GRAFICO DE BARRAS"
         '
-        'Ch_Pie
+        'Timer1
         '
-        ChartArea3.Name = "ChartArea1"
-        Me.Ch_Pie.ChartAreas.Add(ChartArea3)
-        Me.Ch_Pie.Dock = System.Windows.Forms.DockStyle.Fill
-        Legend3.Name = "Legend1"
-        Me.Ch_Pie.Legends.Add(Legend3)
-        Me.Ch_Pie.Location = New System.Drawing.Point(0, 0)
-        Me.Ch_Pie.Name = "Ch_Pie"
-        Series3.ChartArea = "ChartArea1"
-        Series3.Legend = "Legend1"
-        Series3.Name = "Series1"
-        Me.Ch_Pie.Series.Add(Series3)
-        Me.Ch_Pie.Size = New System.Drawing.Size(1707, 563)
-        Me.Ch_Pie.TabIndex = 0
-        Me.Ch_Pie.Text = "Chart1"
-        '
-        'Ch_Barra
-        '
-        ChartArea4.Name = "ChartArea1"
-        Me.Ch_Barra.ChartAreas.Add(ChartArea4)
-        Me.Ch_Barra.Dock = System.Windows.Forms.DockStyle.Fill
-        Legend4.Name = "Legend1"
-        Me.Ch_Barra.Legends.Add(Legend4)
-        Me.Ch_Barra.Location = New System.Drawing.Point(0, 0)
-        Me.Ch_Barra.Name = "Ch_Barra"
-        Series4.ChartArea = "ChartArea1"
-        Series4.Legend = "Legend1"
-        Series4.Name = "Series1"
-        Me.Ch_Barra.Series.Add(Series4)
-        Me.Ch_Barra.Size = New System.Drawing.Size(1707, 563)
-        Me.Ch_Barra.TabIndex = 0
-        Me.Ch_Barra.Text = "Chart1"
-        '
-        'ButtonX1
-        '
-        Me.ButtonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX1.BackColor = System.Drawing.Color.Transparent
-        Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange
-        Me.ButtonX1.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ButtonX1.Image = Global.DinoM.My.Resources.Resources.reload_5
-        Me.ButtonX1.ImageFixedSize = New System.Drawing.Size(48, 48)
-        Me.ButtonX1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.ButtonX1.Location = New System.Drawing.Point(1232, 4)
-        Me.ButtonX1.Margin = New System.Windows.Forms.Padding(4)
-        Me.ButtonX1.Name = "ButtonX1"
-        Me.ButtonX1.Size = New System.Drawing.Size(107, 90)
-        Me.ButtonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX1.TabIndex = 257
-        Me.ButtonX1.Text = "GENERAR"
-        Me.ButtonX1.TextColor = System.Drawing.Color.Black
+        Me.Timer1.Enabled = True
+        Me.Timer1.Interval = 500
         '
         'F0_RotacionProductos
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1707, 588)
+        Me.ClientSize = New System.Drawing.Size(1362, 741)
         Me.Controls.Add(Me.Panel1)
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "F0_RotacionProductos"
+        Me.Opacity = 0.05R
         Me.Text = "F0_RotacionProductos"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
+        Me.WindowState = System.Windows.Forms.FormWindowState.Minimized
         Me.Panel1.ResumeLayout(False)
         CType(Me.SuperTabControl1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SuperTabControl1.ResumeLayout(False)
@@ -531,8 +544,8 @@ Partial Class F0_RotacionProductos
         CType(Me.cbMeses, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbAlmacen, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SuperTabControlPanel2.ResumeLayout(False)
-        Me.SuperTabControlPanel3.ResumeLayout(False)
         CType(Me.Ch_Pie, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.SuperTabControlPanel3.ResumeLayout(False)
         CType(Me.Ch_Barra, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
@@ -562,4 +575,5 @@ Partial Class F0_RotacionProductos
     Protected WithEvents ButtonX1 As DevComponents.DotNetBar.ButtonX
     Friend WithEvents Ch_Pie As System.Windows.Forms.DataVisualization.Charting.Chart
     Friend WithEvents Ch_Barra As System.Windows.Forms.DataVisualization.Charting.Chart
+    Friend WithEvents Timer1 As Timer
 End Class

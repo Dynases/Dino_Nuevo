@@ -22,6 +22,7 @@ Partial Class F0_MCompras
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F0_MCompras))
         Dim cbSucursal_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Me.PanelDetalle = New System.Windows.Forms.Panel()
@@ -86,6 +87,7 @@ Partial Class F0_MCompras
         Me.GroupPanel2 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.grCompra = New Janus.Windows.GridEX.GridEX()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -132,7 +134,6 @@ Partial Class F0_MCompras
         '
         'PanelSuperior
         '
-        Me.PanelSuperior.Size = New System.Drawing.Size(1334, 72)
         Me.PanelSuperior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelSuperior.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
         Me.PanelSuperior.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
@@ -149,7 +150,6 @@ Partial Class F0_MCompras
         '
         'PanelInferior
         '
-        Me.PanelInferior.Size = New System.Drawing.Size(1334, 39)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.Transparent
         Me.PanelInferior.Style.BackColor2.Color = System.Drawing.Color.Transparent
@@ -206,14 +206,6 @@ Partial Class F0_MCompras
         'btnNuevo
         '
         Me.btnNuevo.TabIndex = 2
-        '
-        'PanelToolBar2
-        '
-        Me.PanelToolBar2.Location = New System.Drawing.Point(1254, 0)
-        '
-        'PanelPrincipal
-        '
-        Me.PanelPrincipal.Size = New System.Drawing.Size(1334, 561)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelUsuario, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelSuperior, 0)
@@ -231,32 +223,18 @@ Partial Class F0_MCompras
         'btnPrimero
         '
         '
-        'MPanelUserAct
-        '
-        Me.MPanelUserAct.Location = New System.Drawing.Point(1134, 0)
-        '
         'MRlAccion
         '
         '
         '
         '
         Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.MRlAccion.Size = New System.Drawing.Size(878, 72)
         '
         'PanelContent
         '
         Me.PanelContent.Controls.Add(Me.PanelTotal)
         Me.PanelContent.Controls.Add(Me.PanelDetalle)
         Me.PanelContent.Controls.Add(Me.PanelContentSup)
-        Me.PanelContent.Size = New System.Drawing.Size(1301, 450)
-        '
-        'Panel1
-        '
-        Me.Panel1.Size = New System.Drawing.Size(1334, 450)
-        '
-        'MSuperTabControlPanel1
-        '
-        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(1301, 450)
         '
         'MSuperTabControl
         '
@@ -274,14 +252,9 @@ Partial Class F0_MCompras
         Me.MSuperTabControl.ControlBox.Name = ""
         Me.MSuperTabControl.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.MSuperTabControl.ControlBox.MenuBox, Me.MSuperTabControl.ControlBox.CloseBox})
         Me.MSuperTabControl.Controls.Add(Me.SuperTabControlPanel2)
-        Me.MSuperTabControl.Size = New System.Drawing.Size(1334, 450)
         Me.MSuperTabControl.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.BUSCADOR})
         Me.MSuperTabControl.Controls.SetChildIndex(Me.SuperTabControlPanel2, 0)
         Me.MSuperTabControl.Controls.SetChildIndex(Me.MSuperTabControlPanel1, 0)
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Location = New System.Drawing.Point(1061, 0)
         '
         'PanelDetalle
         '
@@ -436,9 +409,9 @@ Partial Class F0_MCompras
         Me.PanelTotal.BackgroundImage = Global.DinoM.My.Resources.Resources.fondo1
         Me.PanelTotal.Controls.Add(Me.Panel4)
         Me.PanelTotal.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PanelTotal.Location = New System.Drawing.Point(0, 359)
+        Me.PanelTotal.Location = New System.Drawing.Point(0, 539)
         Me.PanelTotal.Name = "PanelTotal"
-        Me.PanelTotal.Size = New System.Drawing.Size(1301, 91)
+        Me.PanelTotal.Size = New System.Drawing.Size(1329, 91)
         Me.PanelTotal.TabIndex = 3
         '
         'Panel4
@@ -453,7 +426,7 @@ Partial Class F0_MCompras
         Me.Panel4.Controls.Add(Me.LabelX11)
         Me.Panel4.Controls.Add(Me.LabelX9)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel4.Location = New System.Drawing.Point(920, 0)
+        Me.Panel4.Location = New System.Drawing.Point(948, 0)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(381, 91)
         Me.Panel4.TabIndex = 39
@@ -600,7 +573,7 @@ Partial Class F0_MCompras
         Me.PanelContentSup.Dock = System.Windows.Forms.DockStyle.Top
         Me.PanelContentSup.Location = New System.Drawing.Point(0, 0)
         Me.PanelContentSup.Name = "PanelContentSup"
-        Me.PanelContentSup.Size = New System.Drawing.Size(1301, 190)
+        Me.PanelContentSup.Size = New System.Drawing.Size(1329, 190)
         Me.PanelContentSup.TabIndex = 4
         '
         'GroupPanel1
@@ -614,7 +587,7 @@ Partial Class F0_MCompras
         Me.GroupPanel1.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.GroupPanel1.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel1.Name = "GroupPanel1"
-        Me.GroupPanel1.Size = New System.Drawing.Size(1301, 190)
+        Me.GroupPanel1.Size = New System.Drawing.Size(1329, 190)
         '
         '
         '
@@ -678,7 +651,7 @@ Partial Class F0_MCompras
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1295, 167)
+        Me.Panel2.Size = New System.Drawing.Size(1323, 167)
         Me.Panel2.TabIndex = 234
         '
         'swRetencion
@@ -1466,12 +1439,19 @@ Partial Class F0_MCompras
         Me.grCompra.TabIndex = 0
         Me.grCompra.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        Me.Timer1.Interval = 500
+        '
         'F0_MCompras
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1334, 561)
+        Me.ClientSize = New System.Drawing.Size(1362, 741)
+        Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "F0_MCompras"
+        Me.Opacity = 0.05R
         Me.Text = "F0_MCompras"
         Me.Controls.SetChildIndex(Me.PanelPrincipal, 0)
         Me.PanelSuperior.ResumeLayout(False)
@@ -1584,4 +1564,5 @@ Partial Class F0_MCompras
     Friend WithEvents LabelX12 As DevComponents.DotNetBar.LabelX
     Friend WithEvents swRetencion As DevComponents.DotNetBar.Controls.SwitchButton
     Friend WithEvents LabelX13 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents Timer1 As Timer
 End Class

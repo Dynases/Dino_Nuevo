@@ -4,6 +4,7 @@ Imports DevComponents.DotNetBar
 Imports DevComponents.DotNetBar.Controls
 
 Public Class F1_Rol
+    Dim _Inter As Integer = 0
 
 #Region "Atributos"
     Public _nameButton As String
@@ -328,7 +329,7 @@ Public Class F1_Rol
         Else
             '  Public _modulo As SideNavItem
             _modulo.Select()
-            _tab.Close()
+            Me.Close()
         End If
     End Sub
 #End Region
@@ -386,5 +387,16 @@ Public Class F1_Rol
 
     Private Sub SELECCIONARTODOSDELToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SELECCIONARTODOSDELToolStripMenuItem.Click
         _prSeleccionarTodos("ycdel")
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        _Inter = _Inter + 1
+        If _Inter = 1 Then
+            Me.WindowState = FormWindowState.Normal
+
+        Else
+            Me.Opacity = 100
+            Timer1.Enabled = False
+        End If
     End Sub
 End Class

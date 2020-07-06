@@ -13,6 +13,7 @@ Imports DevComponents.DotNetBar.Controls
 
 
 Public Class F1_Vendedor
+    Dim _Inter As Integer = 0
 
 #Region "Variables Locales"
 #Region "MApas"
@@ -79,10 +80,10 @@ Public Class F1_Vendedor
         'copio la imagen en la carpeta del sistema
 
         Dim file As New OpenFileDialog()
-        file.Filter = "Ficheros JPG o JPEG o PNG|*.jpg;*.jpeg;*.png" & _
-                      "|Ficheros GIF|*.gif" & _
-                      "|Ficheros BMP|*.bmp" & _
-                      "|Ficheros PNG|*.png" & _
+        file.Filter = "Ficheros JPG o JPEG o PNG|*.jpg;*.jpeg;*.png" &
+                      "|Ficheros GIF|*.gif" &
+                      "|Ficheros BMP|*.bmp" &
+                      "|Ficheros PNG|*.png" &
                       "|Ficheros TIFF|*.tif"
         If file.ShowDialog() = DialogResult.OK Then
             Dim ruta As String = file.FileName
@@ -819,7 +820,7 @@ Public Class F1_Vendedor
         Else
             '  Public _modulo As SideNavItem
             _modulo.Select()
-            _tab.Close()
+            Me.Close()
         End If
     End Sub
 
@@ -896,6 +897,17 @@ Public Class F1_Vendedor
 
             End If
 
+        End If
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        _Inter = _Inter + 1
+        If _Inter = 1 Then
+            Me.WindowState = FormWindowState.Normal
+
+        Else
+            Me.Opacity = 100
+            Timer1.Enabled = False
         End If
     End Sub
 End Class

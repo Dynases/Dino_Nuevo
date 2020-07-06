@@ -2,18 +2,19 @@
 Imports DevComponents.DotNetBar
 Imports System.Data.OleDb
 Public Class Pr_SAldosPorAlmacenLinea
+    Dim _Inter As Integer = 0
 
 
     Public _nameButton As String
     Public _tab As SuperTabItem
     Dim bandera As Boolean = False
 
-    Private Function GetDataExcel( _
+    Private Function GetDataExcel(
     ByVal fileName As String, ByVal sheetName As String) As DataTable
 
         ' Comprobamos los parámetros.
         '
-        If ((String.IsNullOrEmpty(fileName)) OrElse _
+        If ((String.IsNullOrEmpty(fileName)) OrElse
           (String.IsNullOrEmpty(sheetName))) Then _
           Throw New ArgumentNullException()
 
@@ -23,14 +24,14 @@ Public Class Pr_SAldosPorAlmacenLinea
             Dim connString As String = "Data Source=" & fileName
 
             If (extension = ".xls") Then
-                connString &= ";Provider=Microsoft.Jet.OLEDB.4.0;" & _
+                connString &= ";Provider=Microsoft.Jet.OLEDB.4.0;" &
                        "Extended Properties='Excel 8.0;HDR=YES;IMEX=1'"
 
             ElseIf (extension = ".xlsx") Then
-                connString &= ";Provider=Microsoft.ACE.OLEDB.12.0;" & _
+                connString &= ";Provider=Microsoft.ACE.OLEDB.12.0;" &
                        "Extended Properties='Excel 12.0 Xml;HDR=YES;IMEX=1'"
             Else
-                Throw New ArgumentException( _
+                Throw New ArgumentException(
                   "La extensión " & extension & " del archivo no está permitida.")
             End If
 
@@ -173,7 +174,7 @@ Public Class Pr_SAldosPorAlmacenLinea
 
     '    End Try
     'End Sub
-   
+
 
     Private Sub Pr_VentasAtendidas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _prIniciarTodo()
@@ -237,7 +238,7 @@ Public Class Pr_SAldosPorAlmacenLinea
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
 
-        _tab.Close()
+        Me.Close()
 
     End Sub
 
@@ -290,5 +291,14 @@ Public Class Pr_SAldosPorAlmacenLinea
         _prCargarReporte()
     End Sub
 
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        _Inter = _Inter + 1
+        If _Inter = 1 Then
+            Me.WindowState = FormWindowState.Normal
 
+        Else
+            Me.Opacity = 100
+            Timer1.Enabled = False
+        End If
+    End Sub
 End Class

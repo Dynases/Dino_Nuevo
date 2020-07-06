@@ -23,6 +23,7 @@ Partial Class F0_Venta2
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F0_Venta2))
         Dim cbCambioDolar_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim cbSucursal_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
@@ -111,6 +112,7 @@ Partial Class F0_Venta2
         Me.grVentas = New Janus.Windows.GridEX.GridEX()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.btnDuplicar = New DevComponents.DotNetBar.ButtonX()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -163,7 +165,6 @@ Partial Class F0_Venta2
         'PanelSuperior
         '
         Me.PanelSuperior.Controls.Add(Me.btnDuplicar)
-        Me.PanelSuperior.Size = New System.Drawing.Size(1316, 72)
         Me.PanelSuperior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelSuperior.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
         Me.PanelSuperior.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
@@ -185,8 +186,6 @@ Partial Class F0_Venta2
         '
         'PanelInferior
         '
-        Me.PanelInferior.Location = New System.Drawing.Point(0, 602)
-        Me.PanelInferior.Size = New System.Drawing.Size(1316, 39)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.Transparent
         Me.PanelInferior.Style.BackColor2.Color = System.Drawing.Color.Transparent
@@ -239,14 +238,6 @@ Partial Class F0_Venta2
         '
         'btnNuevo
         '
-        '
-        'PanelToolBar2
-        '
-        Me.PanelToolBar2.Location = New System.Drawing.Point(1236, 0)
-        '
-        'PanelPrincipal
-        '
-        Me.PanelPrincipal.Size = New System.Drawing.Size(1316, 641)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelUsuario, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelSuperior, 0)
@@ -267,33 +258,19 @@ Partial Class F0_Venta2
         'btnPrimero
         '
         '
-        'MPanelUserAct
-        '
-        Me.MPanelUserAct.Location = New System.Drawing.Point(1116, 0)
-        '
         'MRlAccion
         '
         '
         '
         '
         Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.MRlAccion.Size = New System.Drawing.Size(860, 72)
         Me.MRlAccion.Visible = False
         '
         'PanelContent
         '
         Me.PanelContent.Controls.Add(Me.gpDetalleVenta)
         Me.PanelContent.Controls.Add(Me.GroupPanel2)
-        Me.PanelContent.Size = New System.Drawing.Size(1283, 530)
         Me.PanelContent.TabIndex = 3
-        '
-        'Panel1
-        '
-        Me.Panel1.Size = New System.Drawing.Size(1316, 530)
-        '
-        'MSuperTabControlPanel1
-        '
-        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(1283, 530)
         '
         'MSuperTabControl
         '
@@ -311,14 +288,9 @@ Partial Class F0_Venta2
         Me.MSuperTabControl.ControlBox.Name = ""
         Me.MSuperTabControl.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.MSuperTabControl.ControlBox.MenuBox, Me.MSuperTabControl.ControlBox.CloseBox})
         Me.MSuperTabControl.Controls.Add(Me.SuperTabControlPanel1)
-        Me.MSuperTabControl.Size = New System.Drawing.Size(1316, 530)
         Me.MSuperTabControl.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabItem1})
         Me.MSuperTabControl.Controls.SetChildIndex(Me.SuperTabControlPanel1, 0)
         Me.MSuperTabControl.Controls.SetChildIndex(Me.MSuperTabControlPanel1, 0)
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Location = New System.Drawing.Point(972, 0)
         '
         'GroupPanel2
         '
@@ -331,7 +303,7 @@ Partial Class F0_Venta2
         Me.GroupPanel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupPanel2.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel2.Name = "GroupPanel2"
-        Me.GroupPanel2.Size = New System.Drawing.Size(1283, 530)
+        Me.GroupPanel2.Size = New System.Drawing.Size(1329, 630)
         '
         '
         '
@@ -1986,7 +1958,7 @@ Partial Class F0_Venta2
         Me.btnDuplicar.Image = Global.DinoM.My.Resources.Resources._14
         Me.btnDuplicar.ImageFixedSize = New System.Drawing.Size(48, 48)
         Me.btnDuplicar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnDuplicar.Location = New System.Drawing.Point(892, 0)
+        Me.btnDuplicar.Location = New System.Drawing.Point(1009, 0)
         Me.btnDuplicar.Name = "btnDuplicar"
         Me.btnDuplicar.Size = New System.Drawing.Size(80, 72)
         Me.btnDuplicar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -1994,11 +1966,17 @@ Partial Class F0_Venta2
         Me.btnDuplicar.Text = "DUPLICAR"
         Me.btnDuplicar.TextColor = System.Drawing.Color.White
         '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        Me.Timer1.Interval = 500
+        '
         'F0_Venta2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1316, 641)
+        Me.ClientSize = New System.Drawing.Size(1362, 741)
+        Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "F0_Venta2"
         Me.Text = "F0_Venta2"
         Me.Controls.SetChildIndex(Me.PanelPrincipal, 0)
@@ -2144,4 +2122,5 @@ Partial Class F0_Venta2
     Protected WithEvents btnDuplicar As DevComponents.DotNetBar.ButtonX
     Friend WithEvents LabelX21 As DevComponents.DotNetBar.LabelX
     Friend WithEvents txtEstado As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents Timer1 As Timer
 End Class

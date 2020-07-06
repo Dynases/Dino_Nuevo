@@ -22,6 +22,7 @@ Partial Class F0_CierreCaja
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F0_CierreCaja))
         Dim cbbanco_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Me.Panel3 = New System.Windows.Forms.Panel()
@@ -47,6 +48,8 @@ Partial Class F0_CierreCaja
         Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
         Me.TbCodigo = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.GroupPanel4 = New DevComponents.DotNetBar.Controls.GroupPanel()
+        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.grdetalle = New Janus.Windows.GridEX.GridEX()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.LabelX11 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX12 = New DevComponents.DotNetBar.LabelX()
@@ -64,8 +67,7 @@ Partial Class F0_CierreCaja
         Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
         Me.tbdRecibido = New DevComponents.Editors.DoubleInput()
         Me.tbdSaldo = New DevComponents.Editors.DoubleInput()
-        Me.Panel5 = New System.Windows.Forms.Panel()
-        Me.grdetalle = New Janus.Windows.GridEX.GridEX()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -95,6 +97,8 @@ Partial Class F0_CierreCaja
         CType(Me.cbbanco, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbFecha, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupPanel4.SuspendLayout()
+        Me.Panel5.SuspendLayout()
+        CType(Me.grdetalle, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel4.SuspendLayout()
         CType(Me.Tb_TCredito, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Tb_TDiferencia, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -104,13 +108,10 @@ Partial Class F0_CierreCaja
         CType(Me.Tb_TGeneral, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbdRecibido, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbdSaldo, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel5.SuspendLayout()
-        CType(Me.grdetalle, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelSuperior
         '
-        Me.PanelSuperior.Size = New System.Drawing.Size(926, 72)
         Me.PanelSuperior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelSuperior.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
         Me.PanelSuperior.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
@@ -127,8 +128,6 @@ Partial Class F0_CierreCaja
         '
         'PanelInferior
         '
-        Me.PanelInferior.Location = New System.Drawing.Point(0, 497)
-        Me.PanelInferior.Size = New System.Drawing.Size(926, 39)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.Transparent
         Me.PanelInferior.Style.BackColor2.Color = System.Drawing.Color.Transparent
@@ -165,22 +164,10 @@ Partial Class F0_CierreCaja
         '
         Me.TxtNombreUsu.ReadOnly = True
         Me.TxtNombreUsu.Text = "DEFAULT"
-        '
-        'PanelToolBar2
-        '
-        Me.PanelToolBar2.Location = New System.Drawing.Point(846, 0)
-        '
-        'PanelPrincipal
-        '
-        Me.PanelPrincipal.Size = New System.Drawing.Size(926, 536)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelUsuario, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelSuperior, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.Panel1, 0)
-        '
-        'MPanelUserAct
-        '
-        Me.MPanelUserAct.Location = New System.Drawing.Point(726, 0)
         '
         'MRlAccion
         '
@@ -188,21 +175,11 @@ Partial Class F0_CierreCaja
         '
         '
         Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.MRlAccion.Size = New System.Drawing.Size(470, 72)
         '
         'PanelContent
         '
         Me.PanelContent.Controls.Add(Me.GroupPanel4)
         Me.PanelContent.Controls.Add(Me.Panel3)
-        Me.PanelContent.Size = New System.Drawing.Size(893, 425)
-        '
-        'Panel1
-        '
-        Me.Panel1.Size = New System.Drawing.Size(926, 425)
-        '
-        'MSuperTabControlPanel1
-        '
-        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(893, 425)
         '
         'MSuperTabControl
         '
@@ -219,12 +196,7 @@ Partial Class F0_CierreCaja
         Me.MSuperTabControl.ControlBox.MenuBox.Name = ""
         Me.MSuperTabControl.ControlBox.Name = ""
         Me.MSuperTabControl.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.MSuperTabControl.ControlBox.MenuBox, Me.MSuperTabControl.ControlBox.CloseBox})
-        Me.MSuperTabControl.Size = New System.Drawing.Size(926, 425)
         Me.MSuperTabControl.Controls.SetChildIndex(Me.MSuperTabControlPanel1, 0)
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Location = New System.Drawing.Point(653, 0)
         '
         'Panel3
         '
@@ -234,7 +206,7 @@ Partial Class F0_CierreCaja
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(893, 244)
+        Me.Panel3.Size = New System.Drawing.Size(1329, 244)
         Me.Panel3.TabIndex = 4
         '
         'GroupPanel3
@@ -248,7 +220,7 @@ Partial Class F0_CierreCaja
         Me.GroupPanel3.Location = New System.Drawing.Point(398, 0)
         Me.GroupPanel3.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupPanel3.Name = "GroupPanel3"
-        Me.GroupPanel3.Size = New System.Drawing.Size(495, 244)
+        Me.GroupPanel3.Size = New System.Drawing.Size(931, 244)
         '
         '
         '
@@ -304,7 +276,7 @@ Partial Class F0_CierreCaja
         Me.SuperTabControl2.ReorderTabsEnabled = True
         Me.SuperTabControl2.SelectedTabFont = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold)
         Me.SuperTabControl2.SelectedTabIndex = 0
-        Me.SuperTabControl2.Size = New System.Drawing.Size(489, 222)
+        Me.SuperTabControl2.Size = New System.Drawing.Size(925, 222)
         Me.SuperTabControl2.TabFont = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SuperTabControl2.TabIndex = 0
         Me.SuperTabControl2.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabItem2, Me.DEPÓSITO})
@@ -317,7 +289,7 @@ Partial Class F0_CierreCaja
         Me.SuperTabControlPanel3.Location = New System.Drawing.Point(0, 26)
         Me.SuperTabControlPanel3.Margin = New System.Windows.Forms.Padding(2)
         Me.SuperTabControlPanel3.Name = "SuperTabControlPanel3"
-        Me.SuperTabControlPanel3.Size = New System.Drawing.Size(489, 196)
+        Me.SuperTabControlPanel3.Size = New System.Drawing.Size(925, 196)
         Me.SuperTabControlPanel3.TabIndex = 1
         Me.SuperTabControlPanel3.TabItem = Me.SuperTabItem2
         '
@@ -327,7 +299,7 @@ Partial Class F0_CierreCaja
         Me.Dgv_Cortes.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Dgv_Cortes.Location = New System.Drawing.Point(0, 0)
         Me.Dgv_Cortes.Name = "Dgv_Cortes"
-        Me.Dgv_Cortes.Size = New System.Drawing.Size(489, 196)
+        Me.Dgv_Cortes.Size = New System.Drawing.Size(925, 196)
         Me.Dgv_Cortes.TabIndex = 0
         Me.Dgv_Cortes.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -639,7 +611,7 @@ Partial Class F0_CierreCaja
         Me.GroupPanel4.Location = New System.Drawing.Point(0, 244)
         Me.GroupPanel4.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupPanel4.Name = "GroupPanel4"
-        Me.GroupPanel4.Size = New System.Drawing.Size(893, 181)
+        Me.GroupPanel4.Size = New System.Drawing.Size(1329, 386)
         '
         '
         '
@@ -671,6 +643,30 @@ Partial Class F0_CierreCaja
         Me.GroupPanel4.TabIndex = 5
         Me.GroupPanel4.Text = "TOTAL DE PEDIDOS ENTREGADOS"
         '
+        'Panel5
+        '
+        Me.Panel5.BackColor = System.Drawing.Color.White
+        Me.Panel5.Controls.Add(Me.grdetalle)
+        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel5.Location = New System.Drawing.Point(0, 0)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(1323, 294)
+        Me.Panel5.TabIndex = 26
+        '
+        'grdetalle
+        '
+        Me.grdetalle.BackColor = System.Drawing.Color.GhostWhite
+        Me.grdetalle.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grdetalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdetalle.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdetalle.Location = New System.Drawing.Point(0, 0)
+        Me.grdetalle.Name = "grdetalle"
+        Me.grdetalle.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
+        Me.grdetalle.Office2007CustomColor = System.Drawing.Color.DodgerBlue
+        Me.grdetalle.Size = New System.Drawing.Size(1323, 294)
+        Me.grdetalle.TabIndex = 0
+        Me.grdetalle.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
+        '
         'Panel4
         '
         Me.Panel4.BackColor = System.Drawing.Color.Transparent
@@ -691,9 +687,9 @@ Partial Class F0_CierreCaja
         Me.Panel4.Controls.Add(Me.tbdRecibido)
         Me.Panel4.Controls.Add(Me.tbdSaldo)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel4.Location = New System.Drawing.Point(0, 89)
+        Me.Panel4.Location = New System.Drawing.Point(0, 294)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(887, 70)
+        Me.Panel4.Size = New System.Drawing.Size(1323, 70)
         Me.Panel4.TabIndex = 24
         Me.Panel4.Tag = ""
         '
@@ -949,35 +945,17 @@ Partial Class F0_CierreCaja
         Me.tbdSaldo.TabIndex = 20
         Me.tbdSaldo.Visible = False
         '
-        'Panel5
+        'Timer1
         '
-        Me.Panel5.BackColor = System.Drawing.Color.White
-        Me.Panel5.Controls.Add(Me.grdetalle)
-        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel5.Location = New System.Drawing.Point(0, 0)
-        Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(887, 89)
-        Me.Panel5.TabIndex = 26
-        '
-        'grdetalle
-        '
-        Me.grdetalle.BackColor = System.Drawing.Color.GhostWhite
-        Me.grdetalle.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grdetalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grdetalle.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grdetalle.Location = New System.Drawing.Point(0, 0)
-        Me.grdetalle.Name = "grdetalle"
-        Me.grdetalle.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
-        Me.grdetalle.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.grdetalle.Size = New System.Drawing.Size(887, 89)
-        Me.grdetalle.TabIndex = 0
-        Me.grdetalle.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
+        Me.Timer1.Enabled = True
+        Me.Timer1.Interval = 500
         '
         'F0_CierreCaja
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(926, 536)
+        Me.ClientSize = New System.Drawing.Size(1362, 741)
+        Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "F0_CierreCaja"
         Me.Text = "F0_CierreCaja"
         Me.Controls.SetChildIndex(Me.PanelPrincipal, 0)
@@ -1013,6 +991,8 @@ Partial Class F0_CierreCaja
         CType(Me.cbbanco, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbFecha, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupPanel4.ResumeLayout(False)
+        Me.Panel5.ResumeLayout(False)
+        CType(Me.grdetalle, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel4.ResumeLayout(False)
         CType(Me.Tb_TCredito, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Tb_TDiferencia, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1022,8 +1002,6 @@ Partial Class F0_CierreCaja
         CType(Me.Tb_TGeneral, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbdRecibido, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbdSaldo, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel5.ResumeLayout(False)
-        CType(Me.grdetalle, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1070,4 +1048,5 @@ Partial Class F0_CierreCaja
     Friend WithEvents TbCodigo As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents Panel5 As Panel
     Friend WithEvents grdetalle As Janus.Windows.GridEX.GridEX
+    Friend WithEvents Timer1 As Timer
 End Class

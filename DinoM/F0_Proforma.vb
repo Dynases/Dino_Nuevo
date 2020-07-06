@@ -19,6 +19,7 @@ Imports CrystalDecisions.Shared
 Imports Facturacion
 
 Public Class F0_Proforma
+    Dim _Inter As Integer = 0
 #Region "Variables Globales"
     Dim _CodCliente As Integer = 0
     Dim _CodEmpleado As Integer = 0
@@ -436,7 +437,7 @@ Public Class F0_Proforma
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
         End With
-      
+
         With grVentas.RootTable.Columns("pafact")
             .Width = 50
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
@@ -733,7 +734,7 @@ Public Class F0_Proforma
         Return False
     End Function
 
-   
+
     Public Sub P_PonerTotal(rowIndex As Integer)
         If (rowIndex < grdetalle.RowCount) Then
 
@@ -771,7 +772,7 @@ Public Class F0_Proforma
         Dim pordesc As Double = ((montodesc * 100) / grdetalle.GetTotal(grdetalle.RootTable.Columns("pbtotdesc"), AggregateFunction.Sum))
         tbPdesc.Value = pordesc
         tbSubTotal.Value = grdetalle.GetTotal(grdetalle.RootTable.Columns("pbtotdesc"), AggregateFunction.Sum)
-        
+
         tbtotal.Value = grdetalle.GetTotal(grdetalle.RootTable.Columns("pbtotdesc"), AggregateFunction.Sum) - montodesc
 
 
@@ -805,31 +806,31 @@ Public Class F0_Proforma
     End Sub
     Public Function _ValidarCampos() As Boolean
         If (_CodCliente <= 0) Then
-            Dim img As Bitmap = New Bitmap(My.Resources.Mensaje, 50, 50)
+            Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
             ToastNotification.Show(Me, "Por Favor Seleccione un Cliente con Ctrl+Enter".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
             tbCliente.Focus()
             Return False
 
         End If
         If (_CodEmpleado <= 0) Then
-            Dim img As Bitmap = New Bitmap(My.Resources.Mensaje, 50, 50)
+            Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
             ToastNotification.Show(Me, "Por Favor Seleccione un Vendedor con Ctrl+Enter".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
             tbVendedor.Focus()
             Return False
         End If
         If (cbSucursal.SelectedIndex < 0) Then
-            Dim img As Bitmap = New Bitmap(My.Resources.Mensaje, 50, 50)
+            Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
             ToastNotification.Show(Me, "Por Favor Seleccione una Sucursal".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
             cbSucursal.Focus()
             Return False
         End If
         'Validar datos de factura
-       
+
 
         If (grdetalle.RowCount = 1) Then
             grdetalle.Row = grdetalle.RowCount - 1
             If (grdetalle.GetValue("pbty5prod") = 0) Then
-                Dim img As Bitmap = New Bitmap(My.Resources.Mensaje, 50, 50)
+                Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
                 ToastNotification.Show(Me, "Por Favor Seleccione  un detalle de producto".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
                 Return False
             End If
@@ -849,7 +850,7 @@ Public Class F0_Proforma
 
         If res Then
 
-           
+
 
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
             ToastNotification.Show(Me, "Código de Proforma ".ToUpper + tbCodigo.Text + " Grabado con Exito.".ToUpper,
@@ -906,7 +907,7 @@ Public Class F0_Proforma
         Else
 
             _modulo.Select()
-            _tab.Close()
+            Me.Close()
         End If
     End Sub
     Public Sub _prCargarIconELiminar()
@@ -1065,7 +1066,7 @@ Public Class F0_Proforma
 
         End If
     End Sub
-  
+
 
     Private Sub grdetalle_EditingCell(sender As Object, e As EditingCellEventArgs) Handles grdetalle.EditingCell
         If (_fnAccesible()) Then
@@ -1173,12 +1174,12 @@ salirIf:
             _DesHabilitarProductos()
         Else
             If (existe) Then
-                Dim img As Bitmap = New Bitmap(My.Resources.Mensaje, 50, 50)
+                Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
                 ToastNotification.Show(Me, "El producto ya existe en el detalle".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
             End If
         End If
     End Sub
-    
+
     Private Sub grProductos_KeyDown(sender As Object, e As KeyEventArgs) Handles grProductos.KeyDown
         If (Not _fnAccesible()) Then
             Return
@@ -1189,7 +1190,7 @@ salirIf:
             f = grProductos.Row
             If (f >= 0) Then
 
-                        InsertarProductosSinLote()
+                InsertarProductosSinLote()
             End If
         End If
         If e.KeyData = Keys.Escape Then
@@ -1497,7 +1498,7 @@ salirIf:
 
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         If (grVentas.RowCount > 0) Then
-           
+
 
             _prhabilitar()
             btnNuevo.Enabled = False
@@ -1511,7 +1512,7 @@ salirIf:
     End Sub
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
 
-      
+
 
         Dim ef = New Efecto
 
@@ -1593,7 +1594,7 @@ salirIf:
     End Sub
 #End Region
 
- 
+
 
     Public Function P_fnImageToByteArray(ByVal imageIn As Image) As Byte()
         Dim ms As New System.IO.MemoryStream()
@@ -1627,7 +1628,7 @@ salirIf:
         If Not IsNothing(P_Global.Visualizador) Then
             P_Global.Visualizador.Close()
         End If
-       
+
         P_Global.Visualizador = New Visualizador
 
         Dim objrep As New R_Proforma
@@ -1651,6 +1652,17 @@ salirIf:
         If (Not _fnAccesible()) Then
             P_GenerarReporte()
 
+        End If
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        _Inter = _Inter + 1
+        If _Inter = 1 Then
+            Me.WindowState = FormWindowState.Normal
+
+        Else
+            Me.Opacity = 100
+            Timer1.Enabled = False
         End If
     End Sub
 End Class

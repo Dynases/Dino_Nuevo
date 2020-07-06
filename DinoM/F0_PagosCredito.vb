@@ -15,6 +15,7 @@ Imports GMap.NET.WindowsForms.Markers
 Imports System.Reflection
 Imports System.Runtime.InteropServices
 Public Class F0_PagosCredito
+    Dim _Inter As Integer = 0
 
 #Region "Variables Globales"
     Dim precio As DataTable
@@ -90,7 +91,7 @@ Public Class F0_PagosCredito
         tbfecha.IsInputReadOnly = False
         tbObservacion.ReadOnly = False
         tbcobrador.ReadOnly = False
-        
+
         ''  tbCliente.ReadOnly = False  por que solo podra seleccionar Cliente
         ''  tbVendedor.ReadOnly = False
         grfactura.RootTable.Columns("img").Visible = True
@@ -322,7 +323,7 @@ Public Class F0_PagosCredito
                 .Visible = False
             End With
         End If
-       
+
 
         With grfactura
             .GroupByBoxVisible = False
@@ -333,7 +334,7 @@ Public Class F0_PagosCredito
             'Diseño de la tabla
             .VisualStyle = VisualStyle.Office2007
             .AlternatingColors = True
-          
+
             .RowHeaders = InheritableBoolean.True
             .TotalRow = InheritableBoolean.True
             .TotalRowFormatStyle.BackColor = Color.Gold
@@ -345,7 +346,7 @@ Public Class F0_PagosCredito
 
     Public Sub _prMostrarRegistro(_N As Integer)
         '' grVentas.Row = _N
-                '     a.tenumi ,a.tefdoc ,a.tety4vend,vendedor .yddesc as vendedor,
+        '     a.tenumi ,a.tefdoc ,a.tety4vend,vendedor .yddesc as vendedor,
         'a.teobs ,a.tefact ,a.tehact ,a.teuact  ,Sum(detalle .tdmonto) as total 
 
         With grcobranza
@@ -553,17 +554,17 @@ Public Class F0_PagosCredito
             .Width = 100
             .Visible = False
         End With
-        
+
 
         With grpagos
             .GroupByBoxVisible = False
             'diseño de la grilla
             .VisualStyle = VisualStyle.Office2007
 
-       
+
             .VisualStyle = VisualStyle.Office2007
 
-          
+
             .RowHeaders = InheritableBoolean.True
             .TotalRow = InheritableBoolean.True
             .TotalRowFormatStyle.BackColor = Color.Gold
@@ -696,14 +697,14 @@ Public Class F0_PagosCredito
 
 
             Else
-                Dim img As Bitmap = New Bitmap(My.Resources.Mensaje, 50, 50)
+                Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
                 ToastNotification.Show(Me, "EL COBRO NO PUDO GRABARSE CON EXITO".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
 
             End If
 
 
         Else
-            Dim img As Bitmap = New Bitmap(My.Resources.Mensaje, 50, 50)
+            Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
             ''''''NO EXISTE DATOS PARA INSERTAR EN LOS COBROS 
             ToastNotification.Show(Me, "NO EXISTE NINGUN PAGO INSERTADO PARA PODER GRABAR !!             ", img, 4000, eToastGlowColor.Orange, eToastPosition.TopCenter)
 
@@ -882,7 +883,7 @@ Public Class F0_PagosCredito
     Private Sub tbObservacion_KeyDown(sender As Object, e As KeyEventArgs) Handles tbObservacion.KeyDown
         If e.KeyData = Keys.Enter Then
             'grfactura.Focus()
-          
+
         End If
     End Sub
 
@@ -947,7 +948,7 @@ Public Class F0_PagosCredito
             Return
         End If
 
-      
+
         If (e.KeyData = Keys.Enter) Then
             Dim f, c As Integer
             c = grPendiente.Col
@@ -983,7 +984,7 @@ Public Class F0_PagosCredito
                     '_DesHabilitarProductos()
                 Else
                     If (existe) Then
-                        Dim img As Bitmap = New Bitmap(My.Resources.Mensaje, 50, 50)
+                        Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
                         ToastNotification.Show(Me, "El PAGO DE ESTE VENTA ya existe en el detalle".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
                     End If
                 End If
@@ -1035,7 +1036,7 @@ Public Class F0_PagosCredito
         End If
     End Sub
     Sub _prInterpretarDatosCobranza(ByRef dt As DataTable)
-        
+
 
         '       numidetalle, NroDoc, factura, numiCredito, numiCobranza, A.tctv1numi
         ',a.tcty4clie ,cliente,detalle.tdfechaPago, PagoAc, NumeroRecibo, DescBanco, banco, detalle.tdnrocheque,
@@ -1059,7 +1060,7 @@ Public Class F0_PagosCredito
                                                 dtcobro.Rows(i).Item("DescBanco")), dtcobro.Rows(i).Item("tdnrocheque"), Now.Date,
                                             "", "", Bin.ToArray, 0)
                 End If
-            
+
             End If
             If (estado = 2) Then
                 'tdtv12numi, tdtv13numi, tdnrodoc, tdfechaPago, tdmonto, tdnrorecibo, tdty3banco,
@@ -1123,7 +1124,7 @@ Public Class F0_PagosCredito
     End Sub
     Public Function _ValidarCampos() As Boolean
         If (tbcodVendedor.Text.Length <= 0) Then
-            Dim img As Bitmap = New Bitmap(My.Resources.Mensaje, 50, 50)
+            Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
             ToastNotification.Show(Me, "Por Favor Seleccione un Cobrador con Ctrl+Enter".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
             tbcobrador.Focus()
             Return False
@@ -1133,13 +1134,13 @@ Public Class F0_PagosCredito
         If (grfactura.RowCount > 0) Then
             grfactura.Row = grfactura.RowCount - 1
             If (grfactura.GetValue("tcty4clie") = 0) Then
-                Dim img As Bitmap = New Bitmap(My.Resources.Mensaje, 50, 50)
+                Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
                 ToastNotification.Show(Me, "Por Favor Seleccione  un detalle de Pagos".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
                 Return False
             End If
 
         End If
-      
+
         Return True
     End Function
 
@@ -1201,7 +1202,7 @@ Public Class F0_PagosCredito
 
             End If
         Else
-            _tab.Close()
+            Me.Close()
             _modulo.Select()
         End If
     End Sub
@@ -1259,11 +1260,22 @@ Public Class F0_PagosCredito
         P_Global.Visualizador.CrGeneral.ReportSource = objrep 'Comentar
         P_Global.Visualizador.Show() 'Comentar
         P_Global.Visualizador.BringToFront() 'Comentar
-       
+
 
     End Sub
 
     Private Sub tbObservacion_Leave(sender As Object, e As EventArgs) Handles tbObservacion.Leave
         grfactura.Select()
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        _Inter = _Inter + 1
+        If _Inter = 1 Then
+            Me.WindowState = FormWindowState.Normal
+
+        Else
+            Me.Opacity = 100
+            Timer1.Enabled = False
+        End If
     End Sub
 End Class
