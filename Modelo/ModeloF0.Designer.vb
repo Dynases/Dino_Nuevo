@@ -25,7 +25,6 @@ Partial Class ModeloF0
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim SuperTabColorTable1 As DevComponents.DotNetBar.Rendering.SuperTabColorTable = New DevComponents.DotNetBar.Rendering.SuperTabColorTable()
         Dim SuperTabLinearGradientColorTable1 As DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable = New DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ModeloF0))
@@ -56,7 +55,7 @@ Partial Class ModeloF0
         Me.PanelInferior = New DevComponents.DotNetBar.PanelEx()
         Me.MPanelUserAct = New System.Windows.Forms.Panel()
         Me.BubbleBarUsuario = New DevComponents.DotNetBar.BubbleBar()
-        Me.BubbleBarTabUsuario = New DevComponents.DotNetBar.BubbleBarTab(Me.components)
+        Me.BubbleBarTabUsuario = New DevComponents.DotNetBar.BubbleBarTab()
         Me.BubbleButton3 = New DevComponents.DotNetBar.BubbleButton()
         Me.TxtNombreUsu = New System.Windows.Forms.TextBox()
         Me.PanelNavegacion = New System.Windows.Forms.Panel()
@@ -65,9 +64,9 @@ Partial Class ModeloF0
         Me.btnSiguiente = New DevComponents.DotNetBar.ButtonX()
         Me.btnAnterior = New DevComponents.DotNetBar.ButtonX()
         Me.btnPrimero = New DevComponents.DotNetBar.ButtonX()
-        Me.MEP = New System.Windows.Forms.ErrorProvider(Me.components)
+        Me.MEP = New System.Windows.Forms.ErrorProvider()
         Me.MHighlighterFocus = New DevComponents.DotNetBar.Validator.Highlighter()
-        Me.MFlyoutUsuario = New DevComponents.DotNetBar.Controls.Flyout(Me.components)
+        Me.MFlyoutUsuario = New DevComponents.DotNetBar.Controls.Flyout()
         Me.BBtnUsuario = New DevComponents.DotNetBar.BubbleButton()
         Me.BubbleButton1 = New DevComponents.DotNetBar.BubbleButton()
         Me.BubbleButton2 = New DevComponents.DotNetBar.BubbleButton()
@@ -661,6 +660,7 @@ Partial Class ModeloF0
         Me.KeyPreview = True
         Me.Name = "ModeloF0"
         Me.Opacity = 0.05R
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "{...TITULO...}"
         Me.WindowState = System.Windows.Forms.FormWindowState.Minimized
         Me.PanelPrincipal.ResumeLayout(False)

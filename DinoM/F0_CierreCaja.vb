@@ -9,8 +9,8 @@ Imports Logica
 Public Class F0_CierreCaja
 
 #Region "VARIABLES GLOBALES"
-    Dim Numi_Chofer As Integer
-    Dim Numi_Conciliacion As Integer
+
+
     Dim Bin As New MemoryStream
     Public _nameButton As String
     Public _tab As SuperTabItem
@@ -21,8 +21,8 @@ Public Class F0_CierreCaja
     Private boDel As Boolean = False
     Private InDuracion As Byte = 5
     Private dtCortes As DataTable
-    'Private ListaCambio As List(Of VCajaCambio) = New List(Of VCajaCambio)
-    'Private ListaDeposito As List(Of VCajaDeposito) = New List(Of VCajaDeposito)
+    Dim _Inter As Integer = 0
+
 
 
 #End Region
@@ -733,7 +733,7 @@ Public Class F0_CierreCaja
                 .Visible = False
             End With
             With Dgv_Buscador.RootTable.Columns("ccfact")
-                .Width = 120
+                .Width = 150
                 .Caption = "FECHA REGISTRO"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
                 .Visible = True
@@ -1246,6 +1246,17 @@ Public Class F0_CierreCaja
                 Dgv_Depositos.SetValue("estado", 2)
             End If
 
+        End If
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        _Inter = _Inter + 1
+        If _Inter = 1 Then
+            Me.WindowState = FormWindowState.Normal
+            'Me.StartPosition = FormStartPosition.CenterScreen
+        Else
+            Me.Opacity = 100
+            Timer1.Enabled = False
         End If
     End Sub
 
