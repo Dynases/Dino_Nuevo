@@ -12,6 +12,7 @@ Imports System.Reflection
 Imports System.Runtime.InteropServices
 
 Public Class F0_Movimiento
+    Dim _Inter As Integer = 0
 #Region "Variables Globales"
     Public _nameButton As String
     Public _tab As SuperTabItem
@@ -389,7 +390,7 @@ Public Class F0_Movimiento
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
         End With
-     
+
         With grmovimiento.RootTable.Columns("ibdepdest")
             .Width = 50
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
@@ -698,14 +699,14 @@ Public Class F0_Movimiento
     End Sub
     Public Function _ValidarCampos() As Boolean
         If (cbConcepto.SelectedIndex < 0) Then
-            Dim img As Bitmap = New Bitmap(My.Resources.Mensaje, 50, 50)
+            Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
             ToastNotification.Show(Me, "Por Favor Seleccione un Concepto".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
             cbConcepto.Focus()
             Return False
 
         End If
         If (cbAlmacenOrigen.SelectedIndex < 0) Then
-            Dim img As Bitmap = New Bitmap(My.Resources.Mensaje, 50, 50)
+            Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
             ToastNotification.Show(Me, "Por Favor Seleccione un Deposito".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
             cbAlmacenOrigen.Focus()
             Return False
@@ -713,7 +714,7 @@ Public Class F0_Movimiento
         If (cbConcepto.SelectedIndex >= 0) Then
             If (cbConcepto.Value = 6) Then
                 If (cbDepositoDestino.SelectedIndex < 0) Then
-                    Dim img As Bitmap = New Bitmap(My.Resources.Mensaje, 50, 50)
+                    Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
                     ToastNotification.Show(Me, "Por Favor Seleccione un Deposito Desitno".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
                     cbDepositoDestino.Focus()
                     Return False
@@ -721,7 +722,7 @@ Public Class F0_Movimiento
             End If
         End If
         If (grdetalle.RowCount <= 0) Then
-            Dim img As Bitmap = New Bitmap(My.Resources.Mensaje, 50, 50)
+            Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
             ToastNotification.Show(Me, "Por Favor Inserte un Detalle".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
             grdetalle.Focus()
 
@@ -730,7 +731,7 @@ Public Class F0_Movimiento
         End If
         If (grdetalle.RowCount = 1) Then
             If (CType(grdetalle.DataSource, DataTable).Rows(0).Item("iccprod") = 0) Then
-                Dim img As Bitmap = New Bitmap(My.Resources.Mensaje, 50, 50)
+                Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
                 ToastNotification.Show(Me, "Por Favor Inserte un Detalle".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
                 grdetalle.Focus()
 
@@ -838,7 +839,7 @@ Public Class F0_Movimiento
                                       eToastPosition.TopCenter
                                       )
         Else
-            Dim img As Bitmap = New Bitmap(My.Resources.CANCEL, 50, 50)
+            Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
             ToastNotification.Show(Me, "El Movimiento no pudo ser insertado".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
         End If
 
@@ -877,7 +878,7 @@ Public Class F0_Movimiento
         Else
 
             _modulo.Select()
-            _tab.Close()
+            Me.Close()
 
         End If
     End Sub
@@ -930,7 +931,7 @@ Public Class F0_Movimiento
             grproducto.Col = 1
         Else
             If (existe) Then
-                Dim img As Bitmap = New Bitmap(My.Resources.Mensaje, 50, 50)
+                Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
                 ToastNotification.Show(Me, "El producto ya existe en el detalle".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
                 grproducto.RemoveFilters()
                 grproducto.Focus()
@@ -1096,7 +1097,7 @@ salirIf:
 
     End Sub
 
-    
+
     Private Sub grproducto_KeyDown(sender As Object, e As KeyEventArgs) Handles grproducto.KeyDown
         If (Not _fnAccesible()) Then
             Return
@@ -1233,7 +1234,7 @@ salirIf:
                         _fnObtenerFilaDetalle(pos, lin)
                         CType(grdetalle.DataSource, DataTable).Rows(pos).Item("iccant") = stock
                         grdetalle.SetValue("iccant", stock)
-                        Dim img As Bitmap = New Bitmap(My.Resources.Mensaje, 50, 50)
+                        Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
                         ToastNotification.Show(Me, "La cantidad que se quiere sacar es mayor a la que existe en el stock solo puede Sacar : ".ToUpper + Str(stock).Trim,
                           img,
                           5000,
@@ -1390,7 +1391,7 @@ salirIf:
     End Sub
 
     Private Sub cbConcepto_ValueChanged(sender As Object, e As EventArgs) Handles cbConcepto.ValueChanged
-     
+
 
         If (cbConcepto.SelectedIndex >= 0) Then
             If (cbConcepto.Value = 6) Then ''''Movimiento 6=Traspaso Salida
@@ -1416,7 +1417,7 @@ salirIf:
                 lbDepositoDestino.Visible = False
                 cbDepositoDestino.Visible = False
                 lbDepositoOrigen.Text = "Deposito:"
-              
+
             End If
             If (_fnAccesible() And tbCodigo.Text = String.Empty) Then
                 CType(grdetalle.DataSource, DataTable).Rows.Clear()
@@ -1432,6 +1433,17 @@ salirIf:
             _prAddDetalleVenta()
             _DesHabilitarProductos()
 
+        End If
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        _Inter = _Inter + 1
+        If _Inter = 1 Then
+            Me.WindowState = FormWindowState.Normal
+
+        Else
+            Me.Opacity = 100
+            Timer1.Enabled = False
         End If
     End Sub
 

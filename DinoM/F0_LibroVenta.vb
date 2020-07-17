@@ -7,6 +7,7 @@ Imports DevComponents.DotNetBar
 Imports DevComponents.DotNetBar.Controls
 
 Public Class F0_LibroVenta
+    Dim _Inter As Integer = 0
 
 #Region "Variables Globales"
 
@@ -455,7 +456,7 @@ Public Class F0_LibroVenta
                 Dim _escritor As StreamWriter
                 Dim _fila As Integer = DgdLCV.PrimaryGrid.Rows.Count
                 Dim _columna As Integer = DgdLCV.PrimaryGrid.Columns.Count
-                Dim _archivo As String = _ubicacion & "\LCV_" & Now.Date.Day & _
+                Dim _archivo As String = _ubicacion & "\LCV_" & Now.Date.Day &
                     "." & Now.Date.Month & "." & Now.Date.Year & "_" & Now.Hour & "." & Now.Minute & "." & Now.Second & ext
                 Dim _linea As String = ""
                 Dim _filadata = 0, columndata As Int32 = 0
@@ -507,13 +508,24 @@ Public Class F0_LibroVenta
         Return False
     End Function
     Private Sub _prSalir()
-   
-            _modulo.Select()
-            _tab.Close()
+
+        _modulo.Select()
+        Me.Close()
 
 
     End Sub
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         _prSalir()
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        _Inter = _Inter + 1
+        If _Inter = 1 Then
+            Me.WindowState = FormWindowState.Normal
+
+        Else
+            Me.Opacity = 100
+            Timer1.Enabled = False
+        End If
     End Sub
 End Class

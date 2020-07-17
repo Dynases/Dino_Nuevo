@@ -15,7 +15,7 @@ Imports GMap.NET.WindowsForms.Markers
 Imports System.Reflection
 Imports System.Runtime.InteropServices
 Public Class F0_PagosCreditoCompraUlt
-
+    Dim _Inter As Integer = 0
 #Region "Variables Globales"
     Dim precio As DataTable
     Public _nameButton As String
@@ -791,7 +791,7 @@ Public Class F0_PagosCreditoCompraUlt
 
             End If
         Else
-            _tab.Close()
+            Me.Close()
             _modulo.Select()
         End If
     End Sub
@@ -1146,6 +1146,18 @@ Public Class F0_PagosCreditoCompraUlt
 
     Private Sub tbObservacion_Leave(sender As Object, e As EventArgs) Handles tbObservacion.Leave
         grfactura.Select()
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        _Inter = _Inter + 1
+        If _Inter = 1 Then
+            Me.WindowState = FormWindowState.Normal
+
+        Else
+            Me.Opacity = 100
+            Timer1.Enabled = False
+        End If
+
     End Sub
 
 #End Region

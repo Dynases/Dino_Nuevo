@@ -22,6 +22,7 @@ Partial Class F1_Dosificacion
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F1_Dosificacion))
         Dim LabelX4 As DevComponents.DotNetBar.LabelX
         Dim CbCompania_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
@@ -51,6 +52,7 @@ Partial Class F1_Dosificacion
         Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
         Me.TbiNroFactura = New DevComponents.Editors.IntegerInput()
         Me.CbAlmacen = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         LabelX4 = New DevComponents.DotNetBar.LabelX()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
@@ -93,7 +95,6 @@ Partial Class F1_Dosificacion
         Me.SuperTabPrincipal.ControlBox.MenuBox.Name = ""
         Me.SuperTabPrincipal.ControlBox.Name = ""
         Me.SuperTabPrincipal.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabPrincipal.ControlBox.MenuBox, Me.SuperTabPrincipal.ControlBox.CloseBox})
-        Me.SuperTabPrincipal.Size = New System.Drawing.Size(884, 507)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelBuscador, 0)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelRegistro, 0)
         '
@@ -104,14 +105,14 @@ Partial Class F1_Dosificacion
         '
         'SuperTabControlPanelRegistro
         '
-        Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(852, 507)
+        Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(1330, 741)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelSuperior, 0)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelPrincipal, 0)
         '
         'PanelSuperior
         '
-        Me.PanelSuperior.Size = New System.Drawing.Size(852, 72)
+        Me.PanelSuperior.Size = New System.Drawing.Size(1330, 72)
         Me.PanelSuperior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelSuperior.Style.BackColor1.Color = System.Drawing.Color.DarkSlateGray
         Me.PanelSuperior.Style.BackColor2.Color = System.Drawing.Color.DarkSlateGray
@@ -123,7 +124,7 @@ Partial Class F1_Dosificacion
         '
         'PanelInferior
         '
-        Me.PanelInferior.Size = New System.Drawing.Size(852, 36)
+        Me.PanelInferior.Size = New System.Drawing.Size(1330, 36)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.DarkSlateGray
         Me.PanelInferior.Style.BackColor2.Color = System.Drawing.Color.DarkSlateGray
@@ -164,23 +165,23 @@ Partial Class F1_Dosificacion
         '
         'PanelToolBar2
         '
-        Me.PanelToolBar2.Location = New System.Drawing.Point(772, 0)
+        Me.PanelToolBar2.Location = New System.Drawing.Point(1250, 0)
         '
         'MPanelSup
         '
         Me.MPanelSup.Controls.Add(Me.GroupPanelDatosGenerales)
-        Me.MPanelSup.Size = New System.Drawing.Size(852, 235)
+        Me.MPanelSup.Size = New System.Drawing.Size(1330, 235)
         Me.MPanelSup.Controls.SetChildIndex(Me.PanelUsuario, 0)
         Me.MPanelSup.Controls.SetChildIndex(Me.GroupPanelDatosGenerales, 0)
         '
         'PanelPrincipal
         '
-        Me.PanelPrincipal.Size = New System.Drawing.Size(852, 399)
+        Me.PanelPrincipal.Size = New System.Drawing.Size(1330, 633)
         '
         'GroupPanelBuscador
         '
         Me.GroupPanelBuscador.Location = New System.Drawing.Point(0, 235)
-        Me.GroupPanelBuscador.Size = New System.Drawing.Size(852, 164)
+        Me.GroupPanelBuscador.Size = New System.Drawing.Size(1330, 398)
         '
         '
         '
@@ -213,7 +214,6 @@ Partial Class F1_Dosificacion
         '
         'JGrM_Buscador
         '
-        Me.JGrM_Buscador.BackColor = System.Drawing.Color.WhiteSmoke
         Me.JGrM_Buscador.CardBorders = False
         Me.JGrM_Buscador.FlatBorderColor = System.Drawing.Color.DodgerBlue
         Me.JGrM_Buscador.Font = New System.Drawing.Font("Open Sans Light", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -221,18 +221,17 @@ Partial Class F1_Dosificacion
         Me.JGrM_Buscador.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Bold)
         Me.JGrM_Buscador.HeaderFormatStyle.FontUnderline = Janus.Windows.GridEX.TriState.[False]
         Me.JGrM_Buscador.HeaderFormatStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.JGrM_Buscador.HideSelection = Janus.Windows.GridEX.HideSelection.Highlight
         Me.JGrM_Buscador.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.JGrM_Buscador.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.JGrM_Buscador.SelectedFormatStyle.BackColor = System.Drawing.Color.DodgerBlue
         Me.JGrM_Buscador.SelectedFormatStyle.Font = New System.Drawing.Font("Open Sans", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.JGrM_Buscador.SelectedFormatStyle.ForeColor = System.Drawing.Color.White
-        Me.JGrM_Buscador.Size = New System.Drawing.Size(846, 141)
+        Me.JGrM_Buscador.Size = New System.Drawing.Size(1324, 375)
         Me.JGrM_Buscador.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'MPanelUserAct
         '
-        Me.MPanelUserAct.Location = New System.Drawing.Point(652, 0)
+        Me.MPanelUserAct.Location = New System.Drawing.Point(1130, 0)
         '
         'LabelX4
         '
@@ -258,7 +257,7 @@ Partial Class F1_Dosificacion
         Me.GroupPanelDatosGenerales.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanelDatosGenerales.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanelDatosGenerales.Name = "GroupPanelDatosGenerales"
-        Me.GroupPanelDatosGenerales.Size = New System.Drawing.Size(852, 235)
+        Me.GroupPanelDatosGenerales.Size = New System.Drawing.Size(1330, 235)
         '
         '
         '
@@ -323,7 +322,7 @@ Partial Class F1_Dosificacion
         Me.PanelExDatosGenerales.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelExDatosGenerales.Location = New System.Drawing.Point(0, 0)
         Me.PanelExDatosGenerales.Name = "PanelExDatosGenerales"
-        Me.PanelExDatosGenerales.Size = New System.Drawing.Size(846, 212)
+        Me.PanelExDatosGenerales.Size = New System.Drawing.Size(1324, 212)
         Me.PanelExDatosGenerales.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelExDatosGenerales.Style.BackColor1.Color = System.Drawing.Color.Transparent
         Me.PanelExDatosGenerales.Style.BackColor2.Color = System.Drawing.Color.Transparent
@@ -733,11 +732,17 @@ Partial Class F1_Dosificacion
         Me.CbAlmacen.TabIndex = 2
         Me.CbAlmacen.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        Me.Timer1.Interval = 500
+        '
         'F1_Dosificacion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(884, 507)
+        Me.ClientSize = New System.Drawing.Size(1362, 741)
+        Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "F1_Dosificacion"
         Me.Text = "F1_Dosificacion"
         Me.Controls.SetChildIndex(Me.SuperTabPrincipal, 0)
@@ -796,4 +801,5 @@ Partial Class F1_Dosificacion
     Friend WithEvents LabelX12 As DevComponents.DotNetBar.LabelX
     Friend WithEvents TbiSfc As DevComponents.Editors.IntegerInput
     Friend WithEvents TbNroAutoriz As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents Timer1 As Timer
 End Class

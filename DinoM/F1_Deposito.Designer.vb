@@ -22,6 +22,7 @@ Partial Class F1_Deposito
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F1_Deposito))
         Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
         Me.tbCodigoOriginal = New DevComponents.DotNetBar.Controls.TextBoxX()
@@ -49,6 +50,7 @@ Partial Class F1_Deposito
         Me.ButtonX3 = New DevComponents.DotNetBar.ButtonX()
         Me.Gmc_Cliente = New GMap.NET.WindowsForms.GMapControl()
         Me.SuperTabItem2 = New DevComponents.DotNetBar.SuperTabItem()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -213,14 +215,12 @@ Partial Class F1_Deposito
         '
         'JGrM_Buscador
         '
-        Me.JGrM_Buscador.BackColor = System.Drawing.Color.WhiteSmoke
         Me.JGrM_Buscador.BorderStyle = Janus.Windows.GridEX.BorderStyle.None
         Me.JGrM_Buscador.FocusStyle = Janus.Windows.GridEX.FocusStyle.Solid
         Me.JGrM_Buscador.Font = New System.Drawing.Font("Open Sans Light", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.JGrM_Buscador.GridLineColor = System.Drawing.SystemColors.MenuHighlight
         Me.JGrM_Buscador.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.JGrM_Buscador.HeaderFormatStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center
-        Me.JGrM_Buscador.HideSelection = Janus.Windows.GridEX.HideSelection.Highlight
         Me.JGrM_Buscador.Hierarchical = True
         Me.JGrM_Buscador.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.JGrM_Buscador.Office2007CustomColor = System.Drawing.Color.DodgerBlue
@@ -536,8 +536,8 @@ Partial Class F1_Deposito
         Me.SuperTabControl1.ControlBox.MenuBox.Name = ""
         Me.SuperTabControl1.ControlBox.Name = ""
         Me.SuperTabControl1.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabControl1.ControlBox.MenuBox, Me.SuperTabControl1.ControlBox.CloseBox})
-        Me.SuperTabControl1.Controls.Add(Me.SuperTabControlPanel3)
         Me.SuperTabControl1.Controls.Add(Me.SuperTabControlPanel2)
+        Me.SuperTabControl1.Controls.Add(Me.SuperTabControlPanel3)
         Me.SuperTabControl1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SuperTabControl1.Location = New System.Drawing.Point(0, 0)
         Me.SuperTabControl1.Name = "SuperTabControl1"
@@ -632,9 +632,9 @@ Partial Class F1_Deposito
         Me.SuperTabControlPanel2.Controls.Add(Me.ButtonX3)
         Me.SuperTabControlPanel2.Controls.Add(Me.Gmc_Cliente)
         Me.SuperTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SuperTabControlPanel2.Location = New System.Drawing.Point(0, 27)
+        Me.SuperTabControlPanel2.Location = New System.Drawing.Point(0, 25)
         Me.SuperTabControlPanel2.Name = "SuperTabControlPanel2"
-        Me.SuperTabControlPanel2.Size = New System.Drawing.Size(815, 278)
+        Me.SuperTabControlPanel2.Size = New System.Drawing.Size(815, 280)
         Me.SuperTabControlPanel2.TabIndex = 2
         Me.SuperTabControlPanel2.TabItem = Me.SuperTabItem2
         '
@@ -665,7 +665,7 @@ Partial Class F1_Deposito
         '
         'Gmc_Cliente
         '
-        Me.Gmc_Cliente.Bearing = 0.0!
+        Me.Gmc_Cliente.Bearing = 0!
         Me.Gmc_Cliente.CanDragMap = True
         Me.Gmc_Cliente.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Gmc_Cliente.EmptyTileColor = System.Drawing.Color.Navy
@@ -685,9 +685,9 @@ Partial Class F1_Deposito
         Me.Gmc_Cliente.ScaleMode = GMap.NET.WindowsForms.ScaleModes.[Integer]
         Me.Gmc_Cliente.SelectedAreaFillColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(105, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.Gmc_Cliente.ShowTileGridLines = False
-        Me.Gmc_Cliente.Size = New System.Drawing.Size(815, 278)
+        Me.Gmc_Cliente.Size = New System.Drawing.Size(815, 280)
         Me.Gmc_Cliente.TabIndex = 0
-        Me.Gmc_Cliente.Zoom = 0.0R
+        Me.Gmc_Cliente.Zoom = 0R
         '
         'SuperTabItem2
         '
@@ -696,11 +696,17 @@ Partial Class F1_Deposito
         Me.SuperTabItem2.Name = "SuperTabItem2"
         Me.SuperTabItem2.Text = "Ubicacion"
         '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        Me.Timer1.Interval = 500
+        '
         'F1_Deposito
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1354, 733)
+        Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "F1_Deposito"
         Me.Text = "F1_Clientes"
         Me.Controls.SetChildIndex(Me.SuperTabPrincipal, 0)
@@ -762,4 +768,5 @@ Partial Class F1_Deposito
     Friend WithEvents tbTelf1 As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents LabelX7 As DevComponents.DotNetBar.LabelX
     Friend WithEvents swEstado As DevComponents.DotNetBar.Controls.SwitchButton
+    Friend WithEvents Timer1 As Timer
 End Class

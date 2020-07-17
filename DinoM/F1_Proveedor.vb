@@ -15,7 +15,7 @@ Imports DevComponents.DotNetBar.Controls
 
 
 Public Class F1_Proveedor
-
+    Dim _Inter As Integer = 0
 #Region "Variables Locales"
 #Region "MApas"
     Dim _Punto As Integer
@@ -769,5 +769,14 @@ Public Class F1_Proveedor
 
     End Function
 
-   
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        _Inter = _Inter + 1
+        If _Inter = 1 Then
+            Me.WindowState = FormWindowState.Normal
+
+        Else
+            Me.Opacity = 100
+            Timer1.Enabled = False
+        End If
+    End Sub
 End Class

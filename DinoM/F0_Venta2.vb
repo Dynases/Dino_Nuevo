@@ -18,6 +18,7 @@ Imports System.Drawing.Printing
 Imports CrystalDecisions.Shared
 Imports Facturacion
 Public Class F0_Venta2
+    Dim _Inter As Integer = 0
 #Region "Variables Globales"
     Dim _CodCliente As Integer = 0
     Dim _CodEmpleado As Integer = 0
@@ -1443,8 +1444,8 @@ Public Class F0_Venta2
             ''Verifica si existe estock para los productos
             'If _prExisteStockParaProducto() Then
             Dim dtDetalle As DataTable = rearmarDetalle()
-                Dim res As Boolean = L_fnGrabarVenta(numi, "", tbFechaVenta.Value.ToString("yyyy/MM/dd"), _CodEmpleado, IIf(swTipoVenta.Value = True, 1, 0), IIf(swTipoVenta.Value = True, Now.Date.ToString("yyyy/MM/dd"), tbFechaVenc.Value.ToString("yyyy/MM/dd")), _CodCliente, IIf(swMoneda.Value = True, 1, 0), "", tbMdesc.Value, tbIce.Value, tbTotalBs.Text, dtDetalle, cbSucursal.Value, 0, tabla)
-                If res Then
+            Dim res As Boolean = L_fnGrabarVenta(numi, "", tbFechaVenta.Value.ToString("yyyy/MM/dd"), _CodEmpleado, IIf(swTipoVenta.Value = True, 1, 0), IIf(swTipoVenta.Value = True, Now.Date.ToString("yyyy/MM/dd"), tbFechaVenc.Value.ToString("yyyy/MM/dd")), _CodCliente, IIf(swMoneda.Value = True, 1, 0), "", tbMdesc.Value, tbIce.Value, tbTotalBs.Text, dtDetalle, cbSucursal.Value, 0, tabla)
+            If res Then
                 'res = P_fnGrabarFacturarTFV001(numi)
                 'Emite factura
                 If (gb_FacturaEmite) Then
@@ -1459,21 +1460,21 @@ Public Class F0_Venta2
 
 
                 Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-                    ToastNotification.Show(Me, "Código de Venta ".ToUpper + tbCodigo.Text + " Grabado con Exito.".ToUpper,
-                                              img, 2000,
-                                              eToastGlowColor.Green,
-                                              eToastPosition.TopCenter
-                                              )
+                ToastNotification.Show(Me, "Código de Venta ".ToUpper + tbCodigo.Text + " Grabado con Exito.".ToUpper,
+                                          img, 2000,
+                                          eToastGlowColor.Green,
+                                          eToastPosition.TopCenter
+                                          )
 
-                    _prCargarVenta()
-                    _Limpiar()
-                    Table_Producto = Nothing
+                _prCargarVenta()
+                _Limpiar()
+                Table_Producto = Nothing
 
-                Else
-                    Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
-                    ToastNotification.Show(Me, "La Venta no pudo ser insertado".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+            Else
+                Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
+                ToastNotification.Show(Me, "La Venta no pudo ser insertado".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
 
-                End If
+            End If
             'End If
         Catch ex As Exception
             MostrarMensajeError(ex.Message)
@@ -1542,7 +1543,7 @@ Public Class F0_Venta2
                 _prMostrarRegistro(0)
             End If
         Else
-            _tab.Close()
+            Me.Close()
             _modulo.Select()
         End If
     End Sub
@@ -1866,7 +1867,7 @@ Public Class F0_Venta2
 
             End If
         End If
-                L_Actualiza_Dosificacion(_numidosif, _NumFac, numi)
+        L_Actualiza_Dosificacion(_numidosif, _NumFac, numi)
     End Sub
     Private Sub ReimprimirFactura(numi As String, impFactura As Boolean, grabarPDF As Boolean)
         Try
@@ -3627,6 +3628,17 @@ salirIf:
         Catch ex As Exception
             MostrarMensajeError(ex.Message)
         End Try
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        _Inter = _Inter + 1
+        If _Inter = 1 Then
+            Me.WindowState = FormWindowState.Normal
+
+        Else
+            Me.Opacity = 100
+            Timer1.Enabled = False
+        End If
     End Sub
 
     'Private Sub TbNombre1_KeyDown(sender As Object, e As KeyEventArgs) Handles TbNombre1.KeyDown

@@ -1,6 +1,7 @@
 ﻿Imports Logica.AccesoLogica
 Imports DevComponents.DotNetBar
 Public Class Pr_ReporteMorosidadGeneral
+    Dim _Inter As Integer = 0
 
     'gb_FacturaIncluirICE
     Public _nameButton As String
@@ -21,7 +22,7 @@ Public Class Pr_ReporteMorosidadGeneral
         tbAlmacen.Enabled = False
         CheckTodosVendedor.CheckValue = True
         CheckTodosAlmacen.CheckValue = True
-   
+
 
     End Sub
     Public Sub _prInterpretarDatos(ByRef _dt As DataTable)
@@ -55,14 +56,14 @@ Public Class Pr_ReporteMorosidadGeneral
             MReportViewer.ReportSource = objrep
             MReportViewer.Show()
             MReportViewer.BringToFront()
-       
+
 
         Else
-        ToastNotification.Show(Me, "NO HAY DATOS PARA LOS PARAMETROS SELECCIONADOS..!!!",
-                                   My.Resources.INFORMATION, 2000,
-                                   eToastGlowColor.Blue,
-                                   eToastPosition.BottomLeft)
-        MReportViewer.ReportSource = Nothing
+            ToastNotification.Show(Me, "NO HAY DATOS PARA LOS PARAMETROS SELECCIONADOS..!!!",
+                                       My.Resources.INFORMATION, 2000,
+                                       eToastGlowColor.Blue,
+                                       eToastPosition.BottomLeft)
+            MReportViewer.ReportSource = Nothing
         End If
 
 
@@ -190,6 +191,17 @@ Public Class Pr_ReporteMorosidadGeneral
     End Sub
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
-        _tab.Close()
+        Me.Close()
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        _Inter = _Inter + 1
+        If _Inter = 1 Then
+            Me.WindowState = FormWindowState.Normal
+
+        Else
+            Me.Opacity = 100
+            Timer1.Enabled = False
+        End If
     End Sub
 End Class

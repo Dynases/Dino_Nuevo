@@ -7,6 +7,7 @@ Imports DevComponents.DotNetBar.SuperGrid
 Imports DevComponents.DotNetBar.Controls
 
 Public Class F1_Productos
+    Dim _Inter As Integer = 0
 #Region "Variables Locales"
     Dim RutaGlobal As String = gs_CarpetaRaiz
     Dim RutaTemporal As String = "C:\Temporal"
@@ -996,7 +997,7 @@ Public Class F1_Productos
         Else
             '  Public _modulo As SideNavItem
             _modulo.Select()
-            _tab.Close()
+            Me.Close()
         End If
     End Sub
 
@@ -1086,6 +1087,17 @@ Public Class F1_Productos
         If L_prLibreriaGrabar(numi, "1", "7", cbgrupo5.Text, "") Then
             _prCargarComboLibreria(cbgrupo5, "1", "7")
             cbgrupo5.SelectedIndex = CType(cbgrupo5.DataSource, DataTable).Rows.Count - 1
+        End If
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        _Inter = _Inter + 1
+        If _Inter = 1 Then
+            Me.WindowState = FormWindowState.Normal
+
+        Else
+            Me.Opacity = 100
+            Timer1.Enabled = False
         End If
     End Sub
 End Class

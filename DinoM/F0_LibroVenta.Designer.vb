@@ -22,8 +22,9 @@ Partial Class F0_LibroVenta
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F0_LibroVenta))
-        Dim Background2 As DevComponents.DotNetBar.SuperGrid.Style.Background = New DevComponents.DotNetBar.SuperGrid.Style.Background()
+        Dim Background1 As DevComponents.DotNetBar.SuperGrid.Style.Background = New DevComponents.DotNetBar.SuperGrid.Style.Background()
         Me.TableLayoutPanelPrincipal = New System.Windows.Forms.TableLayoutPanel()
         Me.GroupPanelAciones = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.PanelExAcciones = New DevComponents.DotNetBar.PanelEx()
@@ -58,6 +59,7 @@ Partial Class F0_LibroVenta
         Me.Tb2NitRazonSocial = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -185,7 +187,7 @@ Partial Class F0_LibroVenta
         Me.TableLayoutPanelPrincipal.Name = "TableLayoutPanelPrincipal"
         Me.TableLayoutPanelPrincipal.RowCount = 1
         Me.TableLayoutPanelPrincipal.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanelPrincipal.Size = New System.Drawing.Size(951, 450)
+        Me.TableLayoutPanelPrincipal.Size = New System.Drawing.Size(1329, 630)
         Me.TableLayoutPanelPrincipal.TabIndex = 0
         '
         'GroupPanelAciones
@@ -196,9 +198,9 @@ Partial Class F0_LibroVenta
         Me.GroupPanelAciones.DisabledBackColor = System.Drawing.Color.Empty
         Me.GroupPanelAciones.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupPanelAciones.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupPanelAciones.Location = New System.Drawing.Point(763, 3)
+        Me.GroupPanelAciones.Location = New System.Drawing.Point(1066, 3)
         Me.GroupPanelAciones.Name = "GroupPanelAciones"
-        Me.GroupPanelAciones.Size = New System.Drawing.Size(185, 444)
+        Me.GroupPanelAciones.Size = New System.Drawing.Size(260, 624)
         '
         '
         '
@@ -244,7 +246,7 @@ Partial Class F0_LibroVenta
         Me.PanelExAcciones.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelExAcciones.Location = New System.Drawing.Point(0, 0)
         Me.PanelExAcciones.Name = "PanelExAcciones"
-        Me.PanelExAcciones.Size = New System.Drawing.Size(179, 421)
+        Me.PanelExAcciones.Size = New System.Drawing.Size(254, 601)
         Me.PanelExAcciones.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelExAcciones.Style.BackColor1.Color = System.Drawing.Color.White
         Me.PanelExAcciones.Style.BackColor2.Color = System.Drawing.Color.Ivory
@@ -317,7 +319,7 @@ Partial Class F0_LibroVenta
         Me.TableLayoutPanelDatos.RowCount = 2
         Me.TableLayoutPanelDatos.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
         Me.TableLayoutPanelDatos.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80.0!))
-        Me.TableLayoutPanelDatos.Size = New System.Drawing.Size(754, 444)
+        Me.TableLayoutPanelDatos.Size = New System.Drawing.Size(1057, 624)
         Me.TableLayoutPanelDatos.TabIndex = 0
         '
         'GroupPanelListaVentas
@@ -328,9 +330,9 @@ Partial Class F0_LibroVenta
         Me.GroupPanelListaVentas.DisabledBackColor = System.Drawing.Color.Empty
         Me.GroupPanelListaVentas.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupPanelListaVentas.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupPanelListaVentas.Location = New System.Drawing.Point(3, 91)
+        Me.GroupPanelListaVentas.Location = New System.Drawing.Point(3, 127)
         Me.GroupPanelListaVentas.Name = "GroupPanelListaVentas"
-        Me.GroupPanelListaVentas.Size = New System.Drawing.Size(748, 350)
+        Me.GroupPanelListaVentas.Size = New System.Drawing.Size(1051, 494)
         '
         '
         '
@@ -368,13 +370,13 @@ Partial Class F0_LibroVenta
         Me.DgdLCV.BackColor = System.Drawing.Color.WhiteSmoke
         Me.DgdLCV.DefaultVisualStyles.HeaderStyles.Default.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DgdLCV.DefaultVisualStyles.HeaderStyles.Default.TextColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(72, Byte), Integer), CType(CType(127, Byte), Integer))
-        Background2.Color1 = System.Drawing.Color.DodgerBlue
-        Me.DgdLCV.DefaultVisualStyles.HeaderStyles.Selected.Background = Background2
+        Background1.Color1 = System.Drawing.Color.DodgerBlue
+        Me.DgdLCV.DefaultVisualStyles.HeaderStyles.Selected.Background = Background1
         Me.DgdLCV.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DgdLCV.FilterExprColors.SysFunction = System.Drawing.Color.DarkRed
         Me.DgdLCV.Location = New System.Drawing.Point(0, 0)
         Me.DgdLCV.Name = "DgdLCV"
-        Me.DgdLCV.Size = New System.Drawing.Size(742, 327)
+        Me.DgdLCV.Size = New System.Drawing.Size(1045, 471)
         Me.DgdLCV.TabIndex = 2
         Me.DgdLCV.Text = "SuperGridControl1"
         '
@@ -388,7 +390,7 @@ Partial Class F0_LibroVenta
         Me.GroupPanelDatosGenerales.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanelDatosGenerales.Location = New System.Drawing.Point(3, 3)
         Me.GroupPanelDatosGenerales.Name = "GroupPanelDatosGenerales"
-        Me.GroupPanelDatosGenerales.Size = New System.Drawing.Size(748, 82)
+        Me.GroupPanelDatosGenerales.Size = New System.Drawing.Size(1051, 118)
         '
         '
         '
@@ -439,7 +441,7 @@ Partial Class F0_LibroVenta
         Me.PanelExDatosGenerales.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelExDatosGenerales.Location = New System.Drawing.Point(0, 0)
         Me.PanelExDatosGenerales.Name = "PanelExDatosGenerales"
-        Me.PanelExDatosGenerales.Size = New System.Drawing.Size(742, 59)
+        Me.PanelExDatosGenerales.Size = New System.Drawing.Size(1045, 95)
         Me.PanelExDatosGenerales.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelExDatosGenerales.Style.BackColor1.Color = System.Drawing.Color.White
         Me.PanelExDatosGenerales.Style.BackColor2.Color = System.Drawing.Color.White
@@ -639,11 +641,17 @@ Partial Class F0_LibroVenta
         Me.LabelX3.Text = "Mes:"
         Me.LabelX3.TextAlignment = System.Drawing.StringAlignment.Far
         '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        Me.Timer1.Interval = 500
+        '
         'F0_LibroVenta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(984, 561)
+        Me.ClientSize = New System.Drawing.Size(1362, 741)
+        Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "F0_LibroVenta"
         Me.Text = "F01_LibroVenta"
         Me.Controls.SetChildIndex(Me.PanelPrincipal, 0)
@@ -709,4 +717,5 @@ Partial Class F0_LibroVenta
     Friend WithEvents LabelX1 As DevComponents.DotNetBar.LabelX
     Friend WithEvents PanelExAcciones As DevComponents.DotNetBar.PanelEx
     Friend WithEvents PanelExDatosGenerales As DevComponents.DotNetBar.PanelEx
+    Friend WithEvents Timer1 As Timer
 End Class

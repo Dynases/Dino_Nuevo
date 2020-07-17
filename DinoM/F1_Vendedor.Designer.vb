@@ -22,6 +22,7 @@ Partial Class F1_Vendedor
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F1_Vendedor))
         Dim cbTipoDoc_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
@@ -72,6 +73,7 @@ Partial Class F1_Vendedor
         Me.lbgrupo2 = New DevComponents.DotNetBar.LabelX()
         Me.btTipoDoc = New DevComponents.DotNetBar.ButtonX()
         Me.cbTipoDoc = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -119,7 +121,6 @@ Partial Class F1_Vendedor
         Me.SuperTabPrincipal.ControlBox.MenuBox.Name = ""
         Me.SuperTabPrincipal.ControlBox.Name = ""
         Me.SuperTabPrincipal.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabPrincipal.ControlBox.MenuBox, Me.SuperTabPrincipal.ControlBox.CloseBox})
-        Me.SuperTabPrincipal.Size = New System.Drawing.Size(1354, 733)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelBuscador, 0)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelRegistro, 0)
         '
@@ -130,14 +131,14 @@ Partial Class F1_Vendedor
         '
         'SuperTabControlPanelRegistro
         '
-        Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(1322, 733)
+        Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(1330, 741)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelSuperior, 0)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelPrincipal, 0)
         '
         'PanelSuperior
         '
-        Me.PanelSuperior.Size = New System.Drawing.Size(1322, 72)
+        Me.PanelSuperior.Size = New System.Drawing.Size(1330, 72)
         Me.PanelSuperior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelSuperior.Style.BackColor1.Color = System.Drawing.Color.DarkSlateGray
         Me.PanelSuperior.Style.BackColor2.Color = System.Drawing.Color.DarkSlateGray
@@ -149,8 +150,7 @@ Partial Class F1_Vendedor
         '
         'PanelInferior
         '
-        Me.PanelInferior.Location = New System.Drawing.Point(0, 697)
-        Me.PanelInferior.Size = New System.Drawing.Size(1322, 36)
+        Me.PanelInferior.Size = New System.Drawing.Size(1330, 36)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.DarkSlateGray
         Me.PanelInferior.Style.BackColor2.Color = System.Drawing.Color.DarkSlateGray
@@ -195,23 +195,23 @@ Partial Class F1_Vendedor
         '
         'PanelToolBar2
         '
-        Me.PanelToolBar2.Location = New System.Drawing.Point(1242, 0)
+        Me.PanelToolBar2.Location = New System.Drawing.Point(1250, 0)
         '
         'MPanelSup
         '
         Me.MPanelSup.Controls.Add(Me.TableLayoutPanel1)
-        Me.MPanelSup.Size = New System.Drawing.Size(1322, 340)
+        Me.MPanelSup.Size = New System.Drawing.Size(1330, 340)
         Me.MPanelSup.Controls.SetChildIndex(Me.PanelUsuario, 0)
         Me.MPanelSup.Controls.SetChildIndex(Me.TableLayoutPanel1, 0)
         '
         'PanelPrincipal
         '
-        Me.PanelPrincipal.Size = New System.Drawing.Size(1322, 625)
+        Me.PanelPrincipal.Size = New System.Drawing.Size(1330, 633)
         '
         'GroupPanelBuscador
         '
         Me.GroupPanelBuscador.Location = New System.Drawing.Point(0, 340)
-        Me.GroupPanelBuscador.Size = New System.Drawing.Size(1322, 285)
+        Me.GroupPanelBuscador.Size = New System.Drawing.Size(1330, 293)
         '
         '
         '
@@ -259,7 +259,7 @@ Partial Class F1_Vendedor
         Me.JGrM_Buscador.SelectedFormatStyle.BackColor = System.Drawing.Color.DodgerBlue
         Me.JGrM_Buscador.SelectedFormatStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.JGrM_Buscador.SelectedFormatStyle.ForeColor = System.Drawing.Color.White
-        Me.JGrM_Buscador.Size = New System.Drawing.Size(1316, 262)
+        Me.JGrM_Buscador.Size = New System.Drawing.Size(1324, 270)
         Me.JGrM_Buscador.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'PanelUsuario
@@ -272,7 +272,7 @@ Partial Class F1_Vendedor
         '
         'MPanelUserAct
         '
-        Me.MPanelUserAct.Location = New System.Drawing.Point(1122, 0)
+        Me.MPanelUserAct.Location = New System.Drawing.Point(1130, 0)
         '
         'LabelX1
         '
@@ -486,7 +486,7 @@ Partial Class F1_Vendedor
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(428, 311)
+        Me.Panel1.Size = New System.Drawing.Size(431, 311)
         Me.Panel1.TabIndex = 234
         '
         'tbTelf2
@@ -534,7 +534,7 @@ Partial Class F1_Vendedor
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 340.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1322, 340)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1330, 340)
         Me.TableLayoutPanel1.TabIndex = 235
         '
         'GroupPanel1
@@ -548,7 +548,7 @@ Partial Class F1_Vendedor
         Me.GroupPanel1.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.GroupPanel1.Location = New System.Drawing.Point(3, 3)
         Me.GroupPanel1.Name = "GroupPanel1"
-        Me.GroupPanel1.Size = New System.Drawing.Size(434, 334)
+        Me.GroupPanel1.Size = New System.Drawing.Size(437, 334)
         '
         '
         '
@@ -588,9 +588,9 @@ Partial Class F1_Vendedor
         Me.GroupPanel3.DisabledBackColor = System.Drawing.Color.Empty
         Me.GroupPanel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupPanel3.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupPanel3.Location = New System.Drawing.Point(883, 3)
+        Me.GroupPanel3.Location = New System.Drawing.Point(889, 3)
         Me.GroupPanel3.Name = "GroupPanel3"
-        Me.GroupPanel3.Size = New System.Drawing.Size(436, 334)
+        Me.GroupPanel3.Size = New System.Drawing.Size(438, 334)
         '
         '
         '
@@ -646,7 +646,7 @@ Partial Class F1_Vendedor
         Me.SuperTabControl1.ReorderTabsEnabled = True
         Me.SuperTabControl1.SelectedTabFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SuperTabControl1.SelectedTabIndex = 0
-        Me.SuperTabControl1.Size = New System.Drawing.Size(430, 311)
+        Me.SuperTabControl1.Size = New System.Drawing.Size(432, 311)
         Me.SuperTabControl1.TabFont = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SuperTabControl1.TabIndex = 223
         Me.SuperTabControl1.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabItem1, Me.SuperTabItem2, Me.SuperTabItem3})
@@ -659,7 +659,7 @@ Partial Class F1_Vendedor
         Me.SuperTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SuperTabControlPanel1.Location = New System.Drawing.Point(0, 25)
         Me.SuperTabControlPanel1.Name = "SuperTabControlPanel1"
-        Me.SuperTabControlPanel1.Size = New System.Drawing.Size(430, 286)
+        Me.SuperTabControlPanel1.Size = New System.Drawing.Size(432, 286)
         Me.SuperTabControlPanel1.TabIndex = 1
         Me.SuperTabControlPanel1.TabItem = Me.SuperTabItem1
         '
@@ -676,7 +676,7 @@ Partial Class F1_Vendedor
         Me.grZonas.SelectedFormatStyle.BackColor = System.Drawing.Color.DodgerBlue
         Me.grZonas.SelectedFormatStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grZonas.SelectedFormatStyle.ForeColor = System.Drawing.Color.White
-        Me.grZonas.Size = New System.Drawing.Size(430, 286)
+        Me.grZonas.Size = New System.Drawing.Size(432, 286)
         Me.grZonas.TabIndex = 0
         Me.grZonas.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -841,9 +841,9 @@ Partial Class F1_Vendedor
         Me.GroupPanel2.DisabledBackColor = System.Drawing.Color.Empty
         Me.GroupPanel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupPanel2.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupPanel2.Location = New System.Drawing.Point(443, 3)
+        Me.GroupPanel2.Location = New System.Drawing.Point(446, 3)
         Me.GroupPanel2.Name = "GroupPanel2"
-        Me.GroupPanel2.Size = New System.Drawing.Size(434, 334)
+        Me.GroupPanel2.Size = New System.Drawing.Size(437, 334)
         '
         '
         '
@@ -895,7 +895,7 @@ Partial Class F1_Vendedor
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel4.Location = New System.Drawing.Point(0, 0)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(428, 311)
+        Me.Panel4.Size = New System.Drawing.Size(431, 311)
         Me.Panel4.TabIndex = 216
         '
         'LabelX16
@@ -1086,11 +1086,17 @@ Partial Class F1_Vendedor
         Me.cbTipoDoc.TabIndex = 0
         Me.cbTipoDoc.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        Me.Timer1.Interval = 500
+        '
         'F1_Vendedor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1354, 733)
+        Me.ClientSize = New System.Drawing.Size(1362, 741)
+        Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "F1_Vendedor"
         Me.Text = "F1_Clientes"
         Me.Controls.SetChildIndex(Me.SuperTabPrincipal, 0)
@@ -1180,4 +1186,5 @@ Partial Class F1_Vendedor
     Friend WithEvents ButtonX3 As DevComponents.DotNetBar.ButtonX
     Friend WithEvents tbTelf2 As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents tbTelf1 As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents Timer1 As Timer
 End Class

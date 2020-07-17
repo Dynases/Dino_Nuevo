@@ -98,7 +98,7 @@ Partial Class ModeloF0
         Me.PanelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelPrincipal.Location = New System.Drawing.Point(0, 0)
         Me.PanelPrincipal.Name = "PanelPrincipal"
-        Me.PanelPrincipal.Size = New System.Drawing.Size(984, 561)
+        Me.PanelPrincipal.Size = New System.Drawing.Size(1362, 741)
         Me.PanelPrincipal.TabIndex = 0
         '
         'Panel1
@@ -108,7 +108,7 @@ Partial Class ModeloF0
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 72)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(984, 450)
+        Me.Panel1.Size = New System.Drawing.Size(1362, 630)
         Me.Panel1.TabIndex = 20
         '
         'MSuperTabControl
@@ -136,7 +136,7 @@ Partial Class ModeloF0
         Me.MSuperTabControl.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.MSuperTabControl.SelectedTabFont = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MSuperTabControl.SelectedTabIndex = 0
-        Me.MSuperTabControl.Size = New System.Drawing.Size(984, 450)
+        Me.MSuperTabControl.Size = New System.Drawing.Size(1362, 630)
         Me.MSuperTabControl.TabAlignment = DevComponents.DotNetBar.eTabStripAlignment.Right
         Me.MSuperTabControl.TabFont = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MSuperTabControl.TabIndex = 0
@@ -153,7 +153,7 @@ Partial Class ModeloF0
         Me.MSuperTabControlPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.MSuperTabControlPanel1.Location = New System.Drawing.Point(0, 0)
         Me.MSuperTabControlPanel1.Name = "MSuperTabControlPanel1"
-        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(951, 450)
+        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(1329, 630)
         Me.MSuperTabControlPanel1.TabIndex = 1
         Me.MSuperTabControlPanel1.TabItem = Me.MSuperTabItem1
         '
@@ -163,7 +163,7 @@ Partial Class ModeloF0
         Me.PanelContent.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelContent.Location = New System.Drawing.Point(0, 0)
         Me.PanelContent.Name = "PanelContent"
-        Me.PanelContent.Size = New System.Drawing.Size(951, 450)
+        Me.PanelContent.Size = New System.Drawing.Size(1329, 630)
         Me.PanelContent.TabIndex = 0
         '
         'MSuperTabItem1
@@ -188,7 +188,7 @@ Partial Class ModeloF0
         Me.PanelSuperior.Dock = System.Windows.Forms.DockStyle.Top
         Me.PanelSuperior.Location = New System.Drawing.Point(0, 0)
         Me.PanelSuperior.Name = "PanelSuperior"
-        Me.PanelSuperior.Size = New System.Drawing.Size(984, 72)
+        Me.PanelSuperior.Size = New System.Drawing.Size(1362, 72)
         Me.PanelSuperior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelSuperior.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
         Me.PanelSuperior.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
@@ -209,7 +209,7 @@ Partial Class ModeloF0
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Right
         Me.PictureBox1.Image = Global.Modelo.My.Resources.Resources.Ideteca1
-        Me.PictureBox1.Location = New System.Drawing.Point(711, 0)
+        Me.PictureBox1.Location = New System.Drawing.Point(1089, 0)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(193, 72)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -227,7 +227,7 @@ Partial Class ModeloF0
         Me.MRlAccion.ForeColor = System.Drawing.Color.Black
         Me.MRlAccion.Location = New System.Drawing.Point(376, 0)
         Me.MRlAccion.Name = "MRlAccion"
-        Me.MRlAccion.Size = New System.Drawing.Size(528, 72)
+        Me.MRlAccion.Size = New System.Drawing.Size(906, 72)
         Me.MRlAccion.TabIndex = 8
         Me.MRlAccion.Text = "<b><font size=""+10""><font color=""#FF0000""></font></font></b>"
         '
@@ -237,7 +237,7 @@ Partial Class ModeloF0
         Me.PanelToolBar2.BackgroundImage = Global.Modelo.My.Resources.Resources.fondoPanel
         Me.PanelToolBar2.Controls.Add(Me.btnImprimir)
         Me.PanelToolBar2.Dock = System.Windows.Forms.DockStyle.Right
-        Me.PanelToolBar2.Location = New System.Drawing.Point(904, 0)
+        Me.PanelToolBar2.Location = New System.Drawing.Point(1282, 0)
         Me.PanelToolBar2.Name = "PanelToolBar2"
         Me.PanelToolBar2.Size = New System.Drawing.Size(80, 72)
         Me.PanelToolBar2.TabIndex = 6
@@ -442,9 +442,9 @@ Partial Class ModeloF0
         Me.PanelInferior.Controls.Add(Me.PanelNavegacion)
         Me.PanelInferior.DisabledBackColor = System.Drawing.Color.Empty
         Me.PanelInferior.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PanelInferior.Location = New System.Drawing.Point(0, 522)
+        Me.PanelInferior.Location = New System.Drawing.Point(0, 702)
         Me.PanelInferior.Name = "PanelInferior"
-        Me.PanelInferior.Size = New System.Drawing.Size(984, 39)
+        Me.PanelInferior.Size = New System.Drawing.Size(1362, 39)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.Transparent
         Me.PanelInferior.Style.BackColor2.Color = System.Drawing.Color.Transparent
@@ -460,7 +460,7 @@ Partial Class ModeloF0
         Me.MPanelUserAct.Controls.Add(Me.BubbleBarUsuario)
         Me.MPanelUserAct.Controls.Add(Me.TxtNombreUsu)
         Me.MPanelUserAct.Dock = System.Windows.Forms.DockStyle.Right
-        Me.MPanelUserAct.Location = New System.Drawing.Point(784, 0)
+        Me.MPanelUserAct.Location = New System.Drawing.Point(1162, 0)
         Me.MPanelUserAct.Name = "MPanelUserAct"
         Me.MPanelUserAct.Size = New System.Drawing.Size(200, 39)
         Me.MPanelUserAct.TabIndex = 21
@@ -655,12 +655,14 @@ Partial Class ModeloF0
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(984, 561)
+        Me.ClientSize = New System.Drawing.Size(1362, 741)
         Me.Controls.Add(Me.PanelPrincipal)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.KeyPreview = True
         Me.Name = "ModeloF0"
+        Me.Opacity = 0.05R
         Me.Text = "{...TITULO...}"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Minimized
         Me.PanelPrincipal.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         CType(Me.MSuperTabControl, System.ComponentModel.ISupportInitialize).EndInit()

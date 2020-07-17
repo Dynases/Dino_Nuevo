@@ -4,6 +4,7 @@ Imports DevComponents.DotNetBar
 Imports DevComponents.DotNetBar.Controls
 'DESARROLLADO POR: DANNY GUTIERREZ
 Public Class F0_Usuarios
+    Dim _Inter As Integer = 0
 
 #Region "ATRIBUTOS"
     Dim _Dsencabezado As DataSet
@@ -298,7 +299,7 @@ Public Class F0_Usuarios
         With JGr_Buscador.RootTable.Columns("ydsuc")
             .Visible = False
         End With
-       
+
         With JGr_Buscador.RootTable.Columns("ydfact")
             .Visible = False
         End With
@@ -501,7 +502,7 @@ Public Class F0_Usuarios
             _PCargarBuscador()
         Else
             _modulo.Select()
-            _tab.Close()
+            Me.Close()
 
         End If
     End Sub
@@ -537,13 +538,13 @@ Public Class F0_Usuarios
         bandera = ef.band
         If (bandera = True) Then
             Dim t As String = Tb_Id.Text
-                L_Usuario_Borrar(Tb_Id.Text)
+            L_Usuario_Borrar(Tb_Id.Text)
 
-                _PInhabilitar()
-                _PFiltrar()
-                _PCargarBuscador()
+            _PInhabilitar()
+            _PFiltrar()
+            _PCargarBuscador()
 
-                Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
+            Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
 
             ToastNotification.Show(Me, "Código de Usuario ".ToUpper + t + " eliminado con Exito.".ToUpper,
                                           img, 2000,
@@ -559,7 +560,7 @@ Public Class F0_Usuarios
 
 
 
-        
+
 
 
 
@@ -702,5 +703,16 @@ Public Class F0_Usuarios
 
     Private Sub JMC_Categoria_ValueChanged(sender As Object, e As EventArgs) Handles JMC_Categoria.ValueChanged
 
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        _Inter = _Inter + 1
+        If _Inter = 1 Then
+            Me.WindowState = FormWindowState.Normal
+
+        Else
+            Me.Opacity = 100
+            Timer1.Enabled = False
+        End If
     End Sub
 End Class

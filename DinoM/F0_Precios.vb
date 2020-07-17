@@ -18,6 +18,7 @@ Imports System.Reflection
 Imports System.Runtime.InteropServices
 
 Public Class F0_Precios
+    Dim _Inter As Integer = 0
 
     Dim RutaGlobal As String = gs_CarpetaRaiz
 #Region "Variables Globales"
@@ -478,7 +479,7 @@ Public Class F0_Precios
             _prInhabiliitar()
         Else
             _modulo.Select()
-            _tab.Close()
+            Me.Close()
         End If
     End Sub
     Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
@@ -715,6 +716,17 @@ Public Class F0_Precios
                                        My.Resources.WARNING, 2000,
                                        eToastGlowColor.Red,
                                        eToastPosition.BottomLeft)
+        End If
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        _Inter = _Inter + 1
+        If _Inter = 1 Then
+            Me.WindowState = FormWindowState.Normal
+
+        Else
+            Me.Opacity = 100
+            Timer1.Enabled = False
         End If
     End Sub
 End Class

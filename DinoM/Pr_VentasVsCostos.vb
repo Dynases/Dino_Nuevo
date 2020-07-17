@@ -1,6 +1,7 @@
 ﻿Imports Logica.AccesoLogica
 Imports DevComponents.DotNetBar
 Public Class Pr_VentasVsCostos
+    Dim _Inter As Integer = 0
 
     'gb_FacturaIncluirICE
 
@@ -23,32 +24,32 @@ Public Class Pr_VentasVsCostos
         tbAlmacen.Enabled = False
         CheckTodosVendedor.CheckValue = True
         CheckTodosAlmacen.CheckValue = True
-       
+
 
     End Sub
     Public Sub _prInterpretarDatos(ByRef _dt As DataTable)
-                If (CheckTodosVendedor.Checked And CheckTodosAlmacen.Checked) Then
+        If (CheckTodosVendedor.Checked And CheckTodosAlmacen.Checked) Then
             _dt = L_prVentasVsCostosGeneralAlmacenVendedor(tbFechaI.Value.ToString("yyyy/MM/dd"), tbFechaF.Value.ToString("yyyy/MM/dd"))
-                End If
-                If (checkUnaVendedor.Checked And CheckTodosAlmacen.Checked) Then
-                    If (tbCodigoVendedor.Text.Length > 0) Then
+        End If
+        If (checkUnaVendedor.Checked And CheckTodosAlmacen.Checked) Then
+            If (tbCodigoVendedor.Text.Length > 0) Then
                 _dt = L_prVentasVsCostosPorVendedorTodosAlmacen(tbFechaI.Value.ToString("yyyy/MM/dd"), tbFechaF.Value.ToString("yyyy/MM/dd"), tbCodigoVendedor.Text)
-                    End If
+            End If
 
-                End If
-                If (CheckTodosVendedor.Checked And CheckUnaALmacen.Checked) Then
-                    If (tbAlmacen.SelectedIndex >= 0) Then
+        End If
+        If (CheckTodosVendedor.Checked And CheckUnaALmacen.Checked) Then
+            If (tbAlmacen.SelectedIndex >= 0) Then
                 _dt = L_prVentasVsCostosTodosVendedorUnaAlmacen(tbFechaI.Value.ToString("yyyy/MM/dd"), tbFechaF.Value.ToString("yyyy/MM/dd"), tbAlmacen.Value)
-                    End If
+            End If
 
-                End If
+        End If
 
-                If (checkUnaVendedor.Checked And CheckUnaALmacen.Checked) Then
-                    If (tbAlmacen.SelectedIndex >= 0 And tbCodigoVendedor.Text.Length > 0) Then
+        If (checkUnaVendedor.Checked And CheckUnaALmacen.Checked) Then
+            If (tbAlmacen.SelectedIndex >= 0 And tbCodigoVendedor.Text.Length > 0) Then
                 _dt = L_prVentasVsCostosUnaVendedorUnaAlmacen(tbFechaI.Value.ToString("yyyy/MM/dd"), tbFechaF.Value.ToString("yyyy/MM/dd"), tbAlmacen.Value, tbCodigoVendedor.Text)
-                    End If
+            End If
 
-                End If
+        End If
     End Sub
     Private Sub _prCargarReporte()
         Dim _dt As New DataTable
@@ -211,8 +212,19 @@ Public Class Pr_VentasVsCostos
     End Sub
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
-       
-            _tab.Close()
 
+        Me.Close()
+
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        _Inter = _Inter + 1
+        If _Inter = 1 Then
+            Me.WindowState = FormWindowState.Normal
+
+        Else
+            Me.Opacity = 100
+            Timer1.Enabled = False
+        End If
     End Sub
 End Class

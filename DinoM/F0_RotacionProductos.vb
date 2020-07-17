@@ -6,7 +6,7 @@ Imports DevComponents.Editors
 
 Imports System.Windows.Forms.DataVisualization.Charting
 Public Class F0_RotacionProductos
-
+    Dim _Inter As Integer = 0
 #Region "VARIABLES GLOBALES"
     Dim _ListMeses As List(Of String())
     Dim _ruta As String = gs_CarpetaRaiz + "\Imagenes"
@@ -704,6 +704,18 @@ Public Class F0_RotacionProductos
             DataPoints = _List
         End Sub
     End Class
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        _Inter = _Inter + 1
+        If _Inter = 1 Then
+            Me.WindowState = FormWindowState.Normal
+
+        Else
+            Me.Opacity = 100
+            Timer1.Enabled = False
+        End If
+
+    End Sub
 
 #End Region
 End Class
