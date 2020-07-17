@@ -5292,4 +5292,191 @@ Public Class AccesoLogica
     End Function
 #End Region
 
+#Region "CIERRE DE CAJA TCC001"
+
+    Public Shared Function L_fnEliminarCaja(numi As String) As Boolean
+        Dim _resultado As Boolean
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", -1))
+        _listParam.Add(New Datos.DParametro("@ccnumi", numi))
+        _listParam.Add(New Datos.DParametro("@ccuact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TCC001", _listParam)
+
+        If _Tabla.Rows.Count > 0 Then
+            numi = _Tabla.Rows(0).Item(0)
+            _resultado = True
+        Else
+            _resultado = False
+        End If
+
+        Return _resultado
+    End Function
+
+    Public Shared Function L_fnGrabarCaja(ByRef _ccnumi As String, _fecha As String, _TotalGral As Decimal, _Credito As Decimal,
+                                          _Tarjeta As Decimal, _ContadoBs As Decimal, _Depositos As Decimal, _Efectivo As Decimal,
+                                          _Diferencia As Decimal, _Pagos As Decimal, _Turno As String, _MInicial As Decimal,
+                                          _Estado As Integer, _TipoCambio As Decimal, _Obs As String,
+                                          _TCC0011 As DataTable, _TCC0012 As DataTable) As Boolean
+        Dim _resultado As Boolean
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 1))
+        _listParam.Add(New Datos.DParametro("@ccnumi", _ccnumi))
+        _listParam.Add(New Datos.DParametro("@fecha", _fecha))
+        _listParam.Add(New Datos.DParametro("@TotalGral", _TotalGral))
+        _listParam.Add(New Datos.DParametro("@Credito", _Credito))
+        _listParam.Add(New Datos.DParametro("@Tarjeta", _Tarjeta))
+        _listParam.Add(New Datos.DParametro("@ContadoBs", _ContadoBs))
+        _listParam.Add(New Datos.DParametro("@Depositos", _Depositos))
+        _listParam.Add(New Datos.DParametro("@Efectivo", _Efectivo))
+        _listParam.Add(New Datos.DParametro("@Diferencia", _Diferencia))
+        _listParam.Add(New Datos.DParametro("@Pagos", _Pagos))
+        _listParam.Add(New Datos.DParametro("@Turno", _Turno))
+        _listParam.Add(New Datos.DParametro("@MInicial", _MInicial))
+        _listParam.Add(New Datos.DParametro("@Estado", _Estado))
+        _listParam.Add(New Datos.DParametro("@Gasto", 0))
+        _listParam.Add(New Datos.DParametro("@TipoCambio", _TipoCambio))
+        _listParam.Add(New Datos.DParametro("@Obs", _Obs))
+        _listParam.Add(New Datos.DParametro("@ccuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@TCC0011", "", _TCC0011))
+        _listParam.Add(New Datos.DParametro("@TCC0012", "", _TCC0012))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TCC001", _listParam)
+
+        If _Tabla.Rows.Count > 0 Then
+            _ccnumi = _Tabla.Rows(0).Item(0)
+            _resultado = True
+        Else
+            _resultado = False
+        End If
+
+        Return _resultado
+    End Function
+    Public Shared Function L_fnModificarCaja(ByRef _ccnumi As String, _fecha As String, _TotalGral As Decimal, _Credito As Decimal,
+                                          _Tarjeta As Decimal, _ContadoBs As Decimal, _Depositos As Decimal, _Efectivo As Decimal,
+                                          _Diferencia As Decimal, _Pagos As Decimal, _Turno As String, _MInicial As Decimal,
+                                          _TipoCambio As Decimal, _Obs As String, _TCC0011 As DataTable,
+                                          _TCC0012 As DataTable, _TCC0013 As DataTable) As Boolean
+        Dim _resultado As Boolean
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 2))
+        _listParam.Add(New Datos.DParametro("@ccnumi", _ccnumi))
+        _listParam.Add(New Datos.DParametro("@fecha", _fecha))
+        _listParam.Add(New Datos.DParametro("@TotalGral", _TotalGral))
+        _listParam.Add(New Datos.DParametro("@Credito", _Credito))
+        _listParam.Add(New Datos.DParametro("@Tarjeta", _Tarjeta))
+        _listParam.Add(New Datos.DParametro("@ContadoBs", _ContadoBs))
+        _listParam.Add(New Datos.DParametro("@Depositos", _Depositos))
+        _listParam.Add(New Datos.DParametro("@Efectivo", _Efectivo))
+        _listParam.Add(New Datos.DParametro("@Diferencia", _Diferencia))
+        _listParam.Add(New Datos.DParametro("@Pagos", _Pagos))
+        _listParam.Add(New Datos.DParametro("@Turno", _Turno))
+        _listParam.Add(New Datos.DParametro("@MInicial", _MInicial))
+        _listParam.Add(New Datos.DParametro("@Estado", 0))
+        _listParam.Add(New Datos.DParametro("@Gasto", 0))
+        _listParam.Add(New Datos.DParametro("@TipoCambio", _TipoCambio))
+        _listParam.Add(New Datos.DParametro("@Obs", _Obs))
+        _listParam.Add(New Datos.DParametro("@ccuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@TCC0011", "", _TCC0011))
+        _listParam.Add(New Datos.DParametro("@TCC0012", "", _TCC0012))
+        _listParam.Add(New Datos.DParametro("@TCC0013", "", _TCC0013))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TCC001", _listParam)
+
+        If _Tabla.Rows.Count > 0 Then
+            _ccnumi = _Tabla.Rows(0).Item(0)
+            _resultado = True
+        Else
+            _resultado = False
+        End If
+
+        Return _resultado
+    End Function
+
+    Public Shared Function L_prCajaGeneral() As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 3))
+        _listParam.Add(New Datos.DParametro("@ccuact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TCC001", _listParam)
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnDetalleVentasPagos(fecha As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 4))
+        _listParam.Add(New Datos.DParametro("@fecha", fecha))
+        _listParam.Add(New Datos.DParametro("@ccuact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TCC001", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnDetalleCortes(idCaja As Integer) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 5))
+        _listParam.Add(New Datos.DParametro("@ccnumi", idCaja))
+        _listParam.Add(New Datos.DParametro("@ccuact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TCC001", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnDetalleDepositos(idCaja As Integer) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 6))
+        _listParam.Add(New Datos.DParametro("@ccnumi", idCaja))
+        _listParam.Add(New Datos.DParametro("@ccuact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TCC001", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_prListarSoloBanco() As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 7))
+        _listParam.Add(New Datos.DParametro("@ccuact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TCC001", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnVerificarSiExisteCierreCaja(fecha As String, ccnumi As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 8))
+        _listParam.Add(New Datos.DParametro("@fecha", fecha))
+        _listParam.Add(New Datos.DParametro("@ccnumi", ccnumi))
+        _listParam.Add(New Datos.DParametro("@ccuact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TCC001", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnDetalleVentasPagosPorIdCaja(fecha As String, ccnumi As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 9))
+        _listParam.Add(New Datos.DParametro("@fecha", fecha))
+        _listParam.Add(New Datos.DParametro("@ccnumi", ccnumi))
+        _listParam.Add(New Datos.DParametro("@ccuact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TCC001", _listParam)
+
+        Return _Tabla
+    End Function
+#End Region
+
 End Class

@@ -351,10 +351,13 @@ Public Class F0_Venta2
         'Calcular montos
         Dim tMonto As DataTable = L_fnMostrarMontos(tbCodigo.Text)
         If tMonto.Rows.Count > 0 Then
-            tbMontoDolar.Value = tMonto.Rows(0).Item("tgMontDol").ToString
+
             tbMontoTarej.Value = tMonto.Rows(0).Item("tgMontTare").ToString
             cbCambioDolar.Text = tMonto.Rows(0).Item("tgCambioDol").ToString
             tbMontoBs.Value = tMonto.Rows(0).Item("tgMontBs").ToString
+            tbMontoDolar.Value = tMonto.Rows(0).Item("tgMontDol").ToString
+
+            txtMontoPagado1.Text = tbMontoBs.Value + (tbMontoDolar.Value * IIf(cbCambioDolar.Text = "", 0, Convert.ToDecimal(cbCambioDolar.Text))) + tbMontoTarej.Value
 
             If Convert.ToDecimal(tbTotalBs.Text) <> 0 And Convert.ToDecimal(txtMontoPagado1.Text) >= Convert.ToDecimal(tbTotalBs.Text) Then
                 txtCambio1.Text = Convert.ToDecimal(txtMontoPagado1.Text) - Convert.ToDecimal(tbTotalBs.Text)
@@ -1231,14 +1234,18 @@ Public Class F0_Venta2
                 cbSucursal.Focus()
                 Return False
             End If
-            If (Convert.ToDecimal(txtMontoPagado1.Text) = 0) Then
-                Throw New Exception("El monto Pagado debe ser mayor 0")
-                Return False
+            If swTipoVenta.Value = True Then
+                If (Convert.ToDecimal(txtMontoPagado1.Text) = 0) Then
+                    Throw New Exception("El monto Pagado debe ser mayor 0")
+                    Return False
+                End If
+                If (Convert.ToDecimal(txtMontoPagado1.Text) < Convert.ToDecimal(tbTotalBs.Text)) Then
+                    Throw New Exception("El monto Pagado debe ser mayor al monto Total")
+                    Return False
+                End If
             End If
-            If (Convert.ToDecimal(txtMontoPagado1.Text) < Convert.ToDecimal(tbTotalBs.Text)) Then
-                Throw New Exception("El monto Pagado debe ser mayor al monto Total")
-                Return False
-            End If
+
+
             'Validar datos de factura
             'If (TbNit.Text = String.Empty) Then
             '    Dim img As Bitmap = New Bitmap(My.Resources.Mensaje, 50, 50)

@@ -291,7 +291,7 @@ Public Class F0_PagosCredito
             .EditType = EditType.MultiColumnDropDown
             .DropDown = cbbanco.DropDownList
             .Width = 160
-            .Visible = True
+            .Visible = False
         End With
         With grfactura.RootTable.Columns("banco")
             .Width = 100
@@ -305,7 +305,7 @@ Public Class F0_PagosCredito
             .Caption = "Nro Cheque"
             .Width = 120
             .TextAlignment = TextAlignment.Far
-            .Visible = True
+            .Visible = False
         End With
         If (_fnAccesible()) Then
             With grfactura.RootTable.Columns("img")
