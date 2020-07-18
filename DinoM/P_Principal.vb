@@ -103,6 +103,9 @@ Public Class P_Principal
         'gi_codeBar = dtConfSistema.Rows(0).Item("ccciice")
         gb_CodigoBarra = dtConfSistema.Rows(0).Item("ccccbar")
         gb_DetalleProducto = dtConfSistema.Rows(0).Item("cccdetp")
+
+        gb_UbiLogo = dtConfSistema.Rows(0).Item("cccubilogo")
+        gb_NotaAdicional = dtConfSistema.Rows(0).Item("cccnotaadic")
     End Sub
 
     Private Sub _prCargarConfiguracionSistema()

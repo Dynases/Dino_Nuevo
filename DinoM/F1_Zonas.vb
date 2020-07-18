@@ -28,6 +28,7 @@ Public Class F1_Zonas
     Dim _color As String = ""
     Public _modulo As SideNavItem
     Dim _AddPoint As Boolean = False
+    Dim _Inter As Integer = 0
 
 #End Region
 #Region "Metodos Privados"
@@ -783,5 +784,16 @@ Public Class F1_Zonas
 
     Private Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
 
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        _Inter = _Inter + 1
+        If _Inter = 1 Then
+            Me.WindowState = FormWindowState.Normal
+
+        Else
+            Me.Opacity = 100
+            Timer1.Enabled = False
+        End If
     End Sub
 End Class

@@ -159,7 +159,8 @@ Module P_Global
     Public gb_FacturaIncluirICE As Boolean = False 'Incluir en Importe ICE / IEHD / TASAS?, true=Si se incluye, false=No se incluye
     Public gb_CodigoBarra As Boolean = False 'False=No habilita la venta con lector de codigo de barra, True=Si habilita la venta con lector de codigo de barra
     Public gb_DetalleProducto As Boolean = False 'False=No habilita ingreso de detalle de producto, True=Si habilita el ingreso de detalle de producto
-
+    Public gb_UbiLogo As String = ""
+    Public gb_NotaAdicional As String = ""
 #End Region
 
 End Module

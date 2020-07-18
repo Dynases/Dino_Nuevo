@@ -131,6 +131,7 @@ Public Class F0_Venta2
         tbCliente.ReadOnly = True
         tbVendedor.ReadOnly = True
         tbFechaVenta.IsInputReadOnly = True
+        tbFechaVenta.Enabled = False
         swMoneda.IsReadOnly = True
         tbFechaVenc.IsInputReadOnly = True
         swTipoVenta.IsReadOnly = True
@@ -184,8 +185,10 @@ Public Class F0_Venta2
         ''  tbCliente.ReadOnly = False  por que solo podra seleccionar Cliente
         ''  tbVendedor.ReadOnly = False
         tbFechaVenc.IsInputReadOnly = False
+
         swTipoVenta.IsReadOnly = False
         tbFechaVenta.IsInputReadOnly = False
+        tbFechaVenta.Enabled = True
 
         swMoneda.IsReadOnly = False
 
@@ -1216,6 +1219,7 @@ Public Class F0_Venta2
     End Sub
     Public Function _ValidarCampos() As Boolean
         Try
+
             If (_CodCliente <= 0) Then
                 Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
                 ToastNotification.Show(Me, "Por Favor Seleccione un Cliente con Ctrl+Enter".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
@@ -1271,6 +1275,19 @@ Public Class F0_Venta2
                 End If
 
             End If
+
+            'Validación para controlar caducidad de Dosificacion
+            If tbNit.Text <> String.Empty Then
+                Dim fecha As String = Now.Date
+                Dim dtDosificacion As DataSet = L_Dosificacion("1", "1", fecha)
+                If dtDosificacion.Tables(0).Rows.Count = 0 Then
+                    'dtDosificacion.Tables.Cast(Of DataTable)().Any(Function(x) x.DefaultView.Count = 0)
+                    Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                    ToastNotification.Show(Me, "La Dosificación para las facturas ya caducó, ingrese nueva dosificación".ToUpper, img, 3500, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                    Return False
+                End If
+            End If
+
             Return True
         Catch ex As Exception
             MostrarMensajeError(ex.Message)
@@ -1449,7 +1466,7 @@ Public Class F0_Venta2
                 'res = P_fnGrabarFacturarTFV001(numi)
                 'Emite factura
                 If (gb_FacturaEmite) Then
-                    If _CodCliente <> 86 Then
+                    If tbNit.Text <> String.Empty Then
                         P_fnGenerarFactura(numi)
                     Else
                         _prImiprimirNotaVenta(numi)
@@ -2109,10 +2126,14 @@ Public Class F0_Venta2
         _Fecha = Split(_FechaAct, "-")
         _FechaPar = "Cochabamba, " + _Fecha(0).Trim + " De " + _Meses(_Fecha(1) - 1).Trim + " Del " + _Fecha(2).Trim
 
-        Dim objrep As New R_NotaVenta_MediaCarta
+        Dim objrep As New R_NotaVenta_MedioOficio
         objrep.SetDataSource(dt)
-        objrep.SetParameterValue("Literal1", li)
-        objrep.SetParameterValue("usuario", gs_user)
+        objrep.SetParameterValue("Literal", li)
+        objrep.SetParameterValue("TipoVenta", swTipoVenta.Text)
+        objrep.SetParameterValue("Logo", gb_UbiLogo)
+        objrep.SetParameterValue("NotaAdicional1", gb_NotaAdicional)
+        'objrep.SetParameterValue("usuario", gs_user)
+
 
         'objrep.SetParameterValue("ECasaMatriz", _Ds2.Tables(0).Rows(0).Item("scsuc").ToString)
         'objrep.SetParameterValue("ECiudadPais", _Ds2.Tables(0).Rows(0).Item("scpai").ToString)
@@ -3282,31 +3303,31 @@ salirIf:
     End Sub
     Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
         Try
-            If _CodCliente <> 86 Then
-                If (gb_FacturaEmite) Then
-                    If (P_fnValidarFacturaVigente()) Then
-                        Dim img As Bitmap = New Bitmap(My.Resources.WARNING, 50, 50)
 
-                        ToastNotification.Show(Me, "No se puede anular la venta con código ".ToUpper + tbCodigo.Text + ", su factura esta vigente, por favor primero anule la factura".ToUpper,
+            If (gb_FacturaEmite) Then
+                If (P_fnValidarFacturaVigente()) Then
+                    Dim img As Bitmap = New Bitmap(My.Resources.WARNING, 50, 50)
+
+                    ToastNotification.Show(Me, "No se puede anular la venta con código ".ToUpper + tbCodigo.Text + ", su factura esta vigente, por favor primero anule la factura".ToUpper,
                                                   img, 3000,
                                                   eToastGlowColor.Green,
                                                   eToastPosition.TopCenter)
-                        Exit Sub
-                    End If
+                    Exit Sub
                 End If
+            End If
 
-                If (swTipoVenta.Value = False) Then
-                    Dim res1 As Boolean = L_fnVerificarPagos(tbCodigo.Text)
-                    If res1 Then
-                        Dim img As Bitmap = New Bitmap(My.Resources.WARNING, 50, 50)
-                        ToastNotification.Show(Me, "No se puede anular la venta con código ".ToUpper + tbCodigo.Text + ", porque tiene pagos realizados, por favor primero elimine los pagos correspondientes a esta venta".ToUpper,
+            If (swTipoVenta.Value = False) Then
+                Dim res1 As Boolean = L_fnVerificarPagos(tbCodigo.Text)
+                If res1 Then
+                    Dim img As Bitmap = New Bitmap(My.Resources.WARNING, 50, 50)
+                    ToastNotification.Show(Me, "No se puede anular la venta con código ".ToUpper + tbCodigo.Text + ", porque tiene pagos realizados, por favor primero elimine los pagos correspondientes a esta venta".ToUpper,
                                                   img, 5000,
                                                   eToastGlowColor.Green,
                                                   eToastPosition.TopCenter)
-                        Exit Sub
-                    End If
+                    Exit Sub
                 End If
             End If
+
             Dim result As Boolean = L_fnVerificarSiSeContabilizoVenta(tbCodigo.Text)
             If result Then
                 Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
@@ -3384,21 +3405,34 @@ salirIf:
     End Sub
 
     Private Sub TbNit_Validating(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles tbNit.Validating
-        Dim nom1, nom2 As String
-        nom1 = ""
-        nom2 = ""
-        If (tbNit.Text.Trim = String.Empty) Then
-            tbNit.Text = "0"
-        End If
-        L_Validar_Nit(tbNit.Text.Trim, nom1, nom2)
-        If nom1 = "" Then
-            TbNombre1.Focus()
-        Else
-            TbNombre1.Text = nom1
-            TbNombre2.Text = nom2
-        End If
+        If btnGrabar.Enabled = True Then
+            'Dim nom1, nom2 As String
+            'nom1 = ""
+            'nom2 = ""
+            'If (tbNit.Text.Trim = String.Empty) Then
+            '    tbNit.Text = "0"
+            'End If
+            'L_Validar_Nit(tbNit.Text.Trim, nom1, nom2)
+            'If nom1 = "" Then
+            '    TbNombre1.Focus()
+            'Else
+            '    TbNombre1.Text = nom1
+            '    TbNombre2.Text = nom2
+            'End If
+            Dim nom1, nom2 As String
+            nom1 = ""
+            nom2 = ""
+            If (tbNit.Text.Trim <> String.Empty) Then
+                L_Validar_Nit(tbNit.Text.Trim, nom1, nom2)
+                If nom1 = "" Then
+                    TbNombre1.Focus()
+                Else
+                    TbNombre1.Text = nom1
+                    TbNombre2.Text = nom2
+                End If
+            End If
 
-
+        End If
     End Sub
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
         Try
@@ -3408,7 +3442,7 @@ salirIf:
                     If tbCodigo.Text = String.Empty Then
                         Throw New Exception("Venta no encontrada")
                     End If
-                    If _CodCliente = 86 Then
+                    If tbNit.Text = String.Empty Then
                         _prImiprimirNotaVenta(tbCodigo.Text)
                         Return
                     ElseIf (Not P_fnValidarFacturaVigente()) Then

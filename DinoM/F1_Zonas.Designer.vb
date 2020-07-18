@@ -22,6 +22,7 @@ Partial Class F1_Zonas
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F1_Zonas))
         Dim cbZona_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim cbProvincia_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
@@ -53,6 +54,7 @@ Partial Class F1_Zonas
         Me.grZona = New Janus.Windows.GridEX.GridEX()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -97,7 +99,6 @@ Partial Class F1_Zonas
         Me.SuperTabPrincipal.ControlBox.MenuBox.Name = ""
         Me.SuperTabPrincipal.ControlBox.Name = ""
         Me.SuperTabPrincipal.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabPrincipal.ControlBox.MenuBox, Me.SuperTabPrincipal.ControlBox.CloseBox})
-        Me.SuperTabPrincipal.Size = New System.Drawing.Size(1021, 648)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelBuscador, 0)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelRegistro, 0)
         '
@@ -108,14 +109,14 @@ Partial Class F1_Zonas
         '
         'SuperTabControlPanelRegistro
         '
-        Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(989, 648)
+        Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(1330, 741)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelSuperior, 0)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelPrincipal, 0)
         '
         'PanelSuperior
         '
-        Me.PanelSuperior.Size = New System.Drawing.Size(989, 72)
+        Me.PanelSuperior.Size = New System.Drawing.Size(1330, 72)
         Me.PanelSuperior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelSuperior.Style.BackColor1.Color = System.Drawing.Color.DarkSlateGray
         Me.PanelSuperior.Style.BackColor2.Color = System.Drawing.Color.DarkSlateGray
@@ -127,8 +128,7 @@ Partial Class F1_Zonas
         '
         'PanelInferior
         '
-        Me.PanelInferior.Location = New System.Drawing.Point(0, 612)
-        Me.PanelInferior.Size = New System.Drawing.Size(989, 36)
+        Me.PanelInferior.Size = New System.Drawing.Size(1330, 36)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.DarkSlateGray
         Me.PanelInferior.Style.BackColor2.Color = System.Drawing.Color.DarkSlateGray
@@ -172,24 +172,24 @@ Partial Class F1_Zonas
         '
         'PanelToolBar2
         '
-        Me.PanelToolBar2.Location = New System.Drawing.Point(909, 0)
+        Me.PanelToolBar2.Location = New System.Drawing.Point(1250, 0)
         '
         'MPanelSup
         '
         Me.MPanelSup.BackColor = System.Drawing.Color.Transparent
         Me.MPanelSup.Controls.Add(Me.TableLayoutPanel1)
-        Me.MPanelSup.Size = New System.Drawing.Size(989, 460)
+        Me.MPanelSup.Size = New System.Drawing.Size(1330, 460)
         Me.MPanelSup.Controls.SetChildIndex(Me.PanelUsuario, 0)
         Me.MPanelSup.Controls.SetChildIndex(Me.TableLayoutPanel1, 0)
         '
         'PanelPrincipal
         '
-        Me.PanelPrincipal.Size = New System.Drawing.Size(989, 540)
+        Me.PanelPrincipal.Size = New System.Drawing.Size(1330, 633)
         '
         'GroupPanelBuscador
         '
         Me.GroupPanelBuscador.Location = New System.Drawing.Point(0, 460)
-        Me.GroupPanelBuscador.Size = New System.Drawing.Size(989, 80)
+        Me.GroupPanelBuscador.Size = New System.Drawing.Size(1330, 173)
         '
         '
         '
@@ -225,9 +225,9 @@ Partial Class F1_Zonas
         Me.JGrM_Buscador.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.JGrM_Buscador.HeaderFormatStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(72, Byte), Integer), CType(CType(127, Byte), Integer))
         Me.JGrM_Buscador.SelectedFormatStyle.BackColor = System.Drawing.Color.DodgerBlue
-        Me.JGrM_Buscador.SelectedFormatStyle.Font = New System.Drawing.Font("Open Sans", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.JGrM_Buscador.SelectedFormatStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.JGrM_Buscador.SelectedFormatStyle.ForeColor = System.Drawing.Color.White
-        Me.JGrM_Buscador.Size = New System.Drawing.Size(983, 57)
+        Me.JGrM_Buscador.Size = New System.Drawing.Size(1324, 150)
         '
         'btnImprimir
         '
@@ -235,7 +235,7 @@ Partial Class F1_Zonas
         '
         'MPanelUserAct
         '
-        Me.MPanelUserAct.Location = New System.Drawing.Point(789, 0)
+        Me.MPanelUserAct.Location = New System.Drawing.Point(1130, 0)
         '
         'PanelMapa
         '
@@ -246,9 +246,9 @@ Partial Class F1_Zonas
         Me.PanelMapa.Controls.Add(Me.BtAdicionar)
         Me.PanelMapa.Controls.Add(Me.Gmc_Cliente)
         Me.PanelMapa.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PanelMapa.Location = New System.Drawing.Point(299, 3)
+        Me.PanelMapa.Location = New System.Drawing.Point(402, 3)
         Me.PanelMapa.Name = "PanelMapa"
-        Me.PanelMapa.Size = New System.Drawing.Size(687, 454)
+        Me.PanelMapa.Size = New System.Drawing.Size(925, 454)
         Me.PanelMapa.TabIndex = 21
         '
         'btLimpiar
@@ -313,7 +313,7 @@ Partial Class F1_Zonas
         Me.Gmc_Cliente.AutoScroll = True
         Me.Gmc_Cliente.AutoSize = True
         Me.Gmc_Cliente.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.Gmc_Cliente.Bearing = 0.0!
+        Me.Gmc_Cliente.Bearing = 0!
         Me.Gmc_Cliente.CanDragMap = True
         Me.Gmc_Cliente.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Gmc_Cliente.EmptyTileColor = System.Drawing.Color.Navy
@@ -333,9 +333,9 @@ Partial Class F1_Zonas
         Me.Gmc_Cliente.ScaleMode = GMap.NET.WindowsForms.ScaleModes.[Integer]
         Me.Gmc_Cliente.SelectedAreaFillColor = System.Drawing.Color.FromArgb(CType(CType(33, Byte), Integer), CType(CType(65, Byte), Integer), CType(CType(105, Byte), Integer), CType(CType(225, Byte), Integer))
         Me.Gmc_Cliente.ShowTileGridLines = False
-        Me.Gmc_Cliente.Size = New System.Drawing.Size(687, 454)
+        Me.Gmc_Cliente.Size = New System.Drawing.Size(925, 454)
         Me.Gmc_Cliente.TabIndex = 0
-        Me.Gmc_Cliente.Zoom = 0.0R
+        Me.Gmc_Cliente.Zoom = 0R
         '
         'GroupPanel3
         '
@@ -347,7 +347,7 @@ Partial Class F1_Zonas
         Me.GroupPanel3.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanel3.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel3.Name = "GroupPanel3"
-        Me.GroupPanel3.Size = New System.Drawing.Size(290, 171)
+        Me.GroupPanel3.Size = New System.Drawing.Size(393, 171)
         '
         '
         '
@@ -399,7 +399,7 @@ Partial Class F1_Zonas
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel4.Location = New System.Drawing.Point(0, 0)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(284, 148)
+        Me.Panel4.Size = New System.Drawing.Size(387, 148)
         Me.Panel4.TabIndex = 0
         '
         'LabelX4
@@ -426,12 +426,12 @@ Partial Class F1_Zonas
         '
         Me.tbColor.Border.Class = "TextBoxBorder"
         Me.tbColor.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbColor.Font = New System.Drawing.Font("Open Sans Light", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbColor.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbColor.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
         Me.tbColor.Location = New System.Drawing.Point(262, 16)
         Me.tbColor.Name = "tbColor"
         Me.tbColor.PreventEnterBeep = True
-        Me.tbColor.Size = New System.Drawing.Size(63, 25)
+        Me.tbColor.Size = New System.Drawing.Size(63, 22)
         Me.tbColor.TabIndex = 236
         Me.tbColor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -472,14 +472,14 @@ Partial Class F1_Zonas
         Me.cbZona.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         cbZona_DesignTimeLayout.LayoutString = resources.GetString("cbZona_DesignTimeLayout.LayoutString")
         Me.cbZona.DesignTimeLayout = cbZona_DesignTimeLayout
-        Me.cbZona.Font = New System.Drawing.Font("Open Sans Light", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbZona.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbZona.Location = New System.Drawing.Point(106, 111)
         Me.cbZona.Name = "cbZona"
         Me.cbZona.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.cbZona.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.cbZona.SelectedIndex = -1
         Me.cbZona.SelectedItem = Nothing
-        Me.cbZona.Size = New System.Drawing.Size(203, 25)
+        Me.cbZona.Size = New System.Drawing.Size(203, 22)
         Me.cbZona.TabIndex = 233
         Me.cbZona.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -520,14 +520,14 @@ Partial Class F1_Zonas
         Me.cbProvincia.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         cbProvincia_DesignTimeLayout.LayoutString = resources.GetString("cbProvincia_DesignTimeLayout.LayoutString")
         Me.cbProvincia.DesignTimeLayout = cbProvincia_DesignTimeLayout
-        Me.cbProvincia.Font = New System.Drawing.Font("Open Sans Light", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbProvincia.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbProvincia.Location = New System.Drawing.Point(106, 80)
         Me.cbProvincia.Name = "cbProvincia"
         Me.cbProvincia.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.cbProvincia.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.cbProvincia.SelectedIndex = -1
         Me.cbProvincia.SelectedItem = Nothing
-        Me.cbProvincia.Size = New System.Drawing.Size(203, 25)
+        Me.cbProvincia.Size = New System.Drawing.Size(203, 22)
         Me.cbProvincia.TabIndex = 230
         Me.cbProvincia.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -568,14 +568,14 @@ Partial Class F1_Zonas
         Me.cbCiudad.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         cbCiudad_DesignTimeLayout.LayoutString = resources.GetString("cbCiudad_DesignTimeLayout.LayoutString")
         Me.cbCiudad.DesignTimeLayout = cbCiudad_DesignTimeLayout
-        Me.cbCiudad.Font = New System.Drawing.Font("Open Sans Light", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbCiudad.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cbCiudad.Location = New System.Drawing.Point(106, 49)
         Me.cbCiudad.Name = "cbCiudad"
         Me.cbCiudad.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.cbCiudad.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.cbCiudad.SelectedIndex = -1
         Me.cbCiudad.SelectedItem = Nothing
-        Me.cbCiudad.Size = New System.Drawing.Size(203, 25)
+        Me.cbCiudad.Size = New System.Drawing.Size(203, 22)
         Me.cbCiudad.TabIndex = 227
         Me.cbCiudad.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -603,12 +603,12 @@ Partial Class F1_Zonas
         '
         Me.tbCodigoOriginal.Border.Class = "TextBoxBorder"
         Me.tbCodigoOriginal.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbCodigoOriginal.Font = New System.Drawing.Font("Open Sans Light", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbCodigoOriginal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbCodigoOriginal.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
         Me.tbCodigoOriginal.Location = New System.Drawing.Point(106, 16)
         Me.tbCodigoOriginal.Name = "tbCodigoOriginal"
         Me.tbCodigoOriginal.PreventEnterBeep = True
-        Me.tbCodigoOriginal.Size = New System.Drawing.Size(63, 25)
+        Me.tbCodigoOriginal.Size = New System.Drawing.Size(63, 22)
         Me.tbCodigoOriginal.TabIndex = 225
         Me.tbCodigoOriginal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -619,7 +619,7 @@ Partial Class F1_Zonas
         Me.PanelZona.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelZona.Location = New System.Drawing.Point(3, 3)
         Me.PanelZona.Name = "PanelZona"
-        Me.PanelZona.Size = New System.Drawing.Size(290, 454)
+        Me.PanelZona.Size = New System.Drawing.Size(393, 454)
         Me.PanelZona.TabIndex = 20
         '
         'Zonas
@@ -632,7 +632,7 @@ Partial Class F1_Zonas
         Me.Zonas.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Zonas.Location = New System.Drawing.Point(0, 171)
         Me.Zonas.Name = "Zonas"
-        Me.Zonas.Size = New System.Drawing.Size(290, 283)
+        Me.Zonas.Size = New System.Drawing.Size(393, 283)
         '
         '
         '
@@ -672,7 +672,7 @@ Partial Class F1_Zonas
         Me.PanelTable.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelTable.Location = New System.Drawing.Point(0, 0)
         Me.PanelTable.Name = "PanelTable"
-        Me.PanelTable.Size = New System.Drawing.Size(284, 260)
+        Me.PanelTable.Size = New System.Drawing.Size(387, 260)
         Me.PanelTable.TabIndex = 0
         '
         'grZona
@@ -682,7 +682,7 @@ Partial Class F1_Zonas
         Me.grZona.FlatBorderColor = System.Drawing.Color.DodgerBlue
         Me.grZona.FocusCellDisplayMode = Janus.Windows.GridEX.FocusCellDisplayMode.UseSelectedFormatStyle
         Me.grZona.FocusStyle = Janus.Windows.GridEX.FocusStyle.Solid
-        Me.grZona.Font = New System.Drawing.Font("Open Sans Light", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grZona.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grZona.GridLineStyle = Janus.Windows.GridEX.GridLineStyle.Solid
         Me.grZona.GroupRowVisualStyle = Janus.Windows.GridEX.GroupRowVisualStyle.UseRowStyle
         Me.grZona.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -693,7 +693,7 @@ Partial Class F1_Zonas
         Me.grZona.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grZona.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.grZona.SelectedFormatStyle.BackColor = System.Drawing.Color.Gold
-        Me.grZona.Size = New System.Drawing.Size(284, 260)
+        Me.grZona.Size = New System.Drawing.Size(387, 260)
         Me.grZona.TabIndex = 0
         Me.grZona.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -709,14 +709,20 @@ Partial Class F1_Zonas
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(989, 460)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1330, 460)
         Me.TableLayoutPanel1.TabIndex = 22
+        '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        Me.Timer1.Interval = 500
         '
         'F1_Zonas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1021, 648)
+        Me.ClientSize = New System.Drawing.Size(1362, 741)
+        Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "F1_Zonas"
         Me.Text = "F1_Zonas"
         Me.Controls.SetChildIndex(Me.SuperTabPrincipal, 0)
@@ -781,4 +787,5 @@ Partial Class F1_Zonas
     Friend WithEvents ButtonX3 As DevComponents.DotNetBar.ButtonX
     Friend WithEvents btLimpiar As DevComponents.DotNetBar.ButtonX
     Friend WithEvents ColorDialog1 As System.Windows.Forms.ColorDialog
+    Friend WithEvents Timer1 As Timer
 End Class
