@@ -1854,7 +1854,11 @@ Public Class F0_Venta2
             'objrep.SetParameterValue("URLImageLogo", gs_CarpetaRaiz + "\LogoFactura.jpg")
             'objrep.SetParameterValue("URLImageMarcaAgua", gs_CarpetaRaiz + "\MarcaAguaFactura.jpg")
             objrep.SetParameterValue("ENota", "''" + "ESTA FACTURA CONTRIBUYE AL DESARROLLO DEL PAÍS EL USO ILÍCITO DE ÉSTA SERÁ SANCIONADO DE ACUERDO A LA LEY" + "''")
-            objrep.SetParameterValue("ELey", "''" + "Ley N° 453: " + "El proveedor debe brindar atención sin discriminación, con respeto, calidez y cordialidad a los usuarios y consumidores." + "''")
+            objrep.SetParameterValue("ELey", _Ds1.Tables(0).Rows(0).Item("sbnota").ToString)
+            objrep.SetParameterValue("FechaLim", _Ds1.Tables(0).Rows(0).Item("sbfal"))
+            objrep.SetParameterValue("Usuario", gs_user)
+            objrep.SetParameterValue("TipoVenta", IIf(swTipoVenta.Value = True, "CONTADO", "CRÉDITO"))
+            objrep.SetParameterValue("PlazoPago", IIf(swTipoVenta.Value = True, tbFechaVenta.Value, tbFechaVenc.Value))
 
             If (_Ds3.Tables(0).Rows(0).Item("cbvp")) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
                 P_Global.Visualizador.CrGeneral.ReportSource = objrep 'Comentar
@@ -2010,7 +2014,6 @@ Public Class F0_Venta2
                 'objrep.SetParameterValue("URLImageLogo", gs_CarpetaRaiz + "\LogoFactura.jpg")
                 'objrep.SetParameterValue("URLImageMarcaAgua", gs_CarpetaRaiz + "\MarcaAguaFactura.jpg")
                 objrep.SetParameterValue("ENota", "''" + "ESTA FACTURA CONTRIBUYE AL DESARROLLO DEL PAÍS EL USO ILÍCITO DE ÉSTA SERÁ SANCIONADO DE ACUERDO A LA LEY" + "''")
-                objrep.SetParameterValue("ELey", "''" + "Ley N° 453: " + "El proveedor debe brindar atención sin discriminación, con respeto, calidez y cordialidad a los usuarios y consumidores." + "''")
                 objrep.SetParameterValue("ELey", _Ds1.Tables(0).Rows(0).Item("sbnota").ToString)
                 objrep.SetParameterValue("FechaLim", _Ds1.Tables(0).Rows(0).Item("sbfal"))
                 objrep.SetParameterValue("Usuario", gs_user)
@@ -2096,15 +2099,21 @@ Public Class F0_Venta2
         End If
         Dim ParteEntera As Long
         Dim ParteDecimal As Decimal
+        Dim ParteDecimal2 As Decimal
         ParteEntera = Int(total)
-        ParteDecimal = Math.Round(total - ParteEntera, 2)
-        Dim li As String = Facturacion.ConvertirLiteral.A_fnConvertirLiteral(CDbl(ParteEntera)) + " con " +
-        IIf(ParteDecimal.ToString.Equals("0"), "00", ParteDecimal.ToString) + "/100 Bolivianos"
+        ParteDecimal = total - Math.Truncate(total)
+        ParteDecimal2 = CDbl(ParteDecimal) * 100
+
+
+        Dim li As String = Facturacion.ConvertirLiteral.A_fnConvertirLiteral(CDbl(ParteEntera)) + " " +
+        IIf(ParteDecimal2.ToString.Equals("0"), "00", ParteDecimal2.ToString) + "/100 Bolivianos"
 
         ParteEntera = Int(totald)
-        ParteDecimal = Math.Round(totald - ParteEntera, 2)
-        Dim lid As String = Facturacion.ConvertirLiteral.A_fnConvertirLiteral(CDbl(ParteEntera)) + " con " +
-        IIf(ParteDecimal.ToString.Equals("0"), "00", ParteDecimal.ToString) + "/100 Dolares"
+        ParteDecimal = totald - Math.Truncate(totald)
+        ParteDecimal2 = CDbl(ParteDecimal) * 100
+
+        Dim lid As String = Facturacion.ConvertirLiteral.A_fnConvertirLiteral(CDbl(ParteEntera)) + " " +
+        IIf(ParteDecimal2.ToString.Equals("0"), "00", ParteDecimal2.ToString) + "/100 Dolares"
         Dim _Hora As String = Now.Hour.ToString + ":" + Now.Minute.ToString
         Dim _Ds2 = L_Reporte_Factura_Cia("2")
         Dim dt2 As DataTable = L_fnNameReporte()
