@@ -1032,7 +1032,7 @@ Public Class P_Principal
 
     Private Sub btCierreCaja_Click(sender As Object, e As EventArgs) Handles btCierreCaja.Click
         Dim frm As New F0_CierreCaja
-        'frm._nameButton = btCierreCaja.Name
+        frm._nameButton = btCierreCaja.Name
         frm.Show()
     End Sub
 

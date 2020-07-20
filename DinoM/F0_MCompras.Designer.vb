@@ -261,9 +261,10 @@ Partial Class F0_MCompras
         Me.PanelDetalle.BackColor = System.Drawing.Color.White
         Me.PanelDetalle.Controls.Add(Me.GroupPanel4)
         Me.PanelDetalle.Controls.Add(Me.GPanelProductos)
+        Me.PanelDetalle.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelDetalle.Location = New System.Drawing.Point(0, 190)
         Me.PanelDetalle.Name = "PanelDetalle"
-        Me.PanelDetalle.Size = New System.Drawing.Size(1280, 260)
+        Me.PanelDetalle.Size = New System.Drawing.Size(1317, 428)
         Me.PanelDetalle.TabIndex = 3
         '
         'GroupPanel4
@@ -276,7 +277,7 @@ Partial Class F0_MCompras
         Me.GroupPanel4.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanel4.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel4.Name = "GroupPanel4"
-        Me.GroupPanel4.Size = New System.Drawing.Size(1280, 53)
+        Me.GroupPanel4.Size = New System.Drawing.Size(1317, 221)
         '
         '
         '
@@ -316,7 +317,7 @@ Partial Class F0_MCompras
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel5.Location = New System.Drawing.Point(0, 0)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(1274, 30)
+        Me.Panel5.Size = New System.Drawing.Size(1311, 198)
         Me.Panel5.TabIndex = 0
         '
         'grdetalle
@@ -329,7 +330,7 @@ Partial Class F0_MCompras
         Me.grdetalle.Name = "grdetalle"
         Me.grdetalle.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grdetalle.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.grdetalle.Size = New System.Drawing.Size(1274, 30)
+        Me.grdetalle.Size = New System.Drawing.Size(1311, 198)
         Me.grdetalle.TabIndex = 3
         Me.grdetalle.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -341,9 +342,9 @@ Partial Class F0_MCompras
         Me.GPanelProductos.DisabledBackColor = System.Drawing.Color.Empty
         Me.GPanelProductos.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.GPanelProductos.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GPanelProductos.Location = New System.Drawing.Point(0, 53)
+        Me.GPanelProductos.Location = New System.Drawing.Point(0, 221)
         Me.GPanelProductos.Name = "GPanelProductos"
-        Me.GPanelProductos.Size = New System.Drawing.Size(1280, 207)
+        Me.GPanelProductos.Size = New System.Drawing.Size(1317, 207)
         '
         '
         '
@@ -383,7 +384,7 @@ Partial Class F0_MCompras
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel7.Location = New System.Drawing.Point(0, 0)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(1274, 184)
+        Me.Panel7.Size = New System.Drawing.Size(1311, 184)
         Me.Panel7.TabIndex = 0
         '
         'grProductos
@@ -398,7 +399,7 @@ Partial Class F0_MCompras
         Me.grProductos.Name = "grProductos"
         Me.grProductos.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grProductos.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.grProductos.Size = New System.Drawing.Size(1274, 184)
+        Me.grProductos.Size = New System.Drawing.Size(1311, 184)
         Me.grProductos.TabIndex = 0
         Me.grProductos.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -409,9 +410,9 @@ Partial Class F0_MCompras
         Me.PanelTotal.BackgroundImage = Global.DinoM.My.Resources.Resources.fondo1
         Me.PanelTotal.Controls.Add(Me.Panel4)
         Me.PanelTotal.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PanelTotal.Location = New System.Drawing.Point(0, 539)
+        Me.PanelTotal.Location = New System.Drawing.Point(0, 527)
         Me.PanelTotal.Name = "PanelTotal"
-        Me.PanelTotal.Size = New System.Drawing.Size(1329, 91)
+        Me.PanelTotal.Size = New System.Drawing.Size(1317, 91)
         Me.PanelTotal.TabIndex = 3
         '
         'Panel4
@@ -426,7 +427,7 @@ Partial Class F0_MCompras
         Me.Panel4.Controls.Add(Me.LabelX11)
         Me.Panel4.Controls.Add(Me.LabelX9)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel4.Location = New System.Drawing.Point(948, 0)
+        Me.Panel4.Location = New System.Drawing.Point(936, 0)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(381, 91)
         Me.Panel4.TabIndex = 39
@@ -573,7 +574,7 @@ Partial Class F0_MCompras
         Me.PanelContentSup.Dock = System.Windows.Forms.DockStyle.Top
         Me.PanelContentSup.Location = New System.Drawing.Point(0, 0)
         Me.PanelContentSup.Name = "PanelContentSup"
-        Me.PanelContentSup.Size = New System.Drawing.Size(1329, 190)
+        Me.PanelContentSup.Size = New System.Drawing.Size(1317, 190)
         Me.PanelContentSup.TabIndex = 4
         '
         'GroupPanel1
@@ -587,7 +588,7 @@ Partial Class F0_MCompras
         Me.GroupPanel1.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.GroupPanel1.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel1.Name = "GroupPanel1"
-        Me.GroupPanel1.Size = New System.Drawing.Size(1329, 190)
+        Me.GroupPanel1.Size = New System.Drawing.Size(1317, 190)
         '
         '
         '
@@ -651,7 +652,7 @@ Partial Class F0_MCompras
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1323, 167)
+        Me.Panel2.Size = New System.Drawing.Size(1311, 167)
         Me.Panel2.TabIndex = 234
         '
         'swRetencion
@@ -1448,10 +1449,9 @@ Partial Class F0_MCompras
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1362, 741)
+        Me.ClientSize = New System.Drawing.Size(1350, 729)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "F0_MCompras"
-        Me.Opacity = 0.05R
         Me.Text = "F0_MCompras"
         Me.Controls.SetChildIndex(Me.PanelPrincipal, 0)
         Me.PanelSuperior.ResumeLayout(False)

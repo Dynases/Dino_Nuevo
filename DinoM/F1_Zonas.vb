@@ -761,8 +761,9 @@ Public Class F1_Zonas
 
         Else
             '  Public _modulo As SideNavItem
-            _modulo.Select()
-            _tab.Close()
+            '_modulo.Select()
+            '_tab.Close()
+            Me.Close()
         End If
     End Sub
 
@@ -790,7 +791,6 @@ Public Class F1_Zonas
         _Inter = _Inter + 1
         If _Inter = 1 Then
             Me.WindowState = FormWindowState.Normal
-
         Else
             Me.Opacity = 100
             Timer1.Enabled = False

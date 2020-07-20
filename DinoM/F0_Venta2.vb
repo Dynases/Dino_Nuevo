@@ -2011,6 +2011,11 @@ Public Class F0_Venta2
                 'objrep.SetParameterValue("URLImageMarcaAgua", gs_CarpetaRaiz + "\MarcaAguaFactura.jpg")
                 objrep.SetParameterValue("ENota", "''" + "ESTA FACTURA CONTRIBUYE AL DESARROLLO DEL PAÍS EL USO ILÍCITO DE ÉSTA SERÁ SANCIONADO DE ACUERDO A LA LEY" + "''")
                 objrep.SetParameterValue("ELey", "''" + "Ley N° 453: " + "El proveedor debe brindar atención sin discriminación, con respeto, calidez y cordialidad a los usuarios y consumidores." + "''")
+                objrep.SetParameterValue("ELey", _Ds1.Tables(0).Rows(0).Item("sbnota").ToString)
+                objrep.SetParameterValue("FechaLim", _Ds1.Tables(0).Rows(0).Item("sbfal"))
+                objrep.SetParameterValue("Usuario", gs_user)
+                objrep.SetParameterValue("TipoVenta", IIf(swTipoVenta.Value = True, "CONTADO", "CRÉDITO"))
+                objrep.SetParameterValue("PlazoPago", IIf(swTipoVenta.Value = True, tbFechaVenta.Value, tbFechaVenc.Value))
 
                 If (_Ds3.Tables(0).Rows(0).Item("cbvp")) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
                     P_Global.Visualizador.CrGeneral.ReportSource = objrep 'Comentar
@@ -2129,7 +2134,7 @@ Public Class F0_Venta2
         Dim objrep As New R_NotaVenta_MedioOficio
         objrep.SetDataSource(dt)
         objrep.SetParameterValue("Literal", li)
-        objrep.SetParameterValue("TipoVenta", swTipoVenta.Text)
+        objrep.SetParameterValue("TipoVenta", IIf(swTipoVenta.Value = True, "CONTADO", "CRÉDITO"))
         objrep.SetParameterValue("Logo", gb_UbiLogo)
         objrep.SetParameterValue("NotaAdicional1", gb_NotaAdicional)
         'objrep.SetParameterValue("usuario", gs_user)

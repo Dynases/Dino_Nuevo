@@ -393,7 +393,6 @@ Public Class F1_Rol
         _Inter = _Inter + 1
         If _Inter = 1 Then
             Me.WindowState = FormWindowState.Normal
-
         Else
             Me.Opacity = 100
             Timer1.Enabled = False

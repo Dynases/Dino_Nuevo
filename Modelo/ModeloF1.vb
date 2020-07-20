@@ -382,5 +382,6 @@ Public Class ModeloF1
     Private Sub btnUltimo_Click(sender As Object, e As EventArgs) Handles btnUltimo.Click
         _PMUltimoRegistro()
     End Sub
+
 #End Region
 End Class

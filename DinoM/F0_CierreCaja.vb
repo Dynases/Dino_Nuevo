@@ -28,6 +28,25 @@ Public Class F0_CierreCaja
 #End Region
 
 #Region "METODOS PRIVADOS"
+    Private Sub _prAsignarPermisos()
+
+        Dim dtRolUsu As DataTable = L_prRolDetalleGeneral(gi_userRol, _nameButton)
+
+        Dim show As Boolean = dtRolUsu.Rows(0).Item("ycshow")
+        Dim add As Boolean = dtRolUsu.Rows(0).Item("ycadd")
+        Dim modif As Boolean = dtRolUsu.Rows(0).Item("ycmod")
+        Dim del As Boolean = dtRolUsu.Rows(0).Item("ycdel")
+
+        If add = False Then
+            btnNuevo.Visible = False
+        End If
+        If modif = False Then
+            btnModificar.Visible = False
+        End If
+        If del = False Then
+            btnEliminar.Visible = False
+        End If
+    End Sub
     Private Sub MostrarMensajeError(mensaje As String)
         ToastNotification.Show(Me,
                                mensaje.ToUpper,
@@ -929,13 +948,17 @@ Public Class F0_CierreCaja
 
 #Region "EVENTOS"
     Private Sub F0_CierreCaja_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'Me.WindowState = FormWindowState.Normal
+
         Me.Text = "CIERRE DE CAJA"
+        Dim blah As New Bitmap(New Bitmap(My.Resources.VENT_PAGOS), 20, 20)
+        Dim ico As Icon = Icon.FromHandle(blah.GetHicon())
+        Me.Icon = ico
         _prCargarComboBanco(cbbanco)
         _prCargarComboLibreria(cbTurno, 8, 1)
         _prInhabiliitar()
         _prCargarCierreCaja()
         MSuperTabControl.SelectedTabIndex = 0
+        _prAsignarPermisos()
         'btnModificar.Visible = False
     End Sub
     Private Sub btnNuevo_Click(sender As Object, e As EventArgs) Handles btnNuevo.Click
@@ -1253,7 +1276,6 @@ Public Class F0_CierreCaja
         _Inter = _Inter + 1
         If _Inter = 1 Then
             Me.WindowState = FormWindowState.Normal
-            'Me.StartPosition = FormStartPosition.CenterScreen
         Else
             Me.Opacity = 100
             Timer1.Enabled = False

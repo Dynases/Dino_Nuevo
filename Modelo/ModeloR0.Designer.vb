@@ -95,7 +95,7 @@ Partial Class ModeloR0
         Me.SuperTabPrincipal.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.SuperTabPrincipal.SelectedTabFont = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SuperTabPrincipal.SelectedTabIndex = 0
-        Me.SuperTabPrincipal.Size = New System.Drawing.Size(1362, 741)
+        Me.SuperTabPrincipal.Size = New System.Drawing.Size(1350, 729)
         Me.SuperTabPrincipal.TabAlignment = DevComponents.DotNetBar.eTabStripAlignment.Right
         Me.SuperTabPrincipal.TabFont = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SuperTabPrincipal.TabIndex = 0
@@ -114,7 +114,7 @@ Partial Class ModeloR0
         Me.SuperTabControlPanelRegistro.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SuperTabControlPanelRegistro.Location = New System.Drawing.Point(0, 0)
         Me.SuperTabControlPanelRegistro.Name = "SuperTabControlPanelRegistro"
-        Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(1330, 741)
+        Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(1318, 729)
         Me.SuperTabControlPanelRegistro.TabIndex = 1
         Me.SuperTabControlPanelRegistro.TabItem = Me.SupTabItemRegistro
         '
@@ -126,7 +126,7 @@ Partial Class ModeloR0
         Me.PanelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelPrincipal.Location = New System.Drawing.Point(363, 0)
         Me.PanelPrincipal.Name = "PanelPrincipal"
-        Me.PanelPrincipal.Size = New System.Drawing.Size(967, 705)
+        Me.PanelPrincipal.Size = New System.Drawing.Size(955, 693)
         Me.PanelPrincipal.TabIndex = 0
         '
         'MReportViewer
@@ -138,7 +138,7 @@ Partial Class ModeloR0
         Me.MReportViewer.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MReportViewer.Location = New System.Drawing.Point(0, 0)
         Me.MReportViewer.Name = "MReportViewer"
-        Me.MReportViewer.Size = New System.Drawing.Size(967, 705)
+        Me.MReportViewer.Size = New System.Drawing.Size(955, 693)
         Me.MReportViewer.TabIndex = 20
         '
         'PanelUsuario
@@ -224,7 +224,7 @@ Partial Class ModeloR0
         Me.PanelIzq.Dock = System.Windows.Forms.DockStyle.Left
         Me.PanelIzq.Location = New System.Drawing.Point(0, 0)
         Me.PanelIzq.Name = "PanelIzq"
-        Me.PanelIzq.Size = New System.Drawing.Size(363, 705)
+        Me.PanelIzq.Size = New System.Drawing.Size(363, 693)
         Me.PanelIzq.TabIndex = 20
         '
         'MGPFiltros
@@ -236,7 +236,7 @@ Partial Class ModeloR0
         Me.MGPFiltros.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MGPFiltros.Location = New System.Drawing.Point(0, 72)
         Me.MGPFiltros.Name = "MGPFiltros"
-        Me.MGPFiltros.Size = New System.Drawing.Size(363, 633)
+        Me.MGPFiltros.Size = New System.Drawing.Size(363, 621)
         '
         '
         '
@@ -339,9 +339,9 @@ Partial Class ModeloR0
         Me.PanelInferior.Controls.Add(Me.MPanelUserAct)
         Me.PanelInferior.DisabledBackColor = System.Drawing.Color.Empty
         Me.PanelInferior.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PanelInferior.Location = New System.Drawing.Point(0, 705)
+        Me.PanelInferior.Location = New System.Drawing.Point(0, 693)
         Me.PanelInferior.Name = "PanelInferior"
-        Me.PanelInferior.Size = New System.Drawing.Size(1330, 36)
+        Me.PanelInferior.Size = New System.Drawing.Size(1318, 36)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.Gold
         Me.PanelInferior.Style.BackColor2.Color = System.Drawing.Color.Gold
@@ -355,7 +355,6 @@ Partial Class ModeloR0
         'MPicture
         '
         Me.MPicture.Dock = System.Windows.Forms.DockStyle.Left
-        Me.MPicture.Image = Global.Modelo.My.Resources.Resources.Ideteca1
         Me.MPicture.Location = New System.Drawing.Point(0, 0)
         Me.MPicture.Name = "MPicture"
         Me.MPicture.Size = New System.Drawing.Size(188, 36)
@@ -367,7 +366,7 @@ Partial Class ModeloR0
         '
         Me.MPanelUserAct.Controls.Add(Me.BubbleBarUsuario)
         Me.MPanelUserAct.Dock = System.Windows.Forms.DockStyle.Right
-        Me.MPanelUserAct.Location = New System.Drawing.Point(1130, 0)
+        Me.MPanelUserAct.Location = New System.Drawing.Point(1118, 0)
         Me.MPanelUserAct.Name = "MPanelUserAct"
         Me.MPanelUserAct.Size = New System.Drawing.Size(200, 36)
         Me.MPanelUserAct.TabIndex = 21
@@ -467,7 +466,7 @@ Partial Class ModeloR0
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1362, 741)
+        Me.ClientSize = New System.Drawing.Size(1350, 729)
         Me.Controls.Add(Me.SuperTabPrincipal)
         Me.KeyPreview = True
         Me.Name = "ModeloR0"

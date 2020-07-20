@@ -34,6 +34,8 @@ Partial Class F0_Compra
         Me.PanelContentSup = New System.Windows.Forms.Panel()
         Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.lbNFactura = New DevComponents.DotNetBar.LabelX()
+        Me.tbNFactura = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.swEmision = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.LabelX16 = New DevComponents.DotNetBar.LabelX()
         Me.cbSucursal = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
@@ -65,8 +67,6 @@ Partial Class F0_Compra
         Me.LabelX11 = New DevComponents.DotNetBar.LabelX()
         Me.tbPdesc = New DevComponents.Editors.DoubleInput()
         Me.LabelX9 = New DevComponents.DotNetBar.LabelX()
-        Me.lbNFactura = New DevComponents.DotNetBar.LabelX()
-        Me.tbNFactura = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -112,7 +112,6 @@ Partial Class F0_Compra
         'PanelSuperior
         '
         Me.PanelSuperior.Margin = New System.Windows.Forms.Padding(4)
-        Me.PanelSuperior.Size = New System.Drawing.Size(1179, 72)
         Me.PanelSuperior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelSuperior.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
         Me.PanelSuperior.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
@@ -129,9 +128,7 @@ Partial Class F0_Compra
         '
         'PanelInferior
         '
-        Me.PanelInferior.Location = New System.Drawing.Point(0, 664)
         Me.PanelInferior.Margin = New System.Windows.Forms.Padding(4)
-        Me.PanelInferior.Size = New System.Drawing.Size(1179, 39)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.Transparent
         Me.PanelInferior.Style.BackColor2.Color = System.Drawing.Color.Transparent
@@ -190,13 +187,11 @@ Partial Class F0_Compra
         '
         'PanelToolBar2
         '
-        Me.PanelToolBar2.Location = New System.Drawing.Point(1099, 0)
         Me.PanelToolBar2.Margin = New System.Windows.Forms.Padding(4)
         '
         'PanelPrincipal
         '
         Me.PanelPrincipal.Margin = New System.Windows.Forms.Padding(4)
-        Me.PanelPrincipal.Size = New System.Drawing.Size(1179, 703)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelUsuario, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelSuperior, 0)
@@ -217,7 +212,7 @@ Partial Class F0_Compra
         '
         'MPanelUserAct
         '
-        Me.MPanelUserAct.Location = New System.Drawing.Point(1024, 0)
+        Me.MPanelUserAct.Location = New System.Drawing.Point(1195, 0)
         Me.MPanelUserAct.Margin = New System.Windows.Forms.Padding(4)
         Me.MPanelUserAct.Size = New System.Drawing.Size(155, 39)
         '
@@ -228,7 +223,6 @@ Partial Class F0_Compra
         '
         Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.MRlAccion.Margin = New System.Windows.Forms.Padding(4)
-        Me.MRlAccion.Size = New System.Drawing.Size(723, 72)
         '
         'PanelContent
         '
@@ -236,17 +230,14 @@ Partial Class F0_Compra
         Me.PanelContent.Controls.Add(Me.PanelTotal)
         Me.PanelContent.Controls.Add(Me.PanelContentSup)
         Me.PanelContent.Margin = New System.Windows.Forms.Padding(4)
-        Me.PanelContent.Size = New System.Drawing.Size(1146, 592)
         '
         'Panel1
         '
         Me.Panel1.Margin = New System.Windows.Forms.Padding(4)
-        Me.Panel1.Size = New System.Drawing.Size(1179, 592)
         '
         'MSuperTabControlPanel1
         '
         Me.MSuperTabControlPanel1.Margin = New System.Windows.Forms.Padding(2)
-        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(1146, 592)
         '
         'MSuperTabControl
         '
@@ -266,14 +257,12 @@ Partial Class F0_Compra
         Me.MSuperTabControl.Controls.Add(Me.SuperTabControlPanel2)
         Me.MSuperTabControl.Margin = New System.Windows.Forms.Padding(4)
         Me.MSuperTabControl.SelectedTabIndex = 1
-        Me.MSuperTabControl.Size = New System.Drawing.Size(1179, 592)
         Me.MSuperTabControl.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabItem1})
         Me.MSuperTabControl.Controls.SetChildIndex(Me.MSuperTabControlPanel1, 0)
         Me.MSuperTabControl.Controls.SetChildIndex(Me.SuperTabControlPanel2, 0)
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(835, 0)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2)
         '
         'SuperTabItem1
@@ -401,7 +390,7 @@ Partial Class F0_Compra
         Me.PanelContentSup.Dock = System.Windows.Forms.DockStyle.Top
         Me.PanelContentSup.Location = New System.Drawing.Point(0, 0)
         Me.PanelContentSup.Name = "PanelContentSup"
-        Me.PanelContentSup.Size = New System.Drawing.Size(1146, 190)
+        Me.PanelContentSup.Size = New System.Drawing.Size(1317, 190)
         Me.PanelContentSup.TabIndex = 0
         '
         'GroupPanel1
@@ -415,7 +404,7 @@ Partial Class F0_Compra
         Me.GroupPanel1.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.GroupPanel1.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel1.Name = "GroupPanel1"
-        Me.GroupPanel1.Size = New System.Drawing.Size(1146, 190)
+        Me.GroupPanel1.Size = New System.Drawing.Size(1317, 190)
         '
         '
         '
@@ -472,8 +461,41 @@ Partial Class F0_Compra
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1140, 167)
+        Me.Panel2.Size = New System.Drawing.Size(1311, 167)
         Me.Panel2.TabIndex = 234
+        '
+        'lbNFactura
+        '
+        Me.lbNFactura.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.lbNFactura.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.lbNFactura.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbNFactura.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.lbNFactura.Location = New System.Drawing.Point(832, 14)
+        Me.lbNFactura.Name = "lbNFactura"
+        Me.lbNFactura.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.lbNFactura.Size = New System.Drawing.Size(105, 23)
+        Me.lbNFactura.TabIndex = 372
+        Me.lbNFactura.Text = "Nro. Factura:"
+        '
+        'tbNFactura
+        '
+        Me.tbNFactura.BackColor = System.Drawing.Color.White
+        '
+        '
+        '
+        Me.tbNFactura.Border.Class = "TextBoxBorder"
+        Me.tbNFactura.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbNFactura.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbNFactura.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.tbNFactura.Location = New System.Drawing.Point(943, 15)
+        Me.tbNFactura.Name = "tbNFactura"
+        Me.tbNFactura.PreventEnterBeep = True
+        Me.tbNFactura.Size = New System.Drawing.Size(180, 22)
+        Me.tbNFactura.TabIndex = 371
+        Me.tbNFactura.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'swEmision
         '
@@ -805,7 +827,7 @@ Partial Class F0_Compra
         Me.PanelDetalle.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelDetalle.Location = New System.Drawing.Point(0, 190)
         Me.PanelDetalle.Name = "PanelDetalle"
-        Me.PanelDetalle.Size = New System.Drawing.Size(1146, 311)
+        Me.PanelDetalle.Size = New System.Drawing.Size(1317, 337)
         Me.PanelDetalle.TabIndex = 1
         '
         'GroupPanel4
@@ -818,7 +840,7 @@ Partial Class F0_Compra
         Me.GroupPanel4.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanel4.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel4.Name = "GroupPanel4"
-        Me.GroupPanel4.Size = New System.Drawing.Size(1146, 104)
+        Me.GroupPanel4.Size = New System.Drawing.Size(1317, 130)
         '
         '
         '
@@ -857,7 +879,7 @@ Partial Class F0_Compra
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel5.Location = New System.Drawing.Point(0, 0)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(1140, 81)
+        Me.Panel5.Size = New System.Drawing.Size(1311, 107)
         Me.Panel5.TabIndex = 0
         '
         'grdetalle
@@ -871,7 +893,7 @@ Partial Class F0_Compra
         Me.grdetalle.Name = "grdetalle"
         Me.grdetalle.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grdetalle.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.grdetalle.Size = New System.Drawing.Size(1140, 81)
+        Me.grdetalle.Size = New System.Drawing.Size(1311, 107)
         Me.grdetalle.TabIndex = 0
         Me.grdetalle.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -883,9 +905,9 @@ Partial Class F0_Compra
         Me.GPanelProductos.DisabledBackColor = System.Drawing.Color.Empty
         Me.GPanelProductos.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.GPanelProductos.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GPanelProductos.Location = New System.Drawing.Point(0, 104)
+        Me.GPanelProductos.Location = New System.Drawing.Point(0, 130)
         Me.GPanelProductos.Name = "GPanelProductos"
-        Me.GPanelProductos.Size = New System.Drawing.Size(1146, 207)
+        Me.GPanelProductos.Size = New System.Drawing.Size(1317, 207)
         '
         '
         '
@@ -925,7 +947,7 @@ Partial Class F0_Compra
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel7.Location = New System.Drawing.Point(0, 0)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(1140, 184)
+        Me.Panel7.Size = New System.Drawing.Size(1311, 184)
         Me.Panel7.TabIndex = 0
         '
         'grProductos
@@ -940,7 +962,7 @@ Partial Class F0_Compra
         Me.grProductos.Name = "grProductos"
         Me.grProductos.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grProductos.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.grProductos.Size = New System.Drawing.Size(1140, 184)
+        Me.grProductos.Size = New System.Drawing.Size(1311, 184)
         Me.grProductos.TabIndex = 0
         Me.grProductos.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -951,9 +973,9 @@ Partial Class F0_Compra
         Me.PanelTotal.BackgroundImage = Global.DinoM.My.Resources.Resources.fondo1
         Me.PanelTotal.Controls.Add(Me.Panel4)
         Me.PanelTotal.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PanelTotal.Location = New System.Drawing.Point(0, 501)
+        Me.PanelTotal.Location = New System.Drawing.Point(0, 527)
         Me.PanelTotal.Name = "PanelTotal"
-        Me.PanelTotal.Size = New System.Drawing.Size(1146, 91)
+        Me.PanelTotal.Size = New System.Drawing.Size(1317, 91)
         Me.PanelTotal.TabIndex = 1
         '
         'Panel4
@@ -966,7 +988,7 @@ Partial Class F0_Compra
         Me.Panel4.Controls.Add(Me.tbPdesc)
         Me.Panel4.Controls.Add(Me.LabelX9)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel4.Location = New System.Drawing.Point(765, 0)
+        Me.Panel4.Location = New System.Drawing.Point(936, 0)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(381, 91)
         Me.Panel4.TabIndex = 39
@@ -1071,44 +1093,12 @@ Partial Class F0_Compra
         Me.LabelX9.TabIndex = 36
         Me.LabelX9.Text = "M. Descuento:"
         '
-        'lbNFactura
-        '
-        Me.lbNFactura.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.lbNFactura.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.lbNFactura.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbNFactura.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.lbNFactura.Location = New System.Drawing.Point(832, 14)
-        Me.lbNFactura.Name = "lbNFactura"
-        Me.lbNFactura.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.lbNFactura.Size = New System.Drawing.Size(105, 23)
-        Me.lbNFactura.TabIndex = 372
-        Me.lbNFactura.Text = "Nro. Factura:"
-        '
-        'tbNFactura
-        '
-        Me.tbNFactura.BackColor = System.Drawing.Color.White
-        '
-        '
-        '
-        Me.tbNFactura.Border.Class = "TextBoxBorder"
-        Me.tbNFactura.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbNFactura.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbNFactura.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbNFactura.Location = New System.Drawing.Point(943, 15)
-        Me.tbNFactura.Name = "tbNFactura"
-        Me.tbNFactura.PreventEnterBeep = True
-        Me.tbNFactura.Size = New System.Drawing.Size(180, 22)
-        Me.tbNFactura.TabIndex = 371
-        Me.tbNFactura.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
         'F0_Compra
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1179, 703)
+        Me.ClientSize = New System.Drawing.Size(1350, 729)
+        Me.Location = New System.Drawing.Point(0, 0)
         Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "F0_Compra"
         Me.Text = "F0_Ventas"

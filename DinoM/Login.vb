@@ -43,9 +43,7 @@ Public Class Login
         Timer1.Interval = 10
         Timer1.Enabled = True
 
-
-
-
+        _CargarLogo()
 
     End Sub
 
@@ -55,9 +53,6 @@ Public Class Login
         Else
             Timer1.Enabled = False
         End If
-
-
-
     End Sub
 
     Private Sub tbname_KeyDown(sender As Object, e As KeyEventArgs) Handles tbUsuario.KeyDown
@@ -65,18 +60,13 @@ Public Class Login
             tbPassword.Focus()
 
         End If
-
-
     End Sub
 
     Private Sub tbpass_KeyDown(sender As Object, e As KeyEventArgs) Handles tbPassword.KeyDown
         If (e.KeyData = Keys.Enter) Then
             btnIngresar.Focus()
-
         End If
     End Sub
-
-
 
 
     Private Sub btnIngresar_Click_1(sender As Object, e As EventArgs) Handles btnIngresar.Click
@@ -102,6 +92,12 @@ Public Class Login
             _prDesvenecerPantalla()
             Close()
         End If
+    End Sub
+    Private Sub _CargarLogo()
+        Dim dtConfSistema As DataTable = L_fnConfSistemaGeneral()
+        gb_UbiLogo = dtConfSistema.Rows(0).Item("cccubilogo")
+
+        PictureBox1.Image = Image.FromFile(gb_UbiLogo.ToString)
     End Sub
     Private Sub _prDesvenecerPantalla()
         Dim a, b As Decimal

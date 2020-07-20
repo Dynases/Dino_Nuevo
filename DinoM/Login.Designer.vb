@@ -125,7 +125,7 @@ Partial Class Login
         '
         'PictureBox1
         '
-        Me.PictureBox1.Image = Global.DinoM.My.Resources.Resources.Ideteca
+        Me.PictureBox1.ImageLocation = ""
         Me.PictureBox1.Location = New System.Drawing.Point(45, 85)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(273, 112)
