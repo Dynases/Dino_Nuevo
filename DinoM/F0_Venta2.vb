@@ -2140,7 +2140,7 @@ Public Class F0_Venta2
         _Fecha = Split(_FechaAct, "-")
         _FechaPar = "Cochabamba, " + _Fecha(0).Trim + " De " + _Meses(_Fecha(1) - 1).Trim + " Del " + _Fecha(2).Trim
 
-        Dim objrep As New R_NotaVenta_MedioOficio
+        Dim objrep As New R_NotaVenta_Carta
         objrep.SetDataSource(dt)
         objrep.SetParameterValue("Literal", li)
         objrep.SetParameterValue("TipoVenta", IIf(swTipoVenta.Value = True, "CONTADO", "CRÉDITO"))

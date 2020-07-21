@@ -18,7 +18,7 @@ Imports System
 Imports System.ComponentModel
 
 
-Public Class R_NotaVenta_MedioOficio
+Public Class R_NotaVenta_Carta
     Inherits ReportClass
     
     Public Sub New()
@@ -27,7 +27,7 @@ Public Class R_NotaVenta_MedioOficio
     
     Public Overrides Property ResourceName() As String
         Get
-            Return "R_NotaVenta_MedioOficio.rpt"
+            Return "R_NotaVenta_Carta.rpt"
         End Get
         Set
             'Do nothing
@@ -45,7 +45,7 @@ Public Class R_NotaVenta_MedioOficio
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "DinoM.R_NotaVenta_MedioOficio.rpt"
+            Return "DinoM.R_NotaVenta_Carta.rpt"
         End Get
         Set
             'Do nothing
@@ -126,7 +126,7 @@ Public Class R_NotaVenta_MedioOficio
 End Class
 
 <System.Drawing.ToolboxBitmapAttribute(GetType(CrystalDecisions.[Shared].ExportOptions), "report.bmp")>  _
-Public Class CachedR_NotaVenta_MedioOficio
+Public Class CachedR_NotaVenta_Carta
     Inherits Component
     Implements ICachedReport
     
@@ -168,7 +168,7 @@ Public Class CachedR_NotaVenta_MedioOficio
     End Property
     
     Public Overridable Function CreateReport() As CrystalDecisions.CrystalReports.Engine.ReportDocument Implements CrystalDecisions.ReportSource.ICachedReport.CreateReport
-        Dim rpt As R_NotaVenta_MedioOficio = New R_NotaVenta_MedioOficio()
+        Dim rpt As R_NotaVenta_Carta = New R_NotaVenta_Carta()
         rpt.Site = Me.Site
         Return rpt
     End Function

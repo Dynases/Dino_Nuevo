@@ -297,10 +297,32 @@ Public Class F0_MCompras
         End If
 
         LblPaginacion.Text = Str(grCompra.Row + 1) + "/" + grCompra.RowCount.ToString
+
         If swEmision.Value = True Then
             _prCargarFacturacion(tbCodigo.Text)
-        End If
 
+            lbNFactura.Text = "Nro. Factura:"
+            GroupPanelFactura2.Text = "DATOS FACTURACIÓN"
+            lbNAutoriz.Visible = True
+            tbNAutorizacion.Visible = True
+            lbCodCtrl.Visible = True
+            tbCodControl.Visible = True
+            lbNDui.Visible = True
+            tbNDui.Visible = True
+            lbSACF.Visible = True
+            tbSACF.Visible = True
+        Else
+            lbNFactura.Text = "Nro. Documento:"
+            GroupPanelFactura2.Text = "DOCUMENTO"
+            lbNAutoriz.Visible = False
+            tbNAutorizacion.Visible = False
+            lbCodCtrl.Visible = False
+            tbCodControl.Visible = False
+            lbNDui.Visible = False
+            tbNDui.Visible = False
+            lbSACF.Visible = False
+            tbSACF.Visible = False
+        End If
 
     End Sub
 
