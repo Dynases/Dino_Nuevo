@@ -34,6 +34,8 @@ Public Class P_Principal
         'iniciar login de usuario
         _prLogin()
 
+        Me.Icon = Icon.ExtractAssociatedIcon(gs_CarpetaRaiz + "\LogoIco.ico")
+
     End Sub
     Private Sub _prCambiarStyle()
         'tratar de cambiar estilo
