@@ -156,6 +156,7 @@ Public Class F0_Venta2
         End If
 
         tbSubTotal.IsInputReadOnly = True
+        tbMdesc.IsInputReadOnly = True
         tbIce.IsInputReadOnly = True
         tbPrueba.IsInputReadOnly = True
         tbMontoBs.IsInputReadOnly = True
@@ -207,6 +208,7 @@ Public Class F0_Venta2
         tbMontoBs.IsInputReadOnly = False
         tbMontoDolar.IsInputReadOnly = False
         tbMontoTarej.IsInputReadOnly = False
+        tbMdesc.IsInputReadOnly = False
         'txtCambio1.IsInputReadOnly = False
         'txtMontoPagado1.IsInputReadOnly = False
 
@@ -1176,8 +1178,11 @@ Public Class F0_Venta2
         Dim montodesc As Double = tbMdesc.Value
         Dim pordesc As Double = ((montodesc * 100) / grdetalle.GetTotal(grdetalle.RootTable.Columns("tbtotdesc"), AggregateFunction.Sum))
         tbPdesc.Value = pordesc
-        Dim total = Convert.ToDouble(Format(grdetalle.GetTotal(grdetalle.RootTable.Columns("tbtotdesc"), AggregateFunction.Sum), "0.00"))
-        tbTotalBs.Text = total.ToString()
+        Dim subtotal = Convert.ToDouble(Format(grdetalle.GetTotal(grdetalle.RootTable.Columns("tbtotdesc"), AggregateFunction.Sum), "0.00"))
+        tbSubTotal.Value = subtotal
+
+        'tbTotalBs.Text = total.ToString()
+        tbTotalBs.Text = tbSubTotal.Value - montodesc
         montoDo = Convert.ToDecimal(tbTotalBs.Text) / IIf(cbCambioDolar.Text = "", 1, Convert.ToDecimal(cbCambioDolar.Text))
         tbTotalDo.Text = Format(montoDo, "0.00")
         tbIce.Value = grdetalle.GetTotal(grdetalle.RootTable.Columns("tbptot2"), AggregateFunction.Sum) * (gi_ICE / 100)
@@ -2091,7 +2096,8 @@ Public Class F0_Venta2
         If (gb_DetalleProducto) Then
             ponerDescripcionProducto(dt)
         End If
-        Dim total As Decimal = dt.Compute("SUM(Total)", "")
+        'Dim total As Decimal = dt.Compute("SUM(Total)", "")
+        Dim total As Decimal = Convert.ToDecimal(tbTotalBs.Text)
         Dim totald As Double = (total / 6.96)
         Dim fechaven As String = dt.Rows(0).Item("fechaventa")
         If Not IsNothing(P_Global.Visualizador) Then
@@ -2146,6 +2152,8 @@ Public Class F0_Venta2
         objrep.SetParameterValue("TipoVenta", IIf(swTipoVenta.Value = True, "CONTADO", "CRÉDITO"))
         objrep.SetParameterValue("Logo", gb_UbiLogo)
         objrep.SetParameterValue("NotaAdicional1", gb_NotaAdicional)
+        objrep.SetParameterValue("Descuento", tbMdesc.Value)
+        objrep.SetParameterValue("Total", total)
         'objrep.SetParameterValue("usuario", gs_user)
 
 
@@ -3175,9 +3183,9 @@ salirIf:
         Try
             If (tbMdesc.Focused) Then
 
-                Dim total As Double = Convert.ToDouble(tbTotalBs.Text)
+                Dim subtotal As Double = Convert.ToDouble(tbSubTotal.Value)
                 If (Not tbMdesc.Text = String.Empty And Not tbMdesc.Text = String.Empty) Then
-                    If (tbMdesc.Value = 0 Or tbMdesc.Value > total) Then
+                    If (tbMdesc.Value = 0 Or tbMdesc.Value > subtotal) Then
                         tbMdesc.Value = 0
                         tbPdesc.Value = 0
                         _prCalcularPrecioTotal()
@@ -3187,9 +3195,9 @@ salirIf:
                         tbPdesc.Value = pordesc
                         tbIce.Value = grdetalle.GetTotal(grdetalle.RootTable.Columns("tbptot2"), AggregateFunction.Sum) * (gi_ICE / 100)
                         If (gb_FacturaIncluirICE = True) Then
-                            tbPrueba.Value = grdetalle.GetTotal(grdetalle.RootTable.Columns("tbtotdesc"), AggregateFunction.Sum) - montodesc + tbIce.Value
+                            tbTotalBs.Text = grdetalle.GetTotal(grdetalle.RootTable.Columns("tbtotdesc"), AggregateFunction.Sum) - montodesc + tbIce.Value
                         Else
-                            tbPrueba.Value = grdetalle.GetTotal(grdetalle.RootTable.Columns("tbtotdesc"), AggregateFunction.Sum) - montodesc
+                            tbTotalBs.Text = grdetalle.GetTotal(grdetalle.RootTable.Columns("tbtotdesc"), AggregateFunction.Sum) - montodesc
                         End If
 
                     End If

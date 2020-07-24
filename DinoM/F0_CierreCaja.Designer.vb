@@ -58,24 +58,24 @@ Partial Class F0_CierreCaja
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.GroupPanel5 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.tbMontoI = New DevComponents.Editors.DoubleInput()
         Me.LabelX16 = New DevComponents.DotNetBar.LabelX()
+        Me.tbMontoI = New DevComponents.Editors.DoubleInput()
+        Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
+        Me.tbTEfectivo = New DevComponents.Editors.DoubleInput()
         Me.tbTTarjeta = New DevComponents.Editors.DoubleInput()
+        Me.LabelX9 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX11 = New DevComponents.DotNetBar.LabelX()
+        Me.tbTDiferencia = New DevComponents.Editors.DoubleInput()
         Me.LabelX7 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX12 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX10 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
+        Me.tbTCredito = New DevComponents.Editors.DoubleInput()
         Me.tbTDeposito = New DevComponents.Editors.DoubleInput()
+        Me.tbTContado = New DevComponents.Editors.DoubleInput()
         Me.tbTotalGral = New DevComponents.Editors.DoubleInput()
         Me.tbTPagos = New DevComponents.Editors.DoubleInput()
-        Me.tbTContado = New DevComponents.Editors.DoubleInput()
-        Me.tbTCredito = New DevComponents.Editors.DoubleInput()
-        Me.LabelX10 = New DevComponents.DotNetBar.LabelX()
-        Me.LabelX12 = New DevComponents.DotNetBar.LabelX()
-        Me.tbTDiferencia = New DevComponents.Editors.DoubleInput()
-        Me.LabelX9 = New DevComponents.DotNetBar.LabelX()
-        Me.tbTEfectivo = New DevComponents.Editors.DoubleInput()
-        Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.SuperTabItem1 = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel2 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.Panel4 = New System.Windows.Forms.Panel()
@@ -119,14 +119,14 @@ Partial Class F0_CierreCaja
         Me.GroupPanel5.SuspendLayout()
         Me.Panel6.SuspendLayout()
         CType(Me.tbMontoI, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tbTEfectivo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbTTarjeta, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tbTDiferencia, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tbTCredito, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbTDeposito, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tbTContado, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbTotalGral, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbTPagos, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbTContado, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbTCredito, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbTDiferencia, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbTEfectivo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabControlPanel2.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.GroupPanel1.SuspendLayout()
@@ -903,6 +903,21 @@ Partial Class F0_CierreCaja
         Me.Panel6.Size = New System.Drawing.Size(389, 342)
         Me.Panel6.TabIndex = 65
         '
+        'LabelX16
+        '
+        Me.LabelX16.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.LabelX16.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX16.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX16.Location = New System.Drawing.Point(23, 38)
+        Me.LabelX16.Name = "LabelX16"
+        Me.LabelX16.Size = New System.Drawing.Size(100, 23)
+        Me.LabelX16.TabIndex = 64
+        Me.LabelX16.Text = "Monto Inicial"
+        '
         'tbMontoI
         '
         Me.tbMontoI.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
@@ -919,20 +934,36 @@ Partial Class F0_CierreCaja
         Me.tbMontoI.Size = New System.Drawing.Size(120, 23)
         Me.tbMontoI.TabIndex = 63
         '
-        'LabelX16
+        'LabelX3
         '
-        Me.LabelX16.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.LabelX16.BackColor = System.Drawing.Color.Transparent
+        Me.LabelX3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.LabelX3.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
-        Me.LabelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX16.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX16.Location = New System.Drawing.Point(23, 38)
-        Me.LabelX16.Name = "LabelX16"
-        Me.LabelX16.Size = New System.Drawing.Size(100, 23)
-        Me.LabelX16.TabIndex = 64
-        Me.LabelX16.Text = "Monto Inicial"
+        Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX3.Location = New System.Drawing.Point(22, 68)
+        Me.LabelX3.Name = "LabelX3"
+        Me.LabelX3.Size = New System.Drawing.Size(120, 23)
+        Me.LabelX3.TabIndex = 60
+        Me.LabelX3.Text = "T. Contado+Tarjeta"
+        '
+        'tbTEfectivo
+        '
+        Me.tbTEfectivo.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        '
+        '
+        '
+        Me.tbTEfectivo.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbTEfectivo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbTEfectivo.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbTEfectivo.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbTEfectivo.Increment = 1.0R
+        Me.tbTEfectivo.Location = New System.Drawing.Point(150, 140)
+        Me.tbTEfectivo.Name = "tbTEfectivo"
+        Me.tbTEfectivo.Size = New System.Drawing.Size(120, 23)
+        Me.tbTEfectivo.TabIndex = 47
         '
         'tbTTarjeta
         '
@@ -950,6 +981,22 @@ Partial Class F0_CierreCaja
         Me.tbTTarjeta.Size = New System.Drawing.Size(120, 23)
         Me.tbTTarjeta.TabIndex = 57
         '
+        'LabelX9
+        '
+        Me.LabelX9.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.LabelX9.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX9.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX9.ForeColor = System.Drawing.Color.DarkCyan
+        Me.LabelX9.Location = New System.Drawing.Point(22, 169)
+        Me.LabelX9.Name = "LabelX9"
+        Me.LabelX9.Size = New System.Drawing.Size(100, 23)
+        Me.LabelX9.TabIndex = 51
+        Me.LabelX9.Text = "Total Depósitos"
+        '
         'LabelX11
         '
         Me.LabelX11.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
@@ -965,6 +1012,22 @@ Partial Class F0_CierreCaja
         Me.LabelX11.TabIndex = 55
         Me.LabelX11.Text = "Total Crédito"
         Me.LabelX11.Visible = False
+        '
+        'tbTDiferencia
+        '
+        Me.tbTDiferencia.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        '
+        '
+        '
+        Me.tbTDiferencia.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbTDiferencia.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbTDiferencia.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbTDiferencia.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbTDiferencia.Increment = 1.0R
+        Me.tbTDiferencia.Location = New System.Drawing.Point(150, 227)
+        Me.tbTDiferencia.Name = "tbTDiferencia"
+        Me.tbTDiferencia.Size = New System.Drawing.Size(120, 23)
+        Me.tbTDiferencia.TabIndex = 53
         '
         'LabelX7
         '
@@ -982,6 +1045,22 @@ Partial Class F0_CierreCaja
         Me.LabelX7.TabIndex = 48
         Me.LabelX7.Text = "Total Cortes"
         '
+        'LabelX12
+        '
+        Me.LabelX12.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.LabelX12.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX12.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX12.ForeColor = System.Drawing.Color.Red
+        Me.LabelX12.Location = New System.Drawing.Point(22, 227)
+        Me.LabelX12.Name = "LabelX12"
+        Me.LabelX12.Size = New System.Drawing.Size(110, 23)
+        Me.LabelX12.TabIndex = 56
+        Me.LabelX12.Text = "Diferencia"
+        '
         'LabelX5
         '
         Me.LabelX5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
@@ -997,6 +1076,22 @@ Partial Class F0_CierreCaja
         Me.LabelX5.TabIndex = 62
         Me.LabelX5.Text = "Total Pagos"
         Me.LabelX5.Visible = False
+        '
+        'LabelX10
+        '
+        Me.LabelX10.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.LabelX10.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX10.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX10.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.LabelX10.Location = New System.Drawing.Point(22, 95)
+        Me.LabelX10.Name = "LabelX10"
+        Me.LabelX10.Size = New System.Drawing.Size(110, 23)
+        Me.LabelX10.TabIndex = 52
+        Me.LabelX10.Text = "TOTAL CAJA"
         '
         'LabelX2
         '
@@ -1014,6 +1109,23 @@ Partial Class F0_CierreCaja
         Me.LabelX2.TabIndex = 58
         Me.LabelX2.Text = "Total Tarjeta"
         '
+        'tbTCredito
+        '
+        Me.tbTCredito.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        '
+        '
+        '
+        Me.tbTCredito.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbTCredito.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbTCredito.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbTCredito.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbTCredito.Increment = 1.0R
+        Me.tbTCredito.Location = New System.Drawing.Point(150, 268)
+        Me.tbTCredito.Name = "tbTCredito"
+        Me.tbTCredito.Size = New System.Drawing.Size(120, 23)
+        Me.tbTCredito.TabIndex = 54
+        Me.tbTCredito.Visible = False
+        '
         'tbTDeposito
         '
         Me.tbTDeposito.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
@@ -1029,6 +1141,22 @@ Partial Class F0_CierreCaja
         Me.tbTDeposito.Name = "tbTDeposito"
         Me.tbTDeposito.Size = New System.Drawing.Size(120, 23)
         Me.tbTDeposito.TabIndex = 50
+        '
+        'tbTContado
+        '
+        Me.tbTContado.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        '
+        '
+        '
+        Me.tbTContado.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbTContado.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbTContado.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbTContado.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbTContado.Increment = 1.0R
+        Me.tbTContado.Location = New System.Drawing.Point(150, 69)
+        Me.tbTContado.Name = "tbTContado"
+        Me.tbTContado.Size = New System.Drawing.Size(120, 23)
+        Me.tbTContado.TabIndex = 59
         '
         'tbTotalGral
         '
@@ -1062,134 +1190,6 @@ Partial Class F0_CierreCaja
         Me.tbTPagos.Size = New System.Drawing.Size(120, 23)
         Me.tbTPagos.TabIndex = 61
         Me.tbTPagos.Visible = False
-        '
-        'tbTContado
-        '
-        Me.tbTContado.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        '
-        '
-        '
-        Me.tbTContado.BackgroundStyle.Class = "DateTimeInputBackground"
-        Me.tbTContado.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbTContado.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.tbTContado.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbTContado.Increment = 1.0R
-        Me.tbTContado.Location = New System.Drawing.Point(150, 69)
-        Me.tbTContado.Name = "tbTContado"
-        Me.tbTContado.Size = New System.Drawing.Size(120, 23)
-        Me.tbTContado.TabIndex = 59
-        '
-        'tbTCredito
-        '
-        Me.tbTCredito.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        '
-        '
-        '
-        Me.tbTCredito.BackgroundStyle.Class = "DateTimeInputBackground"
-        Me.tbTCredito.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbTCredito.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.tbTCredito.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbTCredito.Increment = 1.0R
-        Me.tbTCredito.Location = New System.Drawing.Point(150, 268)
-        Me.tbTCredito.Name = "tbTCredito"
-        Me.tbTCredito.Size = New System.Drawing.Size(120, 23)
-        Me.tbTCredito.TabIndex = 54
-        Me.tbTCredito.Visible = False
-        '
-        'LabelX10
-        '
-        Me.LabelX10.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.LabelX10.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX10.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX10.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.LabelX10.Location = New System.Drawing.Point(22, 95)
-        Me.LabelX10.Name = "LabelX10"
-        Me.LabelX10.Size = New System.Drawing.Size(110, 23)
-        Me.LabelX10.TabIndex = 52
-        Me.LabelX10.Text = "TOTAL CAJA"
-        '
-        'LabelX12
-        '
-        Me.LabelX12.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.LabelX12.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX12.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX12.ForeColor = System.Drawing.Color.Red
-        Me.LabelX12.Location = New System.Drawing.Point(22, 227)
-        Me.LabelX12.Name = "LabelX12"
-        Me.LabelX12.Size = New System.Drawing.Size(110, 23)
-        Me.LabelX12.TabIndex = 56
-        Me.LabelX12.Text = "Diferencia"
-        '
-        'tbTDiferencia
-        '
-        Me.tbTDiferencia.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        '
-        '
-        '
-        Me.tbTDiferencia.BackgroundStyle.Class = "DateTimeInputBackground"
-        Me.tbTDiferencia.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbTDiferencia.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.tbTDiferencia.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbTDiferencia.Increment = 1.0R
-        Me.tbTDiferencia.Location = New System.Drawing.Point(150, 227)
-        Me.tbTDiferencia.Name = "tbTDiferencia"
-        Me.tbTDiferencia.Size = New System.Drawing.Size(120, 23)
-        Me.tbTDiferencia.TabIndex = 53
-        '
-        'LabelX9
-        '
-        Me.LabelX9.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.LabelX9.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX9.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX9.ForeColor = System.Drawing.Color.DarkCyan
-        Me.LabelX9.Location = New System.Drawing.Point(22, 169)
-        Me.LabelX9.Name = "LabelX9"
-        Me.LabelX9.Size = New System.Drawing.Size(100, 23)
-        Me.LabelX9.TabIndex = 51
-        Me.LabelX9.Text = "Total Depósitos"
-        '
-        'tbTEfectivo
-        '
-        Me.tbTEfectivo.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        '
-        '
-        '
-        Me.tbTEfectivo.BackgroundStyle.Class = "DateTimeInputBackground"
-        Me.tbTEfectivo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbTEfectivo.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.tbTEfectivo.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbTEfectivo.Increment = 1.0R
-        Me.tbTEfectivo.Location = New System.Drawing.Point(150, 140)
-        Me.tbTEfectivo.Name = "tbTEfectivo"
-        Me.tbTEfectivo.Size = New System.Drawing.Size(120, 23)
-        Me.tbTEfectivo.TabIndex = 47
-        '
-        'LabelX3
-        '
-        Me.LabelX3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.LabelX3.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX3.Location = New System.Drawing.Point(22, 68)
-        Me.LabelX3.Name = "LabelX3"
-        Me.LabelX3.Size = New System.Drawing.Size(120, 23)
-        Me.LabelX3.TabIndex = 60
-        Me.LabelX3.Text = "T. Contado+Tarjeta"
         '
         'SuperTabItem1
         '
@@ -1322,14 +1322,14 @@ Partial Class F0_CierreCaja
         Me.GroupPanel5.ResumeLayout(False)
         Me.Panel6.ResumeLayout(False)
         CType(Me.tbMontoI, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tbTEfectivo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbTTarjeta, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tbTDiferencia, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tbTCredito, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbTDeposito, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tbTContado, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbTotalGral, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbTPagos, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tbTContado, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tbTCredito, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tbTDiferencia, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tbTEfectivo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SuperTabControlPanel2.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)
         Me.GroupPanel1.ResumeLayout(False)
