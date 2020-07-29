@@ -45,6 +45,10 @@ Partial Class F0_MCompras
         Me.PanelContentSup = New System.Windows.Forms.Panel()
         Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.lbTipoCambio = New DevComponents.DotNetBar.LabelX()
+        Me.tbTipoCambio = New DevComponents.Editors.DoubleInput()
+        Me.LabelX14 = New DevComponents.DotNetBar.LabelX()
+        Me.swMoneda = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.swRetencion = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.LabelX13 = New DevComponents.DotNetBar.LabelX()
         Me.swConsigna = New DevComponents.DotNetBar.Controls.SwitchButton()
@@ -88,10 +92,6 @@ Partial Class F0_MCompras
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.grCompra = New Janus.Windows.GridEX.GridEX()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.LabelX14 = New DevComponents.DotNetBar.LabelX()
-        Me.swMoneda = New DevComponents.DotNetBar.Controls.SwitchButton()
-        Me.tbTipoCambio = New DevComponents.Editors.DoubleInput()
-        Me.lbTipoCambio = New DevComponents.DotNetBar.LabelX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -124,6 +124,7 @@ Partial Class F0_MCompras
         Me.PanelContentSup.SuspendLayout()
         Me.GroupPanel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
+        CType(Me.tbTipoCambio, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupPanelFactura2.SuspendLayout()
         CType(Me.cbSucursal, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbFechaVenc, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -134,7 +135,6 @@ Partial Class F0_MCompras
         Me.GroupPanel2.SuspendLayout()
         Me.Panel6.SuspendLayout()
         CType(Me.grCompra, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbTipoCambio, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelSuperior
@@ -215,6 +215,9 @@ Partial Class F0_MCompras
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelUsuario, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelSuperior, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.Panel1, 0)
+        '
+        'btnImprimir
+        '
         '
         'btnUltimo
         '
@@ -663,6 +666,71 @@ Partial Class F0_MCompras
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1311, 207)
         Me.Panel2.TabIndex = 234
+        '
+        'lbTipoCambio
+        '
+        Me.lbTipoCambio.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.lbTipoCambio.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.lbTipoCambio.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbTipoCambio.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.lbTipoCambio.Location = New System.Drawing.Point(415, 83)
+        Me.lbTipoCambio.Name = "lbTipoCambio"
+        Me.lbTipoCambio.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.lbTipoCambio.Size = New System.Drawing.Size(105, 23)
+        Me.lbTipoCambio.TabIndex = 675
+        Me.lbTipoCambio.Text = "Tipo de Cambio:"
+        '
+        'tbTipoCambio
+        '
+        '
+        '
+        '
+        Me.tbTipoCambio.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbTipoCambio.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbTipoCambio.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbTipoCambio.Increment = 1.0R
+        Me.tbTipoCambio.Location = New System.Drawing.Point(592, 83)
+        Me.tbTipoCambio.Name = "tbTipoCambio"
+        Me.tbTipoCambio.Size = New System.Drawing.Size(132, 22)
+        Me.tbTipoCambio.TabIndex = 674
+        '
+        'LabelX14
+        '
+        Me.LabelX14.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX14.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX14.Location = New System.Drawing.Point(415, 57)
+        Me.LabelX14.Name = "LabelX14"
+        Me.LabelX14.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX14.Size = New System.Drawing.Size(90, 23)
+        Me.LabelX14.TabIndex = 673
+        Me.LabelX14.Text = "Tipo Moneda:"
+        '
+        'swMoneda
+        '
+        '
+        '
+        '
+        Me.swMoneda.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.swMoneda.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.swMoneda.Location = New System.Drawing.Point(592, 57)
+        Me.swMoneda.Name = "swMoneda"
+        Me.swMoneda.OffBackColor = System.Drawing.Color.LawnGreen
+        Me.swMoneda.OffText = "DOLAR"
+        Me.swMoneda.OnBackColor = System.Drawing.Color.Gold
+        Me.swMoneda.OnText = "BOLIVIANO"
+        Me.swMoneda.Size = New System.Drawing.Size(120, 22)
+        Me.swMoneda.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.swMoneda.TabIndex = 672
+        Me.swMoneda.Value = True
+        Me.swMoneda.ValueObject = "Y"
         '
         'swRetencion
         '
@@ -1456,71 +1524,6 @@ Partial Class F0_MCompras
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
         '
-        'LabelX14
-        '
-        Me.LabelX14.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX14.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX14.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX14.Location = New System.Drawing.Point(415, 57)
-        Me.LabelX14.Name = "LabelX14"
-        Me.LabelX14.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX14.Size = New System.Drawing.Size(90, 23)
-        Me.LabelX14.TabIndex = 673
-        Me.LabelX14.Text = "Tipo Moneda:"
-        '
-        'swMoneda
-        '
-        '
-        '
-        '
-        Me.swMoneda.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.swMoneda.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.swMoneda.Location = New System.Drawing.Point(592, 57)
-        Me.swMoneda.Name = "swMoneda"
-        Me.swMoneda.OffBackColor = System.Drawing.Color.LawnGreen
-        Me.swMoneda.OffText = "DOLAR"
-        Me.swMoneda.OnBackColor = System.Drawing.Color.Gold
-        Me.swMoneda.OnText = "BOLIVIANOS"
-        Me.swMoneda.Size = New System.Drawing.Size(120, 22)
-        Me.swMoneda.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.swMoneda.TabIndex = 672
-        Me.swMoneda.Value = True
-        Me.swMoneda.ValueObject = "Y"
-        '
-        'tbTipoCambio
-        '
-        '
-        '
-        '
-        Me.tbTipoCambio.BackgroundStyle.Class = "DateTimeInputBackground"
-        Me.tbTipoCambio.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbTipoCambio.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.tbTipoCambio.Increment = 1.0R
-        Me.tbTipoCambio.Location = New System.Drawing.Point(592, 83)
-        Me.tbTipoCambio.Name = "tbTipoCambio"
-        Me.tbTipoCambio.Size = New System.Drawing.Size(132, 22)
-        Me.tbTipoCambio.TabIndex = 674
-        '
-        'lbTipoCambio
-        '
-        Me.lbTipoCambio.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.lbTipoCambio.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.lbTipoCambio.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbTipoCambio.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.lbTipoCambio.Location = New System.Drawing.Point(415, 83)
-        Me.lbTipoCambio.Name = "lbTipoCambio"
-        Me.lbTipoCambio.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.lbTipoCambio.Size = New System.Drawing.Size(105, 23)
-        Me.lbTipoCambio.TabIndex = 675
-        Me.lbTipoCambio.Text = "Tipo de Cambio:"
-        '
         'F0_MCompras
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1565,6 +1568,7 @@ Partial Class F0_MCompras
         Me.GroupPanel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
+        CType(Me.tbTipoCambio, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupPanelFactura2.ResumeLayout(False)
         CType(Me.cbSucursal, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbFechaVenc, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1575,7 +1579,6 @@ Partial Class F0_MCompras
         Me.GroupPanel2.ResumeLayout(False)
         Me.Panel6.ResumeLayout(False)
         CType(Me.grCompra, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tbTipoCambio, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

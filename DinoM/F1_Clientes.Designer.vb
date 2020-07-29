@@ -559,7 +559,7 @@ Partial Class F1_Clientes
         Me.LabelX19.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX19.Size = New System.Drawing.Size(113, 23)
         Me.LabelX19.TabIndex = 238
-        Me.LabelX19.Text = "Razon Social:"
+        Me.LabelX19.Text = "Razon Social(*):"
         '
         'tbRazonSocial
         '
@@ -1245,7 +1245,7 @@ Partial Class F1_Clientes
         Me.LabelX12.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX12.Size = New System.Drawing.Size(113, 23)
         Me.LabelX12.TabIndex = 240
-        Me.LabelX12.Text = "Nit:"
+        Me.LabelX12.Text = "Nit/CI Factura:"
         '
         'tbNombFac
         '

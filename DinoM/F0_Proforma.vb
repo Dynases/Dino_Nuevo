@@ -290,21 +290,21 @@ Public Class F0_Proforma
         With grdetalle.RootTable.Columns("pbptot")
             .Width = 100
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-            .Visible = True
+            .Visible = False
             .FormatString = "0.00"
             .Caption = "Sub Total".ToUpper
         End With
         With grdetalle.RootTable.Columns("pbporc")
             .Width = 100
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-            .Visible = True
+            .Visible = False
             .FormatString = "0.00"
             .Caption = "P.Desc(%)".ToUpper
         End With
         With grdetalle.RootTable.Columns("pbdesc")
             .Width = 100
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-            .Visible = True
+            .Visible = False
             .FormatString = "0.00"
             .Caption = "M.Desc".ToUpper
         End With
@@ -1073,7 +1073,8 @@ Public Class F0_Proforma
             'Habilitar solo las columnas de Precio, %, Monto y Observación
             If (e.Column.Index = grdetalle.RootTable.Columns("pbcmin").Index Or
                 e.Column.Index = grdetalle.RootTable.Columns("pbporc").Index Or
-                e.Column.Index = grdetalle.RootTable.Columns("pbdesc").Index) Then
+                e.Column.Index = grdetalle.RootTable.Columns("pbdesc").Index Or
+                e.Column.Index = grdetalle.RootTable.Columns("pbpbas").Index) Then
                 e.Cancel = False
             Else
                 e.Cancel = True
@@ -1199,7 +1200,7 @@ salirIf:
         End If
     End Sub
     Private Sub grdetalle_CellValueChanged(sender As Object, e As ColumnActionEventArgs) Handles grdetalle.CellValueChanged
-        If (e.Column.Index = grdetalle.RootTable.Columns("pbcmin").Index) Then
+        If (e.Column.Index = grdetalle.RootTable.Columns("pbcmin").Index) Or (e.Column.Index = grdetalle.RootTable.Columns("pbpbas").Index) Then
             If (Not IsNumeric(grdetalle.GetValue("pbcmin")) Or grdetalle.GetValue("pbcmin").ToString = String.Empty) Then
 
                 'grDetalle.GetRow(rowIndex).Cells("cant").Value = 1
@@ -1631,13 +1632,14 @@ salirIf:
 
         P_Global.Visualizador = New Visualizador
 
-        Dim objrep As New R_Proforma
+        Dim objrep As New R_Proforma2
         '' GenerarNro(_dt)
         ''objrep.SetDataSource(Dt1Kardex)
         objrep.SetDataSource(dt)
         objrep.SetParameterValue("usuario", gs_user)
+        objrep.SetParameterValue("Logo", gb_UbiLogo)
         P_Global.Visualizador.CrGeneral.ReportSource = objrep 'Comentar
-        P_Global.Visualizador.Show() 'Comentar
+        P_Global.Visualizador.ShowDialog() 'Comentar
         P_Global.Visualizador.BringToFront() 'Comentar
 
 

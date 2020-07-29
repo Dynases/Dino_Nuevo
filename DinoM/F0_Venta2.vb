@@ -1473,6 +1473,7 @@ Public Class F0_Venta2
                 If (gb_FacturaEmite) Then
                     If tbNit.Text <> String.Empty Then
                         P_fnGenerarFactura(numi)
+                        _prImiprimirNotaVenta(numi)
                     Else
                         _prImiprimirNotaVenta(numi)
                     End If
@@ -2389,10 +2390,8 @@ Public Class F0_Venta2
             If e.KeyData = Keys.Control + Keys.Enter Then
 
                 Dim dt As DataTable
-
-                dt = L_fnListarClientes()
-                '              a.ydnumi, a.ydcod, a.yddesc, a.yddctnum, a.yddirec
-                ',a.ydtelf1 ,a.ydfnac 
+                'dt = L_fnListarClientes()
+                dt = L_fnListarClientesVenta()
 
                 Dim listEstCeldas As New List(Of Modelo.Celda)
                 listEstCeldas.Add(New Modelo.Celda("ydnumi,", True, "ID", 50))
@@ -2406,6 +2405,8 @@ Public Class F0_Venta2
                 listEstCeldas.Add(New Modelo.Celda("ydnumivend,", False, "ID", 50))
                 listEstCeldas.Add(New Modelo.Celda("vendedor,", False, "ID", 50))
                 listEstCeldas.Add(New Modelo.Celda("yddias", False, "CRED", 50))
+                listEstCeldas.Add(New Modelo.Celda("ydnomfac", False, "Nombre Factura", 50))
+                listEstCeldas.Add(New Modelo.Celda("ydnit", False, "Nit/CI", 50))
                 Dim ef = New Efecto
                 ef.tipo = 3
                 ef.dt = dt
@@ -2423,6 +2424,8 @@ Public Class F0_Venta2
                     _CodCliente = Row.Cells("ydnumi").Value
                     tbCliente.Text = Row.Cells("ydrazonsocial").Value
                     _dias = Row.Cells("yddias").Value
+                    tbNit.Text = Row.Cells("ydnit").Value
+                    TbNombre1.Text = Row.Cells("ydnomfac").Value
 
                     Dim numiVendedor As Integer = IIf(IsDBNull(Row.Cells("ydnumivend").Value), 0, Row.Cells("ydnumivend").Value)
                     If (numiVendedor > 0) Then
@@ -3478,6 +3481,7 @@ salirIf:
                         Exit Sub
                     End If
                     ReimprimirFactura(tbCodigo.Text, True, True)
+                    _prImiprimirNotaVenta(tbCodigo.Text)
                 Else
                     _prImiprimirNotaVenta(tbCodigo.Text)
                 End If

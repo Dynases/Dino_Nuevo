@@ -428,7 +428,7 @@ Public Class P_Principal
         'tab3.Icon = ico
 
         Dim frm As New F1_Proveedor
-        'frm._Tipo = 3
+        frm._Tipo = 3
         frm._nameButton = btComProveedor.Name
         frm._modulo = FP_COMPRAS
         frm.Show()

@@ -335,7 +335,7 @@ Public Class F0_CierreCaja
             With Dgv_VentasPagos.RootTable.Columns("pagos")
                 .Caption = "PAGOS"
                 .Width = 120
-                .Visible = False
+                .Visible = True
                 .FormatString = "0.00"
                 .AggregateFunction = AggregateFunction.Sum
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -431,7 +431,7 @@ Public Class F0_CierreCaja
             With Dgv_VentasPagos.RootTable.Columns("pagos")
                 .Caption = "PAGOS"
                 .Width = 120
-                .Visible = False
+                .Visible = True
                 .FormatString = "0.00"
                 .AggregateFunction = AggregateFunction.Sum
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -910,6 +910,7 @@ Public Class F0_CierreCaja
             'Totales
             objrep.SetParameterValue("MInicial", tbMontoI.Text)
             objrep.SetParameterValue("TContadoTarjeta", tbTContado.Text)
+            objrep.SetParameterValue("TPagos", tbTPagos.Text)
             objrep.SetParameterValue("TotalCaja", tbTotalGral.Text)
             objrep.SetParameterValue("TotalCortes", tbTEfectivo.Text)
             objrep.SetParameterValue("TotalDepositos", tbTDeposito.Text)
@@ -1004,9 +1005,10 @@ Public Class F0_CierreCaja
                     tbTCredito.Text = Dgv_VentasPagos.GetTotal(Dgv_VentasPagos.RootTable.Columns("credito"), AggregateFunction.Sum)
                     tbTTarjeta.Text = Dgv_VentasPagos.GetTotal(Dgv_VentasPagos.RootTable.Columns("tarjeta"), AggregateFunction.Sum)
                     tbTContado.Text = Dgv_VentasPagos.GetTotal(Dgv_VentasPagos.RootTable.Columns("totalbs"), AggregateFunction.Sum) - tbTCredito.Text
-
-                    tbTotalGral.Text = tbTContado.Value + tbMontoInicial.Value
                     tbTPagos.Text = Dgv_VentasPagos.GetTotal(Dgv_VentasPagos.RootTable.Columns("pagos"), AggregateFunction.Sum)
+
+                    tbTotalGral.Text = tbMontoInicial.Value + tbTContado.Value + tbTPagos.Value
+
 
                     tbTDeposito.Text = 0
                     tbTEfectivo.Text = 0

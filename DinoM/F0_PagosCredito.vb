@@ -1251,7 +1251,7 @@ Public Class F0_PagosCredito
 
         P_Global.Visualizador = New Visualizador
 
-        Dim objrep As New R_ReporteCobranzas
+        Dim objrep As New R_ReporteCobranzasCarta
         '' GenerarNro(_dt)
         ''objrep.SetDataSource(Dt1Kardex)
         objrep.SetDataSource(dt)

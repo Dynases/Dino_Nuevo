@@ -1540,7 +1540,15 @@ Public Class AccesoLogica
 
         Return _resultado
     End Function
+    Public Shared Function L_fnListarClientesVenta() As DataTable
+        Dim _Tabla As DataTable
 
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 18))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TV001", _listParam)
+
+        Return _Tabla
+    End Function
 #End Region
 
 #Region "TC001 Compras"
@@ -1780,6 +1788,17 @@ Public Class AccesoLogica
             _resultado = False
         End If
         Return _resultado
+    End Function
+    Public Shared Function L_fnNotaCompras(_canumi As Integer) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 12))
+        _listParam.Add(New Datos.DParametro("@canumi", _canumi))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TC001", _listParam)
+
+        Return _Tabla
     End Function
     Public Shared Function L_fnEliminarCategoria(numi As String, ByRef mensaje As String) As Boolean
         Dim _resultado As Boolean

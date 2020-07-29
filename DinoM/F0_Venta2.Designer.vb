@@ -29,6 +29,8 @@ Partial Class F0_Venta2
         Dim cbSucursal_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Me.GroupPanel2 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
+        Me.tbMdesc = New DevComponents.Editors.DoubleInput()
+        Me.tbSubTotal = New DevComponents.Editors.DoubleInput()
         Me.txtMontoPagado1 = New DevComponents.DotNetBar.LabelX()
         Me.txtCambio1 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX22 = New DevComponents.DotNetBar.LabelX()
@@ -111,8 +113,6 @@ Partial Class F0_Venta2
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.btnDuplicar = New DevComponents.DotNetBar.ButtonX()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.tbSubTotal = New DevComponents.Editors.DoubleInput()
-        Me.tbMdesc = New DevComponents.Editors.DoubleInput()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -131,6 +131,8 @@ Partial Class F0_Venta2
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupPanel2.SuspendLayout()
         Me.GroupPanel1.SuspendLayout()
+        CType(Me.tbMdesc, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tbSubTotal, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbCambioDolar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtCambio, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.txtMontoPagado, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -158,8 +160,6 @@ Partial Class F0_Venta2
         Me.GroupPanel3.SuspendLayout()
         Me.Panel6.SuspendLayout()
         CType(Me.grVentas, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbSubTotal, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbMdesc, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PanelSuperior
@@ -406,6 +406,42 @@ Partial Class F0_Venta2
         '
         Me.GroupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.GroupPanel1.TabIndex = 0
+        '
+        'tbMdesc
+        '
+        '
+        '
+        '
+        Me.tbMdesc.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbMdesc.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbMdesc.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbMdesc.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbMdesc.ForeColor = System.Drawing.Color.Black
+        Me.tbMdesc.Increment = 1.0R
+        Me.tbMdesc.Location = New System.Drawing.Point(219, 65)
+        Me.tbMdesc.MinValue = 0R
+        Me.tbMdesc.Name = "tbMdesc"
+        Me.tbMdesc.Size = New System.Drawing.Size(200, 26)
+        Me.tbMdesc.TabIndex = 410
+        Me.tbMdesc.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
+        '
+        'tbSubTotal
+        '
+        '
+        '
+        '
+        Me.tbSubTotal.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbSubTotal.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbSubTotal.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbSubTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbSubTotal.ForeColor = System.Drawing.Color.Black
+        Me.tbSubTotal.Increment = 1.0R
+        Me.tbSubTotal.Location = New System.Drawing.Point(219, 35)
+        Me.tbSubTotal.MinValue = 0R
+        Me.tbSubTotal.Name = "tbSubTotal"
+        Me.tbSubTotal.Size = New System.Drawing.Size(200, 26)
+        Me.tbSubTotal.TabIndex = 409
+        Me.tbSubTotal.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
         '
         'txtMontoPagado1
         '
@@ -1938,42 +1974,6 @@ Partial Class F0_Venta2
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
         '
-        'tbSubTotal
-        '
-        '
-        '
-        '
-        Me.tbSubTotal.BackgroundStyle.Class = "DateTimeInputBackground"
-        Me.tbSubTotal.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbSubTotal.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.tbSubTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbSubTotal.ForeColor = System.Drawing.Color.Black
-        Me.tbSubTotal.Increment = 1.0R
-        Me.tbSubTotal.Location = New System.Drawing.Point(219, 35)
-        Me.tbSubTotal.MinValue = 0R
-        Me.tbSubTotal.Name = "tbSubTotal"
-        Me.tbSubTotal.Size = New System.Drawing.Size(200, 26)
-        Me.tbSubTotal.TabIndex = 409
-        Me.tbSubTotal.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
-        '
-        'tbMdesc
-        '
-        '
-        '
-        '
-        Me.tbMdesc.BackgroundStyle.Class = "DateTimeInputBackground"
-        Me.tbMdesc.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbMdesc.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.tbMdesc.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbMdesc.ForeColor = System.Drawing.Color.Black
-        Me.tbMdesc.Increment = 1.0R
-        Me.tbMdesc.Location = New System.Drawing.Point(219, 65)
-        Me.tbMdesc.MinValue = 0R
-        Me.tbMdesc.Name = "tbMdesc"
-        Me.tbMdesc.Size = New System.Drawing.Size(200, 26)
-        Me.tbMdesc.TabIndex = 410
-        Me.tbMdesc.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
-        '
         'F0_Venta2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2005,6 +2005,8 @@ Partial Class F0_Venta2
         Me.GroupPanel2.ResumeLayout(False)
         Me.GroupPanel1.ResumeLayout(False)
         Me.GroupPanel1.PerformLayout()
+        CType(Me.tbMdesc, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tbSubTotal, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbCambioDolar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtCambio, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.txtMontoPagado, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2034,8 +2036,6 @@ Partial Class F0_Venta2
         Me.GroupPanel3.ResumeLayout(False)
         Me.Panel6.ResumeLayout(False)
         CType(Me.grVentas, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tbSubTotal, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tbMdesc, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

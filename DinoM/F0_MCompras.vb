@@ -1215,6 +1215,45 @@ Public Class F0_MCompras
         End If
     End Sub
 
+    Private Sub P_GenerarReporteCompra()
+        Dim dt As DataTable = L_fnNotaCompras(tbCodigo.Text)
+        'Dim dt2 = L_DatosEmpresa("1")
+        Dim _TotalLi As Decimal
+        Dim _Literal, _TotalDecimal, _TotalDecimal2, moneda As String
+
+        'Literal 
+        _TotalLi = dt.Rows(0).Item("total")
+        _TotalDecimal = _TotalLi - Math.Truncate(_TotalLi)
+        _TotalDecimal2 = CDbl(_TotalDecimal) * 100
+
+        If swMoneda.Value = True Then
+            moneda = "Bolivianos"
+        Else
+            moneda = "Dólares"
+        End If
+
+        _Literal = Facturacion.ConvertirLiteral.A_fnConvertirLiteral(CDbl(_TotalLi) - CDbl(_TotalDecimal)) + "  " + IIf(_TotalDecimal2.Equals("0"), "00", _TotalDecimal2) + "/100 " + moneda
+
+
+        If Not IsNothing(P_Global.Visualizador) Then
+            P_Global.Visualizador.Close()
+        End If
+
+        P_Global.Visualizador = New Visualizador
+
+        Dim objrep As New R_NotaCompra
+        objrep.SetDataSource(dt)
+
+        objrep.SetParameterValue("Literal", _Literal)
+
+        P_Global.Visualizador.CrGeneral.ReportSource = objrep 'Comentar
+        P_Global.Visualizador.ShowDialog() 'Comentar
+        P_Global.Visualizador.BringToFront()
+
+        'P_Global.Visualizador.CRV1.ReportSource = objrep
+        'P_Global.Visualizador.Show()
+        'P_Global.Visualizador.BringToFront()
+    End Sub
 #End Region
 
 
@@ -1911,6 +1950,10 @@ salirIf:
             tbTipoCambio.Visible = True
             tbTipoCambio.Value = 0
         End If
+    End Sub
+
+    Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
+        P_GenerarReporteCompra()
     End Sub
 
 #End Region
