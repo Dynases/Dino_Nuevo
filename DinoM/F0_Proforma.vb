@@ -506,8 +506,8 @@ Public Class F0_Proforma
         End If
         Dim dtname As DataTable = L_fnNameLabel()
         Dim dt As New DataTable
-        dt = L_fnListarProductosSinLoteProforma(cbSucursal.Value, _cliente, CType(grdetalle.DataSource, DataTable))
-        actualizarSaldoSinLote(dt)
+        dt = L_fnListarProductosSinLoteProformaNuevo(cbSucursal.Value, _cliente)
+        'actualizarSaldoSinLote(dt)
         grProductos.DataSource = dt
         grProductos.RetrieveStructure()
         grProductos.AlternatingColors = True
