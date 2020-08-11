@@ -2135,7 +2135,7 @@ Public Class F0_Venta2
             ParEmp4 = dt2.Rows(0).Item("Empresa4").ToString
         End If
 
-        Dim _Ds3 = L_ObtenerRutaImpresora("1") ' Datos de Impresion de Facturación
+        Dim _Ds3 = L_ObtenerRutaImpresora("2") ' Datos de Impresion de Facturación
         If (_Ds3.Tables(0).Rows(0).Item("cbvp")) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
             P_Global.Visualizador = New Visualizador 'Comentar
         End If

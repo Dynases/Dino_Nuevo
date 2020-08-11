@@ -1056,34 +1056,35 @@ Public Class F0_MCompras
     End Function
 
     Public Sub _GuardarNuevo()
+        Try
+            RecuperarDatosTFC001()  'Recupera datos para grabar en la BDDiconDino en la Tabla TFC001
+            Dim res As Boolean = L_fnGrabarCompra("", cbSucursal.Value, tbFechaVenta.Value.ToString("yyyy/MM/dd"),
+                                                  _CodProveedor, IIf(swTipoVenta.Value = True, 1, 0), IIf(swTipoVenta.Value = True,
+                                                  Now.Date.ToString("yyyy/MM/dd"), tbFechaVenc.Value.ToString("yyyy/MM/dd")),
+                                                  IIf(swMoneda.Value = True, 1, 0), tbObservacion.Text, tbMdesc.Value,
+                                                  tbtotal.Value, CType(grdetalle.DataSource, DataTable),
+                                                  _detalleCompras, IIf(swEmision.Value = True, 1, 0),
+                                                  tbNFactura.Text, IIf(swConsigna.Value = True, 1, 0),
+                                                  IIf(swRetencion.Value = True, 1, 0), IIf(swMoneda.Value = True, 1, tbTipoCambio.Value))
+            If res Then
 
-        '_canumi As String, _caalm As Integer, _cafdoc As String, _caTy4prov As Integer, _catven As Integer, _cafvcr As String,
-        '                                   _camon As Integer, _caobs As String,
-        '                                   _cadesc As Double, detalle As DataTable
+                Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
+                ToastNotification.Show(Me, "Código de Compra ".ToUpper + tbCodigo.Text + " Grabado con Exito.".ToUpper,
+                                          img, 2000,
+                                          eToastGlowColor.Green,
+                                          eToastPosition.TopCenter
+                                          )
 
-        RecuperarDatosTFC001()  'Recupera datos para grabar en la BDDiconDino en la Tabla TFC001
-        Dim res As Boolean = L_fnGrabarCompra("", cbSucursal.Value, tbFechaVenta.Value.ToString("yyyy/MM/dd"), _CodProveedor, IIf(swTipoVenta.Value = True, 1, 0), IIf(swTipoVenta.Value = True, Now.Date.ToString("yyyy/MM/dd"), tbFechaVenc.Value.ToString("yyyy/MM/dd")), IIf(swMoneda.Value = True, 1, 0), tbObservacion.Text, tbMdesc.Value, tbtotal.Value, CType(grdetalle.DataSource, DataTable), _detalleCompras, IIf(swEmision.Value = True, 1, 0), tbNFactura.Text, IIf(swConsigna.Value = True, 1, 0), IIf(swRetencion.Value = True, 1, 0), IIf(swMoneda.Value = True, 1, tbTipoCambio.Value))
+                _prCargarCompra()
+                _Limpiar()
+            Else
+                Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
+                ToastNotification.Show(Me, "La Compra no pudo ser insertado".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
 
-
-        If res Then
-
-            Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
-            ToastNotification.Show(Me, "Código de Compra ".ToUpper + tbCodigo.Text + " Grabado con Exito.".ToUpper,
-                                      img, 2000,
-                                      eToastGlowColor.Green,
-                                      eToastPosition.TopCenter
-                                      )
-
-            _prCargarCompra()
-
-            _Limpiar()
-
-        Else
-            Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
-            ToastNotification.Show(Me, "La Compra no pudo ser insertado".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-
-        End If
-
+            End If
+        Catch ex As Exception
+            MostrarMensajeError(ex.Message)
+        End Try
     End Sub
     Public Sub RecuperarDatosTFC001()
         _detalleCompras = L_prCompraComprobanteGeneralPorNumi(-1)
@@ -1279,55 +1280,70 @@ Public Class F0_MCompras
         _prSalir()
 
     End Sub
+    Private Sub MostrarMensajeError(mensaje As String)
+        ToastNotification.Show(Me,
+                               mensaje.ToUpper,
+                               My.Resources.WARNING,
+                               5000,
+                               eToastGlowColor.Red,
+                               eToastPosition.TopCenter)
 
+    End Sub
+    Private Sub MostrarMensajeOk(mensaje As String)
+        ToastNotification.Show(Me,
+                               mensaje.ToUpper,
+                               My.Resources.OK,
+                               5000,
+                               eToastGlowColor.Green,
+                               eToastPosition.TopCenter)
+    End Sub
     Private Sub tbProveedor_KeyDown(sender As Object, e As KeyEventArgs) Handles tbProveedor.KeyDown
-        If (_fnAccesible()) Then
-            If e.KeyData = Keys.Control + Keys.Enter Then
+        Try
+            If (_fnAccesible()) Then
+                If e.KeyData = Keys.Control + Keys.Enter Then
 
-                Dim dt As DataTable
+                    Dim dt As DataTable
 
-                dt = L_fnListarProveedores()
-                '              a.ydnumi, a.ydcod, a.yddesc, a.yddctnum, a.yddirec
-                ',a.ydtelf1 ,a.ydfnac 
+                    dt = L_fnListarProveedores()
+                    '              a.ydnumi, a.ydcod, a.yddesc, a.yddctnum, a.yddirec
+                    ',a.ydtelf1 ,a.ydfnac 
+                    If dt.Rows.Count = 0 Then
+                        Throw New Exception("Lista de proveedores vacia")
+                    End If
+                    Dim listEstCeldas As New List(Of Modelo.Celda)
+                    listEstCeldas.Add(New Modelo.Celda("ydnumi,", True, "COD ORIG.", 90))
+                    listEstCeldas.Add(New Modelo.Celda("ydcod", True, "COD PROV.", 90))
+                    listEstCeldas.Add(New Modelo.Celda("yddesc", True, "NOMBRE", 280))
+                    listEstCeldas.Add(New Modelo.Celda("yddctnum", True, "N. Documento".ToUpper, 150))
+                    listEstCeldas.Add(New Modelo.Celda("yddirec", True, "DIRECCION", 220))
+                    listEstCeldas.Add(New Modelo.Celda("ydtelf1", True, "Telefono".ToUpper, 200))
+                    listEstCeldas.Add(New Modelo.Celda("ydfnac", False, "F.Nacimiento".ToUpper, 150, "MM/dd,YYYY"))
+                    Dim ef = New Efecto
+                    ef.tipo = 3
+                    ef.dt = dt
+                    ef.SeleclCol = 2
+                    ef.listEstCeldas = listEstCeldas
+                    ef.alto = 50
+                    ef.ancho = 350
+                    ef.Context = "Seleccione Proveedor".ToUpper
+                    ef.ShowDialog()
+                    Dim bandera As Boolean = False
+                    bandera = ef.band
+                    If (bandera = True) Then
+                        Dim Row As Janus.Windows.GridEX.GridEXRow = ef.Row
 
-                Dim listEstCeldas As New List(Of Modelo.Celda)
-                listEstCeldas.Add(New Modelo.Celda("ydnumi,", True, "COD ORIG.", 90))
-                listEstCeldas.Add(New Modelo.Celda("ydcod", True, "COD PROV.", 90))
-                listEstCeldas.Add(New Modelo.Celda("yddesc", True, "NOMBRE", 280))
-                listEstCeldas.Add(New Modelo.Celda("yddctnum", True, "N. Documento".ToUpper, 150))
-                listEstCeldas.Add(New Modelo.Celda("yddirec", True, "DIRECCION", 220))
-                listEstCeldas.Add(New Modelo.Celda("ydtelf1", True, "Telefono".ToUpper, 200))
-                listEstCeldas.Add(New Modelo.Celda("ydfnac", False, "F.Nacimiento".ToUpper, 150, "MM/dd,YYYY"))
-                Dim ef = New Efecto
-                ef.tipo = 3
-                ef.dt = dt
-                ef.SeleclCol = 2
-                ef.listEstCeldas = listEstCeldas
-                ef.alto = 50
-                ef.ancho = 350
-                ef.Context = "Seleccione Proveedor".ToUpper
-                ef.ShowDialog()
-                Dim bandera As Boolean = False
-                bandera = ef.band
-                If (bandera = True) Then
-                    Dim Row As Janus.Windows.GridEX.GridEXRow = ef.Row
-
-                    _CodProveedor = Row.Cells("ydnumi").Value
-                    tbProveedor.Text = Row.Cells("yddesc").Value
-                    'tbCodProv.Text = (Row.Cells("ydnumi").Value + " ' - '" + Row.Cells("ydcod").Value).ToString
-                    tbCodProv.Text = Row.Cells("ydnumi").Text + "-" + Row.Cells("ydcod").Text
-                    tbNitProv.Text = Row.Cells("yddctnum").Value
-                    tbObservacion.Focus()
-
+                        _CodProveedor = Row.Cells("ydnumi").Value
+                        tbProveedor.Text = Row.Cells("yddesc").Value
+                        'tbCodProv.Text = (Row.Cells("ydnumi").Value + " ' - '" + Row.Cells("ydcod").Value).ToString
+                        tbCodProv.Text = Row.Cells("ydnumi").Text + "-" + Row.Cells("ydcod").Text
+                        tbNitProv.Text = Row.Cells("yddctnum").Value
+                        tbObservacion.Focus()
+                    End If
                 End If
-
             End If
-
-        End If
-
-
-
-
+        Catch ex As Exception
+            MostrarMensajeError(ex.Message)
+        End Try
     End Sub
 
     Private Sub swTipoVenta_ValueChanged(sender As Object, e As EventArgs) Handles swTipoVenta.ValueChanged
