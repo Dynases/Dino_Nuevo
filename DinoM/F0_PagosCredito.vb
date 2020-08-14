@@ -34,7 +34,7 @@ Public Class F0_PagosCredito
         'L_prAbrirConexion(gs_Ip, gs_UsuarioSql, gs_ClaveSql, gs_NombreBD)
         _prCargarComboLibreria(cbbanco, 6, 1)
 
-        Me.WindowState = FormWindowState.Maximized
+        'Me.WindowState = FormWindowState.Maximized
         _prAsignarPermisos()
         Me.Text = "NOTAS DE COBRANZAS"
         Dim blah As New Bitmap(New Bitmap(My.Resources.cobro), 20, 20)

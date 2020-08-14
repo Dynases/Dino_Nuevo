@@ -40,7 +40,7 @@ Public Class PR_StockActualProductosLotes
     Private Sub PR_StockActual_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'L_prAbrirConexion()
 
-        Me.WindowState = FormWindowState.Maximized
+        'Me.WindowState = FormWindowState.Maximized
         Me.Text = pTitulo
         _prCargarReporte()
     End Sub

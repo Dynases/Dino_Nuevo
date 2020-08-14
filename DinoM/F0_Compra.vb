@@ -15,7 +15,7 @@ Imports System.Drawing.Text
 Imports System.Reflection
 Imports System.Runtime.InteropServices
 Public Class F0_Compra
-
+    Dim _Inter As Integer = 0
 
 #Region "Variables Globales"
     Dim _CodProveedor As Integer = 0
@@ -32,7 +32,7 @@ Public Class F0_Compra
         'L_prAbrirConexion(gs_Ip, gs_UsuarioSql, gs_ClaveSql, gs_NombreBD)
         _prCargarComboLibreriaSucursal(cbSucursal)
         _prObtenerPorcentajeUtilidad()
-        Me.WindowState = FormWindowState.Maximized
+        ' Me.WindowState = FormWindowState.Maximized
         _prCargarCompra()
         _prInhabiliitar()
         grCompra.Focus()
@@ -725,7 +725,7 @@ Public Class F0_Compra
     End Sub
     Public Function _ValidarCampos() As Boolean
         If (_CodProveedor <= 0) Then
-            Dim img As Bitmap = New Bitmap(My.Resources.Mensaje, 50, 50)
+            Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
             ToastNotification.Show(Me, "Por Favor Seleccione un Proveedor con Ctrl+Enter".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
             tbProveedor.Focus()
             Return False
@@ -735,7 +735,7 @@ Public Class F0_Compra
         If (grdetalle.RowCount > 0) Then
             grdetalle.Row = grdetalle.RowCount - 1
             If (grdetalle.GetValue("cbty5prod") = 0) Then
-                Dim img As Bitmap = New Bitmap(My.Resources.Mensaje, 50, 50)
+                Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
                 ToastNotification.Show(Me, "Por Favor Seleccione  un detalle de producto".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
                 Return False
             End If
@@ -744,7 +744,7 @@ Public Class F0_Compra
         If (cbSucursal.SelectedIndex < 0) Then
 
 
-            Dim img As Bitmap = New Bitmap(My.Resources.Mensaje, 50, 50)
+            Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
             ToastNotification.Show(Me, "Por Favor Seleccione una Sucursal".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
             tbProveedor.Focus()
             Return False
@@ -1031,7 +1031,7 @@ salirIf:
                     _DesHabilitarProductos()
                 Else
                     If (existe) Then
-                        Dim img As Bitmap = New Bitmap(My.Resources.Mensaje, 50, 50)
+                        Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
                         ToastNotification.Show(Me, "El producto ya existe en el detalle".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
                     End If
                 End If
@@ -1268,6 +1268,16 @@ salirIf:
             MSuperTabControl.SelectedTabIndex = 0
             grdetalle.Focus()
 
+        End If
+    End Sub
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        _Inter = _Inter + 1
+        If _Inter = 1 Then
+            Me.WindowState = FormWindowState.Normal
+
+        Else
+            Me.Opacity = 100
+            Timer1.Enabled = False
         End If
     End Sub
 

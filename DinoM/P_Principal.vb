@@ -1019,8 +1019,8 @@ Public Class P_Principal
         'SideNav1.IsMenuExpanded = False
         'Ventana.Select()
         Dim frm As New R_KardexCreditoPagos
-        Dim tab3 As SuperTabItem = superTabControl3.CreateTab(frm.Text)
-        frm._tab = tab3
+        'Dim tab3 As SuperTabItem = superTabControl3.CreateTab(frm.Text)
+        'frm._tab = tab3
         frm._modulo = FP_COMPRAS
         'Dim panel As Panel = P_Global._fnCrearPanelVentanas(frm)
         'superTabControl3.SelectedTabIndex = superTabControl3.Tabs.Count - 1

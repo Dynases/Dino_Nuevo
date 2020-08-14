@@ -6,7 +6,7 @@
         'TxtNombreUsu.Text = MGlobal.gs_usuario
         'TxtNombreUsu.ReadOnly = True
 
-        Me.WindowState = FormWindowState.Maximized
+        'Me.WindowState = FormWindowState.Maximized
         Me.SupTabItemBusqueda.Visible = False
 
     End Sub
@@ -29,5 +29,9 @@
             MFlyoutUsuario.BorderColor = Color.FromArgb(&HC0, 0, 0)
             MFlyoutUsuario.Content = PanelUsuario
         End If
+    End Sub
+
+    Private Sub ModeloR0_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
     End Sub
 End Class

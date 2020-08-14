@@ -30,7 +30,7 @@ Public Class F0_Precios
 #Region "MEtodos Privados"
     Private Sub _IniciarTodo()
 
-        Me.WindowState = FormWindowState.Maximized
+        'Me.WindowState = FormWindowState.Maximized
         _prCargarTablaCategorias()
         _prCargarComboLibreria(cbAlmacen)
 

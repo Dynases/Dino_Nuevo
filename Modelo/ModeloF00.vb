@@ -33,7 +33,7 @@ Public Class ModeloF00
 
 
     Private Sub ModeloF0_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.WindowState = FormWindowState.Maximized
+        'Me.WindowState = FormWindowState.Maximized
         TxtNombreUsu.Text = MGlobal.gs_usuario
         TxtNombreUsu.ReadOnly = True
     End Sub

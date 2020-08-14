@@ -29,7 +29,7 @@ Public Class F0_PagosCreditoCompra
         'img.Save(Bin, Imaging.ImageFormat.Png)
 
         'L_prAbrirConexion(gs_Ip, gs_UsuarioSql, gs_ClaveSql, gs_NombreBD)
-        Me.WindowState = FormWindowState.Maximized
+        'Me.WindowState = FormWindowState.Maximized
         _prAsignarPermisos()
         Me.Text = "PAGOS DE COMPRAS A CREDITO"
         Dim blah As New Bitmap(New Bitmap(My.Resources.cobro), 20, 20)

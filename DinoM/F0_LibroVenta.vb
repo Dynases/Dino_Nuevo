@@ -31,7 +31,7 @@ Public Class F0_LibroVenta
     Private Sub P_Inicio()
         'L_prAbrirConexion(gs_Ip, gs_UsuarioSql, gs_ClaveSql, gs_NombreBD)
 
-        Me.WindowState = FormWindowState.Maximized
+        'Me.WindowState = FormWindowState.Maximized
         Me.Text = "L I B R O   D E   V E N T A S"
 
         btnNuevo.Visible = False

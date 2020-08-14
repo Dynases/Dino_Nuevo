@@ -26,7 +26,7 @@ Public Class F0_Movimiento
         MSuperTabControl.SelectedTabIndex = 0
         '' L_prAbrirConexion(gs_Ip, gs_UsuarioSql, gs_ClaveSql, gs_NombreBD)
         _prValidarLote()
-        Me.WindowState = FormWindowState.Maximized
+        'Me.WindowState = FormWindowState.Maximized
         _prCargarComboLibreriaConcepto(cbConcepto)
         _prCargarComboLibreriaDeposito(cbAlmacenOrigen)
         _prCargarComboLibreriaDeposito(cbDepositoDestino)

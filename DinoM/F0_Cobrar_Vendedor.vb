@@ -21,6 +21,8 @@ Public Class F0_Cobrar_Vendedor
     Public _tab As SuperTabItem
     Public _modulo As SideNavItem
     Dim Bin As New MemoryStream
+    Dim _inter As Integer = 0
+
 #End Region
 #Region "METODOS PRIVADOS"
 
@@ -28,7 +30,7 @@ Public Class F0_Cobrar_Vendedor
 
 
         L_prAbrirConexion(gs_Ip, gs_UsuarioSql, gs_ClaveSql, gs_NombreBD)
-        Me.WindowState = FormWindowState.Maximized
+        'Me.WindowState = FormWindowState.Maximized
         _prAsignarPermisos()
         Me.Text = "PAGO CLIENTE POR VENDEDOR"
         Dim blah As New Bitmap(New Bitmap(My.Resources.cobro), 20, 20)
@@ -598,6 +600,15 @@ Public Class F0_Cobrar_Vendedor
                 End If
             Next
 
+        End If
+    End Sub
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        _inter = _inter + 1
+        If _inter = 1 Then
+            Me.WindowState = FormWindowState.Normal
+        Else
+            Me.Opacity = 100
+            Timer1.Enabled = False
         End If
     End Sub
 

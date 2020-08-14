@@ -31,7 +31,7 @@ Public Class F0_MCompras
         _prValidarLote()
         _prCargarComboLibreriaSucursal(cbSucursal)
         _prObtenerPorcentajeUtilidad()
-        Me.WindowState = FormWindowState.Maximized
+        'Me.WindowState = FormWindowState.Maximized
         _prCargarCompra()
         _prInhabiliitar()
         grCompra.Focus()

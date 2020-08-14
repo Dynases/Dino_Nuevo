@@ -28,7 +28,7 @@ Public Class F0_KardexMovimiento
         ''L_prAbrirConexion(gs_Ip, gs_UsuarioSql, gs_ClaveSql, gs_NombreBD)
         _prCargarComboLibreriaDeposito(cbAlmacen)
         _prValidarLote()
-        Me.WindowState = FormWindowState.Maximized
+        'Me.WindowState = FormWindowState.Maximized
         _prInhabiliitar()
         ''_prAsignarPermisos()
         Me.Text = "KARDEX PRODUCTO"

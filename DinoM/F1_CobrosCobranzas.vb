@@ -7,4 +7,8 @@
     Private Sub btnGrabar_Click(sender As Object, e As EventArgs) Handles btnGrabar.Click
 
     End Sub
+
+    Private Sub F1_CobrosCobranzas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

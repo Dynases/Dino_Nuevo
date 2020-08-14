@@ -13,7 +13,7 @@ Public Class Pr_ReporteVentasGrafico
         MReportViewerVendedor.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         MReportViewerAlmacen.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         MReportViewerRendimiento.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
-        Me.WindowState = FormWindowState.Maximized
+        'Me.WindowState = FormWindowState.Maximized
         _IniciarComponentes()
         _prCargarClientes()
         FechaIRendimiento.Value = Now.Date

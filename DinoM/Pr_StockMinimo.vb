@@ -91,7 +91,7 @@ Public Class Pr_StockMinimo
         'TxtNombreUsu.Text = MGlobal.gs_usuario
         'TxtNombreUsu.ReadOnly = True
 
-        Me.WindowState = FormWindowState.Maximized
+        'Me.WindowState = FormWindowState.Maximized
         'Me.SupTabItemBusqueda.Visible = False
 
     End Sub

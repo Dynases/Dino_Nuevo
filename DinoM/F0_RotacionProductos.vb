@@ -20,7 +20,7 @@ Public Class F0_RotacionProductos
 
         Me.Text = "REPORTE GRAFICOS VENTAS"
 
-        Me.WindowState = FormWindowState.Maximized
+        'Me.WindowState = FormWindowState.Maximized
         _IniciarComponentes()
 
     End Sub

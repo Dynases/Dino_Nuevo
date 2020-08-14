@@ -29,7 +29,7 @@ Public Class F0_AnularFactura
     Private Sub P_Inicio()
         'L_prAbrirConexion(gs_Ip, gs_UsuarioSql, gs_ClaveSql, gs_NombreBD)
 
-        Me.WindowState = FormWindowState.Maximized
+        'Me.WindowState = FormWindowState.Maximized
         Me.Text = "A N U L A R   F A C T U R A"
         MSuperTabControl.SelectedTabIndex = 0
 
