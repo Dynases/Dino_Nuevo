@@ -1462,7 +1462,7 @@ salirIf:
                 grdetalle.Row = grdetalle.RowCount - 1
                 _fnObtenerFilaDetalle(pos, grdetalle.GetValue("cbnumi"))
                 Dim existe As Boolean = _fnExisteProducto(grProductos.GetValue("yfnumi"))
-                If ((pos >= 0) And (Not existe)) Then
+                If (pos >= 0) Then ''And (Not existe))
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("cbty5prod") = grProductos.GetValue("yfnumi")
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto") = grProductos.GetValue("yfcdprod1")
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("cbumin") = grProductos.GetValue("yfumin")
@@ -1495,11 +1495,11 @@ salirIf:
                     _prCalcularPrecioTotal()
                     PanelDetalle.Height = 250
                     _DesHabilitarProductos()
-                Else
-                    If (existe) Then
-                        Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-                        ToastNotification.Show(Me, "El producto ya existe en el detalle".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-                    End If
+                    'Else
+                    '    If (existe) Then
+                    '        Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                    '        ToastNotification.Show(Me, "El producto ya existe en el detalle".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                    '    End If
                 End If
             End If
         End If
