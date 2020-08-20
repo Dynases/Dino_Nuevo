@@ -1873,13 +1873,17 @@ Public Class F0_Venta2
             End If
 
             Dim pd As New PrintDocument()
-            pd.PrinterSettings.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString
+            Dim instance As New Printing.PrinterSettings
+            Dim impresosaPredt As String = instance.PrinterName
+            pd.PrinterSettings.PrinterName = impresosaPredt
+
             If (Not pd.PrinterSettings.IsValid) Then
-                ToastNotification.Show(Me, "La Impresora ".ToUpper + _Ds3.Tables(0).Rows(0).Item("cbrut").ToString + Chr(13) + "No Existe".ToUpper,
+                ToastNotification.Show(Me, "La Impresora ".ToUpper + impresosaPredt + Chr(13) + "No Existe".ToUpper,
                                        My.Resources.WARNING, 5 * 1000,
                                        eToastGlowColor.Blue, eToastPosition.BottomRight)
             Else
-                objrep.PrintOptions.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString '"EPSON TM-T20II Receipt5 (1)"
+
+                'objrep.PrintOptions.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString '"EPSON TM-T20II Receipt5 (1)"
                 objrep.PrintToPrinter(1, True, 0, 0)
                 'crystalReportDocument.PrintOptions.PrinterName = "your printer name"
                 'objrep.PrintTicket("EPSON TM-T20II Receipt")
@@ -2032,18 +2036,22 @@ Public Class F0_Venta2
                     P_Global.Visualizador.BringToFront() 'Comentar
                 Else
                     Dim pd As New PrintDocument()
-                    pd.PrinterSettings.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString
+                    Dim instance As New Printing.PrinterSettings
+                    Dim impresosaPredt As String = instance.PrinterName
+                    pd.PrinterSettings.PrinterName = impresosaPredt
+
                     If (Not pd.PrinterSettings.IsValid) Then
-                        ToastNotification.Show(Me, "La Impresora ".ToUpper + _Ds3.Tables(0).Rows(0).Item("cbrut").ToString + Chr(13) + "No Existe".ToUpper,
-                                               My.Resources.WARNING, 5 * 1000,
-                                               eToastGlowColor.Blue, eToastPosition.BottomRight)
+                        ToastNotification.Show(Me, "La Impresora ".ToUpper + impresosaPredt + Chr(13) + "No Existe".ToUpper,
+                                       My.Resources.WARNING, 5 * 1000,
+                                       eToastGlowColor.Blue, eToastPosition.BottomRight)
                     Else
-                        objrep.PrintOptions.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString
-                        '"EPSON TM-U330 Receipt"
+
+                        'objrep.PrintOptions.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString '"EPSON TM-T20II Receipt5 (1)"
                         objrep.PrintToPrinter(1, True, 0, 0)
                         'crystalReportDocument.PrintOptions.PrinterName = "your printer name"
                         'objrep.PrintTicket("EPSON TM-T20II Receipt")
                     End If
+
                 End If
                 'If (grabarPDF) Then
                 '    'Copia de Factura en PDF
