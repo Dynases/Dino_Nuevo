@@ -2155,38 +2155,58 @@ Public Class F0_Venta2
         _Fecha = Split(_FechaAct, "-")
         _FechaPar = "Cochabamba, " + _Fecha(0).Trim + " De " + _Meses(_Fecha(1) - 1).Trim + " Del " + _Fecha(2).Trim
 
-        Dim objrep As New R_NotaVenta_Carta
-        objrep.SetDataSource(dt)
-        objrep.SetParameterValue("Literal", li)
-        objrep.SetParameterValue("TipoVenta", IIf(swTipoVenta.Value = True, "CONTADO", "CRÉDITO"))
-        objrep.SetParameterValue("Logo", gb_UbiLogo)
-        objrep.SetParameterValue("NotaAdicional1", gb_NotaAdicional)
-        objrep.SetParameterValue("Descuento", tbMdesc.Value)
-        objrep.SetParameterValue("Total", total)
-        'objrep.SetParameterValue("usuario", gs_user)
+        If (_Ds3.Tables(0).Rows(0).Item("cbtimp") = 1) Then
+            Dim objrep As New R_NotaVenta_Carta
+            objrep.SetDataSource(dt)
+            objrep.SetParameterValue("Literal", li)
+            objrep.SetParameterValue("TipoVenta", IIf(swTipoVenta.Value = True, "CONTADO", "CRÉDITO"))
+            objrep.SetParameterValue("Logo", gb_UbiLogo)
+            objrep.SetParameterValue("NotaAdicional1", gb_NotaAdicional)
+            objrep.SetParameterValue("Descuento", tbMdesc.Value)
+            objrep.SetParameterValue("Total", total)
+            'objrep.SetParameterValue("usuario", gs_user)
 
-
-        'objrep.SetParameterValue("ECasaMatriz", _Ds2.Tables(0).Rows(0).Item("scsuc").ToString)
-        'objrep.SetParameterValue("ECiudadPais", _Ds2.Tables(0).Rows(0).Item("scpai").ToString)
-        'objrep.SetParameterValue("EDuenho", _Ds2.Tables(0).Rows(0).Item("scnom").ToString) '?
-        'objrep.SetParameterValue("Direccionpr", _Ds2.Tables(0).Rows(0).Item("scdir").ToString)
-        'objrep.SetParameterValue("Hora", _Hora)
-        'objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scneg").ToString) '?
-
-        If (_Ds3.Tables(0).Rows(0).Item("cbvp")) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
-            P_Global.Visualizador.CrGeneral.ReportSource = objrep 'Comentar
-            P_Global.Visualizador.ShowDialog() 'Comentar
-            P_Global.Visualizador.BringToFront() 'Comentar
-        Else
-            Dim pd As New PrintDocument()
-            pd.PrinterSettings.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString
-            If (Not pd.PrinterSettings.IsValid) Then
-                ToastNotification.Show(Me, "La Impresora ".ToUpper + _Ds3.Tables(0).Rows(0).Item("cbrut").ToString + Chr(13) + "No Existe".ToUpper,
-                                       My.Resources.WARNING, 5 * 1000,
-                                       eToastGlowColor.Blue, eToastPosition.BottomRight)
+            If (_Ds3.Tables(0).Rows(0).Item("cbvp")) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
+                P_Global.Visualizador.CrGeneral.ReportSource = objrep 'Comentar
+                P_Global.Visualizador.ShowDialog() 'Comentar
+                P_Global.Visualizador.BringToFront() 'Comentar
             Else
-                objrep.PrintOptions.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString
-                objrep.PrintToPrinter(1, True, 0, 0)
+                Dim pd As New PrintDocument()
+                pd.PrinterSettings.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString
+                If (Not pd.PrinterSettings.IsValid) Then
+                    ToastNotification.Show(Me, "La Impresora ".ToUpper + _Ds3.Tables(0).Rows(0).Item("cbrut").ToString + Chr(13) + "No Existe".ToUpper,
+                                           My.Resources.WARNING, 5 * 1000,
+                                           eToastGlowColor.Blue, eToastPosition.BottomRight)
+                Else
+                    objrep.PrintOptions.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString
+                    objrep.PrintToPrinter(1, True, 0, 0)
+                End If
+            End If
+        Else
+            Dim objrep As New R_NotaVenta_7_5X100
+            objrep.SetDataSource(dt)
+            objrep.SetParameterValue("ECasaMatriz", _Ds2.Tables(0).Rows(0).Item("scsuc").ToString)
+            objrep.SetParameterValue("ECiudadPais", _Ds2.Tables(0).Rows(0).Item("scpai").ToString)
+            objrep.SetParameterValue("EDuenho", _Ds2.Tables(0).Rows(0).Item("scnom").ToString) '?
+            objrep.SetParameterValue("Direccionpr", _Ds2.Tables(0).Rows(0).Item("scdir").ToString)
+            objrep.SetParameterValue("Hora", _Hora)
+            objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scneg").ToString) '?
+            objrep.SetParameterValue("Literal1", li)
+            If (_Ds3.Tables(0).Rows(0).Item("cbvp")) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
+                P_Global.Visualizador.CrGeneral.ReportSource = objrep 'Comentar
+                P_Global.Visualizador.ShowDialog() 'Comentar
+                P_Global.Visualizador.BringToFront() 'Comentar
+            Else
+                Dim pd As New PrintDocument()
+                pd.PrinterSettings.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString
+                If (Not pd.PrinterSettings.IsValid) Then
+                    ToastNotification.Show(Me, "La Impresora ".ToUpper + _Ds3.Tables(0).Rows(0).Item("cbrut").ToString + Chr(13) + "No Existe".ToUpper,
+                                           My.Resources.WARNING, 5 * 1000,
+                                           eToastGlowColor.Blue, eToastPosition.BottomRight)
+                Else
+                    objrep.PrintOptions.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString
+                    objrep.PrintToPrinter(1, True, 0, 0)
+                End If
             End If
         End If
     End Sub
