@@ -322,7 +322,7 @@ Public Class F0_LibroVenta
         For Each _f As DataRow In _Dt.Rows
             _item = New ComboItem()
             _item.Text = _f.Item("scneg").ToString
-            _item.Value = "0" '_f.Item("yacia").ToString
+            _item.Value = "1" '_f.Item("yacia").ToString
             _item.Tag = _f.Item("scnit").ToString
             Cb3RazonSocial.Items.Add(_item)
         Next

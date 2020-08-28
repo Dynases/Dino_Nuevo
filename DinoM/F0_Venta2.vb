@@ -1203,19 +1203,19 @@ Public Class F0_Venta2
                 _fnObtenerFilaDetalle(pos, lin)
                 If (estado = 0) Then
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("estado") = -2
-
                 End If
                 If (estado = 1) Then
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("estado") = -1
                 End If
 
                 'grdetalle.RootTable.ApplyFilter(New Janus.Windows.GridEX.GridEXFilterCondition(grdetalle.RootTable.Columns("estado"), Janus.Windows.GridEX.ConditionOperator.GreaterThanOrEqualTo, -3))
-                _prCalcularPrecioTotal()
+
                 grdetalle.Select()
                 grdetalle.UpdateData()
                 grdetalle.Col = grdetalle.RootTable.Columns("yfcbarra").Index
                 grdetalle.Row = grdetalle.RowCount - 1
                 grdetalle.RootTable.ApplyFilter(New Janus.Windows.GridEX.GridEXFilterCondition(grdetalle.RootTable.Columns("estado"), Janus.Windows.GridEX.ConditionOperator.GreaterThanOrEqualTo, 0))
+                _prCalcularPrecioTotal()
             End If
         End If
         'grdetalle.Refetch()
