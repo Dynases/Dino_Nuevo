@@ -32,8 +32,8 @@ Public Class Pr_VentasAtendidas
 
     End Sub
     Public Sub _prInterpretarDatos(ByRef _dt As DataTable)
-        If (gb_FacturaEmite) Then ''''Con factura 
-            If (swIce.Value = True) Then '''Factura + Ice
+        'If (gb_FacturaEmite) Then ''''Con factura 
+        If (swIce.Value = True) Then '''Factura + Ice
                 If (CheckTodosVendedor.Checked And CheckTodosAlmacen.Checked) Then
                     _dt = L_prVentasAtendidaGeneralAlmacenVendedor(tbFechaI.Value.ToString("yyyy/MM/dd"), tbFechaF.Value.ToString("yyyy/MM/dd"))
                 End If
@@ -84,62 +84,62 @@ Public Class Pr_VentasAtendidas
 
             End If
 
-        Else  ''''''''''NO EMITE FACTURAS
+        'Else  ''''''''''NO EMITE FACTURAS
 
-            If (swIce.Value = True) Then '''sin Factura + Ice
-                If (CheckTodosVendedor.Checked And CheckTodosAlmacen.Checked) Then
-                    _dt = L_prVentasAtendidaGeneralAlmacenVendedorSinFacturaConIce(tbFechaI.Value.ToString("yyyy/MM/dd"), tbFechaF.Value.ToString("yyyy/MM/dd"))
-                End If
-                If (checkUnaVendedor.Checked And CheckTodosAlmacen.Checked) Then
-                    If (tbCodigoVendedor.Text.Length > 0) Then
-                        _dt = L_prVentasAtendidaPorVendedorTodosAlmacenSinFacturaConIce(tbFechaI.Value.ToString("yyyy/MM/dd"), tbFechaF.Value.ToString("yyyy/MM/dd"), tbCodigoVendedor.Text)
-                    End If
+        '    If (swIce.Value = True) Then '''sin Factura + Ice
+        '        If (CheckTodosVendedor.Checked And CheckTodosAlmacen.Checked) Then
+        '            _dt = L_prVentasAtendidaGeneralAlmacenVendedorSinFacturaConIce(tbFechaI.Value.ToString("yyyy/MM/dd"), tbFechaF.Value.ToString("yyyy/MM/dd"))
+        '        End If
+        '        If (checkUnaVendedor.Checked And CheckTodosAlmacen.Checked) Then
+        '            If (tbCodigoVendedor.Text.Length > 0) Then
+        '                _dt = L_prVentasAtendidaPorVendedorTodosAlmacenSinFacturaConIce(tbFechaI.Value.ToString("yyyy/MM/dd"), tbFechaF.Value.ToString("yyyy/MM/dd"), tbCodigoVendedor.Text)
+        '            End If
 
-                End If
-                If (CheckTodosVendedor.Checked And CheckUnaALmacen.Checked) Then
-                    If (tbAlmacen.SelectedIndex >= 0) Then
-                        _dt = L_prVentasAtendidaTodosVendedorUnaAlmacenSinFacturaConIce(tbFechaI.Value.ToString("yyyy/MM/dd"), tbFechaF.Value.ToString("yyyy/MM/dd"), tbAlmacen.Value)
-                    End If
+        '        End If
+        '        If (CheckTodosVendedor.Checked And CheckUnaALmacen.Checked) Then
+        '            If (tbAlmacen.SelectedIndex >= 0) Then
+        '                _dt = L_prVentasAtendidaTodosVendedorUnaAlmacenSinFacturaConIce(tbFechaI.Value.ToString("yyyy/MM/dd"), tbFechaF.Value.ToString("yyyy/MM/dd"), tbAlmacen.Value)
+        '            End If
 
-                End If
+        '        End If
 
-                If (checkUnaVendedor.Checked And CheckUnaALmacen.Checked) Then
-                    If (tbAlmacen.SelectedIndex >= 0 And tbCodigoVendedor.Text.Length > 0) Then
-                        _dt = L_prVentasAtendidaUnaVendedorUnaAlmacenSinFacturaConIce(tbFechaI.Value.ToString("yyyy/MM/dd"), tbFechaF.Value.ToString("yyyy/MM/dd"), tbAlmacen.Value, tbCodigoVendedor.Text)
-                    End If
+        '        If (checkUnaVendedor.Checked And CheckUnaALmacen.Checked) Then
+        '            If (tbAlmacen.SelectedIndex >= 0 And tbCodigoVendedor.Text.Length > 0) Then
+        '                _dt = L_prVentasAtendidaUnaVendedorUnaAlmacenSinFacturaConIce(tbFechaI.Value.ToString("yyyy/MM/dd"), tbFechaF.Value.ToString("yyyy/MM/dd"), tbAlmacen.Value, tbCodigoVendedor.Text)
+        '            End If
 
-                End If
-            Else  'sin Factura Sin Ice
+        '        End If
+        '    Else  'sin Factura Sin Ice
 
-                If (CheckTodosVendedor.Checked And CheckTodosAlmacen.Checked) Then
-                    _dt = L_prVentasAtendidaGeneralAlmacenVendedorSinFacturaSinIce(tbFechaI.Value.ToString("yyyy/MM/dd"), tbFechaF.Value.ToString("yyyy/MM/dd"))
-                End If
-                If (checkUnaVendedor.Checked And CheckTodosAlmacen.Checked) Then
-                    If (tbCodigoVendedor.Text.Length > 0) Then
-                        _dt = L_prVentasAtendidaPorVendedorTodosAlmacenSinFacturaSinIce(tbFechaI.Value.ToString("yyyy/MM/dd"), tbFechaF.Value.ToString("yyyy/MM/dd"), tbCodigoVendedor.Text)
-                    End If
+        '        If (CheckTodosVendedor.Checked And CheckTodosAlmacen.Checked) Then
+        '            _dt = L_prVentasAtendidaGeneralAlmacenVendedorSinFacturaSinIce(tbFechaI.Value.ToString("yyyy/MM/dd"), tbFechaF.Value.ToString("yyyy/MM/dd"))
+        '        End If
+        '        If (checkUnaVendedor.Checked And CheckTodosAlmacen.Checked) Then
+        '            If (tbCodigoVendedor.Text.Length > 0) Then
+        '                _dt = L_prVentasAtendidaPorVendedorTodosAlmacenSinFacturaSinIce(tbFechaI.Value.ToString("yyyy/MM/dd"), tbFechaF.Value.ToString("yyyy/MM/dd"), tbCodigoVendedor.Text)
+        '            End If
 
-                End If
-                If (CheckTodosVendedor.Checked And CheckUnaALmacen.Checked) Then
-                    If (tbAlmacen.SelectedIndex >= 0) Then
-                        _dt = L_prVentasAtendidaTodosVendedorUnaAlmacenSinFacturaSinIce(tbFechaI.Value.ToString("yyyy/MM/dd"), tbFechaF.Value.ToString("yyyy/MM/dd"), tbAlmacen.Value)
-                    End If
+        '        End If
+        '        If (CheckTodosVendedor.Checked And CheckUnaALmacen.Checked) Then
+        '            If (tbAlmacen.SelectedIndex >= 0) Then
+        '                _dt = L_prVentasAtendidaTodosVendedorUnaAlmacenSinFacturaSinIce(tbFechaI.Value.ToString("yyyy/MM/dd"), tbFechaF.Value.ToString("yyyy/MM/dd"), tbAlmacen.Value)
+        '            End If
 
-                End If
+        '        End If
 
-                If (checkUnaVendedor.Checked And CheckUnaALmacen.Checked) Then
-                    If (tbAlmacen.SelectedIndex >= 0 And tbCodigoVendedor.Text.Length > 0) Then
-                        _dt = L_prVentasAtendidaUnaVendedorUnaAlmacenSinFacturaSinIce(tbFechaI.Value.ToString("yyyy/MM/dd"), tbFechaF.Value.ToString("yyyy/MM/dd"), tbAlmacen.Value, tbCodigoVendedor.Text)
-                    End If
+        '        If (checkUnaVendedor.Checked And CheckUnaALmacen.Checked) Then
+        '            If (tbAlmacen.SelectedIndex >= 0 And tbCodigoVendedor.Text.Length > 0) Then
+        '                _dt = L_prVentasAtendidaUnaVendedorUnaAlmacenSinFacturaSinIce(tbFechaI.Value.ToString("yyyy/MM/dd"), tbFechaF.Value.ToString("yyyy/MM/dd"), tbAlmacen.Value, tbCodigoVendedor.Text)
+        '            End If
 
-                End If
-
-
-            End If
+        '        End If
 
 
+        '    End If
 
-        End If
+
+
+        'End If
 
 
 

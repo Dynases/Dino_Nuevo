@@ -58,7 +58,10 @@ Public Class F0_Venta2
         _prValidadFactura()
         _prCargarNameLabel()
         'Ocultar el botón Modificar
-        btnModificar.Visible = False
+        If gb_FacturaEmite Then
+            btnModificar.Visible = False
+        End If
+
 
     End Sub
 
@@ -1884,7 +1887,7 @@ Public Class F0_Venta2
             Else
 
                 'objrep.PrintOptions.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString '"EPSON TM-T20II Receipt5 (1)"
-                objrep.PrintToPrinter(1, True, 0, 0)
+                'objrep.PrintToPrinter(1, True, 0, 0)
                 'crystalReportDocument.PrintOptions.PrinterName = "your printer name"
                 'objrep.PrintTicket("EPSON TM-T20II Receipt")
             End If
@@ -2047,7 +2050,7 @@ Public Class F0_Venta2
                     Else
 
                         'objrep.PrintOptions.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString '"EPSON TM-T20II Receipt5 (1)"
-                        objrep.PrintToPrinter(1, True, 0, 0)
+                        'objrep.PrintToPrinter(1, True, 0, 0)
                         'crystalReportDocument.PrintOptions.PrinterName = "your printer name"
                         'objrep.PrintTicket("EPSON TM-T20II Receipt")
                     End If
@@ -3657,10 +3660,10 @@ salirIf:
                 grdetalle.Select()
                 If _codeBar = 1 Then
                     If gb_CodigoBarra Then
-                        grdetalle.Col = 3
+                        grdetalle.Col = 5
                         grdetalle.Row = 0
                     Else
-                        grdetalle.Col = 5
+                        grdetalle.Col = 3
                         grdetalle.Row = 0
                     End If
                 End If
