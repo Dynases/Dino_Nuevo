@@ -57,9 +57,12 @@ Public Class F0_Venta2
         P_prCargarParametro()
         _prValidadFactura()
         _prCargarNameLabel()
-        'Ocultar el botón Modificar
+        'COnfiguracion previa para Pantalla de facturacion o Nota de venta
         If gb_FacturaEmite Then
             btnModificar.Visible = False
+        Else
+            tbObservacion.Visible = True
+            lblObservacion.Visible = True
         End If
 
 
@@ -315,6 +318,7 @@ Public Class F0_Venta2
             swMoneda.Value = .GetValue("tamon")
             tbFechaVenc.Value = .GetValue("tafvcr")
             swTipoVenta.Value = .GetValue("tatven")
+            tbObservacion.Text = .GetValue("taobs")
             If grVentas.GetValue("taest") = 1 Then
                 txtEstado.Text = "VIGENTE"
                 txtEstado.BackColor = Color.Green
@@ -1469,7 +1473,9 @@ Public Class F0_Venta2
             ''Verifica si existe estock para los productos
             'If _prExisteStockParaProducto() Then
             Dim dtDetalle As DataTable = rearmarDetalle()
-            Dim res As Boolean = L_fnGrabarVenta(numi, "", tbFechaVenta.Value.ToString("yyyy/MM/dd"), _CodEmpleado, IIf(swTipoVenta.Value = True, 1, 0), IIf(swTipoVenta.Value = True, Now.Date.ToString("yyyy/MM/dd"), tbFechaVenc.Value.ToString("yyyy/MM/dd")), _CodCliente, IIf(swMoneda.Value = True, 1, 0), "", tbMdesc.Value, tbIce.Value, tbTotalBs.Text, dtDetalle, cbSucursal.Value, 0, tabla)
+            Dim res As Boolean = L_fnGrabarVenta(numi, "", tbFechaVenta.Value.ToString("yyyy/MM/dd"), _CodEmpleado, IIf(swTipoVenta.Value = True, 1, 0), IIf(swTipoVenta.Value = True,
+                                                Now.Date.ToString("yyyy/MM/dd"), tbFechaVenc.Value.ToString("yyyy/MM/dd")), _CodCliente, IIf(swMoneda.Value = True, 1, 0),
+                                                  tbObservacion.Text, tbMdesc.Value, tbIce.Value, tbTotalBs.Text, dtDetalle, cbSucursal.Value, 0, tabla)
             If res Then
                 'res = P_fnGrabarFacturarTFV001(numi)
                 'Emite factura
@@ -1540,7 +1546,9 @@ Public Class F0_Venta2
         Dim tabla As DataTable = L_fnMostrarMontos(0)
         _prInsertarMontoModificar(tabla)
         Dim dtDetalle As DataTable = rearmarDetalle()
-        Dim res As Boolean = L_fnModificarVenta(tbCodigo.Text, tbFechaVenta.Value.ToString("yyyy/MM/dd"), _CodEmpleado, IIf(swTipoVenta.Value = True, 1, 0), IIf(swTipoVenta.Value = True, Now.Date.ToString("yyyy/MM/dd"), tbFechaVenc.Value.ToString("yyyy/MM/dd")), _CodCliente, IIf(swMoneda.Value = True, 1, 0), "", tbMdesc.Value, tbIce.Value, tbTotalBs.Text, dtDetalle, cbSucursal.Value, 0, tabla)
+        Dim res As Boolean = L_fnModificarVenta(tbCodigo.Text, tbFechaVenta.Value.ToString("yyyy/MM/dd"), _CodEmpleado, IIf(swTipoVenta.Value = True, 1, 0),
+                                                IIf(swTipoVenta.Value = True, Now.Date.ToString("yyyy/MM/dd"), tbFechaVenc.Value.ToString("yyyy/MM/dd")),
+                                                _CodCliente, IIf(swMoneda.Value = True, 1, 0), tbObservacion.Text, tbMdesc.Value, tbIce.Value, tbTotalBs.Text, dtDetalle, cbSucursal.Value, 0, tabla)
         If res Then
             If (gb_FacturaEmite) Then
                 L_fnEliminarDatos("TFV001", "fvanumi=" + tbCodigo.Text.Trim)

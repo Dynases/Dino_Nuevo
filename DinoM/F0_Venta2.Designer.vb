@@ -113,6 +113,8 @@ Partial Class F0_Venta2
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.btnDuplicar = New DevComponents.DotNetBar.ButtonX()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.lblObservacion = New DevComponents.DotNetBar.LabelX()
+        Me.tbObservacion = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -165,7 +167,7 @@ Partial Class F0_Venta2
         'PanelSuperior
         '
         Me.PanelSuperior.Controls.Add(Me.btnDuplicar)
-        Me.PanelSuperior.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PanelSuperior.Margin = New System.Windows.Forms.Padding(2)
         Me.PanelSuperior.Size = New System.Drawing.Size(1319, 72)
         Me.PanelSuperior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelSuperior.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
@@ -189,7 +191,7 @@ Partial Class F0_Venta2
         'PanelInferior
         '
         Me.PanelInferior.Location = New System.Drawing.Point(0, 670)
-        Me.PanelInferior.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PanelInferior.Margin = New System.Windows.Forms.Padding(2)
         Me.PanelInferior.Size = New System.Drawing.Size(1319, 39)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.Transparent
@@ -225,7 +227,7 @@ Partial Class F0_Venta2
         '
         'TxtNombreUsu
         '
-        Me.TxtNombreUsu.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TxtNombreUsu.Margin = New System.Windows.Forms.Padding(4)
         Me.TxtNombreUsu.ReadOnly = True
         Me.TxtNombreUsu.Size = New System.Drawing.Size(135, 32)
         Me.TxtNombreUsu.Text = "DEFAULT"
@@ -249,11 +251,11 @@ Partial Class F0_Venta2
         'PanelToolBar2
         '
         Me.PanelToolBar2.Location = New System.Drawing.Point(1239, 0)
-        Me.PanelToolBar2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PanelToolBar2.Margin = New System.Windows.Forms.Padding(2)
         '
         'PanelPrincipal
         '
-        Me.PanelPrincipal.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PanelPrincipal.Margin = New System.Windows.Forms.Padding(2)
         Me.PanelPrincipal.Size = New System.Drawing.Size(1319, 709)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelUsuario, 0)
@@ -265,7 +267,7 @@ Partial Class F0_Venta2
         '
         'btnUltimo
         '
-        Me.btnUltimo.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnUltimo.Margin = New System.Windows.Forms.Padding(2)
         '
         'btnSiguiente
         '
@@ -279,7 +281,7 @@ Partial Class F0_Venta2
         'MPanelUserAct
         '
         Me.MPanelUserAct.Location = New System.Drawing.Point(1119, 0)
-        Me.MPanelUserAct.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.MPanelUserAct.Margin = New System.Windows.Forms.Padding(2)
         '
         'MRlAccion
         '
@@ -287,7 +289,7 @@ Partial Class F0_Venta2
         '
         '
         Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.MRlAccion.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.MRlAccion.Margin = New System.Windows.Forms.Padding(2)
         Me.MRlAccion.Size = New System.Drawing.Size(863, 72)
         Me.MRlAccion.Visible = False
         '
@@ -295,18 +297,18 @@ Partial Class F0_Venta2
         '
         Me.PanelContent.Controls.Add(Me.gpDetalleVenta)
         Me.PanelContent.Controls.Add(Me.GroupPanel2)
-        Me.PanelContent.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PanelContent.Margin = New System.Windows.Forms.Padding(2)
         Me.PanelContent.Size = New System.Drawing.Size(1286, 598)
         Me.PanelContent.TabIndex = 3
         '
         'Panel1
         '
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Size = New System.Drawing.Size(1319, 598)
         '
         'MSuperTabControlPanel1
         '
-        Me.MSuperTabControlPanel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.MSuperTabControlPanel1.Margin = New System.Windows.Forms.Padding(2)
         Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(1286, 598)
         '
         'MSuperTabControl
@@ -325,7 +327,7 @@ Partial Class F0_Venta2
         Me.MSuperTabControl.ControlBox.Name = ""
         Me.MSuperTabControl.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.MSuperTabControl.ControlBox.MenuBox, Me.MSuperTabControl.ControlBox.CloseBox})
         Me.MSuperTabControl.Controls.Add(Me.SuperTabControlPanel1)
-        Me.MSuperTabControl.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.MSuperTabControl.Margin = New System.Windows.Forms.Padding(2)
         Me.MSuperTabControl.Size = New System.Drawing.Size(1319, 598)
         Me.MSuperTabControl.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabItem1})
         Me.MSuperTabControl.Controls.SetChildIndex(Me.SuperTabControlPanel1, 0)
@@ -334,7 +336,7 @@ Partial Class F0_Venta2
         'PictureBox1
         '
         Me.PictureBox1.Location = New System.Drawing.Point(966, 0)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
         '
         'GroupPanel2
         '
@@ -1328,6 +1330,8 @@ Partial Class F0_Venta2
         '
         'Panel2
         '
+        Me.Panel2.Controls.Add(Me.tbObservacion)
+        Me.Panel2.Controls.Add(Me.lblObservacion)
         Me.Panel2.Controls.Add(Me.LabelX21)
         Me.Panel2.Controls.Add(Me.txtEstado)
         Me.Panel2.Controls.Add(Me.lbCredito)
@@ -1490,7 +1494,7 @@ Partial Class F0_Venta2
         Me.QrFactura.ErrorCorrectLevel = Gma.QrCodeNet.Encoding.ErrorCorrectionLevel.M
         Me.QrFactura.Image = CType(resources.GetObject("QrFactura.Image"), System.Drawing.Image)
         Me.QrFactura.Location = New System.Drawing.Point(1178, 3)
-        Me.QrFactura.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.QrFactura.Margin = New System.Windows.Forms.Padding(2)
         Me.QrFactura.Name = "QrFactura"
         Me.QrFactura.QuietZoneModule = Gma.QrCodeNet.Encoding.Windows.Render.QuietZoneModules.Two
         Me.QrFactura.Size = New System.Drawing.Size(95, 90)
@@ -1621,10 +1625,10 @@ Partial Class F0_Venta2
         Me.tbNit.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbNit.Font = New System.Drawing.Font("Georgia", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbNit.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbNit.Location = New System.Drawing.Point(321, 5)
+        Me.tbNit.Location = New System.Drawing.Point(285, 6)
         Me.tbNit.Name = "tbNit"
         Me.tbNit.PreventEnterBeep = True
-        Me.tbNit.Size = New System.Drawing.Size(250, 29)
+        Me.tbNit.Size = New System.Drawing.Size(145, 29)
         Me.tbNit.TabIndex = 1
         '
         'LabelX3
@@ -2014,13 +2018,47 @@ Partial Class F0_Venta2
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 1000
         '
+        'lblObservacion
+        '
+        Me.lblObservacion.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.lblObservacion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.lblObservacion.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblObservacion.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.lblObservacion.Location = New System.Drawing.Point(438, 11)
+        Me.lblObservacion.Name = "lblObservacion"
+        Me.lblObservacion.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.lblObservacion.Size = New System.Drawing.Size(60, 23)
+        Me.lblObservacion.TabIndex = 361
+        Me.lblObservacion.Text = "N. Fac:"
+        Me.lblObservacion.Visible = False
+        '
+        'tbObservacion
+        '
+        Me.tbObservacion.BackColor = System.Drawing.Color.White
+        '
+        '
+        '
+        Me.tbObservacion.Border.Class = "TextBoxBorder"
+        Me.tbObservacion.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbObservacion.Font = New System.Drawing.Font("Georgia", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbObservacion.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.tbObservacion.Location = New System.Drawing.Point(491, 4)
+        Me.tbObservacion.Name = "tbObservacion"
+        Me.tbObservacion.PreventEnterBeep = True
+        Me.tbObservacion.Size = New System.Drawing.Size(80, 29)
+        Me.tbObservacion.TabIndex = 362
+        Me.tbObservacion.Visible = False
+        '
         'F0_Venta2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1319, 709)
         Me.Location = New System.Drawing.Point(0, 0)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.MaximizeBox = False
         Me.Name = "F0_Venta2"
         Me.Text = "F0_Venta2"
@@ -2168,4 +2206,6 @@ Partial Class F0_Venta2
     Friend WithEvents Timer1 As Timer
     Friend WithEvents tbMdesc As DevComponents.Editors.DoubleInput
     Friend WithEvents tbSubTotal As DevComponents.Editors.DoubleInput
+    Friend WithEvents tbObservacion As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents lblObservacion As DevComponents.DotNetBar.LabelX
 End Class
