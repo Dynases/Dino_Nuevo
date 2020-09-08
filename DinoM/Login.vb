@@ -94,10 +94,14 @@ Public Class Login
         End If
     End Sub
     Private Sub _CargarLogo()
-        Dim dtConfSistema As DataTable = L_fnConfSistemaGeneral()
-        gb_UbiLogo = dtConfSistema.Rows(0).Item("cccubilogo")
+        Try
+            Dim dtConfSistema As DataTable = L_fnConfSistemaGeneral()
+            gb_UbiLogo = dtConfSistema.Rows(0).Item("cccubilogo")
 
-        PictureBox1.Image = Image.FromFile(gb_UbiLogo.ToString)
+            PictureBox1.Image = Image.FromFile(gb_UbiLogo.ToString)
+        Catch ex As Exception
+            MessageBox.Show("No se encontro el logo en la ubicación específicada")
+        End Try
     End Sub
     Private Sub _prDesvenecerPantalla()
         Dim a, b As Decimal
