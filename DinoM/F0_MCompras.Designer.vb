@@ -240,8 +240,8 @@ Partial Class F0_MCompras
         '
         'PanelContent
         '
-        Me.PanelContent.Controls.Add(Me.PanelTotal)
         Me.PanelContent.Controls.Add(Me.PanelDetalle)
+        Me.PanelContent.Controls.Add(Me.PanelTotal)
         Me.PanelContent.Controls.Add(Me.PanelContentSup)
         '
         'MSuperTabControl
@@ -273,7 +273,7 @@ Partial Class F0_MCompras
         Me.PanelDetalle.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelDetalle.Location = New System.Drawing.Point(0, 230)
         Me.PanelDetalle.Name = "PanelDetalle"
-        Me.PanelDetalle.Size = New System.Drawing.Size(1317, 388)
+        Me.PanelDetalle.Size = New System.Drawing.Size(1317, 297)
         Me.PanelDetalle.TabIndex = 3
         '
         'GroupPanel4
@@ -286,7 +286,7 @@ Partial Class F0_MCompras
         Me.GroupPanel4.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupPanel4.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel4.Name = "GroupPanel4"
-        Me.GroupPanel4.Size = New System.Drawing.Size(1317, 181)
+        Me.GroupPanel4.Size = New System.Drawing.Size(1317, 90)
         '
         '
         '
@@ -326,7 +326,7 @@ Partial Class F0_MCompras
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel5.Location = New System.Drawing.Point(0, 0)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(1311, 158)
+        Me.Panel5.Size = New System.Drawing.Size(1311, 67)
         Me.Panel5.TabIndex = 0
         '
         'grdetalle
@@ -339,7 +339,7 @@ Partial Class F0_MCompras
         Me.grdetalle.Name = "grdetalle"
         Me.grdetalle.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grdetalle.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.grdetalle.Size = New System.Drawing.Size(1311, 158)
+        Me.grdetalle.Size = New System.Drawing.Size(1311, 67)
         Me.grdetalle.TabIndex = 3
         Me.grdetalle.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -351,7 +351,7 @@ Partial Class F0_MCompras
         Me.GPanelProductos.DisabledBackColor = System.Drawing.Color.Empty
         Me.GPanelProductos.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.GPanelProductos.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GPanelProductos.Location = New System.Drawing.Point(0, 181)
+        Me.GPanelProductos.Location = New System.Drawing.Point(0, 90)
         Me.GPanelProductos.Name = "GPanelProductos"
         Me.GPanelProductos.Size = New System.Drawing.Size(1317, 207)
         '
@@ -1429,7 +1429,7 @@ Partial Class F0_MCompras
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 450.0!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 618.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(1317, 618)
         Me.TableLayoutPanel1.TabIndex = 2
         '

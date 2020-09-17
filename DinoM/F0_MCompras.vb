@@ -38,6 +38,7 @@ Public Class F0_MCompras
         _prAsignarPermisos()
         Me.Text = "COMPRAS"
         PanelDetalle.Height = 250
+        MSuperTabControl.SelectedTabIndex = 0
     End Sub
     Public Sub _prValidarLote()
         Dim dt As DataTable = L_fnPorcUtilidad()
@@ -1051,6 +1052,24 @@ Public Class F0_MCompras
                 Return False
             End If
         End If
+
+        ''Controla que no se metan un mismo producto con el mismo lote y fecha de vencimiento
+        Dim dt1 As DataTable = CType(grdetalle.DataSource, DataTable)
+        For i As Integer = 0 To grdetalle.RowCount - 1 Step 1
+            Dim _idprod As String = CType(grdetalle.DataSource, DataTable).Rows(i).Item("cbty5prod")
+            Dim _Lote As String = CType(grdetalle.DataSource, DataTable).Rows(i).Item("cblote")
+            Dim _Fecha As String = CType(grdetalle.DataSource, DataTable).Rows(i).Item("cbfechavenc")
+            Dim _estado As String = 0
+
+            Dim query = dt1.Select("cbty5prod='" + _idprod + "' And cblote='" + _Lote + "' And cbfechavenc='" + _Fecha + "' And estado>='" + _estado + "'")
+
+            If query.Count >= 2 Then
+                Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                ToastNotification.Show(Me, "No puede registrar mas de un producto con el mismo lote y fecha de vencimiento, favor modificar".ToUpper, img, 4000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+
+                Return False
+            End If
+        Next
 
         Return True
     End Function
