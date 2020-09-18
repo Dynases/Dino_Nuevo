@@ -1045,6 +1045,20 @@ Public Class P_Principal
         frm.Show()
     End Sub
 
+    Private Sub btEstadoCuentasProveedores_Click(sender As Object, e As EventArgs) Handles btEstadoCuentasProveedores.Click
+        Dim frm As New Pr_EstadoCuentasProveedores
+        frm._nameButton = btEstadoCuentasProveedores.Name
+        'frm._modulo = FP_COMPRAS
+        frm.Show()
+    End Sub
+
+    Private Sub btEstadoCuentasClientes_Click(sender As Object, e As EventArgs) Handles btEstadoCuentasClientes.Click
+        Dim frm As New Pr_EstadoCuentasClientes
+        frm._nameButton = btEstadoCuentasClientes.Name
+        'frm._modulo = FP_COMPRAS
+        frm.Show()
+    End Sub
+
     'Private Sub btnCredPagoCliente_Click(sender As Object, e As EventArgs) Handles btnCredPagoCliente.Click
     '    SideNav1.IsMenuExpanded = False
     '    Ventana.Select()

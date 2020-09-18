@@ -78,6 +78,8 @@ Partial Class F0_Venta2
         Me.swMoneda = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.cbSucursal = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.tbObservacion = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.lblObservacion = New DevComponents.DotNetBar.LabelX()
         Me.LabelX21 = New DevComponents.DotNetBar.LabelX()
         Me.txtEstado = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.lbCredito = New DevComponents.DotNetBar.LabelX()
@@ -113,8 +115,6 @@ Partial Class F0_Venta2
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.btnDuplicar = New DevComponents.DotNetBar.ButtonX()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.lblObservacion = New DevComponents.DotNetBar.LabelX()
-        Me.tbObservacion = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1358,6 +1358,40 @@ Partial Class F0_Venta2
         Me.Panel2.Size = New System.Drawing.Size(1277, 68)
         Me.Panel2.TabIndex = 0
         '
+        'tbObservacion
+        '
+        Me.tbObservacion.BackColor = System.Drawing.Color.White
+        '
+        '
+        '
+        Me.tbObservacion.Border.Class = "TextBoxBorder"
+        Me.tbObservacion.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbObservacion.Font = New System.Drawing.Font("Georgia", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbObservacion.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.tbObservacion.Location = New System.Drawing.Point(491, 4)
+        Me.tbObservacion.Name = "tbObservacion"
+        Me.tbObservacion.PreventEnterBeep = True
+        Me.tbObservacion.Size = New System.Drawing.Size(80, 29)
+        Me.tbObservacion.TabIndex = 362
+        Me.tbObservacion.Visible = False
+        '
+        'lblObservacion
+        '
+        Me.lblObservacion.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.lblObservacion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.lblObservacion.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblObservacion.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.lblObservacion.Location = New System.Drawing.Point(438, 11)
+        Me.lblObservacion.Name = "lblObservacion"
+        Me.lblObservacion.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.lblObservacion.Size = New System.Drawing.Size(60, 23)
+        Me.lblObservacion.TabIndex = 361
+        Me.lblObservacion.Text = "N. Fac:"
+        Me.lblObservacion.Visible = False
+        '
         'LabelX21
         '
         Me.LabelX21.BackColor = System.Drawing.Color.Transparent
@@ -1514,10 +1548,10 @@ Partial Class F0_Venta2
         Me.TbNombre2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.TbNombre2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TbNombre2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.TbNombre2.Location = New System.Drawing.Point(155, 6)
+        Me.TbNombre2.Location = New System.Drawing.Point(202, 6)
         Me.TbNombre2.Name = "TbNombre2"
         Me.TbNombre2.PreventEnterBeep = True
-        Me.TbNombre2.Size = New System.Drawing.Size(80, 22)
+        Me.TbNombre2.Size = New System.Drawing.Size(30, 22)
         Me.TbNombre2.TabIndex = 0
         Me.TbNombre2.Visible = False
         '
@@ -1723,10 +1757,10 @@ Partial Class F0_Venta2
         Me.tbCodigo.Enabled = False
         Me.tbCodigo.Font = New System.Drawing.Font("Georgia", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbCodigo.ForeColor = System.Drawing.Color.Black
-        Me.tbCodigo.Location = New System.Drawing.Point(96, 4)
+        Me.tbCodigo.Location = New System.Drawing.Point(93, 4)
         Me.tbCodigo.Name = "tbCodigo"
         Me.tbCodigo.PreventEnterBeep = True
-        Me.tbCodigo.Size = New System.Drawing.Size(53, 26)
+        Me.tbCodigo.Size = New System.Drawing.Size(100, 26)
         Me.tbCodigo.TabIndex = 0
         Me.tbCodigo.TabStop = False
         '
@@ -2017,40 +2051,6 @@ Partial Class F0_Venta2
         '
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 1000
-        '
-        'lblObservacion
-        '
-        Me.lblObservacion.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.lblObservacion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.lblObservacion.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblObservacion.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.lblObservacion.Location = New System.Drawing.Point(438, 11)
-        Me.lblObservacion.Name = "lblObservacion"
-        Me.lblObservacion.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.lblObservacion.Size = New System.Drawing.Size(60, 23)
-        Me.lblObservacion.TabIndex = 361
-        Me.lblObservacion.Text = "N. Fac:"
-        Me.lblObservacion.Visible = False
-        '
-        'tbObservacion
-        '
-        Me.tbObservacion.BackColor = System.Drawing.Color.White
-        '
-        '
-        '
-        Me.tbObservacion.Border.Class = "TextBoxBorder"
-        Me.tbObservacion.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbObservacion.Font = New System.Drawing.Font("Georgia", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbObservacion.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbObservacion.Location = New System.Drawing.Point(491, 4)
-        Me.tbObservacion.Name = "tbObservacion"
-        Me.tbObservacion.PreventEnterBeep = True
-        Me.tbObservacion.Size = New System.Drawing.Size(80, 29)
-        Me.tbObservacion.TabIndex = 362
-        Me.tbObservacion.Visible = False
         '
         'F0_Venta2
         '
