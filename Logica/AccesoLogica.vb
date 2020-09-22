@@ -2504,12 +2504,49 @@ Public Class AccesoLogica
 #End Region
 
 #Region "Libro de ventas"
+    Public Shared Function L_fnObtenerLibroVentaAmbosTipoFactura(_CodAlm As String, _fechai As String, _FechaF As String) As DataTable
+        Dim _Tabla As DataTable
+        Dim _Where As String = ""
 
+        If _CodAlm > 0 Then
+            _Where = "fvaalm = " + _CodAlm + " and fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' " + " ORDER BY fvanfac"
+        End If
+        If _CodAlm = 0 Then 'todas las sucursales
+            _Where = " fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' " + " ORDER BY fvanfac"
+        End If
+        If _CodAlm = -1 Then 'todas las sucursales menos la principal
+            _Where = "fvaalm <>1 " + " and fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' " + " ORDER BY fvanfac"
+        End If
+
+        Dim _select As String = "fvanumi, FORMAT(fvafec,'dd/MM/yyyy') as fvafec, fvanfac, fvaautoriz,fvaest, fvanitcli, fvadescli, fvastot, fvaimpsi, fvaimpeo, fvaimptc, fvasubtotal, fvadesc, fvatotal, fvadebfis, fvaccont,fvaflim,fvaalm,scneg, factura"
+
+        _Tabla = D_Datos_Tabla(_select,
+                               "VR_GO_LibroVenta2", _Where)
+        Return _Tabla
+    End Function
     Public Shared Function L_fnObtenerLibroVenta(_CodAlm As String, _Mes As String, _Anho As String) As DataTable
         Dim _Tabla As DataTable
         Dim _Where As String = "fvaalm = " + _CodAlm + "and Month(fvafec) = " + _Mes + " and Year(fvafec) = " + _Anho + " ORDER BY fvanfac"
         _Tabla = D_Datos_Tabla("*",
                                "VR_GO_LibroVenta", _Where)
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnObtenerLibroVenta2(_CodAlm As String, _fechai As String, _FechaF As String, factura As Integer) As DataTable
+        Dim _Tabla As DataTable
+        Dim _Where As String = ""
+        If _CodAlm > 0 Then
+            _Where = "fvaalm = " + _CodAlm + " and fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' and factura=" + Str(factura) + " ORDER BY fvanfac"
+        End If
+        If _CodAlm = 0 Then 'todas las sucursales
+            _Where = " fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' and factura=" + Str(factura) + " ORDER BY fvanfac"
+        End If
+        If _CodAlm = -1 Then 'todas las sucursales menos la principal
+            _Where = "fvaalm <>1 " + " and fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' and factura=" + Str(factura) + " ORDER BY fvanfac"
+        End If
+        Dim _select As String = "fvanumi, FORMAT(fvafec,'dd/MM/yyyy') as fvafec, fvanfac, fvaautoriz,fvaest, fvanitcli, fvadescli, fvastot, fvaimpsi, fvaimpeo, fvaimptc, fvasubtotal, fvadesc, fvatotal, fvadebfis, fvaccont,fvaflim,fvaalm,scneg, factura"
+
+        _Tabla = D_Datos_Tabla(_select,
+                               "VR_GO_LibroVenta2", _Where)
         Return _Tabla
     End Function
 

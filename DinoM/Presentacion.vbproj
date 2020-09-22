@@ -251,6 +251,12 @@
     <Compile Include="F0_LibroVenta.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F0_LibroVenta2.Designer.vb">
+      <DependentUpon>F0_LibroVenta2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F0_LibroVenta2.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F0_MCompras.designer.vb">
       <DependentUpon>F0_MCompras.vb</DependentUpon>
     </Compile>
@@ -497,6 +503,12 @@
     </Compile>
     <Compile Include="Pr_VentasAtendidas.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reporte\LibroVenta3.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibroVenta3.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reporte\R_CierreCaja.vb">
       <AutoGen>True</AutoGen>
@@ -890,6 +902,9 @@
     <EmbeddedResource Include="F0_LibroVenta.resx">
       <DependentUpon>F0_LibroVenta.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F0_LibroVenta2.resx">
+      <DependentUpon>F0_LibroVenta2.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F0_MCompras.resx">
       <DependentUpon>F0_MCompras.vb</DependentUpon>
     </EmbeddedResource>
@@ -1013,6 +1028,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pr_VentasAtendidas.resx">
       <DependentUpon>Pr_VentasAtendidas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\LibroVenta3.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>LibroVenta3.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reporte\R_CierreCaja.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
