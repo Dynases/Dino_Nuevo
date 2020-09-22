@@ -3257,7 +3257,7 @@ Public Class AccesoLogica
     End Function
 
 
-    Public Shared Function L_prMovimientoChoferGrabar(ByRef _ibid As String, _ibfdoc As String, _ibconcep As Integer, _ibobs As String, _almacen As Integer, _depositoDestino As Integer, _ibidOrigen As Integer) As Boolean
+    Public Shared Function L_prMovimientoChoferGrabar(ByRef _ibid As String, _ibfdoc As String, _ibconcep As Integer, _ibobs As String, _almacen As Integer, _depositoDestino As Integer, _ibidOrigen As Integer, _detalle As DataTable) As Boolean
         Dim _resultado As Boolean
         Dim _Tabla As DataTable
         Dim _listParam As New List(Of Datos.DParametro)
@@ -3271,6 +3271,8 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@ibdepdest", _depositoDestino))
         _listParam.Add(New Datos.DParametro("@ibiddc", 0))
         _listParam.Add(New Datos.DParametro("@ibidOrigen", _ibidOrigen))
+
+        _listParam.Add(New Datos.DParametro("@TI0021", "", _detalle))
         _listParam.Add(New Datos.DParametro("@ibuact", L_Usuario))
         _Tabla = D_ProcedimientoConParam("sp_Mam_TI002", _listParam)
         If _Tabla.Rows.Count > 0 Then
@@ -3356,7 +3358,7 @@ Public Class AccesoLogica
         Return _resultado
     End Function
 
-    Public Shared Function L_prMovimientoModificar(ByRef _ibid As String, _ibfdoc As String, _ibconcep As Integer, _ibobs As String, _almacen As Integer) As Boolean
+    Public Shared Function L_prMovimientoModificar(ByRef _ibid As String, _ibfdoc As String, _ibconcep As Integer, _ibobs As String, _almacen As Integer, _detalle As DataTable) As Boolean
         Dim _resultado As Boolean
 
         Dim _Tabla As DataTable
@@ -3371,6 +3373,7 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@ibalm", _almacen))
         _listParam.Add(New Datos.DParametro("@ibiddc", 0))
 
+        _listParam.Add(New Datos.DParametro("@TI0021", "", _detalle))
         _listParam.Add(New Datos.DParametro("@ibuact", L_Usuario))
         _Tabla = D_ProcedimientoConParam("sp_Mam_TI002", _listParam)
 

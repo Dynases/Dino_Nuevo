@@ -1179,27 +1179,37 @@ Public Class F0_Venta2
             _prCalcularPrecioTotal()
         End If
     End Sub
+
     Public Sub _prCalcularPrecioTotal()
+
+
+        Dim TotalDescuento As Double = 0
+        Dim TotalCosto As Double = 0
+        Dim dt As DataTable = CType(grdetalle.DataSource, DataTable)
+        For i As Integer = 0 To dt.Rows.Count - 1 Step 1
+
+            If (dt.Rows(i).Item("estado") >= 0) Then
+                TotalDescuento = TotalDescuento + dt.Rows(i).Item("tbtotdesc")
+                TotalCosto = TotalDescuento + dt.Rows(i).Item("tbptot2")
+            End If
+        Next
+
+
         'grdetalle.UpdateData()
         Dim montoDo As Decimal
         Dim montodesc As Double = tbMdesc.Value
-        Dim pordesc As Double = ((montodesc * 100) / grdetalle.GetTotal(grdetalle.RootTable.Columns("tbtotdesc"), AggregateFunction.Sum))
+        Dim pordesc As Double = ((montodesc * 100) / TotalDescuento)
         tbPdesc.Value = pordesc
-        Dim subtotal = Convert.ToDouble(Format(grdetalle.GetTotal(grdetalle.RootTable.Columns("tbtotdesc"), AggregateFunction.Sum), "0.00"))
+        Dim subtotal = Convert.ToDouble(Format(TotalDescuento, "0.00"))
         tbSubTotal.Value = subtotal
 
         'tbTotalBs.Text = total.ToString()
         tbTotalBs.Text = tbSubTotal.Value - montodesc
         montoDo = Convert.ToDecimal(tbTotalBs.Text) / IIf(cbCambioDolar.Text = "", 1, Convert.ToDecimal(cbCambioDolar.Text))
         tbTotalDo.Text = Format(montoDo, "0.00")
-        tbIce.Value = grdetalle.GetTotal(grdetalle.RootTable.Columns("tbptot2"), AggregateFunction.Sum) * (gi_ICE / 100)
-        'If (gb_FacturaIncluirICE = True) Then
-        '    'tbTotal21.Value = grdetalle.GetTotal(grdetalle.RootTable.Columns("tbtotdesc"), AggregateFunction.Sum) - montodesc + tbIce.Value
-        '    tbTotalBs.Text = grdetalle.GetTotal(grdetalle.RootTable.Columns("tbtotdesc"), AggregateFunction.Sum) - montodesc + tbIce.Value
-        'Else
-        '    'tbTotal2.Text = grdetalle.GetTotal(grdetalle.RootTable.Columns("tbtotdesc"), AggregateFunction.Sum) - montodesc
-        '    'tbTotalBs.Text = Convert.ToDecimal(tbTotalBs.Text) - montodesc
-        'End If
+        tbIce.Value = TotalCosto * (gi_ICE / 100)
+        calcularCambio()
+
     End Sub
     Public Sub _prEliminarFila()
         If (grdetalle.Row >= 0) Then
@@ -2804,6 +2814,10 @@ salirIf:
             Dim fila As DataRow() = Table_Producto.Select("yfcbarra='" + codigo.Trim + "'", "")
             If (fila.Count > 0) Then
                 If pos = -1 Then
+                    If (grdetalle.GetValue("tbty5prod") <= 0) Then
+                        _prAddDetalleVenta()
+                        grdetalle.Row = grdetalle.RowCount - 1
+                    End If
                     _fnObtenerFilaDetalle(pos, grdetalle.GetValue("tbnumi"))
                 End If
                 Dim cantidad = Format(total / CDbl(fila(0).ItemArray(15)), "0.00")
@@ -3049,6 +3063,7 @@ salirIf:
                     '  grDetalle.CurrentRow.Cells.Item("cant").Value = 1
                     Dim lin As Integer = grdetalle.GetValue("tbnumi")
                     Dim pos As Integer = -1
+                    Dim rowIndex As Integer = grdetalle.Row
                     _fnObtenerFilaDetalle(pos, lin)
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = 1
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpbas")
@@ -3057,8 +3072,9 @@ salirIf:
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbdesc") = 0
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpbas")
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos")
-                    'grdetalle.SetValue("tbcmin", 1)
-                    'grdetalle.SetValue("tbptot", grdetalle.GetValue("tbpbas"))
+                    grdetalle.SetValue("tbcmin", 1)
+                    grdetalle.SetValue("tbptot", grdetalle.GetValue("tbpbas"))
+                    P_PonerTotal(rowIndex)
                 Else
                     If (grdetalle.GetValue("tbcmin") > 0) Then
                         Dim rowIndex As Integer = grdetalle.Row
@@ -3067,8 +3083,14 @@ salirIf:
                         Dim lin As Integer = grdetalle.GetValue("tbnumi")
                         Dim pos As Integer = -1
                         _fnObtenerFilaDetalle(pos, lin)
+                        CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = grdetalle.GetValue("tbpbas") * grdetalle.GetValue("tbcmin")
+
                         CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbdesc") = montodesc
                         grdetalle.SetValue("tbdesc", montodesc)
+                        CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = (grdetalle.GetValue("tbpbas") * grdetalle.GetValue("tbcmin")) - montodesc
+
+                        CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = grdetalle.GetValue("tbpcos") * grdetalle.GetValue("tbcmin")
+
                         P_PonerTotal(rowIndex)
 
                     Else
@@ -3077,6 +3099,13 @@ salirIf:
                         _fnObtenerFilaDetalle(pos, lin)
                         CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = 1
                         CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpbas")
+
+                        CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbporc") = 0
+                        CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbdesc") = 0
+                        CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpbas")
+                        CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos")
+                        grdetalle.SetValue("tbcmin", 1)
+                        grdetalle.SetValue("tbptot", grdetalle.GetValue("tbpbas"))
                         _prCalcularPrecioTotal()
                         'grdetalle.SetValue("tbcmin", 1)
                         'grdetalle.SetValue("tbptot", grdetalle.GetValue("tbpbas"))
@@ -3258,65 +3287,65 @@ salirIf:
     End Sub
 
     Private Sub grdetalle_CellEdited_1(sender As Object, e As ColumnActionEventArgs) Handles grdetalle.CellEdited
-        Try
-            If (e.Column.Index = grdetalle.RootTable.Columns("tbcmin").Index) Then
-                If (Not IsNumeric(grdetalle.GetValue("tbcmin")) Or grdetalle.GetValue("tbcmin").ToString = String.Empty) Then
+        'Try
+        '    If (e.Column.Index = grdetalle.RootTable.Columns("tbcmin").Index) Then
+        '        If (Not IsNumeric(grdetalle.GetValue("tbcmin")) Or grdetalle.GetValue("tbcmin").ToString = String.Empty) Then
 
-                    grdetalle.SetValue("tbcmin", 1)
-                    grdetalle.SetValue("tbptot", grdetalle.GetValue("tbpbas"))
-                    grdetalle.SetValue("tbporc", 0)
-                    grdetalle.SetValue("tbdesc", 0)
-                    grdetalle.SetValue("tbtotdesc", grdetalle.GetValue("tbpbas"))
-
-
-                Else
-                    If (grdetalle.GetValue("tbcmin") > 0) Then
-
-                        Dim cant As Integer = grdetalle.GetValue("tbcmin")
-
-                        Dim stock As Double = grdetalle.GetValue("stock")
-                        If (cant > stock) And stock <> -9999 Then
-                            Dim lin As Integer = grdetalle.GetValue("tbnumi")
-                            Dim pos As Integer = -1
-                            _fnObtenerFilaDetalle(pos, lin)
-                            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = 1
-                            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpbas")
-                            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = grdetalle.GetValue("tbpcos") * 1
-                            Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-                            ToastNotification.Show(Me, "La cantidad de la venta no debe ser mayor al del stock" & vbCrLf &
-                            "Stock=" + Str(stock).ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-                            grdetalle.SetValue("tbcmin", 1)
-                            grdetalle.SetValue("tbptot", grdetalle.GetValue("tbpbas"))
-                            grdetalle.SetValue("tbptot2", grdetalle.GetValue("tbpcos") * 1)
-
-                            _prCalcularPrecioTotal()
-                        Else
-                            If (cant = stock) Then
+        '            grdetalle.SetValue("tbcmin", 1)
+        '            grdetalle.SetValue("tbptot", grdetalle.GetValue("tbpbas"))
+        '            grdetalle.SetValue("tbporc", 0)
+        '            grdetalle.SetValue("tbdesc", 0)
+        '            grdetalle.SetValue("tbtotdesc", grdetalle.GetValue("tbpbas"))
 
 
-                                'grdetalle.SelectedFormatStyle.ForeColor = Color.Blue
-                                'grdetalle.CurrentRow.Cells.Item(e.Column).FormatStyle = New GridEXFormatStyle
-                                'grdetalle.CurrentRow.Cells(e.Column).FormatStyle.BackColor = Color.Pink
-                                'grdetalle.CurrentRow.Cells.Item(e.Column).FormatStyle.BackColor = Color.DodgerBlue
-                                'grdetalle.CurrentRow.Cells.Item(e.Column).FormatStyle.ForeColor = Color.White
-                                'grdetalle.CurrentRow.Cells.Item(e.Column).FormatStyle.FontBold = TriState.True
-                            End If
-                        End If
+        '        Else
+        '            If (grdetalle.GetValue("tbcmin") > 0) Then
 
-                    Else
+        '                Dim cant As Integer = grdetalle.GetValue("tbcmin")
 
-                        grdetalle.SetValue("tbcmin", 1)
-                        grdetalle.SetValue("tbptot", grdetalle.GetValue("tbpbas"))
-                        grdetalle.SetValue("tbporc", 0)
-                        grdetalle.SetValue("tbdesc", 0)
-                        grdetalle.SetValue("tbtotdesc", grdetalle.GetValue("tbpbas"))
+        '                Dim stock As Double = grdetalle.GetValue("stock")
+        '                If (cant > stock) And stock <> -9999 Then
+        '                    Dim lin As Integer = grdetalle.GetValue("tbnumi")
+        '                    Dim pos As Integer = -1
+        '                    _fnObtenerFilaDetalle(pos, lin)
+        '                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = 1
+        '                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpbas")
+        '                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = grdetalle.GetValue("tbpcos") * 1
+        '                    Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+        '                    ToastNotification.Show(Me, "La cantidad de la venta no debe ser mayor al del stock" & vbCrLf &
+        '                    "Stock=" + Str(stock).ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+        '                    grdetalle.SetValue("tbcmin", 1)
+        '                    grdetalle.SetValue("tbptot", grdetalle.GetValue("tbpbas"))
+        '                    grdetalle.SetValue("tbptot2", grdetalle.GetValue("tbpcos") * 1)
 
-                    End If
-                End If
-            End If
-        Catch ex As Exception
-            MostrarMensajeError(ex.Message)
-        End Try
+        '                    _prCalcularPrecioTotal()
+        '                Else
+        '                    If (cant = stock) Then
+
+
+        '                        'grdetalle.SelectedFormatStyle.ForeColor = Color.Blue
+        '                        'grdetalle.CurrentRow.Cells.Item(e.Column).FormatStyle = New GridEXFormatStyle
+        '                        'grdetalle.CurrentRow.Cells(e.Column).FormatStyle.BackColor = Color.Pink
+        '                        'grdetalle.CurrentRow.Cells.Item(e.Column).FormatStyle.BackColor = Color.DodgerBlue
+        '                        'grdetalle.CurrentRow.Cells.Item(e.Column).FormatStyle.ForeColor = Color.White
+        '                        'grdetalle.CurrentRow.Cells.Item(e.Column).FormatStyle.FontBold = TriState.True
+        '                    End If
+        '                End If
+
+        '            Else
+
+        '                grdetalle.SetValue("tbcmin", 1)
+        '                grdetalle.SetValue("tbptot", grdetalle.GetValue("tbpbas"))
+        '                grdetalle.SetValue("tbporc", 0)
+        '                grdetalle.SetValue("tbdesc", 0)
+        '                grdetalle.SetValue("tbtotdesc", grdetalle.GetValue("tbpbas"))
+
+        '            End If
+        '        End If
+        '    End If
+        'Catch ex As Exception
+        '    MostrarMensajeError(ex.Message)
+        'End Try
     End Sub
     Private Sub grdetalle_MouseClick(sender As Object, e As MouseEventArgs) Handles grdetalle.MouseClick
         Try
@@ -3546,6 +3575,17 @@ salirIf:
         grdetalle.Select()
     End Sub
     Private Sub DoubleInput2_ValueChanged(sender As Object, e As EventArgs) Handles tbMontoBs.ValueChanged
+        If tbMontoBs.Value <> 0 And tbMontoBs.Text <> String.Empty Then
+            txtMontoPagado1.Text = tbMontoBs.Value + (tbMontoDolar.Value * IIf(cbCambioDolar.Text = "", 0, Convert.ToDecimal(cbCambioDolar.Text))) + tbMontoTarej.Value
+            If Convert.ToDecimal(tbTotalBs.Text) <> 0 And Convert.ToDecimal(txtMontoPagado1.Text) >= Convert.ToDecimal(tbTotalBs.Text) Then
+                txtCambio1.Text = Convert.ToDecimal(txtMontoPagado1.Text) - Convert.ToDecimal(tbTotalBs.Text)
+            Else
+                txtCambio1.Text = "0.00"
+            End If
+        End If
+    End Sub
+
+    Sub calcularCambio()
         If tbMontoBs.Value <> 0 And tbMontoBs.Text <> String.Empty Then
             txtMontoPagado1.Text = tbMontoBs.Value + (tbMontoDolar.Value * IIf(cbCambioDolar.Text = "", 0, Convert.ToDecimal(cbCambioDolar.Text))) + tbMontoTarej.Value
             If Convert.ToDecimal(tbTotalBs.Text) <> 0 And Convert.ToDecimal(txtMontoPagado1.Text) >= Convert.ToDecimal(tbTotalBs.Text) Then
