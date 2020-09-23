@@ -528,7 +528,7 @@ Public Class P_Principal
     Private Sub btVentLibroVenta_Click(sender As Object, e As EventArgs) Handles btVentLibroVenta.Click
         'SideNav1.IsMenuExpanded = False
         'Ventana.Select()
-        Dim frm As New F0_LibroVenta
+        Dim frm As New F0_LibroVenta2
         'frm._nameButton = btVentLibroVenta.Name
         'Dim tab3 As SuperTabItem = superTabControl3.CreateTab(frm.Text)
         'frm._tab = tab3
