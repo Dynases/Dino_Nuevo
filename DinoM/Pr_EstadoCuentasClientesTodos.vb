@@ -2,7 +2,7 @@
 Imports DevComponents.DotNetBar
 Imports DevComponents.DotNetBar.Controls
 
-Public Class Pr_EstadoCuentasClientes
+Public Class Pr_EstadoCuentasClientesTodos
 #Region "VARIABLES GLOBALES"
     Dim _Inter As Integer = 0
 
@@ -63,98 +63,42 @@ Public Class Pr_EstadoCuentasClientes
     End Sub
     Private Sub _prCargarReporte()
         Try
-            Dt1Estado = New DataTable
-            Dt2EstadoTotal = New DataTable
+            Dim _dt As New DataTable
+            _prInterpretarDatos(_dt)
 
-            Dt2EstadoTotal = L_prListarEstadoCuentasClientesTotal(tbCodigoCliente.Text, tbFechaI.Value.ToString("yyyy/MM/dd"))
-            Dt1Estado = L_prListarEstadoCuentasCliente(tbCodigoCliente.Text, tbFechaI.Value.ToString("yyyy/MM/dd"), tbFechaF.Value.ToString("yyyy/MM/dd"))
+            If (_dt.Rows.Count > 0) Then
 
-            If (Dt2EstadoTotal.Rows.Count = 0 And Dt1Estado.Rows.Count = 0) Then
-                MReportViewer.ReportSource = Nothing
-                ToastNotification.Show(Me, "NO HAY DATOS PARA LOS PARAMETROS SELECCIONADOS..!!!",
-                           My.Resources.INFORMATION,
-                            3500,
-                           eToastGlowColor.Blue,
-                           eToastPosition.BottomLeft)
-                Exit Sub
-
-
-            Else
-
-                P_ArmarDatos()
-
-                Dim objrep As New R_EstadoCuentasClientes
+                Dim objrep As New R_EstadoCuentasClientesTodos
                 objrep.SetDataSource(_dt)
                 Dim fechaI As String = tbFechaI.Value.ToString("dd/MM/yyyy")
                 Dim fechaF As String = tbFechaF.Value.ToString("dd/MM/yyyy")
                 objrep.SetParameterValue("usuario", L_Usuario)
-                objrep.SetParameterValue("fechaI", fechaI)
-                objrep.SetParameterValue("fechaF", fechaF)
-                objrep.SetParameterValue("Cliente", tbCliente.Text)
+
                 MReportViewer.ReportSource = objrep
                 MReportViewer.Show()
                 MReportViewer.BringToFront()
-
+            Else
+                ToastNotification.Show(Me, "NO HAY DATOS PARA LOS PARAMETROS SELECCIONADOS..!!!",
+                                       My.Resources.INFORMATION, 2000,
+                                       eToastGlowColor.Blue,
+                                       eToastPosition.BottomLeft)
+                MReportViewer.ReportSource = Nothing
             End If
+
         Catch ex As Exception
             MostrarMensajeError(ex.Message)
         End Try
     End Sub
-    Private Sub P_ArmarDatos()
-
-        Dim saldo As Double = 0
-        Dim ingT As Double = 0
-        Dim salT As Double = 0
-
-        If (Not IsDBNull(Dt2EstadoTotal.Compute("Sum(Importe)", "numicliente = " + tbCodigoCliente.Text + " and concepto = 1"))) Then
-            ingT = Dt2EstadoTotal.Compute("Sum(Importe)", "numicliente = " + tbCodigoCliente.Text + " and concepto = 1")
-        End If
-        If (Not IsDBNull(Dt2EstadoTotal.Compute("Sum(Pagos)", "numicliente = " + tbCodigoCliente.Text + " and concepto = 2"))) Then
-            salT = Dt2EstadoTotal.Compute("Sum(Pagos)", "numicliente = " + tbCodigoCliente.Text + " and concepto = 2")
-        End If
-
-        saldo = ingT - salT
-        Dim ing As Double = 0
-        Dim sal As Double = 0
-        Dim saldoInicial As Double = 0
-        'Sumar Importe
-        ing = IIf(IsDBNull(Dt1Estado.Compute("Sum(Importe)", "numicliente = " + tbCodigoCliente.Text + " and concepto = 1")), 0, Dt1Estado.Compute("Sum(Importe)", "numicliente = " + tbCodigoCliente.Text + " and concepto = 1"))
-        'Sumar Pagos
-        sal = IIf(IsDBNull(Dt1Estado.Compute("Sum(Pagos)", "numicliente = " + tbCodigoCliente.Text + " and concepto = 2")), 0, Dt1Estado.Compute("Sum(Pagos)", "numicliente = " + tbCodigoCliente.Text + " and concepto = 2"))
-        'Saldo  a partir de la fecha indicada
-        saldoInicial = saldo
-        'Insertamos la primera fila con el saldo 
-        Dim f As DataRow
-
-        f = Dt1Estado.NewRow
-        f.Item(0) = tbCodigoCliente.Text
-        f.Item(1) = tbCliente.Text
-        f.Item(2) = ""
-        f.Item(3) = 0
-        f.Item(4) = "SALDO ANTERIOR"
-        f.Item(5) = ""
-        f.Item(6) = 0
-        f.Item(7) = 0
-        f.Item(8) = saldoInicial
-        f.Item(9) = 0
-        f.Item(10) = ""
-
-
-        Dt1Estado.Rows.InsertAt(f, 0)
-
-        For Each fil As DataRow In Dt1Estado.Rows
-            Dim s As String = fil.Item("concepto").ToString
-            If (fil.Item("concepto").ToString.Equals("1")) Then
-                saldoInicial = saldoInicial + CDbl(fil.Item("Importe"))
-                fil.Item("Saldos") = saldoInicial
-            ElseIf (fil.Item("concepto").ToString.Equals("2")) Then
-                saldoInicial = saldoInicial - CDbl(fil.Item("Pagos"))
-                fil.Item("Saldos") = saldoInicial
+    Public Sub _prInterpretarDatos(ByRef _dt As DataTable)
+        If (swCliente.Value = True) Then
+            _dt = L_prListarEstadoCuentasClienteTodos()
+        Else
+            If (tbCodigoCliente.Text.Length > 0) Then
+                _dt = L_prListarEstadoCuentasUnCliente(tbCodigoCliente.Text)
             End If
-        Next
-
-        _dt = Dt1Estado
+        End If
     End Sub
+
     Private Sub MostrarMensajeError(mensaje As String)
         ToastNotification.Show(Me,
                                mensaje.ToUpper,
@@ -185,19 +129,36 @@ Public Class Pr_EstadoCuentasClientes
     End Sub
 
     Private Sub btnGenerar_Click(sender As Object, e As EventArgs) Handles btnGenerar.Click
-        If tbCliente.Text = String.Empty Then
-            ToastNotification.Show(Me, "Debe Seleccionar un Cliente..!!!".ToUpper,
-                                       My.Resources.INFORMATION, 2000,
-                                       eToastGlowColor.Blue,
-                                       eToastPosition.TopCenter)
-        Else
+        If swCliente.Value = True Then
             _prCargarReporte()
+        Else
+            If tbCliente.Text = String.Empty Then
+                ToastNotification.Show(Me, "Debe Seleccionar un Cliente..!!!".ToUpper,
+                                           My.Resources.INFORMATION, 2000,
+                                           eToastGlowColor.Blue,
+                                           eToastPosition.TopCenter)
+            Else
+                _prCargarReporte()
+            End If
         End If
 
     End Sub
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         Close()
+    End Sub
+
+    Private Sub swCliente_ValueChanged(sender As Object, e As EventArgs) Handles swCliente.ValueChanged
+        If (swCliente.Value = True) Then
+            lbcliente.Visible = False
+            tbCodigoCliente.Visible = False
+            tbCliente.Visible = False
+            btBuscarCliente.Visible = False
+        Else
+            lbcliente.Visible = True
+            tbCliente.Visible = True
+            btBuscarCliente.Visible = True
+        End If
     End Sub
 
 #End Region

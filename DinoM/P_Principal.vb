@@ -1055,6 +1055,18 @@ Public Class P_Principal
     Private Sub btEstadoCuentasClientes_Click(sender As Object, e As EventArgs) Handles btEstadoCuentasClientes.Click
         Dim frm As New Pr_EstadoCuentasClientes
         frm._nameButton = btEstadoCuentasClientes.Name
+        frm.Show()
+    End Sub
+
+    Private Sub btEstadoCuentasTodos_Click(sender As Object, e As EventArgs) Handles btEstadoCuentasClientesTodos.Click
+        Dim frm As New Pr_EstadoCuentasClientesTodos
+        frm._nameButton = btEstadoCuentasClientesTodos.Name
+        frm.Show()
+    End Sub
+
+    Private Sub btEstadoCuentasProveedoresTodos_Click(sender As Object, e As EventArgs) Handles btEstadoCuentasProveedoresTodos.Click
+        Dim frm As New Pr_EstadoCuentasProveedoresTodos
+        frm._nameButton = btEstadoCuentasProveedoresTodos.Name
         'frm._modulo = FP_COMPRAS
         frm.Show()
     End Sub
