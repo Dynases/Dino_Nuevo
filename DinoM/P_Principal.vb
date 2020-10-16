@@ -1071,6 +1071,12 @@ Public Class P_Principal
         frm.Show()
     End Sub
 
+    Private Sub btBancos_Click(sender As Object, e As EventArgs) Handles btBancos.Click
+        Dim frm As New F1_Bancos
+        frm._nameButton = btBancos.Name
+        frm.Show()
+    End Sub
+
     'Private Sub btnCredPagoCliente_Click(sender As Object, e As EventArgs) Handles btnCredPagoCliente.Click
     '    SideNav1.IsMenuExpanded = False
     '    Ventana.Select()

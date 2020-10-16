@@ -805,12 +805,14 @@ Public Class F0_PagosCreditoCompraUlt
         Dim ParteDecimal As Double
         ParteEntera = Int(total)
         ParteDecimal = total - ParteEntera
+        ParteDecimal = Math.Round((CDbl(ParteDecimal) * 100), 2)
+
         Dim li As String = Facturacion.ConvertirLiteral.A_fnConvertirLiteral(CDbl(ParteEntera)) + " con " +
         IIf(ParteDecimal.ToString.Equals("0"), "00", ParteDecimal.ToString) + "/100 Bolivianos"
 
         P_Global.Visualizador = New Visualizador
 
-        Dim objrep As New R_ReportePagosCobranzas
+        Dim objrep As New R_ReportePagosCobranzasCarta
         '' GenerarNro(_dt)
         ''objrep.SetDataSource(Dt1Kardex)
         objrep.SetDataSource(dt)
@@ -1139,7 +1141,6 @@ Public Class F0_PagosCreditoCompraUlt
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
         If (Not _fnAccesible()) Then
             P_GenerarReporte()
-
         End If
     End Sub
    

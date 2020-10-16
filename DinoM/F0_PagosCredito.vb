@@ -292,7 +292,7 @@ Public Class F0_PagosCredito
             .EditType = EditType.MultiColumnDropDown
             .DropDown = cbbanco.DropDownList
             .Width = 160
-            .Visible = False
+            .Visible = True
         End With
         With grfactura.RootTable.Columns("banco")
             .Width = 100
@@ -306,7 +306,7 @@ Public Class F0_PagosCredito
             .Caption = "Nro Cheque"
             .Width = 120
             .TextAlignment = TextAlignment.Far
-            .Visible = False
+            .Visible = True
         End With
         If (_fnAccesible()) Then
             With grfactura.RootTable.Columns("img")
@@ -1233,7 +1233,6 @@ Public Class F0_PagosCredito
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
         If (Not _fnAccesible()) Then
             P_GenerarReporte()
-
         End If
     End Sub
     Private Sub P_GenerarReporte()
@@ -1246,6 +1245,8 @@ Public Class F0_PagosCredito
         Dim ParteDecimal As Double
         ParteEntera = Int(total)
         ParteDecimal = total - ParteEntera
+        ParteDecimal = Math.Round((CDbl(ParteDecimal) * 100), 2)
+
         Dim li As String = Facturacion.ConvertirLiteral.A_fnConvertirLiteral(CDbl(ParteEntera)) + " con " +
         IIf(ParteDecimal.ToString.Equals("0"), "00", ParteDecimal.ToString) + "/100 Bolivianos"
 

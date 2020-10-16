@@ -343,6 +343,12 @@
     <Compile Include="F1_Almacen.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F1_Bancos.Designer.vb">
+      <DependentUpon>F1_Bancos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F1_Bancos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F1_Proveedor.Designer.vb">
       <DependentUpon>F1_Proveedor.vb</DependentUpon>
     </Compile>
@@ -616,6 +622,12 @@
     </Compile>
     <Compile Include="Reporte\R_ReporteCobranzasCarta.vb">
       <DependentUpon>R_ReporteCobranzasCarta.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reporte\R_ReportePagosCobranzasCarta.vb">
+      <DependentUpon>R_ReportePagosCobranzasCarta.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -970,6 +982,9 @@
     <EmbeddedResource Include="F1_Almacen.resx">
       <DependentUpon>F1_Almacen.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F1_Bancos.resx">
+      <DependentUpon>F1_Bancos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F1_Proveedor.resx">
       <DependentUpon>F1_Proveedor.vb</DependentUpon>
     </EmbeddedResource>
@@ -1126,6 +1141,10 @@
     <EmbeddedResource Include="Reporte\R_ReporteCobranzasCarta.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>R_ReporteCobranzasCarta.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\R_ReportePagosCobranzasCarta.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>R_ReportePagosCobranzasCarta.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reporte\R_SaldosPorLinea.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1620,6 +1639,7 @@
     <None Include="Resources\fondoazul.png" />
     <None Include="Resources\fondoazul1.png" />
     <None Include="Resources\Ideteca.PNG" />
+    <None Include="Resources\imageDefault.jpg" />
     <Content Include="Resources\man.png" />
     <None Include="Resources\pdf.png" />
     <None Include="Resources\txt.png" />
