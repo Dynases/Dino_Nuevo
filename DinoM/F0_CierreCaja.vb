@@ -379,6 +379,7 @@ Public Class F0_CierreCaja
         End Try
 
     End Sub
+
     Public Sub CargarDetalleVentasPagosPorIdCaja(Fecha As Date, idCaja As String)
         Try
             Dim dt As New DataTable
@@ -594,6 +595,11 @@ Public Class F0_CierreCaja
             ToastNotification.Show(Me, "Por Favor introduzca monto inicial".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
             Return False
         End If
+        If tbTotalGral.Value > 0 And tbTEfectivo.Value = 0 Then
+            Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+            ToastNotification.Show(Me, "Por Favor llene la tabla de Cortes".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+            Return False
+        End If
         Return True
     End Function
     Public Sub _GrabarNuevo()
@@ -601,7 +607,7 @@ Public Class F0_CierreCaja
             Dim numi As String = ""
             Dim res As Boolean = L_fnGrabarCaja(numi, tbFecha.Value.ToString("yyyy/MM/dd"), tbTotalGral.Value, tbTCredito.Value,
                                                 tbTTarjeta.Value, tbTContado.Value, tbTDeposito.Value, tbTEfectivo.Value,
-                                                tbTDiferencia.Value, tbTPagos.Value, cbTurno.Text, tbMontoInicial.Text, IIf(swEstado.Value = True, 1, 0), Tb_TipoCambio.Value, tbObservacion.Text, CType(Dgv_Cortes.DataSource, DataTable), CType(Dgv_Depositos.DataSource, DataTable))
+                                                tbTDiferencia.Value, tbTPagos.Value, cbTurno.Text, tbMontoInicial.Value, tbTIngresos.Value, tbTEgresos.Value, IIf(swEstado.Value = True, 1, 0), Tb_TipoCambio.Value, tbObservacion.Text, CType(Dgv_Cortes.DataSource, DataTable), CType(Dgv_Depositos.DataSource, DataTable))
             If res Then
 
                 Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
@@ -613,8 +619,9 @@ Public Class F0_CierreCaja
 
                 _prCargarCierreCaja()
                 '_Limpiar()
-                _prSalir()
+
                 _UltimoRegistro()
+                _prSalir()
 
             Else
                 Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
@@ -639,7 +646,7 @@ Public Class F0_CierreCaja
                 Dim TContado As Double = tbTContado.Value - tbTTarjeta.Value
                 Dim res As Boolean = L_fnModificarCaja(TbCodigo.Text, tbFecha.Value.ToString("yyyy/MM/dd"), tbTotalGral.Value, tbTCredito.Value,
                                                     tbTTarjeta.Value, TContado, tbTDeposito.Value, tbTEfectivo.Value,
-                                                    tbTDiferencia.Value, tbTPagos.Value, cbTurno.Text, tbMontoInicial.Text, Tb_TipoCambio.Value, tbObservacion.Text, CType(Dgv_Cortes.DataSource, DataTable), CType(Dgv_Depositos.DataSource, DataTable), dtventas)
+                                                    tbTDiferencia.Value, tbTPagos.Value, cbTurno.Text, tbMontoInicial.Value, tbTIngresos.Value, tbTEgresos.Value, Tb_TipoCambio.Value, tbObservacion.Text, CType(Dgv_Cortes.DataSource, DataTable), CType(Dgv_Depositos.DataSource, DataTable), dtventas)
                 If res Then
 
                     Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
@@ -650,8 +657,9 @@ Public Class F0_CierreCaja
                                               )
 
                     _prCargarCierreCaja()
-                    _prSalir()
+
                     _UltimoRegistro()
+                    _prSalir()
 
                 Else
                     Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
@@ -743,6 +751,18 @@ Public Class F0_CierreCaja
                 .Caption = "MONTO INICIAL"
                 .FormatString = "0.00"
             End With
+            With Dgv_Buscador.RootTable.Columns("ccIngreso")
+                .Width = 130
+                .Visible = False
+                .Caption = "INGRESOS"
+                .FormatString = "0.00"
+            End With
+            With Dgv_Buscador.RootTable.Columns("ccEgreso")
+                .Width = 130
+                .Visible = False
+                .Caption = "EGRESOS"
+                .FormatString = "0.00"
+            End With
             With Dgv_Buscador.RootTable.Columns("ccObs")
                 .Width = 130
                 .Visible = False
@@ -809,6 +829,8 @@ Public Class F0_CierreCaja
                 cbTurno.Text = .GetValue("ccTurno")
                 tbMontoInicial.Value = .GetValue("ccMInicial")
                 tbMontoI.Value = .GetValue("ccMInicial")
+                tbTIngresos.Value = .GetValue("ccIngreso")
+                tbTEgresos.Value = .GetValue("ccEgreso")
                 swEstado.Value = .GetValue("ccEstado")
                 tbObservacion.Text = .GetValue("ccObs")
 
@@ -911,6 +933,8 @@ Public Class F0_CierreCaja
             objrep.SetParameterValue("MInicial", tbMontoI.Text)
             objrep.SetParameterValue("TContadoTarjeta", tbTContado.Text)
             objrep.SetParameterValue("TPagos", tbTPagos.Text)
+            objrep.SetParameterValue("TIngresos", tbTIngresos.Text)
+            objrep.SetParameterValue("TEgresos", tbTEgresos.Text)
             objrep.SetParameterValue("TotalCaja", tbTotalGral.Text)
             objrep.SetParameterValue("TotalCortes", tbTEfectivo.Text)
             objrep.SetParameterValue("TotalDepositos", tbTDeposito.Text)
@@ -994,11 +1018,13 @@ Public Class F0_CierreCaja
 
     Private Sub btnCalcular_Click(sender As Object, e As EventArgs) Handles btnCalcular.Click
         Try
+            Dim dtIngEgre As DataTable
             Dim DtVerificar As DataTable = L_fnVerificarSiExisteCierreCaja(tbFecha.Value, TbCodigo.Text)
             If DtVerificar.Rows(0).Item("ccEstado") = 0 Then
                 Throw New Exception("Ya existe Cierre de Caja de esta fecha: " + tbFecha.Value)
             Else
                 CargarDetalleVentasPagos(tbFecha.Value)
+                dtIngEgre = L_prIngresoEgresoPorFecha(tbFecha.Value.ToString("yyyy/MM/dd"))
 
                 If Dgv_VentasPagos.RowCount > 0 Then
                     Tb_TipoCambio.Text = (CType(Dgv_VentasPagos.DataSource, DataTable).Rows(0).Item("tipocambio"))
@@ -1007,7 +1033,10 @@ Public Class F0_CierreCaja
                     tbTContado.Text = Dgv_VentasPagos.GetTotal(Dgv_VentasPagos.RootTable.Columns("totalbs"), AggregateFunction.Sum) - tbTCredito.Text
                     tbTPagos.Text = Dgv_VentasPagos.GetTotal(Dgv_VentasPagos.RootTable.Columns("pagos"), AggregateFunction.Sum)
 
-                    tbTotalGral.Text = tbMontoInicial.Value + tbTContado.Value + tbTPagos.Value
+                    tbTIngresos.Text = IIf(IsDBNull(dtIngEgre.Compute("Sum(ieMonto)", "ieTipo=1 and ieIdCaja=0")), 0, dtIngEgre.Compute("Sum(ieMonto)", "ieTipo=1 and ieIdCaja=0"))
+                    tbTEgresos.Text = IIf(IsDBNull(dtIngEgre.Compute("Sum(ieMonto)", "ieTipo=0 and ieIdCaja=0")), 0, dtIngEgre.Compute("Sum(ieMonto)", "ieTipo=0 and ieIdCaja=0"))
+
+                    tbTotalGral.Text = (tbMontoInicial.Value + tbTContado.Value + tbTPagos.Value + tbTIngresos.Value) - tbTEgresos.Value
 
 
                     tbTDeposito.Text = 0
@@ -1141,7 +1170,7 @@ Public Class F0_CierreCaja
                 bandera = ef.band
                 If (bandera = True) Then
                     Dim mensajeError As String = ""
-                    Dim res As Boolean = L_fnEliminarCaja(TbCodigo.Text)
+                    Dim res As Boolean = L_fnEliminarCaja(TbCodigo.Text, tbFecha.Value)
                     If res Then
                         Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
                         ToastNotification.Show(Me, "Código de Caja ".ToUpper + TbCodigo.Text + " eliminado con Exito.".ToUpper,
@@ -1201,7 +1230,7 @@ Public Class F0_CierreCaja
                 btnGrabar.Enabled = True
 
                 btnCalcular.Enabled = True
-                PanelNavegacion.Enabled = False
+                'PanelNavegacion.Enabled = False
             Else
                 Throw New Exception("Este cierre de caja no puede modificarse porque ya se encuentra 'Cerrada'")
             End If
@@ -1283,6 +1312,8 @@ Public Class F0_CierreCaja
             Timer1.Enabled = False
         End If
     End Sub
+
+
 
 
 #End Region

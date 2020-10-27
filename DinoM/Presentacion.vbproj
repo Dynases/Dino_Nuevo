@@ -349,6 +349,12 @@
     <Compile Include="F1_Bancos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F1_IngresosEgresos.Designer.vb">
+      <DependentUpon>F1_IngresosEgresos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F1_IngresosEgresos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F1_Proveedor.Designer.vb">
       <DependentUpon>F1_Proveedor.vb</DependentUpon>
     </Compile>
@@ -984,6 +990,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F1_Bancos.resx">
       <DependentUpon>F1_Bancos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F1_IngresosEgresos.resx">
+      <DependentUpon>F1_IngresosEgresos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F1_Proveedor.resx">
       <DependentUpon>F1_Proveedor.vb</DependentUpon>

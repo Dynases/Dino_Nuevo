@@ -120,7 +120,7 @@ Public Class ModeloF1
         btnModificar.Enabled = True
         btnEliminar.Enabled = True
         btnGrabar.Enabled = False
-        PanelNavegacion.Enabled = True
+
         JGrM_Buscador.Enabled = True
         MRlAccion.Text = ""
 

@@ -3421,6 +3421,18 @@ salirIf:
                 End If
             End If
 
+            Dim res2 As Boolean = L_fnVerificarCierreCaja(tbCodigo.Text, "V")
+            If res2 Then
+                Dim img As Bitmap = New Bitmap(My.Resources.WARNING, 50, 50)
+
+                ToastNotification.Show(Me, "No se puede anular la venta con código ".ToUpper + tbCodigo.Text + ", ya se hizo cierre de caja, por favor primero elimine cierre de caja".ToUpper,
+                                                  img, 5000,
+                                                  eToastGlowColor.Green,
+                                                  eToastPosition.TopCenter)
+                Exit Sub
+            End If
+
+
             Dim result As Boolean = L_fnVerificarSiSeContabilizoVenta(tbCodigo.Text)
             If result Then
                 Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)

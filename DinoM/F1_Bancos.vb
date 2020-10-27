@@ -135,22 +135,22 @@ Public Class F1_Bancos
 
     Private Sub _prAsignarPermisos()
 
-        'Dim dtRolUsu As DataTable = L_prRolDetalleGeneral(gi_userRol, _nameButton)
+        Dim dtRolUsu As DataTable = L_prRolDetalleGeneral(gi_userRol, _nameButton)
 
-        'Dim show As Boolean = dtRolUsu.Rows(0).Item("ycshow")
-        'Dim add As Boolean = dtRolUsu.Rows(0).Item("ycadd")
-        'Dim modif As Boolean = dtRolUsu.Rows(0).Item("ycmod")
-        'Dim del As Boolean = dtRolUsu.Rows(0).Item("ycdel")
+        Dim show As Boolean = dtRolUsu.Rows(0).Item("ycshow")
+        Dim add As Boolean = dtRolUsu.Rows(0).Item("ycadd")
+        Dim modif As Boolean = dtRolUsu.Rows(0).Item("ycmod")
+        Dim del As Boolean = dtRolUsu.Rows(0).Item("ycdel")
 
-        'If add = False Then
-        '    btnNuevo.Visible = False
-        'End If
-        'If modif = False Then
-        '    btnModificar.Visible = False
-        'End If
-        'If del = False Then
-        '    btnEliminar.Visible = False
-        'End If
+        If add = False Then
+            btnNuevo.Visible = False
+        End If
+        If modif = False Then
+            btnModificar.Visible = False
+        End If
+        If del = False Then
+            btnEliminar.Visible = False
+        End If
 
     End Sub
 
