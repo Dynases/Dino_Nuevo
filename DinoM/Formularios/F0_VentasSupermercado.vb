@@ -28,6 +28,10 @@ Public Class F0_VentasSupermercado
     Dim _codeBar As Integer = 1
     Dim _dias As Integer = 0
 
+    Public TotalBs As Double = 0
+    Public TotalSus As Double = 0
+    Public TotalTarjeta As Double = 0
+
 #Region "Metodos Privados"
     Private Sub _IniciarTodo()
         L_prAbrirConexion(gs_Ip, gs_UsuarioSql, gs_ClaveSql, gs_NombreBD)
@@ -1956,7 +1960,30 @@ Public Class F0_VentasSupermercado
 
         End If
         If (e.KeyData = Keys.Control + Keys.S) Then
-            _prGuardar()
+            If _ValidarCampos() = False Then
+                Exit Sub
+            End If
+            Dim ef = New Efecto
+            ef.tipo = 6
+            ef.TotalVenta = tbTotal.Value
+
+            ef.ShowDialog()
+            Dim bandera As Boolean = False
+            bandera = ef.band
+            If (bandera = True) Then
+
+                TotalBs = ef.TotalBs
+                TotalSus = ef.TotalSus
+                TotalTarjeta = ef.TotalTarjeta
+
+                _prGuardar()
+            Else
+                ToastNotification.Show(Me, "No se Ingreso Monto a Pagar ", My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
+
+
+
+            End If
+
 
         End If
         If (e.KeyData = Keys.Enter) Then

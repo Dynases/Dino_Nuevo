@@ -322,6 +322,7 @@ Partial Class F1_MontoPagar
         Me.Controls.Add(Me.GroupBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "F1_MontoPagar"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "F1_MontoPagar"
         Me.GroupBox1.ResumeLayout(False)
         CType(Me.tbMontoTarej, System.ComponentModel.ISupportInitialize).EndInit()

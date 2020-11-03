@@ -15,6 +15,10 @@ Public Class Efecto
     Public Row As Janus.Windows.GridEX.GridEXRow
     Public SeleclCol As Integer = -1
 
+    Public TotalBs As Double = 0
+    Public TotalSus As Double = 0
+    Public TotalTarjeta As Double = 0
+    Public TotalVenta As Double
 
 
 
@@ -29,6 +33,8 @@ Public Class Efecto
                 _prMostrarMensajeDelete()
             Case 3
                 _prMostrarFormAyuda()
+            Case 6
+                _prMostrarAyudaMontoPago()
             Case 4
                 _prLogin()
         End Select
@@ -56,7 +62,29 @@ Public Class Efecto
             band = False
             Me.Close()
         End If
-       
+
+    End Sub
+
+    Sub _prMostrarAyudaMontoPago()
+
+        Dim frmAyuda As F1_MontoPagar = New F1_MontoPagar
+
+        frmAyuda.TotalVenta = TotalVenta
+
+
+        frmAyuda.ShowDialog()
+        If frmAyuda.Bandera = True Then
+
+            TotalBs = frmAyuda.TotalBs
+            TotalSus = frmAyuda.TotalSus
+            TotalTarjeta = frmAyuda.TotalTarjeta
+            band = True
+            Me.Close()
+        Else
+            band = False
+            Me.Close()
+        End If
+
     End Sub
     Sub _prMostrarMensaje()
         Dim blah As Bitmap = My.Resources.cuestion
