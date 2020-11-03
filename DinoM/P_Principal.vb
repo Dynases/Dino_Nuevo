@@ -1083,6 +1083,12 @@ Public Class P_Principal
         frm.Show()
     End Sub
 
+    Private Sub btnVentaRapida_Click(sender As Object, e As EventArgs) Handles btnVentaRapida.Click
+        Dim frm As New F0_VentasSupermercado
+
+        frm.Show()
+    End Sub
+
     'Private Sub btnCredPagoCliente_Click(sender As Object, e As EventArgs) Handles btnCredPagoCliente.Click
     '    SideNav1.IsMenuExpanded = False
     '    Ventana.Select()

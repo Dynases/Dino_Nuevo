@@ -410,6 +410,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Font\Custom.vb" />
+    <Compile Include="Formularios\F0_VentasSupermercado.Designer.vb">
+      <DependentUpon>F0_VentasSupermercado.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\F0_VentasSupermercado.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="KardexClienteRes.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1020,6 +1026,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F1_Zonas.resx">
       <DependentUpon>F1_Zonas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\F0_VentasSupermercado.resx">
+      <DependentUpon>F0_VentasSupermercado.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KardexClienteRes.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1656,6 +1665,7 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
