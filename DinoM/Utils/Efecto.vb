@@ -19,6 +19,10 @@ Public Class Efecto
     Public TotalSus As Double = 0
     Public TotalTarjeta As Double = 0
     Public TotalVenta As Double
+    Public NameProducto As String = ""
+
+    Public Stock As Double = 0
+    Public Cantidad As Double = 0
 
 
 
@@ -35,6 +39,8 @@ Public Class Efecto
                 _prMostrarFormAyuda()
             Case 6
                 _prMostrarAyudaMontoPago()
+            Case 7
+                _prMostrarAyudaVentaCantidad()
             Case 4
                 _prLogin()
         End Select
@@ -67,7 +73,8 @@ Public Class Efecto
 
     Sub _prMostrarAyudaMontoPago()
 
-        Dim frmAyuda As F1_MontoPagar = New F1_MontoPagar
+        Dim frmAyuda As F1_MontoPagar
+        frmAyuda = New F1_MontoPagar
 
         frmAyuda.TotalVenta = TotalVenta
 
@@ -78,6 +85,27 @@ Public Class Efecto
             TotalBs = frmAyuda.TotalBs
             TotalSus = frmAyuda.TotalSus
             TotalTarjeta = frmAyuda.TotalTarjeta
+            band = True
+            Me.Close()
+        Else
+            band = False
+            Me.Close()
+        End If
+
+    End Sub
+    Sub _prMostrarAyudaVentaCantidad()
+
+        Dim frmAyuda As F_Cantidad
+        frmAyuda = New F_Cantidad
+
+        frmAyuda.Stock = Stock
+        frmAyuda.Cantidad = Cantidad
+        frmAyuda.Producto = NameProducto
+        frmAyuda.ShowDialog()
+        If frmAyuda.Bandera = True Then
+
+            Cantidad = frmAyuda.Cantidad
+
             band = True
             Me.Close()
         Else

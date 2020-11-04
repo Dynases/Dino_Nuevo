@@ -23,6 +23,11 @@ Partial Class F1_MontoPagar
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F1_MontoPagar))
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.txtMontoPagado1 = New DevComponents.DotNetBar.LabelX()
+        Me.txtCambio1 = New DevComponents.DotNetBar.LabelX()
+        Me.lbCambio = New DevComponents.DotNetBar.LabelX()
+        Me.lbMontoPagado = New DevComponents.DotNetBar.LabelX()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.ButtonX3 = New DevComponents.DotNetBar.ButtonX()
         Me.tbMontoTarej = New DevComponents.Editors.DoubleInput()
@@ -33,17 +38,102 @@ Partial Class F1_MontoPagar
         Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
         Me.tbMontoDolar = New DevComponents.Editors.DoubleInput()
         Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.txtMontoPagado1 = New DevComponents.DotNetBar.LabelX()
-        Me.txtCambio1 = New DevComponents.DotNetBar.LabelX()
-        Me.lbCambio = New DevComponents.DotNetBar.LabelX()
-        Me.lbMontoPagado = New DevComponents.DotNetBar.LabelX()
+        Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.tbMontoTarej, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbMontoBs, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbMontoDolar, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.BackColor = System.Drawing.Color.Transparent
+        Me.GroupBox2.BackgroundImage = Global.DinoM.My.Resources.Resources.fondo1
+        Me.GroupBox2.Controls.Add(Me.txtMontoPagado1)
+        Me.GroupBox2.Controls.Add(Me.txtCambio1)
+        Me.GroupBox2.Controls.Add(Me.lbCambio)
+        Me.GroupBox2.Controls.Add(Me.lbMontoPagado)
+        Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GroupBox2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox2.ForeColor = System.Drawing.Color.Gold
+        Me.GroupBox2.Location = New System.Drawing.Point(0, 142)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
+        Me.GroupBox2.Size = New System.Drawing.Size(566, 125)
+        Me.GroupBox2.TabIndex = 364
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Monto Pagado/Cambio:"
+        '
+        'txtMontoPagado1
+        '
+        Me.txtMontoPagado1.BackColor = System.Drawing.Color.White
+        '
+        '
+        '
+        Me.txtMontoPagado1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.txtMontoPagado1.Font = New System.Drawing.Font("Calibri", 19.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtMontoPagado1.ForeColor = System.Drawing.Color.YellowGreen
+        Me.txtMontoPagado1.Location = New System.Drawing.Point(120, 28)
+        Me.txtMontoPagado1.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtMontoPagado1.Name = "txtMontoPagado1"
+        Me.txtMontoPagado1.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.txtMontoPagado1.Size = New System.Drawing.Size(160, 49)
+        Me.txtMontoPagado1.TabIndex = 369
+        Me.txtMontoPagado1.Text = "0.00"
+        Me.txtMontoPagado1.TextAlignment = System.Drawing.StringAlignment.Far
+        '
+        'txtCambio1
+        '
+        Me.txtCambio1.BackColor = System.Drawing.Color.White
+        '
+        '
+        '
+        Me.txtCambio1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.txtCambio1.Font = New System.Drawing.Font("Calibri", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCambio1.ForeColor = System.Drawing.Color.YellowGreen
+        Me.txtCambio1.Location = New System.Drawing.Point(398, 26)
+        Me.txtCambio1.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtCambio1.Name = "txtCambio1"
+        Me.txtCambio1.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.txtCambio1.Size = New System.Drawing.Size(147, 49)
+        Me.txtCambio1.TabIndex = 368
+        Me.txtCambio1.Text = "0.00"
+        Me.txtCambio1.TextAlignment = System.Drawing.StringAlignment.Far
+        '
+        'lbCambio
+        '
+        Me.lbCambio.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.lbCambio.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.lbCambio.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbCambio.ForeColor = System.Drawing.Color.White
+        Me.lbCambio.Location = New System.Drawing.Point(292, 34)
+        Me.lbCambio.Margin = New System.Windows.Forms.Padding(4)
+        Me.lbCambio.Name = "lbCambio"
+        Me.lbCambio.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.lbCambio.Size = New System.Drawing.Size(87, 22)
+        Me.lbCambio.TabIndex = 367
+        Me.lbCambio.Text = "Cambio:"
+        '
+        'lbMontoPagado
+        '
+        Me.lbMontoPagado.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.lbMontoPagado.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.lbMontoPagado.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbMontoPagado.ForeColor = System.Drawing.Color.White
+        Me.lbMontoPagado.Location = New System.Drawing.Point(3, 35)
+        Me.lbMontoPagado.Margin = New System.Windows.Forms.Padding(4)
+        Me.lbMontoPagado.Name = "lbMontoPagado"
+        Me.lbMontoPagado.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.lbMontoPagado.Size = New System.Drawing.Size(135, 22)
+        Me.lbMontoPagado.TabIndex = 366
+        Me.lbMontoPagado.Text = "M.Pagado:"
         '
         'GroupBox1
         '
@@ -101,7 +191,7 @@ Partial Class F1_MontoPagar
         Me.tbMontoTarej.MinValue = 0R
         Me.tbMontoTarej.Name = "tbMontoTarej"
         Me.tbMontoTarej.Size = New System.Drawing.Size(160, 30)
-        Me.tbMontoTarej.TabIndex = 2
+        Me.tbMontoTarej.TabIndex = 1
         Me.tbMontoTarej.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
         '
         'ButtonX2
@@ -203,7 +293,7 @@ Partial Class F1_MontoPagar
         Me.tbMontoDolar.MinValue = 0R
         Me.tbMontoDolar.Name = "tbMontoDolar"
         Me.tbMontoDolar.Size = New System.Drawing.Size(147, 30)
-        Me.tbMontoDolar.TabIndex = 1
+        Me.tbMontoDolar.TabIndex = 2
         Me.tbMontoDolar.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
         '
         'LabelX6
@@ -223,96 +313,6 @@ Partial Class F1_MontoPagar
         Me.LabelX6.TabIndex = 66
         Me.LabelX6.Text = "Mont. $:"
         '
-        'GroupBox2
-        '
-        Me.GroupBox2.BackColor = System.Drawing.Color.Transparent
-        Me.GroupBox2.BackgroundImage = Global.DinoM.My.Resources.Resources.fondo1
-        Me.GroupBox2.Controls.Add(Me.txtMontoPagado1)
-        Me.GroupBox2.Controls.Add(Me.txtCambio1)
-        Me.GroupBox2.Controls.Add(Me.lbCambio)
-        Me.GroupBox2.Controls.Add(Me.lbMontoPagado)
-        Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GroupBox2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.ForeColor = System.Drawing.Color.Gold
-        Me.GroupBox2.Location = New System.Drawing.Point(0, 142)
-        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox2.Size = New System.Drawing.Size(566, 125)
-        Me.GroupBox2.TabIndex = 364
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Monto Pagado/Cambio:"
-        '
-        'txtMontoPagado1
-        '
-        Me.txtMontoPagado1.BackColor = System.Drawing.Color.White
-        '
-        '
-        '
-        Me.txtMontoPagado1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.txtMontoPagado1.Font = New System.Drawing.Font("Calibri", 19.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMontoPagado1.ForeColor = System.Drawing.Color.YellowGreen
-        Me.txtMontoPagado1.Location = New System.Drawing.Point(120, 28)
-        Me.txtMontoPagado1.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtMontoPagado1.Name = "txtMontoPagado1"
-        Me.txtMontoPagado1.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.txtMontoPagado1.Size = New System.Drawing.Size(160, 49)
-        Me.txtMontoPagado1.TabIndex = 369
-        Me.txtMontoPagado1.Text = "0.00"
-        Me.txtMontoPagado1.TextAlignment = System.Drawing.StringAlignment.Far
-        '
-        'txtCambio1
-        '
-        Me.txtCambio1.BackColor = System.Drawing.Color.White
-        '
-        '
-        '
-        Me.txtCambio1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.txtCambio1.Font = New System.Drawing.Font("Calibri", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCambio1.ForeColor = System.Drawing.Color.YellowGreen
-        Me.txtCambio1.Location = New System.Drawing.Point(398, 26)
-        Me.txtCambio1.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtCambio1.Name = "txtCambio1"
-        Me.txtCambio1.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.txtCambio1.Size = New System.Drawing.Size(147, 49)
-        Me.txtCambio1.TabIndex = 368
-        Me.txtCambio1.Text = "0.00"
-        Me.txtCambio1.TextAlignment = System.Drawing.StringAlignment.Far
-        '
-        'lbCambio
-        '
-        Me.lbCambio.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.lbCambio.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.lbCambio.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbCambio.ForeColor = System.Drawing.Color.White
-        Me.lbCambio.Location = New System.Drawing.Point(292, 34)
-        Me.lbCambio.Margin = New System.Windows.Forms.Padding(4)
-        Me.lbCambio.Name = "lbCambio"
-        Me.lbCambio.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.lbCambio.Size = New System.Drawing.Size(87, 22)
-        Me.lbCambio.TabIndex = 367
-        Me.lbCambio.Text = "Cambio:"
-        '
-        'lbMontoPagado
-        '
-        Me.lbMontoPagado.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.lbMontoPagado.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.lbMontoPagado.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbMontoPagado.ForeColor = System.Drawing.Color.White
-        Me.lbMontoPagado.Location = New System.Drawing.Point(3, 35)
-        Me.lbMontoPagado.Margin = New System.Windows.Forms.Padding(4)
-        Me.lbMontoPagado.Name = "lbMontoPagado"
-        Me.lbMontoPagado.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.lbMontoPagado.Size = New System.Drawing.Size(135, 22)
-        Me.lbMontoPagado.TabIndex = 366
-        Me.lbMontoPagado.Text = "M.Pagado:"
-        '
         'F1_MontoPagar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -324,11 +324,11 @@ Partial Class F1_MontoPagar
         Me.Name = "F1_MontoPagar"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "F1_MontoPagar"
+        Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         CType(Me.tbMontoTarej, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbMontoBs, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbMontoDolar, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox2.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub

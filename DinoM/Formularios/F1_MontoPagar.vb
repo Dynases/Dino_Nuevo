@@ -20,6 +20,10 @@ Public Class F1_MontoPagar
         tbMontoBs.Focus()
         txtMontoPagado1.Text = "0.00"
         txtCambio1.Text = "0.00"
+        tbMontoBs.Value = 0
+        tbMontoDolar.Value = 0
+        tbMontoTarej.Value = 0
+        tbMontoBs.Focus()
     End Sub
 
     Private Sub tbMontoBs_ValueChanged(sender As Object, e As EventArgs) Handles tbMontoBs.ValueChanged
@@ -88,7 +92,7 @@ Public Class F1_MontoPagar
                 Me.Close()
 
             Else
-                ToastNotification.Show(Me, "Debe Ingresar un Monto a Cobrar Valido ", My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
+                ToastNotification.Show(Me, "Debe Ingresar un Monto a Cobrar Valido igual o mayor A = " + Str(TotalVenta), My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
             End If
 
 
@@ -115,7 +119,7 @@ Public Class F1_MontoPagar
             Me.Close()
 
         Else
-            ToastNotification.Show(Me, "Debe Ingresar un Monto a Cobrar Valido ", My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
+            ToastNotification.Show(Me, "Debe Ingresar un Monto a Cobrar Valido igual o mayor A = " + Str(TotalVenta), My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
         End If
     End Sub
 
@@ -139,7 +143,7 @@ Public Class F1_MontoPagar
             Me.Close()
 
         Else
-            ToastNotification.Show(Me, "Debe Ingresar un Monto a Cobrar Valido ", My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
+            ToastNotification.Show(Me, "Debe Ingresar un Monto a Cobrar Valido igual o mayor A = " + Str(TotalVenta), My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
         End If
     End Sub
 End Class

@@ -1036,6 +1036,9 @@ Public Class F0_VentasSupermercado
 
             ''Verifica si existe estock para los productos
             'If _prExisteStockParaProducto() Then
+            prCargando.Visible = True
+            prCargando.Show()
+
             Dim dtDetalle As DataTable = rearmarDetalle()
             Dim res As Boolean = L_fnGrabarVenta(numi, "", Now.Date.ToString("yyyy/MM/dd"), _CodEmpleado, 1, Now.Date.ToString("yyyy/MM/dd"), _CodCliente, 1, "", 0, 0, Str(tbTotal.Value), dtDetalle, Sucursal, 0, tabla)
             If res Then
@@ -1044,9 +1047,9 @@ Public Class F0_VentasSupermercado
                 If (gb_FacturaEmite) Then
                     If lbNit.Text <> String.Empty Then
                         P_fnGenerarFactura(numi)
-                        _prImiprimirNotaVenta(numi)
+                        '_prImiprimirNotaVenta(numi)
                     Else
-                        _prImiprimirNotaVenta(numi)
+                        '_prImiprimirNotaVenta(numi)
                     End If
                 Else
                     _prImiprimirNotaVenta(numi)
@@ -1059,7 +1062,10 @@ Public Class F0_VentasSupermercado
                                           eToastGlowColor.Green,
                                           eToastPosition.TopCenter
                                           )
+                If (prCargando.IsRunning) Then
 
+                    prCargando.Dispose()
+                End If
 
                 _Limpiar()
                 Table_Producto = Nothing
@@ -1069,6 +1075,14 @@ Public Class F0_VentasSupermercado
                 ToastNotification.Show(Me, "La Venta no pudo ser insertado".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
 
             End If
+            If (prCargando.IsRunning) Then
+
+                prCargando.Dispose()
+            End If
+
+
+
+
             'End If
         Catch ex As Exception
             MostrarMensajeError(ex.Message)
@@ -1147,6 +1161,7 @@ Public Class F0_VentasSupermercado
             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = grProductos.GetValue("stock")
             _prCalcularPrecioTotal()
             _DesHabilitarProductos()
+            tbProducto.Focus()
         Else
             If (existe) Then
                 Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
@@ -2249,8 +2264,8 @@ Public Class F0_VentasSupermercado
                 e.Column.Index = grdetalle.RootTable.Columns("tbporc").Index Or
                 e.Column.Index = grdetalle.RootTable.Columns("tbpbas").Index Or
                 e.Column.Index = grdetalle.RootTable.Columns("tbdesc").Index) Then
-                e.Cancel = False
-            Else
+            e.Cancel = True
+        Else
                 e.Cancel = True
             End If
 
@@ -2323,6 +2338,7 @@ Public Class F0_VentasSupermercado
                             _prCalcularPrecioTotal()
                             _DesHabilitarProductos()
                             FilaSelectLote = Nothing
+                            tbProducto.Focus()
                         Else
                             Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
                             ToastNotification.Show(Me, "El producto con el lote ya existe modifique su cantidad".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
@@ -2505,6 +2521,7 @@ Public Class F0_VentasSupermercado
             If (grdetalle.RowCount >= 2) Then
                 If (grdetalle.CurrentColumn.Index = grdetalle.RootTable.Columns("img").Index) Then
                     _prEliminarFila()
+                    tbProducto.Focus()
                 End If
             End If
         Catch ex As Exception
@@ -2517,5 +2534,50 @@ Public Class F0_VentasSupermercado
         Dim tbP As TextBox = sender
 
 
+    End Sub
+
+    Private Sub ModificarCantidadMenu_Click(sender As Object, e As EventArgs) Handles ModificarCantidadMenu.Click
+        If (grdetalle.Row >= 0) Then
+            Dim ef = New Efecto
+            ef.tipo = 7
+            ef.Stock = grdetalle.GetValue("stock")
+            ef.Cantidad = grdetalle.GetValue("tbcmin")
+            ef.NameProducto = grdetalle.GetValue("producto")
+            Dim Cantidad As Double = grdetalle.GetValue("tbcmin")
+            ef.ShowDialog()
+            Dim bandera As Boolean = False
+            bandera = ef.band
+            If (bandera = True) Then
+
+                Cantidad = ef.Cantidad
+                If (Cantidad > 0) Then
+                    Dim lin As Integer = grdetalle.GetValue("tbnumi")
+                    Dim pos As Integer = -1
+                    _fnObtenerFilaDetalle(pos, lin)
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = Cantidad
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = grdetalle.GetValue("tbpbas") * Cantidad
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = grdetalle.GetValue("tbpbas") * Cantidad
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = grdetalle.GetValue("tbpcos") * Cantidad
+                    _prCalcularPrecioTotal()
+                    tbProducto.Focus()
+
+                End If
+
+            Else
+                ToastNotification.Show(Me, "No Modifica Cantidad del Producto", My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
+
+
+
+            End If
+            tbProducto.Focus()
+        End If
+
+    End Sub
+
+    Private Sub EliminarProductoMenu_Click(sender As Object, e As EventArgs) Handles EliminarProductoMenu.Click
+        If (grdetalle.Row >= 0) Then
+            _prEliminarFila()
+            tbProducto.Focus()
+        End If
     End Sub
 End Class
