@@ -1036,8 +1036,8 @@ Public Class F0_VentasSupermercado
 
             ''Verifica si existe estock para los productos
             'If _prExisteStockParaProducto() Then
-            prCargando.Visible = True
-            prCargando.Show()
+            'prCargando.Visible = True
+            'prCargando.Show()
 
             Dim dtDetalle As DataTable = rearmarDetalle()
             Dim res As Boolean = L_fnGrabarVenta(numi, "", Now.Date.ToString("yyyy/MM/dd"), _CodEmpleado, 1, Now.Date.ToString("yyyy/MM/dd"), _CodCliente, 1, "", 0, 0, Str(tbTotal.Value), dtDetalle, Sucursal, 0, tabla)
@@ -1062,10 +1062,10 @@ Public Class F0_VentasSupermercado
                                           eToastGlowColor.Green,
                                           eToastPosition.TopCenter
                                           )
-                If (prCargando.IsRunning) Then
+                'If (prCargando.IsRunning) Then
 
-                    prCargando.Dispose()
-                End If
+                '    prCargando.Dispose()
+                'End If
 
                 _Limpiar()
                 Table_Producto = Nothing
@@ -1075,10 +1075,10 @@ Public Class F0_VentasSupermercado
                 ToastNotification.Show(Me, "La Venta no pudo ser insertado".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
 
             End If
-            If (prCargando.IsRunning) Then
+            'If (prCargando.IsRunning) Then
 
-                prCargando.Dispose()
-            End If
+            '    prCargando.Dispose()
+            'End If
 
 
 
