@@ -119,6 +119,8 @@ Public Class F0_VentasSupermercado
 
         ' tbCliente.Focus()
         Table_Producto = Nothing
+        tbDescripcion.Clear()
+        tbPrecio.Text = ""
     End Sub
 
 
@@ -720,19 +722,20 @@ Public Class F0_VentasSupermercado
 
     End Sub
 
-    Public Function _fnExisteProducto(idprod As Integer) As Boolean
+    Public Function _fnExisteProducto(idprod As Integer, ByRef PosData As Integer) As Boolean
         For i As Integer = 0 To CType(grdetalle.DataSource, DataTable).Rows.Count - 1 Step 1
             Dim _idprod As Integer = CType(grdetalle.DataSource, DataTable).Rows(i).Item("tbty5prod")
             Dim estado As Integer = CType(grdetalle.DataSource, DataTable).Rows(i).Item("estado")
             If (_idprod = idprod And estado >= 0) Then
-
+                PosData = i
                 Return True
             End If
         Next
+        PosData = -1
         Return False
     End Function
 
-    Public Function _fnExisteProductoConLote(idprod As Integer, lote As String, fechaVenci As Date) As Boolean
+    Public Function _fnExisteProductoConLote(idprod As Integer, lote As String, fechaVenci As Date, ByRef Pos As Integer) As Boolean
         For i As Integer = 0 To CType(grdetalle.DataSource, DataTable).Rows.Count - 1 Step 1
             Dim _idprod As Integer = CType(grdetalle.DataSource, DataTable).Rows(i).Item("tbty5prod")
             Dim estado As Integer = CType(grdetalle.DataSource, DataTable).Rows(i).Item("estado")
@@ -742,10 +745,11 @@ Public Class F0_VentasSupermercado
             Dim _LoteDetalle As String = CType(grdetalle.DataSource, DataTable).Rows(i).Item("tblote")
             Dim _FechaVencDetalle As Date = CType(grdetalle.DataSource, DataTable).Rows(i).Item("tbfechaVenc")
             If (_idprod = idprod And estado >= 0 And lote = _LoteDetalle And fechaVenci = _FechaVencDetalle) Then
-
+                Pos = i
                 Return True
             End If
         Next
+        Pos = -1
         Return False
     End Function
     Public Sub P_PonerTotal(rowIndex As Integer)
@@ -1132,40 +1136,66 @@ Public Class F0_VentasSupermercado
 
     Public Sub InsertarProductosSinLote()
         Dim pos As Integer = -1
-        grdetalle.Row = grdetalle.RowCount - 1
-        If (grdetalle.GetValue("tbty5prod") = 0) Then
-            _prAddDetalleVenta()
-        End If
-        grdetalle.Row = grdetalle.RowCount - 1
 
-        _fnObtenerFilaDetalle(pos, grdetalle.GetValue("tbnumi"))
-        Dim existe As Boolean = _fnExisteProducto(grProductos.GetValue("yfnumi"))
-        If ((pos >= 0) And (Not existe)) Then
-            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbty5prod") = grProductos.GetValue("yfnumi")
-            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("codigo") = grProductos.GetValue("yfcprod")
-            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("yfcbarra") = grProductos.GetValue("yfcbarra")
-            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto") = grProductos.GetValue("yfcdprod1")
-            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbumin") = grProductos.GetValue("yfumin")
-            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("unidad") = grProductos.GetValue("UnidMin")
-            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpbas") = grProductos.GetValue("yhprecio")
-            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = grProductos.GetValue("yhprecio")
-            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = grProductos.GetValue("yhprecio")
-            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = 1
-            If (gb_FacturaIncluirICE) Then
-                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = grProductos.GetValue("pcos")
-            Else
-                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = 0
+        Dim PosDataExistente As Integer = -1
+        Dim existe As Boolean = _fnExisteProducto(grProductos.GetValue("yfnumi"), PosDataExistente)
+        If ((Not existe)) Then
+            grdetalle.Row = grdetalle.RowCount - 1
+            If (grdetalle.GetValue("tbty5prod") <> 0) Then
+                _prAddDetalleVenta()
             End If
-            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = grProductos.GetValue("pcos")
+            grdetalle.Row = grdetalle.RowCount - 1
 
-            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = grProductos.GetValue("stock")
-            _prCalcularPrecioTotal()
-            _DesHabilitarProductos()
-            tbProducto.Focus()
+            _fnObtenerFilaDetalle(pos, grdetalle.GetValue("tbnumi"))
+            If (pos >= 0) Then
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbty5prod") = grProductos.GetValue("yfnumi")
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("codigo") = grProductos.GetValue("yfcprod")
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("yfcbarra") = grProductos.GetValue("yfcbarra")
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto") = grProductos.GetValue("yfcdprod1")
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbumin") = grProductos.GetValue("yfumin")
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("unidad") = grProductos.GetValue("UnidMin")
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpbas") = grProductos.GetValue("yhprecio")
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = grProductos.GetValue("yhprecio")
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = grProductos.GetValue("yhprecio")
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = 1
+                If (gb_FacturaIncluirICE) Then
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = grProductos.GetValue("pcos")
+                Else
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = 0
+                End If
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = grProductos.GetValue("pcos")
+
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = grProductos.GetValue("stock")
+                _prCalcularPrecioTotal()
+                _DesHabilitarProductos()
+                tbDescripcion.Text = grProductos.GetValue("yfcdprod1")
+                tbPrecio.Value = grProductos.GetValue("yhprecio")
+                tbProducto.Clear()
+
+                tbProducto.Focus()
+            End If
+
         Else
-            If (existe) Then
-                Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-                ToastNotification.Show(Me, "El producto ya existe en el detalle".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+
+
+            If (existe And PosDataExistente >= 0) Then
+                'Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                'ToastNotification.Show(Me, "El producto ya existe en el detalle".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                Dim cantidad As Double = CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("tbcmin") + 1
+                CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("tbcmin") = cantidad
+                CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("tbptot") = CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("tbpbas") * cantidad
+                CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("tbtotdesc") = CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("tbpbas") * cantidad
+                CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("tbptot2") = CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("tbpcos") * cantidad
+
+                _prCalcularPrecioTotal()
+                _DesHabilitarProductos()
+
+
+                tbDescripcion.Text = CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("producto")
+                tbPrecio.Value = CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("tbpbas")
+                FilaSelectLote = Nothing
+                tbProducto.Clear()
+                tbProducto.Focus()
             End If
         End If
     End Sub
@@ -1435,11 +1465,16 @@ Public Class F0_VentasSupermercado
             End If
 
             If (grabarPDF) Then
-                'Copia de Factura en PDF
-                If (Not Directory.Exists(gs_CarpetaRaiz + "\Facturas")) Then
-                    Directory.CreateDirectory(gs_CarpetaRaiz + "\Facturas")
-                End If
-                objrep.ExportToDisk(ExportFormatType.PortableDocFormat, gs_CarpetaRaiz + "\Facturas\" + CStr(_NumFac) + "_" + CStr(_Autorizacion) + ".pdf")
+                Try
+                    'Copia de Factura en PDF
+                    If (Not Directory.Exists(gs_CarpetaRaiz + "\Facturas")) Then
+                        Directory.CreateDirectory(gs_CarpetaRaiz + "\Facturas")
+                    End If
+                    objrep.ExportToDisk(ExportFormatType.PortableDocFormat, gs_CarpetaRaiz + "\Facturas\" + CStr(_NumFac) + "_" + CStr(_Autorizacion) + ".pdf")
+                Catch ex As Exception
+
+                End Try
+
 
             End If
         End If
@@ -2303,17 +2338,20 @@ Public Class F0_VentasSupermercado
                     Else
 
                         '_fnExisteProductoConLote()
-                        Dim pos As Integer = -1
-                        grdetalle.Row = grdetalle.RowCount - 1
-                        If (grdetalle.GetValue("tbty5prod") <> 0) Then
-                            _prAddDetalleVenta()
-                        End If
-                        grdetalle.Row = grdetalle.RowCount - 1
-                        _fnObtenerFilaDetalle(pos, grdetalle.GetValue("tbnumi"))
+
+
                         Dim numiProd = FilaSelectLote.Item("yfnumi")
                         Dim lote As String = grProductos.GetValue("iclot")
                         Dim FechaVenc As Date = grProductos.GetValue("icfven")
-                        If (Not _fnExisteProductoConLote(numiProd, lote, FechaVenc)) Then
+                        Dim PosDataExistente As Integer = -1
+                        If (Not _fnExisteProductoConLote(numiProd, lote, FechaVenc, PosDataExistente)) Then
+                            Dim pos As Integer = -1
+                            grdetalle.Row = grdetalle.RowCount - 1
+                            If (grdetalle.GetValue("tbty5prod") <> 0) Then
+                                _prAddDetalleVenta()
+                            End If
+                            grdetalle.Row = grdetalle.RowCount - 1
+                            _fnObtenerFilaDetalle(pos, grdetalle.GetValue("tbnumi"))
                             'b.yfcdprod1, a.iclot, a.icfven, a.iccven
                             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbty5prod") = FilaSelectLote.Item("yfnumi")
                             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("codigo") = FilaSelectLote.Item("yfcprod")
@@ -2337,11 +2375,36 @@ Public Class F0_VentasSupermercado
                             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = grProductos.GetValue("iccven")
                             _prCalcularPrecioTotal()
                             _DesHabilitarProductos()
+
+
+                            tbDescripcion.Text = FilaSelectLote.Item("yfcdprod1")
+                            tbPrecio.Value = FilaSelectLote.Item("yhprecio")
                             FilaSelectLote = Nothing
+                            tbProducto.Clear()
                             tbProducto.Focus()
                         Else
-                            Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-                            ToastNotification.Show(Me, "El producto con el lote ya existe modifique su cantidad".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                            'Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                            'ToastNotification.Show(Me, "El producto con el lote ya existe modifique su cantidad".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)producto
+                            If (PosDataExistente >= 0) Then
+
+                                Dim cantidad As Double = CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("tbcmin") + 1
+                                CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("tbcmin") = cantidad
+                                CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("tbptot") = CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("tbpbas") * cantidad
+                                CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("tbtotdesc") = CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("tbpbas") * cantidad
+                                CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("tbptot2") = CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("tbpcos") * cantidad
+
+
+                                _prCalcularPrecioTotal()
+                                _DesHabilitarProductos()
+
+
+                                tbDescripcion.Text = CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("producto")
+                                tbPrecio.Value = CType(grdetalle.DataSource, DataTable).Rows(PosDataExistente).Item("tbpbas")
+                                FilaSelectLote = Nothing
+                                tbProducto.Clear()
+                                tbProducto.Focus()
+                            End If
+
                         End If
 
 
