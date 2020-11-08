@@ -29,9 +29,8 @@ Partial Class F0_VentasSupermercado
         Me.PanelC = New System.Windows.Forms.Panel()
         Me.GPanelProductos = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.prCargando = New DevComponents.DotNetBar.Controls.CircularProgress()
         Me.grProductos = New Janus.Windows.GridEX.GridEX()
-        Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
-        Me.CmDetalle = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
@@ -39,6 +38,10 @@ Partial Class F0_VentasSupermercado
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.tbDescripcion = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.tbProducto = New DevComponents.DotNetBar.Controls.TextBoxX()
+        Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
+        Me.CmDetalle = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ModificarCantidadMenu = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EliminarProductoMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.PanelDatos = New System.Windows.Forms.Panel()
         Me.grdetalle = New Janus.Windows.GridEX.GridEX()
         Me.PanelButtom = New System.Windows.Forms.Panel()
@@ -55,21 +58,18 @@ Partial Class F0_VentasSupermercado
         Me.PanelTop = New System.Windows.Forms.Panel()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.QrFactura = New Gma.QrCodeNet.Encoding.Windows.Forms.QrCodeImgControl()
-        Me.ModificarCantidadMenu = New System.Windows.Forms.ToolStripMenuItem()
-        Me.EliminarProductoMenu = New System.Windows.Forms.ToolStripMenuItem()
-        Me.prCargando = New DevComponents.DotNetBar.Controls.CircularProgress()
         Me.PanelImagen.SuspendLayout()
         Me.PanelRight.SuspendLayout()
         Me.PanelC.SuspendLayout()
         Me.GPanelProductos.SuspendLayout()
         Me.Panel5.SuspendLayout()
         CType(Me.grProductos, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.CmDetalle.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.tbPrecio, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel4.SuspendLayout()
+        Me.CmDetalle.SuspendLayout()
         Me.PanelDatos.SuspendLayout()
         CType(Me.grdetalle, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelButtom.SuspendLayout()
@@ -168,6 +168,25 @@ Partial Class F0_VentasSupermercado
         Me.Panel5.Size = New System.Drawing.Size(695, 515)
         Me.Panel5.TabIndex = 0
         '
+        'prCargando
+        '
+        Me.prCargando.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.prCargando.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.prCargando.Font = New System.Drawing.Font("Calibri", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.prCargando.Location = New System.Drawing.Point(-4, 14)
+        Me.prCargando.Name = "prCargando"
+        Me.prCargando.ProgressBarType = DevComponents.DotNetBar.eCircularProgressType.Dot
+        Me.prCargando.ProgressColor = System.Drawing.Color.LimeGreen
+        Me.prCargando.ProgressTextColor = System.Drawing.Color.Black
+        Me.prCargando.ProgressTextVisible = True
+        Me.prCargando.Size = New System.Drawing.Size(575, 256)
+        Me.prCargando.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP
+        Me.prCargando.TabIndex = 6
+        Me.prCargando.Visible = False
+        '
         'grProductos
         '
         Me.grProductos.AllowEdit = Janus.Windows.GridEX.InheritableBoolean.[False]
@@ -184,17 +203,6 @@ Partial Class F0_VentasSupermercado
         Me.grProductos.Size = New System.Drawing.Size(695, 515)
         Me.grProductos.TabIndex = 0
         Me.grProductos.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
-        '
-        'PrintDialog1
-        '
-        Me.PrintDialog1.UseEXDialog = True
-        '
-        'CmDetalle
-        '
-        Me.CmDetalle.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.CmDetalle.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ModificarCantidadMenu, Me.EliminarProductoMenu})
-        Me.CmDetalle.Name = "CmDetalle"
-        Me.CmDetalle.Size = New System.Drawing.Size(221, 76)
         '
         'PictureBox1
         '
@@ -307,6 +315,32 @@ Partial Class F0_VentasSupermercado
         Me.tbProducto.Size = New System.Drawing.Size(298, 62)
         Me.tbProducto.TabIndex = 3
         '
+        'PrintDialog1
+        '
+        Me.PrintDialog1.UseEXDialog = True
+        '
+        'CmDetalle
+        '
+        Me.CmDetalle.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.CmDetalle.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ModificarCantidadMenu, Me.EliminarProductoMenu})
+        Me.CmDetalle.Name = "CmDetalle"
+        Me.CmDetalle.Size = New System.Drawing.Size(221, 76)
+        '
+        'ModificarCantidadMenu
+        '
+        Me.ModificarCantidadMenu.Image = Global.DinoM.My.Resources.Resources.edit2
+        Me.ModificarCantidadMenu.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.ModificarCantidadMenu.Name = "ModificarCantidadMenu"
+        Me.ModificarCantidadMenu.Size = New System.Drawing.Size(220, 36)
+        Me.ModificarCantidadMenu.Text = "Modificar Cantidad"
+        '
+        'EliminarProductoMenu
+        '
+        Me.EliminarProductoMenu.Image = Global.DinoM.My.Resources.Resources._051_prohibition
+        Me.EliminarProductoMenu.Name = "EliminarProductoMenu"
+        Me.EliminarProductoMenu.Size = New System.Drawing.Size(220, 36)
+        Me.EliminarProductoMenu.Text = "Eliminar Producto"
+        '
         'PanelDatos
         '
         Me.PanelDatos.BackgroundImage = Global.DinoM.My.Resources.Resources.fondo1
@@ -329,6 +363,7 @@ Partial Class F0_VentasSupermercado
         Me.grdetalle.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grdetalle.GridLineColor = System.Drawing.Color.White
         Me.grdetalle.GridLines = Janus.Windows.GridEX.GridLines.None
+        Me.grdetalle.GroupMode = Janus.Windows.GridEX.GroupMode.Collapsed
         Me.grdetalle.HeaderFormatStyle.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grdetalle.HeaderFormatStyle.ForeColor = System.Drawing.Color.Black
         Me.grdetalle.Location = New System.Drawing.Point(8, 197)
@@ -511,40 +546,6 @@ Partial Class F0_VentasSupermercado
         Me.QrFactura.Text = "QrCodeImgControl1"
         Me.QrFactura.Visible = False
         '
-        'ModificarCantidadMenu
-        '
-        Me.ModificarCantidadMenu.Image = Global.DinoM.My.Resources.Resources.edit2
-        Me.ModificarCantidadMenu.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.ModificarCantidadMenu.Name = "ModificarCantidadMenu"
-        Me.ModificarCantidadMenu.Size = New System.Drawing.Size(220, 36)
-        Me.ModificarCantidadMenu.Text = "Modificar Cantidad"
-        '
-        'EliminarProductoMenu
-        '
-        Me.EliminarProductoMenu.Image = Global.DinoM.My.Resources.Resources._051_prohibition
-        Me.EliminarProductoMenu.Name = "EliminarProductoMenu"
-        Me.EliminarProductoMenu.Size = New System.Drawing.Size(220, 36)
-        Me.EliminarProductoMenu.Text = "Eliminar Producto"
-        '
-        'prCargando
-        '
-        Me.prCargando.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.prCargando.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.prCargando.Font = New System.Drawing.Font("Calibri", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.prCargando.Location = New System.Drawing.Point(-4, 14)
-        Me.prCargando.Name = "prCargando"
-        Me.prCargando.ProgressBarType = DevComponents.DotNetBar.eCircularProgressType.Dot
-        Me.prCargando.ProgressColor = System.Drawing.Color.LimeGreen
-        Me.prCargando.ProgressTextColor = System.Drawing.Color.Black
-        Me.prCargando.ProgressTextVisible = True
-        Me.prCargando.Size = New System.Drawing.Size(575, 256)
-        Me.prCargando.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP
-        Me.prCargando.TabIndex = 6
-        Me.prCargando.Visible = False
-        '
         'F0_VentasSupermercado
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -562,12 +563,12 @@ Partial Class F0_VentasSupermercado
         Me.GPanelProductos.ResumeLayout(False)
         Me.Panel5.ResumeLayout(False)
         CType(Me.grProductos, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.CmDetalle.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
         CType(Me.tbPrecio, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel4.ResumeLayout(False)
+        Me.CmDetalle.ResumeLayout(False)
         Me.PanelDatos.ResumeLayout(False)
         CType(Me.grdetalle, System.ComponentModel.ISupportInitialize).EndInit()
         Me.PanelButtom.ResumeLayout(False)

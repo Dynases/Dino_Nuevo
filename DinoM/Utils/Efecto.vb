@@ -23,7 +23,8 @@ Public Class Efecto
 
     Public Stock As Double = 0
     Public Cantidad As Double = 0
-
+    Public Nit As String = ""
+    Public RazonSocial As String = ""
 
 
 
@@ -77,7 +78,8 @@ Public Class Efecto
         frmAyuda = New F1_MontoPagar
 
         frmAyuda.TotalVenta = TotalVenta
-
+        frmAyuda.Nit = Nit
+        frmAyuda.RazonSocial = RazonSocial
 
         frmAyuda.ShowDialog()
         If frmAyuda.Bandera = True Then
@@ -85,6 +87,8 @@ Public Class Efecto
             TotalBs = frmAyuda.TotalBs
             TotalSus = frmAyuda.TotalSus
             TotalTarjeta = frmAyuda.TotalTarjeta
+            Nit = frmAyuda.Nit
+            RazonSocial = frmAyuda.RazonSocial
             band = True
             Me.Close()
         Else

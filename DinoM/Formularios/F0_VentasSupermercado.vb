@@ -89,7 +89,7 @@ Public Class F0_VentasSupermercado
         tbProducto.Clear()
         tbTotal.Value = 0
         lbFecha.Text = Now.Date.ToString("dd/MM/yyyy")
-        lbCliente.Text = "Cliente Varios"
+        lbCliente.Text = "S/N"
         lbNit.Text = "0"
 
 
@@ -176,9 +176,13 @@ Public Class F0_VentasSupermercado
 
         With grdetalle.RootTable.Columns("producto")
             .Caption = "Productos"
-            .Width = 320
+            Width = 350
 
-            .CellToolTip = CellToolTip.TruncatedText
+            .MaxLines = 100
+            .CellStyle.LineAlignment = TextAlignment.Near
+            .WordWrap = True
+            ''320
+            '.CellToolTip = CellToolTip.TruncatedText
             .Visible = True
 
         End With
@@ -326,6 +330,10 @@ Public Class F0_VentasSupermercado
             'diseño de la grilla
             .VisualStyle = VisualStyle.Office2007
         End With
+
+        grdetalle.RootTable.RowFormatStyle.LineAlignment = TextAlignment.Near
+
+
     End Sub
 
 
@@ -2016,7 +2024,8 @@ Public Class F0_VentasSupermercado
             Dim ef = New Efecto
             ef.tipo = 6
             ef.TotalVenta = tbTotal.Value
-
+            ef.Nit = lbNit.Text
+            ef.RazonSocial = lbCliente.Text
             ef.ShowDialog()
             Dim bandera As Boolean = False
             bandera = ef.band
@@ -2025,7 +2034,8 @@ Public Class F0_VentasSupermercado
                 TotalBs = ef.TotalBs
                 TotalSus = ef.TotalSus
                 TotalTarjeta = ef.TotalTarjeta
-
+                lbNit.Text = ef.Nit
+                lbCliente.Text = ef.RazonSocial
                 _prGuardar()
             Else
                 ToastNotification.Show(Me, "No se Ingreso Monto a Pagar ", My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
@@ -2129,19 +2139,19 @@ Public Class F0_VentasSupermercado
                 Dim stock As Integer = grdetalle.GetRow(pos1).Cells("stock").Value
                 'If (cant > stock) Then
                 Dim lin As Integer = grdetalle.GetRow(pos1).Cells("tbnumi").Value
-                Dim pos2 As Integer = -1
-                _fnObtenerFilaDetalle(pos2, lin)
-                CType(grdetalle.DataSource, DataTable).Rows(pos2).Item("tbcmin") = cant
-                CType(grdetalle.DataSource, DataTable).Rows(pos2).Item("tbptot") = CType(grdetalle.DataSource, DataTable).Rows(pos2).Item("tbpbas") * cant
-                CType(grdetalle.DataSource, DataTable).Rows(pos2).Item("tbptot2") = grdetalle.GetRow(pos1).Cells("tbpcos").Value * cant
-                CType(grdetalle.DataSource, DataTable).Rows(pos2).Item("tbtotdesc") = CType(grdetalle.DataSource, DataTable).Rows(pos2).Item("tbpbas") * cant
+                'Dim pos2 As Integer = -1
+                '_fnObtenerFilaDetalle(pos2, lin)
+                CType(grdetalle.DataSource, DataTable).Rows(pos1).Item("tbcmin") = cant
+                CType(grdetalle.DataSource, DataTable).Rows(pos1).Item("tbptot") = CType(grdetalle.DataSource, DataTable).Rows(pos1).Item("tbpbas") * cant
+                CType(grdetalle.DataSource, DataTable).Rows(pos1).Item("tbptot2") = grdetalle.GetRow(pos1).Cells("tbpcos").Value * cant
+                CType(grdetalle.DataSource, DataTable).Rows(pos1).Item("tbtotdesc") = CType(grdetalle.DataSource, DataTable).Rows(pos1).Item("tbpbas") * cant
                 Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
                 'ToastNotification.Show(Me, "La cantidad de la venta no debe ser mayor al del stock" & vbCrLf &
                 '        "Stock=" + Str(stock).ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-                grdetalle.SetValue("yfcbarra", "")
-                grdetalle.SetValue("tbcmin", 0)
-                grdetalle.SetValue("tbptot", 0)
-                grdetalle.SetValue("tbptot2", 0)
+                'grdetalle.SetValue("yfcbarra", "")
+                'grdetalle.SetValue("tbcmin", 0)
+                'grdetalle.SetValue("tbptot", 0)
+                'grdetalle.SetValue("tbptot2", 0)
                 grdetalle.DataChanged = True
                 'grdetalle.Refetch()
                 grdetalle.Refresh()
