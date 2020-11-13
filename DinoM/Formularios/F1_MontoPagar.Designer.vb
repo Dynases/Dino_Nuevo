@@ -43,6 +43,8 @@ Partial Class F1_MontoPagar
         Me.tbNit = New System.Windows.Forms.TextBox()
         Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
+        Me.btnContinuar = New DevComponents.DotNetBar.ButtonX()
+        Me.BtnSalir = New DevComponents.DotNetBar.ButtonX()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.tbMontoTarej, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -55,6 +57,8 @@ Partial Class F1_MontoPagar
         '
         Me.GroupBox2.BackColor = System.Drawing.Color.Transparent
         Me.GroupBox2.BackgroundImage = Global.DinoM.My.Resources.Resources.fondo1
+        Me.GroupBox2.Controls.Add(Me.BtnSalir)
+        Me.GroupBox2.Controls.Add(Me.btnContinuar)
         Me.GroupBox2.Controls.Add(Me.txtMontoPagado1)
         Me.GroupBox2.Controls.Add(Me.txtCambio1)
         Me.GroupBox2.Controls.Add(Me.lbCambio)
@@ -66,7 +70,7 @@ Partial Class F1_MontoPagar
         Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox2.Size = New System.Drawing.Size(566, 142)
+        Me.GroupBox2.Size = New System.Drawing.Size(566, 170)
         Me.GroupBox2.TabIndex = 364
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Monto Pagado/Cambio:"
@@ -389,11 +393,39 @@ Partial Class F1_MontoPagar
         Me.LabelX4.TabIndex = 366
         Me.LabelX4.Text = "Razón Social:"
         '
+        'btnContinuar
+        '
+        Me.btnContinuar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnContinuar.ColorTable = DevComponents.DotNetBar.eButtonColor.Office2007WithBackground
+        Me.btnContinuar.Font = New System.Drawing.Font("Calibri", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnContinuar.Image = Global.DinoM.My.Resources.Resources.checked
+        Me.btnContinuar.ImageFixedSize = New System.Drawing.Size(30, 30)
+        Me.btnContinuar.Location = New System.Drawing.Point(398, 110)
+        Me.btnContinuar.Name = "btnContinuar"
+        Me.btnContinuar.Size = New System.Drawing.Size(147, 48)
+        Me.btnContinuar.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
+        Me.btnContinuar.TabIndex = 370
+        Me.btnContinuar.Text = "Continuar"
+        '
+        'BtnSalir
+        '
+        Me.BtnSalir.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.BtnSalir.ColorTable = DevComponents.DotNetBar.eButtonColor.Office2007WithBackground
+        Me.BtnSalir.Font = New System.Drawing.Font("Calibri", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnSalir.Image = Global.DinoM.My.Resources.Resources.cancel
+        Me.BtnSalir.ImageFixedSize = New System.Drawing.Size(30, 30)
+        Me.BtnSalir.Location = New System.Drawing.Point(236, 110)
+        Me.BtnSalir.Name = "BtnSalir"
+        Me.BtnSalir.Size = New System.Drawing.Size(147, 48)
+        Me.BtnSalir.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
+        Me.BtnSalir.TabIndex = 371
+        Me.BtnSalir.Text = "Salir"
+        '
         'F1_MontoPagar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(566, 420)
+        Me.ClientSize = New System.Drawing.Size(566, 448)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GroupBox3)
@@ -432,4 +464,6 @@ Partial Class F1_MontoPagar
     Friend WithEvents LabelX4 As DevComponents.DotNetBar.LabelX
     Friend WithEvents tbRazonSocial As TextBox
     Friend WithEvents tbNit As TextBox
+    Friend WithEvents BtnSalir As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents btnContinuar As DevComponents.DotNetBar.ButtonX
 End Class

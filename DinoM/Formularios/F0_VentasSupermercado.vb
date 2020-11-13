@@ -176,18 +176,14 @@ Public Class F0_VentasSupermercado
 
         With grdetalle.RootTable.Columns("producto")
             .Caption = "Productos"
-            Width = 350
-
-            .MaxLines = 100
-            .CellStyle.LineAlignment = TextAlignment.Near
+            .Width = 350
+            .MaxLines = 3
             .WordWrap = True
-            ''320
-            '.CellToolTip = CellToolTip.TruncatedText
             .Visible = True
 
         End With
-        grdetalle.ColumnAutoResize = True
-        grdetalle.AutoScrollMargin = AutoScrollPosition
+
+
 
 
         With grdetalle.RootTable.Columns("tbest")
@@ -243,7 +239,7 @@ Public Class F0_VentasSupermercado
             .Caption = "M.Desc"
         End With
         With grdetalle.RootTable.Columns("tbtotdesc")
-            .Width = 100
+            .Width = 70
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = True
             .FormatString = "0.00"
@@ -331,7 +327,7 @@ Public Class F0_VentasSupermercado
             .VisualStyle = VisualStyle.Office2007
         End With
 
-        grdetalle.RootTable.RowFormatStyle.LineAlignment = TextAlignment.Near
+
 
 
     End Sub

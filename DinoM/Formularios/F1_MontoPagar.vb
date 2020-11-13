@@ -87,7 +87,9 @@ Public Class F1_MontoPagar
         If (e.KeyData = Keys.Right) Then
             tbMontoDolar.Focus()
         End If
-
+        If (e.KeyData = Keys.Enter) Then
+            tbMontoDolar.Focus()
+        End If
         If (e.KeyData = Keys.Down) Then
             tbMontoTarej.Focus()
         End If
@@ -122,7 +124,9 @@ Public Class F1_MontoPagar
         If (e.KeyData = Keys.Left) Then
             tbMontoBs.Focus()
         End If
-
+        If (e.KeyData = Keys.Enter) Then
+            tbMontoTarej.Focus()
+        End If
         If (e.KeyData = Keys.Down) Then
             tbMontoTarej.Focus()
         End If
@@ -154,6 +158,9 @@ Public Class F1_MontoPagar
     Private Sub tbMontoTarej_KeyDown(sender As Object, e As KeyEventArgs) Handles tbMontoTarej.KeyDown
         If (e.KeyData = Keys.Up) Then
             tbMontoBs.Focus()
+        End If
+        If (e.KeyData = Keys.Enter) Then
+            btnContinuar.Focus()
         End If
         If (e.KeyData = Keys.Left) Then
             tbMontoDolar.Focus()
@@ -206,7 +213,9 @@ Public Class F1_MontoPagar
         If (e.KeyData = Keys.Down) Then
             tbMontoBs.Focus()
         End If
-
+        If (e.KeyData = Keys.Enter) Then
+            tbMontoBs.Focus()
+        End If
 
         If (e.KeyData = Keys.Control + Keys.S) Then
             If (tbMontoTarej.Value + tbMontoDolar.Value + tbMontoBs.Value >= TotalVenta) Then
@@ -228,6 +237,9 @@ Public Class F1_MontoPagar
         If (e.KeyData = Keys.Down) Then
             tbRazonSocial.Focus()
         End If
+        If (e.KeyData = Keys.Enter) Then
+            tbRazonSocial.Focus()
+        End If
         If (e.KeyData = Keys.Control + Keys.S) Then
             If (tbMontoTarej.Value + tbMontoDolar.Value + tbMontoBs.Value >= TotalVenta) Then
                 Bandera = True
@@ -242,6 +254,31 @@ Public Class F1_MontoPagar
                 ToastNotification.Show(Me, "Debe Ingresar un Monto a Cobrar Valido igual o mayor A = " + Str(TotalVenta), My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
             End If
         End If
+
+    End Sub
+
+    Private Sub btnContinuar_Click(sender As Object, e As EventArgs) Handles btnContinuar.Click
+        If (tbMontoTarej.Value + tbMontoDolar.Value + tbMontoBs.Value >= TotalVenta) Then
+            Bandera = True
+            TotalBs = tbMontoBs.Value
+            TotalSus = tbMontoDolar.Value
+            TotalTarjeta = tbMontoTarej.Value
+            Nit = tbNit.Text
+            RazonSocial = tbRazonSocial.Text
+            Me.Close()
+
+        Else
+            ToastNotification.Show(Me, "Debe Ingresar un Monto a Cobrar Valido igual o mayor A = " + Str(TotalVenta), My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
+            tbMontoBs.Focus()
+        End If
+    End Sub
+
+    Private Sub BtnSalir_Click(sender As Object, e As EventArgs) Handles BtnSalir.Click
+        TotalBs = 0
+        TotalSus = 0
+        TotalTarjeta = 0
+        Bandera = False
+        Me.Close()
 
     End Sub
 End Class
