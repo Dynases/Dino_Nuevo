@@ -31,11 +31,14 @@ Public Class F0_VentasSupermercado
     Public TotalBs As Double = 0
     Public TotalSus As Double = 0
     Public TotalTarjeta As Double = 0
+    Dim ListImagenes As String()
+    Dim contador As Integer = 0
 
 #Region "Metodos Privados"
     Private Sub _IniciarTodo()
         L_prAbrirConexion(gs_Ip, gs_UsuarioSql, gs_ClaveSql, gs_NombreBD)
         'Me.WindowState = FormWindowState.Maximized
+        ObtenerImagenes()
         _prValidarLote()
         'lbTipoMoneda.Visible = False
         P_prCargarVariablesIndispensables()
@@ -44,6 +47,9 @@ Public Class F0_VentasSupermercado
         Me.Icon = ico
         P_prCargarParametro()
         tbTotal.Value = 0
+
+        TimerImagenes.Start()
+
     End Sub
 
     Private Sub AsignarClienteEmpleado()
@@ -2647,6 +2653,36 @@ Public Class F0_VentasSupermercado
         If (grdetalle.Row >= 0) Then
             _prEliminarFila()
             tbProducto.Focus()
+        End If
+    End Sub
+
+
+    Public Sub ObtenerImagenes()
+        Dim RutaGlobal As String = gs_CarpetaRaiz
+
+        _prCrearCarpetaTemporal(RutaGlobal + "\SuperMercado")
+        ListImagenes = Directory.GetFiles(RutaGlobal + "\SuperMercado", "*.jpg")
+        'If (ListImagenes.Count > 0) Then
+        '    pictureImagen.ImageLocation = ListImagenes(0)
+        'End If
+
+    End Sub
+    Private Sub _prCrearCarpetaTemporal(RutaTemporal As String)
+
+        If System.IO.Directory.Exists(RutaTemporal) = False Then
+            System.IO.Directory.CreateDirectory(RutaTemporal)
+
+
+        End If
+
+    End Sub
+
+    Private Sub TimerImagenes_Tick(sender As Object, e As EventArgs) Handles TimerImagenes.Tick
+        If (contador <= ListImagenes.Count - 1) Then
+            pictureImagen.ImageLocation = ListImagenes(contador)
+            contador += 1
+        Else
+            contador = 0
         End If
     End Sub
 End Class

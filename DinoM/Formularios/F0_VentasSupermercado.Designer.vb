@@ -31,7 +31,7 @@ Partial Class F0_VentasSupermercado
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.prCargando = New DevComponents.DotNetBar.Controls.CircularProgress()
         Me.grProductos = New Janus.Windows.GridEX.GridEX()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.pictureImagen = New System.Windows.Forms.PictureBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.tbPrecio = New DevComponents.Editors.DoubleInput()
@@ -58,13 +58,14 @@ Partial Class F0_VentasSupermercado
         Me.PanelTop = New System.Windows.Forms.Panel()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.QrFactura = New Gma.QrCodeNet.Encoding.Windows.Forms.QrCodeImgControl()
+        Me.TimerImagenes = New System.Windows.Forms.Timer(Me.components)
         Me.PanelImagen.SuspendLayout()
         Me.PanelRight.SuspendLayout()
         Me.PanelC.SuspendLayout()
         Me.GPanelProductos.SuspendLayout()
         Me.Panel5.SuspendLayout()
         CType(Me.grProductos, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pictureImagen, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.tbPrecio, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -103,7 +104,7 @@ Partial Class F0_VentasSupermercado
         'PanelC
         '
         Me.PanelC.Controls.Add(Me.GPanelProductos)
-        Me.PanelC.Controls.Add(Me.PictureBox1)
+        Me.PanelC.Controls.Add(Me.pictureImagen)
         Me.PanelC.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelC.Location = New System.Drawing.Point(0, 189)
         Me.PanelC.Name = "PanelC"
@@ -204,16 +205,16 @@ Partial Class F0_VentasSupermercado
         Me.grProductos.TabIndex = 0
         Me.grProductos.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
-        'PictureBox1
+        'pictureImagen
         '
-        Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(701, 542)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 0
-        Me.PictureBox1.TabStop = False
+        Me.pictureImagen.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.pictureImagen.Image = Global.DinoM.My.Resources.Resources.FondoMercado
+        Me.pictureImagen.Location = New System.Drawing.Point(0, 0)
+        Me.pictureImagen.Name = "pictureImagen"
+        Me.pictureImagen.Size = New System.Drawing.Size(701, 542)
+        Me.pictureImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pictureImagen.TabIndex = 0
+        Me.pictureImagen.TabStop = False
         '
         'Panel2
         '
@@ -546,6 +547,10 @@ Partial Class F0_VentasSupermercado
         Me.QrFactura.Text = "QrCodeImgControl1"
         Me.QrFactura.Visible = False
         '
+        'TimerImagenes
+        '
+        Me.TimerImagenes.Interval = 10000
+        '
         'F0_VentasSupermercado
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -563,7 +568,7 @@ Partial Class F0_VentasSupermercado
         Me.GPanelProductos.ResumeLayout(False)
         Me.Panel5.ResumeLayout(False)
         CType(Me.grProductos, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pictureImagen, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
         CType(Me.tbPrecio, System.ComponentModel.ISupportInitialize).EndInit()
@@ -586,7 +591,7 @@ Partial Class F0_VentasSupermercado
 
     Friend WithEvents PanelDatos As Panel
     Friend WithEvents PanelImagen As Panel
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents pictureImagen As PictureBox
     Friend WithEvents PanelTop As Panel
     Friend WithEvents tbProducto As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents PanelButtom As Panel
@@ -618,4 +623,5 @@ Partial Class F0_VentasSupermercado
     Friend WithEvents ModificarCantidadMenu As ToolStripMenuItem
     Friend WithEvents EliminarProductoMenu As ToolStripMenuItem
     Friend WithEvents prCargando As DevComponents.DotNetBar.Controls.CircularProgress
+    Friend WithEvents TimerImagenes As Timer
 End Class
