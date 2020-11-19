@@ -198,7 +198,7 @@ Public Class R_FacturaMediaCarta
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_Fecliteral() As CrystalDecisions.[Shared].IParameterField
+    Public ReadOnly Property Parameter_Logo() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(12)
         End Get
@@ -206,7 +206,7 @@ Public Class R_FacturaMediaCarta
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_Logo() As CrystalDecisions.[Shared].IParameterField
+    Public ReadOnly Property Parameter_Nota2() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(13)
         End Get
@@ -214,7 +214,7 @@ Public Class R_FacturaMediaCarta
     
     <Browsable(false),  _
      DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)>  _
-    Public ReadOnly Property Parameter_Nota2() As CrystalDecisions.[Shared].IParameterField
+    Public ReadOnly Property Parameter_Fecliteral() As CrystalDecisions.[Shared].IParameterField
         Get
             Return Me.DataDefinition.ParameterFields(14)
         End Get

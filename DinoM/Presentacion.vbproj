@@ -1388,6 +1388,10 @@
       <Project>{c4004973-be46-410b-82d3-4b6b36f5b877}</Project>
       <Name>Modelo</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UTILITIES\UTILITIES.vbproj">
+      <Project>{a016f9d2-799c-4f16-ace6-9b706599101d}</Project>
+      <Name>UTILITIES</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\addimg.png" />
