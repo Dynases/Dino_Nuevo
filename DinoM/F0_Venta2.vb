@@ -1772,9 +1772,7 @@ Public Class F0_Venta2
 
 
         _Desc = CDbl(tbMdesc.Value)
-        If Not IsNothing(P_Global.Visualizador) Then
-            P_Global.Visualizador.Close()
-        End If
+
 
         '_Fecha = Now.Date '.ToString("dd/MM/yyyy")
         _Fecha = tbFechaVenta.Value
@@ -1833,13 +1831,29 @@ Public Class F0_Venta2
                             "",
                             "",
                             CStr(numi))
-
         _Ds = L_Reporte_Factura(numi, numi)
+
+        If Not IsNothing(P_Global.Visualizador) Then
+            P_Global.Visualizador.Close()
+        End If
 
         For I = 0 To _Ds.Tables(0).Rows.Count - 1
             _Ds.Tables(0).Rows(I).Item("fvaimgqr") = P_fnImageToByteArray(QrFactura.Image)
         Next
         If (impFactura) Then
+            Dim empresaId = ObtenerEmpresaHabilitada()
+            Dim empresaHabilitada As DataTable = ObtenerEmpresaTipoReporte(empresaId, Convert.ToInt32(ENReporte.DESPACHOXPRODUCTO))
+            For Each fila As DataRow In empresaHabilitada.Rows
+                Select Case fila.Item("TipoReporte").ToString
+                    Case ENReporteTipo.DESPACHOXPRODUCTO_AgrupadoXCategoria
+                        Dim objrep As New DespachoXProducto
+                        SerParametros(listResult, objrep)
+                    Case ENReporteTipo.DESPACHOXPRODUCTO_SinAgrupacion
+                        Dim objrep As New DespachoXProductoSinAgrupacion
+                        SerParametros(listResult, objrep)
+                End Select
+            Next
+
             _Ds3 = L_ObtenerRutaImpresora("1") ' Datos de Impresion de Facturación
             If (_Ds3.Tables(0).Rows(0).Item("cbvp")) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
                 P_Global.Visualizador = New Visualizador 'Comentar
