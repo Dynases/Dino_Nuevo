@@ -97,7 +97,7 @@ Public Class F0_VentasSupermercado
         tbTotal.Value = 0
         lbFecha.Text = Now.Date.ToString("dd/MM/yyyy")
         lbCliente.Text = "S/N"
-        lbNit.Text = "0"
+        lbNit.Text = ""
 
 
         _prCargarDetalleVenta(-1)
@@ -1068,7 +1068,7 @@ Public Class F0_VentasSupermercado
                 If (gb_FacturaEmite) Then
                     If lbNit.Text <> String.Empty Then
                         P_fnGenerarFactura(numi)
-                        ' _prImiprimirNotaVenta(numi)
+                        '_prImiprimirNotaVenta(numi)
                     Else
                         _prImiprimirNotaVenta(numi)
                     End If
@@ -1494,8 +1494,8 @@ Public Class F0_VentasSupermercado
                                        My.Resources.WARNING, 5000,
                                        eToastGlowColor.Blue, eToastPosition.BottomRight)
             Else
-                'objrep.PrintOptions.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString '"EPSON TM-T20II Receipt5 (1)"
-                'objrep.PrintToPrinter(1, True, 0, 0)
+                objrep.PrintOptions.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString '"EPSON TM-T20II Receipt5 (1)"
+                objrep.PrintToPrinter(1, True, 0, 0)
                 'crystalReportDocument.PrintOptions.PrinterName = "your printer name"
                 'objrep.PrintTicket("EPSON TM-T20II Receipt")
             End If
