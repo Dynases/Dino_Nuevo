@@ -17,6 +17,8 @@ Imports System.Runtime.InteropServices
 Imports System.Drawing.Printing
 Imports CrystalDecisions.Shared
 Imports Facturacion
+Imports UTILITIES
+
 Public Class F0_Venta2
     Dim _Inter As Integer = 0
 #Region "Variables Globales"
@@ -1772,9 +1774,7 @@ Public Class F0_Venta2
 
 
         _Desc = CDbl(tbMdesc.Value)
-        If Not IsNothing(P_Global.Visualizador) Then
-            P_Global.Visualizador.Close()
-        End If
+
 
         '_Fecha = Now.Date '.ToString("dd/MM/yyyy")
         _Fecha = tbFechaVenta.Value
@@ -1833,66 +1833,87 @@ Public Class F0_Venta2
                             "",
                             "",
                             CStr(numi))
-
         _Ds = L_Reporte_Factura(numi, numi)
+
+        If Not IsNothing(P_Global.Visualizador) Then
+            P_Global.Visualizador.Close()
+        End If
 
         For I = 0 To _Ds.Tables(0).Rows.Count - 1
             _Ds.Tables(0).Rows(I).Item("fvaimgqr") = P_fnImageToByteArray(QrFactura.Image)
         Next
         If (impFactura) Then
-            _Ds3 = L_ObtenerRutaImpresora("1") ' Datos de Impresion de Facturación
-            If (_Ds3.Tables(0).Rows(0).Item("cbvp")) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
-                P_Global.Visualizador = New Visualizador 'Comentar
-            End If
             Dim objrep As Object = Nothing
-            If (gi_FacturaTipo = 1) Then
-                'objrep = New R_FacturaG
-            ElseIf (gi_FacturaTipo = 2) Then
-                objrep = New R_Factura_7_5x100
-                'If (Not _Ds.Tables(0).Rows.Count = gi_FacturaCantidadItems) Then
-                '    For index = _Ds.Tables(0).Rows.Count To gi_FacturaCantidadItems - 1
-                '        'Insertamos la primera fila con el saldo Inicial
-                '        Dim f As DataRow = _Ds.Tables(0).NewRow
-                '        f.ItemArray() = _Ds.Tables(0).Rows(0).ItemArray
-                '        f.Item("fvbcant") = -1
-                '        _Ds.Tables(0).Rows.Add(f)
-                '    Next
-                'End If
-            End If
+            Dim empresaId = ObtenerEmpresaHabilitada()
+            Dim empresaHabilitada As DataTable = ObtenerEmpresaTipoReporte(empresaId, Convert.ToInt32(ENReporte.FACTURA))
+            For Each fila As DataRow In empresaHabilitada.Rows
+                Select Case fila.Item("TipoReporte").ToString
+                    Case ENReporteTipo.FACTURA_Ticket
+                        objrep = New R_Factura_7_5x100
+                        SerPArametros(_Ds, _Ds1, _Ds2, _Autorizacion, _Hora, _Literal, _NumFac, objrep,
+                                      fila.Item("TipoReporte").ToString, _Fecha, grabarPDF, _numidosif, numi)
+                    Case ENReporteTipo.FACTURA_MediaCarta
+                        objrep = New R_FacturaMediaCarta
+                        SerPArametros(_Ds, _Ds1, _Ds2, _Autorizacion, _Hora, _Literal, _NumFac, objrep,
+                                      fila.Item("TipoReporte").ToString, _Fecha, grabarPDF, _numidosif, numi)
+                End Select
+            Next
+        End If
+    End Sub
 
-            objrep.SetDataSource(_Ds.Tables(0))
-            objrep.SetParameterValue("Hora", _Hora)
-            objrep.SetParameterValue("Direccionpr", _Ds2.Tables(0).Rows(0).Item("scdir").ToString)
-            objrep.SetParameterValue("Telefonopr", _Ds2.Tables(0).Rows(0).Item("sctelf").ToString)
-            objrep.SetParameterValue("Literal1", _Literal)
-            objrep.SetParameterValue("Literal2", " ")
-            objrep.SetParameterValue("Literal3", " ")
-            objrep.SetParameterValue("NroFactura", _NumFac)
-            objrep.SetParameterValue("NroAutoriz", _Autorizacion)
-            objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scneg").ToString) '?
-            objrep.SetParameterValue("ECasaMatriz", _Ds2.Tables(0).Rows(0).Item("scsuc").ToString)
-            objrep.SetParameterValue("ECiudadPais", _Ds2.Tables(0).Rows(0).Item("scpai").ToString)
-            objrep.SetParameterValue("ESFC", _Ds1.Tables(0).Rows(0).Item("sbsfc").ToString)
-            objrep.SetParameterValue("ENit", _Ds2.Tables(0).Rows(0).Item("scnit").ToString)
-            objrep.SetParameterValue("EActividad", _Ds2.Tables(0).Rows(0).Item("scact").ToString)
-            ' objrep.SetParameterValue("ESms", "''" + _Ds1.Tables(0).Rows(0).Item("sbnota").ToString + "''")
-            'objrep.SetParameterValue("ESms2", "''" + _Ds1.Tables(0).Rows(0).Item("sbnota2").ToString + "''")
-            objrep.SetParameterValue("EDuenho", _Ds2.Tables(0).Rows(0).Item("scnom").ToString) '?
-            'objrep.SetParameterValue("URLImageLogo", gs_CarpetaRaiz + "\LogoFactura.jpg")
-            'objrep.SetParameterValue("URLImageMarcaAgua", gs_CarpetaRaiz + "\MarcaAguaFactura.jpg")
-            objrep.SetParameterValue("ENota", "''" + "ESTA FACTURA CONTRIBUYE AL DESARROLLO DEL PAÍS EL USO ILÍCITO DE ÉSTA SERÁ SANCIONADO DE ACUERDO A LA LEY" + "''")
-            objrep.SetParameterValue("ELey", _Ds1.Tables(0).Rows(0).Item("sbnota").ToString)
-            objrep.SetParameterValue("FechaLim", _Ds1.Tables(0).Rows(0).Item("sbfal"))
-            objrep.SetParameterValue("Usuario", gs_user)
-            objrep.SetParameterValue("TipoVenta", IIf(swTipoVenta.Value = True, "CONTADO", "CRÉDITO"))
-            objrep.SetParameterValue("PlazoPago", IIf(swTipoVenta.Value = True, tbFechaVenta.Value, tbFechaVenc.Value))
-
-            If (_Ds3.Tables(0).Rows(0).Item("cbvp")) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
-                P_Global.Visualizador.CrGeneral.ReportSource = objrep 'Comentar
-                P_Global.Visualizador.ShowDialog() 'Comentar
-                P_Global.Visualizador.BringToFront() 'Comentar
-            End If
-
+    Private Sub SerPArametros(_Ds As DataSet, ByRef _Ds1 As DataSet, _Ds2 As DataSet, ByRef _Autorizacion As String, ByRef _Hora As String, ByRef _Literal As String,
+                              ByRef _NumFac As Integer, objrep As Object, tipoReporte As String, _fecha As String, grabarPDF As Boolean, _numidosif As String, numi As String)
+        Select Case tipoReporte
+            Case ENReporteTipo.FACTURA_Ticket
+                objrep.SetDataSource(_Ds.Tables(0))
+                objrep.SetParameterValue("Hora", _Hora)
+                objrep.SetParameterValue("Direccionpr", _Ds2.Tables(0).Rows(0).Item("scdir").ToString)
+                objrep.SetParameterValue("Telefonopr", _Ds2.Tables(0).Rows(0).Item("sctelf").ToString)
+                objrep.SetParameterValue("Literal1", _Literal)
+                objrep.SetParameterValue("Literal2", " ")
+                objrep.SetParameterValue("Literal3", " ")
+                objrep.SetParameterValue("NroFactura", _NumFac)
+                objrep.SetParameterValue("NroAutoriz", _Autorizacion)
+                objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scneg").ToString) '?
+                objrep.SetParameterValue("ECasaMatriz", _Ds2.Tables(0).Rows(0).Item("scsuc").ToString)
+                objrep.SetParameterValue("ECiudadPais", _Ds2.Tables(0).Rows(0).Item("scpai").ToString)
+                objrep.SetParameterValue("ESFC", _Ds1.Tables(0).Rows(0).Item("sbsfc").ToString)
+                objrep.SetParameterValue("ENit", _Ds2.Tables(0).Rows(0).Item("scnit").ToString)
+                objrep.SetParameterValue("EActividad", _Ds2.Tables(0).Rows(0).Item("scact").ToString)
+                objrep.SetParameterValue("EDuenho", _Ds2.Tables(0).Rows(0).Item("scnom").ToString)
+                'objrep.SetParameterValue("ENota", "''" + "ESTA FACTURA CONTRIBUYE AL DESARROLLO DEL PAÍS EL USO ILÍCITO DE ÉSTA SERÁ SANCIONADO DE ACUERDO A LA LEY" + "''")
+                objrep.SetParameterValue("ENota", _Ds1.Tables(0).Rows(0).Item("sbNota").ToString)
+                objrep.SetParameterValue("ELey", _Ds1.Tables(0).Rows(0).Item("sbnota").ToString)
+                objrep.SetParameterValue("FechaLim", _Ds1.Tables(0).Rows(0).Item("sbfal"))
+                objrep.SetParameterValue("Usuario", gs_user)
+                objrep.SetParameterValue("TipoVenta", IIf(swTipoVenta.Value = True, "CONTADO", "CRÉDITO"))
+                objrep.SetParameterValue("PlazoPago", IIf(swTipoVenta.Value = True, tbFechaVenta.Value, tbFechaVenc.Value))
+            Case ENReporteTipo.FACTURA_MediaCarta
+                objrep.SetDataSource(_Ds.Tables(0))
+                Dim fechaLiteral = ObtenerFechaLiteral(_fecha, _Ds2.Tables(0).Rows(0).Item("scciu").ToString)
+                objrep.SetParameterValue("Fecliteral", fechaLiteral)
+                objrep.SetParameterValue("Direccionpr", _Ds2.Tables(0).Rows(0).Item("scdir").ToString)
+                objrep.SetParameterValue("Literal1", _Literal)
+                objrep.SetParameterValue("NroFactura", _NumFac)
+                objrep.SetParameterValue("NroAutoriz", _Autorizacion)
+                objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scneg").ToString)
+                objrep.SetParameterValue("ECasaMatriz", _Ds2.Tables(0).Rows(0).Item("scsuc").ToString)
+                objrep.SetParameterValue("ECiudadPais", _Ds2.Tables(0).Rows(0).Item("scpai").ToString)
+                objrep.SetParameterValue("ESFC", _Ds1.Tables(0).Rows(0).Item("sbsfc").ToString)
+                objrep.SetParameterValue("ENit", _Ds2.Tables(0).Rows(0).Item("scnit").ToString)
+                objrep.SetParameterValue("EActividad", _Ds2.Tables(0).Rows(0).Item("scact").ToString)
+                objrep.SetParameterValue("Tipo", "ORIGINAL")
+                objrep.SetParameterValue("Logo", gb_UbiLogo)
+                objrep.SetParameterValue("TipoPago", IIf(swTipoVenta.Value = True, "CONTADO", "CRÉDITO"))
+                objrep.SetParameterValue("Nota2", _Ds1.Tables(0).Rows(0).Item("sbnota").ToString)
+        End Select
+        Dim _Ds3 As DataSet = L_ObtenerRutaImpresora("1") ' Datos de Impresion de Facturación
+        If (_Ds3.Tables(0).Rows(0).Item("cbvp")) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
+            P_Global.Visualizador = New Visualizador
+            P_Global.Visualizador.CrGeneral.ReportSource = objrep
+            P_Global.Visualizador.ShowDialog()
+            P_Global.Visualizador.BringToFront()
+        Else
             Dim pd As New PrintDocument()
             Dim instance As New Printing.PrinterSettings
             Dim impresosaPredt As String = instance.PrinterName
@@ -1900,27 +1921,73 @@ Public Class F0_Venta2
 
             If (Not pd.PrinterSettings.IsValid) Then
                 ToastNotification.Show(Me, "La Impresora ".ToUpper + impresosaPredt + Chr(13) + "No Existe".ToUpper,
-                                       My.Resources.WARNING, 5 * 1000,
+                                       My.Resources.WARNING, 5000,
                                        eToastGlowColor.Blue, eToastPosition.BottomRight)
             Else
-
                 'objrep.PrintOptions.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString '"EPSON TM-T20II Receipt5 (1)"
                 'objrep.PrintToPrinter(1, True, 0, 0)
                 'crystalReportDocument.PrintOptions.PrinterName = "your printer name"
                 'objrep.PrintTicket("EPSON TM-T20II Receipt")
             End If
-
-            If (grabarPDF) Then
-                'Copia de Factura en PDF
-                If (Not Directory.Exists(gs_CarpetaRaiz + "\Facturas")) Then
-                    Directory.CreateDirectory(gs_CarpetaRaiz + "\Facturas")
-                End If
-                objrep.ExportToDisk(ExportFormatType.PortableDocFormat, gs_CarpetaRaiz + "\Facturas\" + CStr(_NumFac) + "_" + CStr(_Autorizacion) + ".pdf")
-
-            End If
         End If
-        L_Actualiza_Dosificacion(_numidosif, _NumFac, numi)
+        If (grabarPDF) Then
+            'Copia de Factura en PDF
+            If (Not Directory.Exists(gs_CarpetaRaiz + "\Facturas")) Then
+                Directory.CreateDirectory(gs_CarpetaRaiz + "\Facturas")
+            End If
+            objrep.ExportToDisk(ExportFormatType.PortableDocFormat, gs_CarpetaRaiz + "\Facturas\" + CStr(_NumFac) + "_" + CStr(_Autorizacion) + ".pdf")
+            L_Actualiza_Dosificacion(_numidosif, _NumFac, numi)
+        End If
     End Sub
+
+    Private Function ObtenerFechaLiteral(Fecliteral As String, ciudad As String) As String
+        Dim dia, mes, ano As Integer
+        Dim mesl As String
+        dia = Microsoft.VisualBasic.Left(Fecliteral, 2)
+        mes = Microsoft.VisualBasic.Mid(Fecliteral, 4, 2)
+        ano = Microsoft.VisualBasic.Mid(Fecliteral, 7, 4)
+        If mes = 1 Then
+            mesl = "Enero"
+        End If
+        If mes = 2 Then
+            mesl = "Febrero"
+        End If
+        If mes = 3 Then
+            mesl = "Marzo"
+        End If
+        If mes = 4 Then
+            mesl = "Abril"
+        End If
+        If mes = 5 Then
+            mesl = "Mayo"
+        End If
+        If mes = 6 Then
+            mesl = "Junio"
+        End If
+        If mes = 7 Then
+            mesl = "Julio"
+        End If
+        If mes = 8 Then
+            mesl = "Agosto"
+        End If
+        If mes = 9 Then
+            mesl = "Septiembre"
+        End If
+        If mes = 10 Then
+            mesl = "Octubre"
+        End If
+        If mes = 11 Then
+            mesl = "Noviembre"
+        End If
+        If mes = 12 Then
+            mesl = "Diciembre"
+        End If
+        Fecliteral = ciudad + ", " + dia.ToString + " de " + mesl + " del " + ano.ToString
+        Return Fecliteral
+    End Function
+
+
+
     Private Sub ReimprimirFactura(numi As String, impFactura As Boolean, grabarPDF As Boolean)
         Try
             Dim _Fecha, _FechaAl As Date
@@ -2000,89 +2067,31 @@ Public Class F0_Venta2
 
             _Ds = L_Reporte_Factura(numi, numi)
 
+
+            If Not IsNothing(P_Global.Visualizador) Then
+                P_Global.Visualizador.Close()
+            End If
+
             For I = 0 To _Ds.Tables(0).Rows.Count - 1
                 _Ds.Tables(0).Rows(I).Item("fvaimgqr") = P_fnImageToByteArray(QrFactura.Image)
             Next
             If (impFactura) Then
-                _Ds3 = L_ObtenerRutaImpresora("1") ' Datos de Impresion de Facturación
-                If (_Ds3.Tables(0).Rows(0).Item("cbvp")) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
-                    P_Global.Visualizador = New Visualizador 'Comentar
-                End If
                 Dim objrep As Object = Nothing
-                If (gi_FacturaTipo = 1) Then
-                    'objrep = New R_FacturaG
-                ElseIf (gi_FacturaTipo = 2) Then
-                    objrep = New R_Factura_7_5x100
-                    'If (Not _Ds.Tables(0).Rows.Count = gi_FacturaCantidadItems) Then
-                    '    For index = _Ds.Tables(0).Rows.Count To gi_FacturaCantidadItems - 1
-                    '        'Insertamos la primera fila con el saldo Inicial
-                    '        Dim f As DataRow = _Ds.Tables(0).NewRow
-                    '        f.ItemArray() = _Ds.Tables(0).Rows(0).ItemArray
-                    '        f.Item("fvbcant") = -1
-                    '        _Ds.Tables(0).Rows.Add(f)
-                    '    Next
-                    'End If
-                End If
-
-                objrep.SetDataSource(_Ds.Tables(0))
-                objrep.SetParameterValue("Hora", _Hora)
-                objrep.SetParameterValue("Direccionpr", _Ds2.Tables(0).Rows(0).Item("scdir").ToString)
-                objrep.SetParameterValue("Telefonopr", _Ds2.Tables(0).Rows(0).Item("sctelf").ToString)
-                objrep.SetParameterValue("Literal1", _Literal)
-                objrep.SetParameterValue("Literal2", " ")
-                objrep.SetParameterValue("Literal3", " ")
-                objrep.SetParameterValue("NroFactura", _NumFac)
-                objrep.SetParameterValue("NroAutoriz", _Autorizacion)
-                objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scneg").ToString) '?
-                objrep.SetParameterValue("ECasaMatriz", _Ds2.Tables(0).Rows(0).Item("scsuc").ToString)
-                objrep.SetParameterValue("ECiudadPais", _Ds2.Tables(0).Rows(0).Item("scpai").ToString)
-                objrep.SetParameterValue("ESFC", _Ds1.Tables(0).Rows(0).Item("sbsfc").ToString)
-                objrep.SetParameterValue("ENit", _Ds2.Tables(0).Rows(0).Item("scnit").ToString)
-                objrep.SetParameterValue("EActividad", _Ds2.Tables(0).Rows(0).Item("scact").ToString)
-                ' objrep.SetParameterValue("ESms", "''" + _Ds1.Tables(0).Rows(0).Item("sbnota").ToString + "''")
-                'objrep.SetParameterValue("ESms2", "''" + _Ds1.Tables(0).Rows(0).Item("sbnota2").ToString + "''")
-                objrep.SetParameterValue("EDuenho", _Ds2.Tables(0).Rows(0).Item("scnom").ToString) '?
-                'objrep.SetParameterValue("URLImageLogo", gs_CarpetaRaiz + "\LogoFactura.jpg")
-                'objrep.SetParameterValue("URLImageMarcaAgua", gs_CarpetaRaiz + "\MarcaAguaFactura.jpg")
-                objrep.SetParameterValue("ENota", "''" + "ESTA FACTURA CONTRIBUYE AL DESARROLLO DEL PAÍS EL USO ILÍCITO DE ÉSTA SERÁ SANCIONADO DE ACUERDO A LA LEY" + "''")
-                objrep.SetParameterValue("ELey", _Ds1.Tables(0).Rows(0).Item("sbnota").ToString)
-                objrep.SetParameterValue("FechaLim", _Ds1.Tables(0).Rows(0).Item("sbfal"))
-                objrep.SetParameterValue("Usuario", gs_user)
-                objrep.SetParameterValue("TipoVenta", IIf(swTipoVenta.Value = True, "CONTADO", "CRÉDITO"))
-                objrep.SetParameterValue("PlazoPago", IIf(swTipoVenta.Value = True, tbFechaVenta.Value, tbFechaVenc.Value))
-
-                If (_Ds3.Tables(0).Rows(0).Item("cbvp")) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
-                    P_Global.Visualizador.CrGeneral.ReportSource = objrep 'Comentar
-                    P_Global.Visualizador.ShowDialog() 'Comentar
-                    P_Global.Visualizador.BringToFront() 'Comentar
-                Else
-                    Dim pd As New PrintDocument()
-                    Dim instance As New Printing.PrinterSettings
-                    Dim impresosaPredt As String = instance.PrinterName
-                    pd.PrinterSettings.PrinterName = impresosaPredt
-
-                    If (Not pd.PrinterSettings.IsValid) Then
-                        ToastNotification.Show(Me, "La Impresora ".ToUpper + impresosaPredt + Chr(13) + "No Existe".ToUpper,
-                                       My.Resources.WARNING, 5 * 1000,
-                                       eToastGlowColor.Blue, eToastPosition.BottomRight)
-                    Else
-
-                        'objrep.PrintOptions.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString '"EPSON TM-T20II Receipt5 (1)"
-                        'objrep.PrintToPrinter(1, True, 0, 0)
-                        'crystalReportDocument.PrintOptions.PrinterName = "your printer name"
-                        'objrep.PrintTicket("EPSON TM-T20II Receipt")
-                    End If
-
-                End If
-                'If (grabarPDF) Then
-                '    'Copia de Factura en PDF
-                '    If (Not Directory.Exists(gs_CarpetaRaiz + "\Facturas")) Then
-                '        Directory.CreateDirectory(gs_CarpetaRaiz + "\Facturas")
-                '    End If
-                '    objrep.ExportToDisk(ExportFormatType.PortableDocFormat, gs_CarpetaRaiz + "\Facturas\" + CStr(_NumFac) + "_" + CStr(_Autorizacion) + ".pdf")
-                'End If
+                Dim empresaId = ObtenerEmpresaHabilitada()
+                Dim empresaHabilitada As DataTable = ObtenerEmpresaTipoReporte(empresaId, Convert.ToInt32(ENReporte.FACTURA))
+                For Each fila As DataRow In empresaHabilitada.Rows
+                    Select Case fila.Item("TipoReporte").ToString
+                        Case ENReporteTipo.FACTURA_Ticket
+                            objrep = New R_Factura_7_5x100
+                            SerPArametros(_Ds, _Ds1, _Ds2, _Autorizacion, _Hora, _Literal, _NumFac, objrep,
+                                      fila.Item("TipoReporte").ToString, _Fecha, False, _numidosif, numi)
+                        Case ENReporteTipo.FACTURA_MediaCarta
+                            objrep = New R_FacturaMediaCarta
+                            SerPArametros(_Ds, _Ds1, _Ds2, _Autorizacion, _Hora, _Literal, _NumFac, objrep,
+                                      fila.Item("TipoReporte").ToString, _Fecha, False, _numidosif, numi)
+                    End Select
+                Next
             End If
-            '  L_Actualiza_Dosificacion(_numidosif, _NumFac, numi)
         Catch ex As Exception
             MostrarMensajeError(ex.Message)
         End Try
