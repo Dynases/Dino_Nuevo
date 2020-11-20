@@ -1436,6 +1436,84 @@ Public Class AccesoLogica
         Return _resultado
     End Function
 
+    Public Shared Function L_fnGrabarVentaServicios(ByRef _tanumi As String, _tafdoc As String, _taven As Integer, _tatven As Integer, _tafvcr As String, _taclpr As Integer,
+                                           _tamon As Integer, _taobs As String,
+                                           _tadesc As Double, _taice As Double,
+                                           _tatotal As Double, detalle As DataTable, _almacen As Integer) As Boolean
+        Dim _Tabla As DataTable
+        Dim _resultado As Boolean
+        Dim _listParam As New List(Of Datos.DParametro)
+        '  (@tanumi,@taalm,@tafdoc ,@taven  ,@tatven,
+        '@tafvcr ,@taclpr,@tamon ,@taest  ,@taobs ,@tadesc, @taice ,@tatotal ,@newFecha,@newHora,@tauact)
+        _listParam.Add(New Datos.DParametro("@tipo", 1))
+        _listParam.Add(New Datos.DParametro("@tanumi", _tanumi))
+
+        _listParam.Add(New Datos.DParametro("@taalm", _almacen))
+        _listParam.Add(New Datos.DParametro("@tafdoc", _tafdoc))
+        _listParam.Add(New Datos.DParametro("@taven", _taven))
+        _listParam.Add(New Datos.DParametro("@tatven", _tatven))
+        _listParam.Add(New Datos.DParametro("@tafvcr", _tafvcr))
+        _listParam.Add(New Datos.DParametro("@taclpr", _taclpr))
+        _listParam.Add(New Datos.DParametro("@tamon", _tamon))
+        _listParam.Add(New Datos.DParametro("@taest", 1))
+        _listParam.Add(New Datos.DParametro("@taobs", _taobs))
+        _listParam.Add(New Datos.DParametro("@tadesc", _tadesc))
+        _listParam.Add(New Datos.DParametro("@taice", _taice))
+        _listParam.Add(New Datos.DParametro("@tatotal", _tatotal))
+        _listParam.Add(New Datos.DParametro("@tauact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@TV0011", "", detalle))
+        _Tabla = D_ProcedimientoConParam("VentaServicio", _listParam)
+
+
+        If _Tabla.Rows.Count > 0 Then
+            _tanumi = _Tabla.Rows(0).Item(0)
+            _resultado = True
+        Else
+            _resultado = False
+        End If
+
+        Return _resultado
+    End Function
+
+    Public Shared Function L_fnModificarVentaServicios(ByRef _tanumi As String, _tafdoc As String, _taven As Integer, _tatven As Integer, _tafvcr As String, _taclpr As Integer,
+                                           _tamon As Integer, _taobs As String,
+                                           _tadesc As Double, _taice As Double,
+                                           _tatotal As Double, detalle As DataTable, _almacen As Integer) As Boolean
+        Dim _Tabla As DataTable
+        Dim _resultado As Boolean
+        Dim _listParam As New List(Of Datos.DParametro)
+        '  (@tanumi,@taalm,@tafdoc ,@taven  ,@tatven,
+        '@tafvcr ,@taclpr,@tamon ,@taest  ,@taobs ,@tadesc, @taice ,@tatotal ,@newFecha,@newHora,@tauact)
+        _listParam.Add(New Datos.DParametro("@tipo", 1))
+        _listParam.Add(New Datos.DParametro("@tanumi", _tanumi))
+
+        _listParam.Add(New Datos.DParametro("@taalm", _almacen))
+        _listParam.Add(New Datos.DParametro("@tafdoc", _tafdoc))
+        _listParam.Add(New Datos.DParametro("@taven", _taven))
+        _listParam.Add(New Datos.DParametro("@tatven", _tatven))
+        _listParam.Add(New Datos.DParametro("@tafvcr", _tafvcr))
+        _listParam.Add(New Datos.DParametro("@taclpr", _taclpr))
+        _listParam.Add(New Datos.DParametro("@tamon", _tamon))
+        _listParam.Add(New Datos.DParametro("@taest", 1))
+        _listParam.Add(New Datos.DParametro("@taobs", _taobs))
+        _listParam.Add(New Datos.DParametro("@tadesc", _tadesc))
+        _listParam.Add(New Datos.DParametro("@taice", _taice))
+        _listParam.Add(New Datos.DParametro("@tatotal", _tatotal))
+        _listParam.Add(New Datos.DParametro("@tauact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@TV0011", "", detalle))
+        _Tabla = D_ProcedimientoConParam("VentaServicio", _listParam)
+
+
+        If _Tabla.Rows.Count > 0 Then
+            _tanumi = _Tabla.Rows(0).Item(0)
+            _resultado = True
+        Else
+            _resultado = False
+        End If
+
+        Return _resultado
+    End Function
+
     Public Shared Function L_fnModificarVenta(_tanumi As String, _tafdoc As String, _taven As Integer, _tatven As Integer, _tafvcr As String, _taclpr As Integer,
                                            _tamon As Integer, _taobs As String,
                                            _tadesc As Double, _taice As Double, _tatotal As Double, detalle As DataTable, _almacen As Integer, _taprforma As Integer, monto As DataTable) As Boolean
@@ -1988,6 +2066,26 @@ Public Class AccesoLogica
         Return _resultado
     End Function
 
+    Public Shared Function L_fnEliminarServicio(numi As String, ByRef mensaje As String) As Boolean
+        Dim _resultado As Boolean
+        Dim _Tabla As DataTable
+            Dim _listParam As New List(Of Datos.DParametro)
+
+            _listParam.Add(New Datos.DParametro("@tipo", -1))
+        _listParam.Add(New Datos.DParametro("@Id", numi))
+        _listParam.Add(New Datos.DParametro("@aauact", L_Usuario))
+
+        _Tabla = D_ProcedimientoConParam("sp_Mam_Servicios", _listParam)
+
+        If _Tabla.Rows.Count > 0 Then
+                _resultado = True
+            Else
+                _resultado = False
+            End If
+
+            Return _resultado
+    End Function
+
 
 
     Public Shared Function L_fnGrabarAlmacen(ByRef _abnumi As String, _aata2dep As Integer, _aata2depVenta As Integer, _abdesc As String, _abdir As String, _abtelf As String, _ablat As Double, _ablong As Double, _abimg As String) As Boolean
@@ -2023,6 +2121,57 @@ Public Class AccesoLogica
 
         Return _resultado
     End Function
+
+    Public Shared Function L_fnGrabarServicio(ByRef id As String, NombreServicio As String, DetalleServicio As String, Estado As Integer) As Boolean
+        Dim _resultado As Boolean
+
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        '@Id,@NombreServicio ,@DetalleServicio ,@Estado  ,@newFecha,@aauact
+        _listParam.Add(New Datos.DParametro("@tipo", 1))
+        _listParam.Add(New Datos.DParametro("@Id", id))
+        _listParam.Add(New Datos.DParametro("@NombreServicio", NombreServicio))
+        _listParam.Add(New Datos.DParametro("@DetalleServicio", DetalleServicio))
+        _listParam.Add(New Datos.DParametro("@Estado", Estado))
+        _listParam.Add(New Datos.DParametro("@aauact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_Servicios", _listParam)
+
+        If _Tabla.Rows.Count > 0 Then
+            id = _Tabla.Rows(0).Item(0)
+            _resultado = True
+        Else
+            _resultado = False
+        End If
+
+        Return _resultado
+    End Function
+
+    Public Shared Function L_fnModificarServicio(ByRef id As String, NombreServicio As String, DetalleServicio As String, Estado As Integer) As Boolean
+        Dim _resultado As Boolean
+
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        '@Id,@NombreServicio ,@DetalleServicio ,@Estado  ,@newFecha,@aauact
+        _listParam.Add(New Datos.DParametro("@tipo", 2))
+        _listParam.Add(New Datos.DParametro("@Id", id))
+        _listParam.Add(New Datos.DParametro("@NombreServicio", NombreServicio))
+        _listParam.Add(New Datos.DParametro("@DetalleServicio", DetalleServicio))
+        _listParam.Add(New Datos.DParametro("@Estado", Estado))
+        _listParam.Add(New Datos.DParametro("@aauact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_Servicios", _listParam)
+
+        If _Tabla.Rows.Count > 0 Then
+            id = _Tabla.Rows(0).Item(0)
+            _resultado = True
+        Else
+            _resultado = False
+        End If
+
+        Return _resultado
+    End Function
+
+
+
 
     Public Shared Function L_fnModificarAlmacen(ByRef _abnumi As String, _aata2dep As Integer, _aata2depVenta As Integer, _abdesc As String, _abdir As String, _abtelf As String, _ablat As Double, _ablong As Double, _abimg As String) As Boolean
         Dim _resultado As Boolean
@@ -2062,6 +2211,18 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@tipo", 3))
         _listParam.Add(New Datos.DParametro("@aauact", L_Usuario))
         _Tabla = D_ProcedimientoConParam("sp_Mam_TA001", _listParam)
+
+        Return _Tabla
+    End Function
+
+    Public Shared Function L_fnGeneralServicios() As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 3))
+        _listParam.Add(New Datos.DParametro("@aauact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_Servicios", _listParam)
 
         Return _Tabla
     End Function
