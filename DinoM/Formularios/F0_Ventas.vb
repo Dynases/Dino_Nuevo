@@ -1072,23 +1072,7 @@ Public Class F0_Ventas
             End If
         End If
     End Sub
-    Public Sub InsertarProductosConLote()
-        Dim pos As Integer = -1
-        grdetalle.Row = grdetalle.RowCount - 1
-        _fnObtenerFilaDetalleProducto(pos, grProductos.GetValue("Item"))
-        Dim posProducto As Integer = grProductos.Row
-        FilaSelectLote = CType(grProductos.DataSource, DataTable).Rows(pos)
 
-
-        If (grProductos.GetValue("stock") > 0) Then
-            _prCargarLotesDeProductos(grProductos.GetValue("Item"), grProductos.GetValue("yfcdprod1"))
-        Else
-            Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-            ToastNotification.Show(Me, "El Producto: ".ToUpper + grProductos.GetValue("yfcdprod1") + " NO CUENTA CON STOCK DISPONIBLE", img, 5000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-            FilaSelectLote = Nothing
-        End If
-
-    End Sub
     Private Function P_fnGenerarFactura(numi As String) As Boolean
         Dim res As Boolean = False
         res = P_fnGrabarFacturarTFV001(numi) ' Grabar en la TFV001
@@ -1996,58 +1980,15 @@ salirIf:
             f = grProductos.Row
             If (f >= 0) Then
 
-                If (IsNothing(FilaSelectLote)) Then
-                    ''''''''''''''''''''''''
-                    If (G_Lote = True) Then
-                        InsertarProductosConLote()
-                    Else
-                        InsertarProductosSinLote()
-                    End If
+
+                ''''''''''''''''''''''''
+
+                InsertarProductosSinLote()
+
                     '''''''''''''''
-                Else
-
-                    '_fnExisteProductoConLote()
-                    Dim pos As Integer = -1
-                    grdetalle.Row = grdetalle.RowCount - 1
-                    _fnObtenerFilaDetalle(pos, grdetalle.GetValue("tbnumi"))
-                    Dim numiProd = FilaSelectLote.Item("Item")
-                    Dim lote As String = grProductos.GetValue("iclot")
-                    Dim FechaVenc As Date = grProductos.GetValue("icfven")
-                    If (Not _fnExisteProductoConLote(numiProd, lote, FechaVenc)) Then
-                        'b.yfcdprod1, a.iclot, a.icfven, a.iccven
-                        CType(grdetalle.DataSource, DataTable).Rows(pos).Item("ServicioId") = FilaSelectLote.Item("Item")
-                        CType(grdetalle.DataSource, DataTable).Rows(pos).Item("codigo") = FilaSelectLote.Item("yfcprod")
-                        CType(grdetalle.DataSource, DataTable).Rows(pos).Item("yfcbarra") = FilaSelectLote.Item("yfcbarra")
-                        CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto") = FilaSelectLote.Item("yfcdprod1")
-                        CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbumin") = FilaSelectLote.Item("yfumin")
-                        CType(grdetalle.DataSource, DataTable).Rows(pos).Item("unidad") = FilaSelectLote.Item("UnidMin")
-                        CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpbas") = FilaSelectLote.Item("yhprecio")
-                        CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = FilaSelectLote.Item("yhprecio")
-                        CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = FilaSelectLote.Item("yhprecio")
-                        CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = 1
-                        'If (gb_FacturaIncluirICE) Then
-                        CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = FilaSelectLote.Item("pcos")
-                        'Else
-                        '    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = 0
-                        'End If
-                        CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = FilaSelectLote.Item("pcos")
-
-                        CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tblote") = grProductos.GetValue("iclot")
-                        CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbfechaVenc") = grProductos.GetValue("icfven")
-                        CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = grProductos.GetValue("iccven")
-                        _prCalcularPrecioTotal()
-                        _DesHabilitarProductos()
-                        FilaSelectLote = Nothing
-                    Else
-                        Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-                        ToastNotification.Show(Me, "El producto con el lote ya existe modifique su cantidad".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-                    End If
-
 
 
                 End If
-
-            End If
         End If
         If e.KeyData = Keys.Escape Then
             _DesHabilitarProductos()
@@ -2587,60 +2528,10 @@ salirIf:
         f = grProductos.Row
         If (f >= 0) Then
 
-            If (IsNothing(FilaSelectLote)) Then
-                ''''''''''''''''''''''''
-                If (G_Lote = True) Then
-                    InsertarProductosConLote()
-                Else
-                    InsertarProductosSinLote()
-                End If
-                '''''''''''''''
-            Else
 
-                '_fnExisteProductoConLote()
-                Dim pos As Integer = -1
-                grdetalle.Row = grdetalle.RowCount - 1
-                _fnObtenerFilaDetalle(pos, grdetalle.GetValue("tbnumi"))
-                Dim numiProd = FilaSelectLote.Item("Item")
-                Dim lote As String = grProductos.GetValue("iclot")
-                Dim FechaVenc As Date = grProductos.GetValue("icfven")
-                If (Not _fnExisteProductoConLote(numiProd, lote, FechaVenc)) Then
-                    If (grProductos.GetValue("Stock") <= 0) Then
-                        Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-                        ToastNotification.Show(Me, "El producto no tiene stock disponible".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-                    End If
-                    'b.yfcdprod1, a.iclot, a.icfven, a.iccven
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("ServicioId") = FilaSelectLote.Item("Item")
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("codigo") = FilaSelectLote.Item("yfcprod")
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("yfcbarra") = FilaSelectLote.Item("yfcbarra")
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto") = FilaSelectLote.Item("yfcdprod1")
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbumin") = FilaSelectLote.Item("yfumin")
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("unidad") = FilaSelectLote.Item("UnidMin")
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpbas") = FilaSelectLote.Item("yhprecio")
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = FilaSelectLote.Item("yhprecio")
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = FilaSelectLote.Item("yhprecio")
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = 1
-                    'If (gb_FacturaIncluirICE) Then
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = FilaSelectLote.Item("pcos")
-                    'Else
-                    '    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = 0
-                    'End If
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = FilaSelectLote.Item("pcos")
-
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tblote") = grProductos.GetValue("iclot")
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbfechaVenc") = grProductos.GetValue("icfven")
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = grProductos.GetValue("iccven")
-                    _prCalcularPrecioTotal()
-                    _DesHabilitarProductos()
-                    FilaSelectLote = Nothing
-                Else
-                    Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-                    ToastNotification.Show(Me, "El producto con el lote ya existe modifique su cantidad".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-                End If
+            InsertarProductosSinLote()
 
 
-
-            End If
 
         End If
     End Sub

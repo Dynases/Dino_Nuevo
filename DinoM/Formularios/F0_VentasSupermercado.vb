@@ -1041,13 +1041,19 @@ Public Class F0_VentasSupermercado
         End If
         Return True
     End Function
+    Private Sub _prInsertarMontoNuevo(ByRef tabla As DataTable)
+        tabla.Rows.Add(0, TotalBs, TotalSus, TotalTarjeta, "6.96", 0)
+    End Sub
 
+    'Private Sub _prInsertarMontoModificar(ByRef tabla As DataTable)
+    '    tabla.Rows.Add(tbCodigo.Text, TotalBs, TotalSus, TotalTarjeta, cbCambioDolar.Text, 2)
+    'End Sub
     Public Sub _GuardarNuevo()
         Try
             Dim numi As String = ""
             Dim tabla As DataTable = L_fnMostrarMontos(0)
             Dim factura = gb_FacturaEmite
-
+            _prInsertarMontoNuevo(tabla)
             ''Verifica si existe estock para los productos
             'If _prExisteStockParaProducto() Then
             'prCargando.Visible = True
