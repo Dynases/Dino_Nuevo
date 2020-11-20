@@ -1988,6 +1988,26 @@ Public Class AccesoLogica
         Return _resultado
     End Function
 
+    Public Shared Function L_fnEliminarServicio(numi As String, ByRef mensaje As String) As Boolean
+        Dim _resultado As Boolean
+        Dim _Tabla As DataTable
+            Dim _listParam As New List(Of Datos.DParametro)
+
+            _listParam.Add(New Datos.DParametro("@tipo", -1))
+        _listParam.Add(New Datos.DParametro("@Id", numi))
+        _listParam.Add(New Datos.DParametro("@aauact", L_Usuario))
+
+        _Tabla = D_ProcedimientoConParam("sp_Mam_Servicios", _listParam)
+
+        If _Tabla.Rows.Count > 0 Then
+                _resultado = True
+            Else
+                _resultado = False
+            End If
+
+            Return _resultado
+    End Function
+
 
 
     Public Shared Function L_fnGrabarAlmacen(ByRef _abnumi As String, _aata2dep As Integer, _aata2depVenta As Integer, _abdesc As String, _abdir As String, _abtelf As String, _ablat As Double, _ablong As Double, _abimg As String) As Boolean
@@ -2023,6 +2043,57 @@ Public Class AccesoLogica
 
         Return _resultado
     End Function
+
+    Public Shared Function L_fnGrabarServicio(ByRef id As String, NombreServicio As String, DetalleServicio As String, Estado As Integer) As Boolean
+        Dim _resultado As Boolean
+
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        '@Id,@NombreServicio ,@DetalleServicio ,@Estado  ,@newFecha,@aauact
+        _listParam.Add(New Datos.DParametro("@tipo", 1))
+        _listParam.Add(New Datos.DParametro("@Id", id))
+        _listParam.Add(New Datos.DParametro("@NombreServicio", NombreServicio))
+        _listParam.Add(New Datos.DParametro("@DetalleServicio", DetalleServicio))
+        _listParam.Add(New Datos.DParametro("@Estado", Estado))
+        _listParam.Add(New Datos.DParametro("@aauact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_Servicios", _listParam)
+
+        If _Tabla.Rows.Count > 0 Then
+            id = _Tabla.Rows(0).Item(0)
+            _resultado = True
+        Else
+            _resultado = False
+        End If
+
+        Return _resultado
+    End Function
+
+    Public Shared Function L_fnModificarServicio(ByRef id As String, NombreServicio As String, DetalleServicio As String, Estado As Integer) As Boolean
+        Dim _resultado As Boolean
+
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        '@Id,@NombreServicio ,@DetalleServicio ,@Estado  ,@newFecha,@aauact
+        _listParam.Add(New Datos.DParametro("@tipo", 2))
+        _listParam.Add(New Datos.DParametro("@Id", id))
+        _listParam.Add(New Datos.DParametro("@NombreServicio", NombreServicio))
+        _listParam.Add(New Datos.DParametro("@DetalleServicio", DetalleServicio))
+        _listParam.Add(New Datos.DParametro("@Estado", Estado))
+        _listParam.Add(New Datos.DParametro("@aauact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_Servicios", _listParam)
+
+        If _Tabla.Rows.Count > 0 Then
+            id = _Tabla.Rows(0).Item(0)
+            _resultado = True
+        Else
+            _resultado = False
+        End If
+
+        Return _resultado
+    End Function
+
+
+
 
     Public Shared Function L_fnModificarAlmacen(ByRef _abnumi As String, _aata2dep As Integer, _aata2depVenta As Integer, _abdesc As String, _abdir As String, _abtelf As String, _ablat As Double, _ablong As Double, _abimg As String) As Boolean
         Dim _resultado As Boolean
@@ -2062,6 +2133,18 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@tipo", 3))
         _listParam.Add(New Datos.DParametro("@aauact", L_Usuario))
         _Tabla = D_ProcedimientoConParam("sp_Mam_TA001", _listParam)
+
+        Return _Tabla
+    End Function
+
+    Public Shared Function L_fnGeneralServicios() As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 3))
+        _listParam.Add(New Datos.DParametro("@aauact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_Servicios", _listParam)
 
         Return _Tabla
     End Function

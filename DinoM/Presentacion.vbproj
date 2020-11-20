@@ -422,6 +422,12 @@
     <Compile Include="Formularios\F1_MontoPagar.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\F1_Servicios.Designer.vb">
+      <DependentUpon>F1_Servicios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\F1_Servicios.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\F_Cantidad.Designer.vb">
       <DependentUpon>F_Cantidad.vb</DependentUpon>
     </Compile>
@@ -1044,6 +1050,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\F1_MontoPagar.resx">
       <DependentUpon>F1_MontoPagar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\F1_Servicios.resx">
+      <DependentUpon>F1_Servicios.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\F_Cantidad.resx">
       <DependentUpon>F_Cantidad.vb</DependentUpon>
