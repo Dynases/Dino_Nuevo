@@ -1068,7 +1068,7 @@ Public Class F0_VentasSupermercado
                 If (gb_FacturaEmite) Then
                     If lbNit.Text <> String.Empty Then
                         P_fnGenerarFactura(numi)
-                        _prImiprimirNotaVenta(numi)
+                        ' _prImiprimirNotaVenta(numi)
                     Else
                         _prImiprimirNotaVenta(numi)
                     End If
@@ -1453,7 +1453,7 @@ Public Class F0_VentasSupermercado
                 objrep.SetParameterValue("EDuenho", _Ds2.Tables(0).Rows(0).Item("scnom").ToString)
                 'objrep.SetParameterValue("ENota", "''" + "ESTA FACTURA CONTRIBUYE AL DESARROLLO DEL PAÍS EL USO ILÍCITO DE ÉSTA SERÁ SANCIONADO DE ACUERDO A LA LEY" + "''")
                 objrep.SetParameterValue("ENota", _Ds1.Tables(0).Rows(0).Item("sbNota").ToString)
-                objrep.SetParameterValue("ELey", _Ds1.Tables(0).Rows(0).Item("sbnota").ToString)
+                objrep.SetParameterValue("ELey", _Ds1.Tables(0).Rows(0).Item("sbnota2").ToString)
                 objrep.SetParameterValue("FechaLim", _Ds1.Tables(0).Rows(0).Item("sbfal"))
                 objrep.SetParameterValue("Usuario", gs_user)
                 objrep.SetParameterValue("TipoVenta", "CONTADO")
