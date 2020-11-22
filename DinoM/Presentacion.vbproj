@@ -410,6 +410,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Font\Custom.vb" />
+    <Compile Include="Formularios\F0_DetalleServicio.Designer.vb">
+      <DependentUpon>F0_DetalleServicio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\F0_DetalleServicio.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Formularios\F0_Ventas.designer.vb">
       <DependentUpon>F0_Ventas.vb</DependentUpon>
     </Compile>
@@ -1056,6 +1062,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F1_Zonas.resx">
       <DependentUpon>F1_Zonas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\F0_DetalleServicio.resx">
+      <DependentUpon>F0_DetalleServicio.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\F0_Ventas.resx">
       <DependentUpon>F0_Ventas.vb</DependentUpon>

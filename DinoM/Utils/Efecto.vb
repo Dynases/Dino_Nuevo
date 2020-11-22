@@ -26,6 +26,10 @@ Public Class Efecto
     Public Nit As String = ""
     Public RazonSocial As String = ""
 
+    Public DetalleServicio As String = ""
+    Public PrecioServicio As Double = 0
+
+    Public NombreServicio As String = ""
 
 
     Private Sub Efecto_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -42,6 +46,8 @@ Public Class Efecto
                 _prMostrarAyudaMontoPago()
             Case 7
                 _prMostrarAyudaVentaCantidad()
+            Case 8
+                _prMostrarAyudaDetalleServicio()
             Case 4
                 _prLogin()
         End Select
@@ -89,6 +95,29 @@ Public Class Efecto
             TotalTarjeta = frmAyuda.TotalTarjeta
             Nit = frmAyuda.Nit
             RazonSocial = frmAyuda.RazonSocial
+            band = True
+            Me.Close()
+        Else
+            band = False
+            Me.Close()
+        End If
+
+    End Sub
+
+    Sub _prMostrarAyudaDetalleServicio()
+
+        Dim frmAyuda As F0_DetalleServicio
+        frmAyuda = New F0_DetalleServicio
+
+
+        frmAyuda.NombreServicio = NombreServicio
+
+        frmAyuda.ShowDialog()
+        If frmAyuda.Bandera = True Then
+
+            DetalleServicio = frmAyuda.Detalle
+            PrecioServicio = frmAyuda.Precio
+
             band = True
             Me.Close()
         Else
