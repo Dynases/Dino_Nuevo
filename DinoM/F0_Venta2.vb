@@ -782,13 +782,13 @@ Public Class F0_Venta2
         ' ,b.yhprecio 
 
         With grProductos.RootTable.Columns("yfnumi")
-            .Width = 100
+            .Width = 130
             .Caption = "Código"
             .Visible = False
 
         End With
         With grProductos.RootTable.Columns("yfcprod")
-            .Width = 60
+            .Width = 80
             .Caption = "Código"
             .Visible = True
         End With
@@ -801,6 +801,8 @@ Public Class F0_Venta2
             .Width = 360
             .Visible = True
             .Caption = "Descripción"
+            .WordWrap = True
+            .MaxLines = 20
         End With
         With grProductos.RootTable.Columns("yfcdprod2")
             .Width = 150
@@ -838,7 +840,7 @@ Public Class F0_Venta2
                 .Width = 120
                 .Caption = dtname.Rows(0).Item("Grupo 4").ToString
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
-                .Visible = False
+                .Visible = True
             End With
         Else
             With grProductos.RootTable.Columns("grupo1")
@@ -897,10 +899,10 @@ Public Class F0_Venta2
             .Visible = False
         End With
         With grProductos.RootTable.Columns("UnidMin")
-            .Width = 120
+            .Width = 80
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = True
-            .Caption = "Unidad Min."
+            .Caption = "U. Min."
         End With
         With grProductos.RootTable.Columns("yhprecio")
             .Width = 100
@@ -910,14 +912,14 @@ Public Class F0_Venta2
             .FormatString = "0.00"
         End With
         With grProductos.RootTable.Columns("pcos")
-            .Width = 120
+            .Width = 70
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
             .Caption = "Precio Costo"
             .FormatString = "0.00"
         End With
         With grProductos.RootTable.Columns("stock")
-            .Width = 100
+            .Width = 70
             .FormatString = "0.00"
             .Visible = True
             .Caption = "Stock"
@@ -928,6 +930,8 @@ Public Class F0_Venta2
             .FilterMode = FilterMode.Automatic
             .FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
             .GroupByBoxVisible = False
+            .ColumnAutoResize = True
+            .AutoScrollMargin = AutoScrollPosition
             'diseño de la grilla
             .VisualStyle = VisualStyle.Office2007
         End With
@@ -3701,7 +3705,7 @@ salirIf:
         End If
     End Sub
 
-    Private Sub GroupPanel1_Click(sender As Object, e As EventArgs) Handles GroupPanel1.Click
+    Private Sub GroupPanel1_Click(sender As Object, e As EventArgs) Handles GroupCobranza.Click
 
     End Sub
 
