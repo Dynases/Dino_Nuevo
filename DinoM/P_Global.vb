@@ -161,6 +161,7 @@ Module P_Global
     Public gb_DetalleProducto As Boolean = False 'False=No habilita ingreso de detalle de producto, True=Si habilita el ingreso de detalle de producto
     Public gb_UbiLogo As String = ""
     Public gb_NotaAdicional As String = ""
+    Public gb_TipoAyuda As Integer = 1
 #End Region
 
 End Module

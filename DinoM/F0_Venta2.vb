@@ -759,33 +759,32 @@ Public Class F0_Venta2
         If (cbSucursal.SelectedIndex < 0) Then
             Return
         End If
-        Dim dtname As DataTable = L_fnNameLabel()
+        Dim nombreGrupos As DataTable = L_fnNameLabel()
         Dim dt As New DataTable
 
         If (G_Lote = True) Then
-            dt = L_fnListarProductos(cbSucursal.Value, _cliente)  ''1=Almacen
-            'Table_Producto = dt.Copy
+            dt = L_fnListarProductos(cbSucursal.Value, _cliente)
         Else
-            dt = L_fnListarProductosSinLote(cbSucursal.Value, _cliente, CType(grdetalle.DataSource, DataTable))  ''1=Almacen
-            'Table_Producto = dt.Copy
+            dt = L_fnListarProductosSinLote(cbSucursal.Value, _cliente, CType(grdetalle.DataSource, DataTable))
         End If
 
-
-
-        ''  actualizarSaldoSinLote(dt)
         grProductos.DataSource = dt
         grProductos.RetrieveStructure()
         grProductos.AlternatingColors = True
 
-        '      a.yfnumi ,a.yfcprod ,a.yfcdprod1,a.yfcdprod2 ,a.yfgr1,gr1.ycdes3 as grupo1,a.yfgr2
-        ',gr2.ycdes3 as grupo2 ,a.yfgr3,gr3.ycdes3 as grupo3,a.yfgr4 ,gr4 .ycdes3 as grupo4,a.yfumin ,Umin .ycdes3 as UnidMin
-        ' ,b.yhprecio 
+        If gb_TipoAyuda = ENProductoAyuda.SUPERMERCADO Then
+            ArmarGrillaProducto(nombreGrupos, False)
+        ElseIf gb_TipoAyuda = ENProductoAyuda.FARMACIA Then
+            ArmarGrillaProducto(nombreGrupos, True)
+        End If
+        _prAplicarCondiccionJanusSinLote()
+    End Sub
 
+    Private Sub ArmarGrillaProducto(dtname As DataTable, visualizarGrupo As Boolean)
         With grProductos.RootTable.Columns("yfnumi")
             .Width = 130
             .Caption = "Código"
             .Visible = False
-
         End With
         With grProductos.RootTable.Columns("yfcprod")
             .Width = 80
@@ -798,7 +797,7 @@ Public Class F0_Venta2
             .Visible = gb_CodigoBarra
         End With
         With grProductos.RootTable.Columns("yfcdprod1")
-            .Width = 360
+            .Width = IIf(visualizarGrupo, 300, 360)
             .Visible = True
             .Caption = "Descripción"
             .WordWrap = True
@@ -821,13 +820,17 @@ Public Class F0_Venta2
                 .Width = 120
                 .Caption = dtname.Rows(0).Item("Grupo 1").ToString
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
-                .Visible = False
+                .Visible = visualizarGrupo
+                .WordWrap = True
+                .MaxLines = 20
             End With
             With grProductos.RootTable.Columns("grupo2")
                 .Width = 120
                 .Caption = dtname.Rows(0).Item("Grupo 2").ToString
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
-                .Visible = False
+                .Visible = visualizarGrupo
+                .WordWrap = True
+                .MaxLines = 20
             End With
 
             With grProductos.RootTable.Columns("grupo3")
@@ -840,20 +843,26 @@ Public Class F0_Venta2
                 .Width = 120
                 .Caption = dtname.Rows(0).Item("Grupo 4").ToString
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
-                .Visible = True
+                .Visible = visualizarGrupo
+                .WordWrap = True
+                .MaxLines = 20
             End With
         Else
             With grProductos.RootTable.Columns("grupo1")
                 .Width = 120
                 .Caption = "Grupo 1"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
-                .Visible = False
+                .Visible = visualizarGrupo
+                .WordWrap = True
+                .MaxLines = 20
             End With
             With grProductos.RootTable.Columns("grupo2")
                 .Width = 120
                 .Caption = "Grupo 2"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
-                .Visible = False
+                .Visible = visualizarGrupo
+                .WordWrap = True
+                .MaxLines = 20
             End With
             With grProductos.RootTable.Columns("grupo3")
                 .Width = 120
@@ -865,7 +874,9 @@ Public Class F0_Venta2
                 .Width = 120
                 .Caption = "Grupo 4"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
-                .Visible = False
+                .Visible = visualizarGrupo
+                .WordWrap = True
+                .MaxLines = 20
             End With
         End If
 
@@ -901,7 +912,7 @@ Public Class F0_Venta2
         With grProductos.RootTable.Columns("UnidMin")
             .Width = 80
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
-            .Visible = True
+            .Visible = IIf(visualizarGrupo, False, True)
             .Caption = "U. Min."
         End With
         With grProductos.RootTable.Columns("yhprecio")
@@ -935,8 +946,8 @@ Public Class F0_Venta2
             'diseño de la grilla
             .VisualStyle = VisualStyle.Office2007
         End With
-        _prAplicarCondiccionJanusSinLote()
     End Sub
+
     Public Sub _prAplicarCondiccionJanusSinLote()
         'Dim fc As GridEXFormatCondition
         'fc = New GridEXFormatCondition(grProductos.RootTable.Columns("stock"), ConditionOperator.Between, -9998 And 0)

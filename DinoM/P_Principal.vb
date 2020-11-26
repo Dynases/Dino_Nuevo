@@ -108,6 +108,7 @@ Public Class P_Principal
 
         gb_UbiLogo = dtConfSistema.Rows(0).Item("cccubilogo")
         gb_NotaAdicional = dtConfSistema.Rows(0).Item("cccnotaadic")
+        gb_TipoAyuda = dtConfSistema.Rows(0).Item("cccTipoAyuda")
     End Sub
 
     Private Sub _prCargarConfiguracionSistema()
