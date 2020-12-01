@@ -814,14 +814,26 @@ Public Class F0_Venta2
             .Width = 160
             .Visible = False
         End With
+        With grProductos.RootTable.Columns("yfgr5")
+            .Width = 160
+            .Visible = False
+        End With
+        With grProductos.RootTable.Columns("grupo5")
+            .Caption = "CATEGORIA"
+            .Width = 120
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
+            .Visible = visualizarGrupo
+            .WordWrap = True
+            .MaxLines = 20
+        End With
         If (dtname.Rows.Count > 0) Then
 
             With grProductos.RootTable.Columns("grupo1")
                 .Width = 120
                 .Caption = dtname.Rows(0).Item("Grupo 1").ToString
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
-                .Visible = visualizarGrupo
-                .WordWrap = True
+                .Visible = False
+                .WordWrap = False
                 .MaxLines = 20
             End With
             With grProductos.RootTable.Columns("grupo2")
@@ -852,9 +864,9 @@ Public Class F0_Venta2
                 .Width = 120
                 .Caption = "Grupo 1"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
-                .Visible = visualizarGrupo
+                .Visible = False
                 .WordWrap = True
-                .MaxLines = 20
+                .MaxLines = False
             End With
             With grProductos.RootTable.Columns("grupo2")
                 .Width = 120
