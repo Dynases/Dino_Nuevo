@@ -1427,6 +1427,10 @@ Public Class F0_VentasSupermercado
                         objrep = New R_FacturaMediaCarta
                         SerPArametros(_Ds, _Ds1, _Ds2, _Autorizacion, _Hora, _Literal, _NumFac, objrep,
                                       fila.Item("TipoReporte").ToString, _Fecha, grabarPDF, _numidosif, numi)
+                    Case ENReporteTipo.FACTURA_Carta
+                        objrep = New R_FacturaCarta
+                        SerPArametros(_Ds, _Ds1, _Ds2, _Autorizacion, _Hora, _Literal, _NumFac, objrep,
+                                      fila.Item("TipoReporte").ToString, _Fecha, grabarPDF, _numidosif, numi)
                 End Select
             Next
         End If
@@ -1476,6 +1480,28 @@ Public Class F0_VentasSupermercado
                 objrep.SetParameterValue("Logo", gb_UbiLogo)
                 objrep.SetParameterValue("TipoPago", "CONTADO")
                 objrep.SetParameterValue("Nota2", _Ds1.Tables(0).Rows(0).Item("sbnota").ToString)
+            Case ENReporteTipo.FACTURA_Carta
+                objrep.SetDataSource(_Ds.Tables(0))
+                objrep.SetParameterValue("Hora", _Hora)
+                objrep.SetParameterValue("Direccionpr", _Ds2.Tables(0).Rows(0).Item("scdir").ToString)
+                objrep.SetParameterValue("Telefonopr", _Ds2.Tables(0).Rows(0).Item("sctelf").ToString)
+                objrep.SetParameterValue("Literal1", _Literal)
+                objrep.SetParameterValue("Literal2", " ")
+                objrep.SetParameterValue("Literal3", " ")
+                objrep.SetParameterValue("NroFactura", _NumFac)
+                objrep.SetParameterValue("NroAutoriz", _Autorizacion)
+                objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scneg").ToString) '?
+                objrep.SetParameterValue("ECasaMatriz", _Ds2.Tables(0).Rows(0).Item("scsuc").ToString)
+                objrep.SetParameterValue("ECiudadPais", _Ds2.Tables(0).Rows(0).Item("scpai").ToString)
+                objrep.SetParameterValue("ESFC", _Ds1.Tables(0).Rows(0).Item("sbsfc").ToString)
+                objrep.SetParameterValue("ENit", _Ds2.Tables(0).Rows(0).Item("scnit").ToString)
+                objrep.SetParameterValue("EActividad", _Ds2.Tables(0).Rows(0).Item("scact").ToString)
+                objrep.SetParameterValue("EDuenho", _Ds2.Tables(0).Rows(0).Item("scnom").ToString)
+                objrep.SetParameterValue("ESms", "''" + _Ds1.Tables(0).Rows(0).Item("sbnota").ToString + "''")
+                objrep.SetParameterValue("ESms2", "''" + _Ds1.Tables(0).Rows(0).Item("sbnota2").ToString + "''")
+
+                objrep.SetParameterValue("Logo", gb_UbiLogo)
+                objrep.SetParameterValue("URLImageMarcaAgua", gs_CarpetaRaiz + "\MarcaAguaFactura.jpg")
         End Select
         Dim _Ds3 As DataSet = L_ObtenerRutaImpresora("1") ' Datos de Impresion de Facturación
         If (_Ds3.Tables(0).Rows(0).Item("cbvp")) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
@@ -1655,6 +1681,10 @@ Public Class F0_VentasSupermercado
                             objrep = New R_FacturaMediaCarta
                             SerPArametros(_Ds, _Ds1, _Ds2, _Autorizacion, _Hora, _Literal, _NumFac, objrep,
                                       fila.Item("TipoReporte").ToString, _Fecha, False, _numidosif, numi)
+                        Case ENReporteTipo.FACTURA_Carta
+                            objrep = New R_FacturaCarta
+                            SerPArametros(_Ds, _Ds1, _Ds2, _Autorizacion, _Hora, _Literal, _NumFac, objrep,
+                                          fila.Item("TipoReporte").ToString, _Fecha, grabarPDF, _numidosif, numi)
                     End Select
                 Next
             End If
