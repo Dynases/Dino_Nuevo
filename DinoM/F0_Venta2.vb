@@ -1878,22 +1878,24 @@ Public Class F0_Venta2
                     Case ENReporteTipo.FACTURA_Ticket
                         objrep = New R_Factura_7_5x100
                         SerPArametrosFactura(_Ds, _Ds1, _Ds2, _Autorizacion, _Hora, _Literal, _NumFac, objrep,
-                                      fila.Item("TipoReporte").ToString, _Fecha, grabarPDF, _numidosif, numi)
+                                      fila.Item("TipoReporte").ToString, _Fecha, grabarPDF, _numidosif, numi, 0)
                     Case ENReporteTipo.FACTURA_MediaCarta
                         objrep = New R_FacturaMediaCarta
                         SerPArametrosFactura(_Ds, _Ds1, _Ds2, _Autorizacion, _Hora, _Literal, _NumFac, objrep,
-                                      fila.Item("TipoReporte").ToString, _Fecha, grabarPDF, _numidosif, numi)
+                                      fila.Item("TipoReporte").ToString, _Fecha, grabarPDF, _numidosif, numi, 0)
                     Case ENReporteTipo.FACTURA_Carta
-                        objrep = New R_FacturaCarta
-                        SerPArametrosFactura(_Ds, _Ds1, _Ds2, _Autorizacion, _Hora, _Literal, _NumFac, objrep,
-                                      fila.Item("TipoReporte").ToString, _Fecha, grabarPDF, _numidosif, numi)
+                        For tipoFactura = 1 To 2
+                            objrep = New R_FacturaCarta
+                            SerPArametrosFactura(_Ds, _Ds1, _Ds2, _Autorizacion, _Hora, _Literal, _NumFac, objrep,
+                                          fila.Item("TipoReporte").ToString, _Fecha, grabarPDF, _numidosif, numi, tipoFactura)
+                        Next
                 End Select
             Next
         End If
     End Sub
 
     Private Sub SerPArametrosFactura(_Ds As DataSet, ByRef _Ds1 As DataSet, _Ds2 As DataSet, ByRef _Autorizacion As String, ByRef _Hora As String, ByRef _Literal As String,
-                              ByRef _NumFac As Integer, objrep As Object, tipoReporte As String, _fecha As String, grabarPDF As Boolean, _numidosif As String, numi As String)
+                              ByRef _NumFac As Integer, objrep As Object, tipoReporte As String, _fecha As String, grabarPDF As Boolean, _numidosif As String, numi As String, tipoFactura As Integer)
         Select Case tipoReporte
             Case ENReporteTipo.FACTURA_Ticket
                 objrep.SetDataSource(_Ds.Tables(0))
@@ -1920,6 +1922,7 @@ Public Class F0_Venta2
                 objrep.SetParameterValue("TipoVenta", IIf(swTipoVenta.Value = True, "CONTADO", "CRÉDITO"))
                 objrep.SetParameterValue("PlazoPago", IIf(swTipoVenta.Value = True, tbFechaVenta.Value, tbFechaVenc.Value))
             Case ENReporteTipo.FACTURA_MediaCarta
+                objrep = New R_FacturaMediaCarta
                 objrep.SetDataSource(_Ds.Tables(0))
                 Dim fechaLiteral = ObtenerFechaLiteral(_fecha, _Ds2.Tables(0).Rows(0).Item("scciu").ToString)
                 objrep.SetParameterValue("Fecliteral", fechaLiteral)
@@ -1960,6 +1963,12 @@ Public Class F0_Venta2
 
                 objrep.SetParameterValue("URLImageLogo", gs_CarpetaRaiz + "\URLImageLogo.jpg")
                 objrep.SetParameterValue("URLImageMarcaAgua", gs_CarpetaRaiz + "\MarcaAguaFactura.jpg")
+                If tipoFactura = 1 Then
+                    objrep.SetParameterValue("Tipo", "ORIGINAL")
+                Else
+                    objrep.SetParameterValue("Tipo", "COPIA")
+                End If
+
         End Select
         Dim _Ds3 As DataSet = L_ObtenerRutaImpresora("1") ' Datos de Impresion de Facturación
         If (_Ds3.Tables(0).Rows(0).Item("cbvp")) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
@@ -2138,15 +2147,17 @@ Public Class F0_Venta2
                         Case ENReporteTipo.FACTURA_Ticket
                             objrep = New R_Factura_7_5x100
                             SerPArametrosFactura(_Ds, _Ds1, _Ds2, _Autorizacion, _Hora, _Literal, _NumFac, objrep,
-                                      fila.Item("TipoReporte").ToString, _Fecha, False, _numidosif, numi)
+                                      fila.Item("TipoReporte").ToString, _Fecha, False, _numidosif, numi, 0)
                         Case ENReporteTipo.FACTURA_MediaCarta
                             objrep = New R_FacturaMediaCarta
                             SerPArametrosFactura(_Ds, _Ds1, _Ds2, _Autorizacion, _Hora, _Literal, _NumFac, objrep,
-                                      fila.Item("TipoReporte").ToString, _Fecha, False, _numidosif, numi)
+                                      fila.Item("TipoReporte").ToString, _Fecha, False, _numidosif, numi, 0)
                         Case ENReporteTipo.FACTURA_Carta
-                            objrep = New R_FacturaCarta
-                            SerPArametrosFactura(_Ds, _Ds1, _Ds2, _Autorizacion, _Hora, _Literal, _NumFac, objrep,
-                                          fila.Item("TipoReporte").ToString, _Fecha, grabarPDF, _numidosif, numi)
+                            For tipoFactura = 1 To 2
+                                objrep = New R_FacturaCarta
+                                SerPArametrosFactura(_Ds, _Ds1, _Ds2, _Autorizacion, _Hora, _Literal, _NumFac, objrep,
+                                              fila.Item("TipoReporte").ToString, _Fecha, grabarPDF, _numidosif, numi, tipoFactura)
+                            Next
                     End Select
                 Next
             End If
