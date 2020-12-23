@@ -345,7 +345,7 @@ Public Class F0_Ventas
             .Visible = False
         End With
         With grdetalle.RootTable.Columns("NombreServicio")
-            .Width = 200
+            .Width = 350
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = True
             .WordWrap = True
@@ -354,7 +354,7 @@ Public Class F0_Ventas
         End With
 
         With grdetalle.RootTable.Columns("tbobs")
-            .Width = 300
+            .Width = 600
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = True
             .WordWrap = True
@@ -375,7 +375,7 @@ Public Class F0_Ventas
         With grdetalle.RootTable.Columns("tbcmin")
             .Width = 75
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-            .Visible = True
+            .Visible = False
             .FormatString = "0.00"
             .Caption = "Cantidad"
         End With
@@ -387,7 +387,7 @@ Public Class F0_Ventas
             .Caption = "Unidad"
         End With
         With grdetalle.RootTable.Columns("tbpbas")
-            .Width = 90
+            .Width = 120
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = True
             .FormatString = "0.00"
@@ -396,7 +396,7 @@ Public Class F0_Ventas
         With grdetalle.RootTable.Columns("tbptot")
             .Width = 90
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-            .Visible = True
+            .Visible = False
             .FormatString = "0.00"
             .Caption = "Sub Total"
         End With
@@ -405,14 +405,14 @@ Public Class F0_Ventas
         With grdetalle.RootTable.Columns("tbporc")
             .Width = 80
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-            .Visible = True
+            .Visible = False
             .FormatString = "0.00"
             .Caption = "P.Desc(%)"
         End With
         With grdetalle.RootTable.Columns("tbdesc")
             .Width = 80
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-            .Visible = True
+            .Visible = False
             .FormatString = "0.00"
             .Caption = "M.Desc"
         End With
@@ -907,9 +907,16 @@ Public Class F0_Ventas
         If res Then
             'res = P_fnGrabarFacturarTFV001(numi)
 
-            'If (gb_FacturaEmite) Then
-            '    P_fnGenerarFactura(numi)
-            'End If
+            If (gb_FacturaEmite) Then
+                If TbNit.Text <> String.Empty Then
+                    P_fnGenerarFactura(numi)
+                    '_prImiprimirNotaVenta(numi)
+                Else
+                    '_prImiprimirNotaVenta(numi)
+                End If
+            Else
+                _prImiprimirNotaVenta(numi)
+            End If
 
             Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
             ToastNotification.Show(Me, "Código de Venta ".ToUpper + tbCodigo.Text + " Grabado con Exito.".ToUpper,
@@ -1375,13 +1382,11 @@ Public Class F0_Ventas
 
     End Sub
     Private Sub P_GenerarReporte(numi As String)
-        Dim dt As DataTable = L_fnVentaNotaDeVenta(numi)
-        If (gb_DetalleProducto) Then
-            ponerDescripcionProducto(dt)
-        End If
-        Dim total As Decimal = dt.Compute("SUM(Total)", "")
+        Dim dt As DataTable = L_fnVentaNotaDeVentaServicios(numi)
+
+        Dim total As Decimal = dt.Compute("SUM(tbptot)", "")
         Dim totald As Double = (total / 6.96)
-        Dim fechaven As String = dt.Rows(0).Item("fechaventa")
+        Dim fechaven As String = dt.Rows(0).Item("FechaVenta")
         If Not IsNothing(P_Global.Visualizador) Then
             P_Global.Visualizador.Close()
         End If
@@ -1405,43 +1410,18 @@ Public Class F0_Ventas
         Dim _Fecha() As String
         Dim _Meses() As String = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"}
         _FechaAct = fechaven
-        _Fecha = Split(_FechaAct, "-")
-        _FechaPar = "Cochabamba, " + _Fecha(0).Trim + " De " + _Meses(_Fecha(1) - 1).Trim + " Del " + _Fecha(2).Trim
-        If (G_Lote = False) Then
-            Dim objrep As New R_NotaVenta_7_5X100
-            '' GenerarNro(_dt)
-            ''objrep.SetDataSource(Dt1Kardex)
+        '_Fecha = Split(_FechaAct, "-")
+        '_FechaPar = "Cochabamba, " + _Fecha(0).Trim + " De " + _Meses(_Fecha(1) - 1).Trim + " Del " + _Fecha(2).Trim
 
-            objrep.SetDataSource(dt)
-            objrep.SetParameterValue("Literal1", li)
-            objrep.SetParameterValue("ENombre", "Nota de Entrega Nro. " + tbCodigo.Text)
-            objrep.SetParameterValue("ECiudadPais", _FechaPar)
-            objrep.SetParameterValue("Sucursal", cbSucursal.Text)
-            objrep.SetParameterValue("Observacion", tbObservacion.Text)
-            P_Global.Visualizador.CrGeneral.ReportSource = objrep 'Comentar
+        Dim objrep As New Rep_NotaVentaServicio
+
+        objrep.SetDataSource(dt)
+        objrep.SetParameterValue("Literal", li)
+
+        P_Global.Visualizador.CrGeneral.ReportSource = objrep 'Comentar
             P_Global.Visualizador.Show() 'Comentar
             P_Global.Visualizador.BringToFront() 'Comentar
-        Else
-            Dim objrep As New R_NotaDeVenta
-            'Dim objrep As New R_NotaDeVentaSinLote
-            'GenerarNro(_dt)
-            'objrep.SetDataSource(Dt1Kardex)
-            'totald = Math.Round(totald, 2)
-            objrep.SetDataSource(dt)
-            objrep.SetParameterValue("TotalBs", li)
-            objrep.SetParameterValue("TotalDo", lid)
-            objrep.SetParameterValue("TotalDoN", totald)
-            'objrep.SetParameterValue("P_Fecha", _FechaPar)
-            'objrep.SetParameterValue("P_Empresa", ParEmp1)
-            'objrep.SetParameterValue("P_Empresa1", ParEmp2)
-            'objrep.SetParameterValue("P_Empresa2", ParEmp3)
-            'objrep.SetParameterValue("P_Empresa3", ParEmp4)
-            objrep.SetParameterValue("usuario", gs_user)
-            objrep.SetParameterValue("estado", 1)
-            P_Global.Visualizador.CrGeneral.ReportSource = objrep 'Comentar
-            P_Global.Visualizador.Show() 'Comentar
-            P_Global.Visualizador.BringToFront() 'Comentar
-        End If
+
 
     End Sub
 
