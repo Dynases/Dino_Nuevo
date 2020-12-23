@@ -627,7 +627,6 @@ Partial Class F0_Ventas
         Me.GroupPanelFactura2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.GroupPanelFactura2.TabIndex = 236
         Me.GroupPanelFactura2.Text = "DATOS FACTURACIÓN"
-        Me.GroupPanelFactura2.Visible = False
         '
         'tbCodigoControl
         '
@@ -1403,7 +1402,6 @@ Partial Class F0_Ventas
         Me.GroupPanelFactura.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.GroupPanelFactura.TabIndex = 40
         Me.GroupPanelFactura.Text = "DATOS FACTURA"
-        Me.GroupPanelFactura.Visible = False
         '
         'QrFactura
         '

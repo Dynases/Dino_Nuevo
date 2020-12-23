@@ -1184,9 +1184,13 @@ Public Class F0_Ventas
                 's = fil.Cells("des").Value
                 's = fil.Cells("can").Value
                 's = fil.Cells("imp").Value
+
+                Dim ServicioId As String = fil.Cells("ServicioId").Value.ToString.Trim
+                Dim NombreServicio As String = fil.Cells("NombreServicio").Value.ToString.Trim + " : " + fil.Cells("tbobs").Value.ToString.Trim
+
                 L_Grabar_Factura_Detalle(numi.ToString,
-                                        fil.Cells("ServicioId").Value.ToString.Trim,
-                                        fil.Cells("producto").Value.ToString.Trim,
+                                        ServicioId,
+                                       NombreServicio,
                                         fil.Cells("tbcmin").Value.ToString.Trim,
                                         fil.Cells("tbpbas").Value.ToString.Trim,
                                         numi)
@@ -1219,7 +1223,7 @@ Public Class F0_Ventas
         _Hora = Now.Hour.ToString + ":" + Now.Minute.ToString
         _Ds1 = L_Dosificacion("1", "1", _Fecha)
 
-        _Ds = L_Reporte_Factura(numi, numi)
+        _Ds = L_Reporte_FacturaServicio(numi, numi)
         _Autorizacion = _Ds1.Tables(0).Rows(0).Item("sbautoriz").ToString
         _NumFac = CInt(_Ds1.Tables(0).Rows(0).Item("sbnfac")) + 1
         _Nit = _Ds.Tables(0).Rows(0).Item("fvanitcli").ToString
@@ -1245,7 +1249,7 @@ Public Class F0_Ventas
 
         'Dim li As String = Facturacion.ConvertirLiteral.A_fnConvertirLiteral(CDbl(_Total) - CDbl(_TotalDecimal)) + " con " + IIf(_TotalDecimal2.Equals("0"), "00", _TotalDecimal2) + "/100 Bolivianos"
         _Literal = Facturacion.ConvertirLiteral.A_fnConvertirLiteral(CDbl(_TotalLi) - CDbl(_TotalDecimal)) + " con " + IIf(_TotalDecimal2.Equals("0"), "00", _TotalDecimal2) + "/100 Bolivianos"
-        _Ds2 = L_Reporte_Factura_Cia("1")
+        _Ds2 = L_Reporte_Factura_Cia("2")
         QrFactura.Text = _Ds2.Tables(0).Rows(0).Item("scnit").ToString + "|" + Str(_NumFac).Trim + "|" + _Autorizacion + "|" + _Fecha + "|" + _Total + "|" + _TotalLi.ToString + "|" + _Cod_Control + "|" + TbNit.Text.Trim + "|" + ice.ToString + "|0|0|" + Str(_Desc).Trim
 
         L_Modificar_Factura("fvanumi = " + CStr(numi),
@@ -1271,7 +1275,7 @@ Public Class F0_Ventas
                             "",
                             CStr(numi))
 
-        _Ds = L_Reporte_Factura(numi, numi)
+        _Ds = L_Reporte_FacturaServicio(numi, numi)
 
         For I = 0 To _Ds.Tables(0).Rows.Count - 1
             _Ds.Tables(0).Rows(I).Item("fvaimgqr") = P_fnImageToByteArray(QrFactura.Image)
@@ -1285,16 +1289,16 @@ Public Class F0_Ventas
             If (gi_FacturaTipo = 1) Then
                 'objrep = New R_FacturaG
             ElseIf (gi_FacturaTipo = 2) Then
-                objrep = New R_FacturaCarta
-                If (Not _Ds.Tables(0).Rows.Count = gi_FacturaCantidadItems) Then
-                    For index = _Ds.Tables(0).Rows.Count To gi_FacturaCantidadItems - 1
-                        'Insertamos la primera fila con el saldo Inicial
-                        Dim f As DataRow = _Ds.Tables(0).NewRow
-                        f.ItemArray() = _Ds.Tables(0).Rows(0).ItemArray
-                        f.Item("fvbcant") = -1
-                        _Ds.Tables(0).Rows.Add(f)
-                    Next
-                End If
+                objrep = New R_FacturaServicio
+                'If (Not _Ds.Tables(0).Rows.Count = gi_FacturaCantidadItems) Then
+                '    For index = _Ds.Tables(0).Rows.Count To gi_FacturaCantidadItems - 1
+                '        'Insertamos la primera fila con el saldo Inicial
+                '        Dim f As DataRow = _Ds.Tables(0).NewRow
+                '        f.ItemArray() = _Ds.Tables(0).Rows(0).ItemArray
+                '        f.Item("cantidad") = -1
+                '        _Ds.Tables(0).Rows.Add(f)
+                '    Next
+                'End If
             End If
 
             objrep.SetDataSource(_Ds.Tables(0))
@@ -1302,21 +1306,22 @@ Public Class F0_Ventas
             objrep.SetParameterValue("Direccionpr", _Ds2.Tables(0).Rows(0).Item("scdir").ToString)
             objrep.SetParameterValue("Telefonopr", _Ds2.Tables(0).Rows(0).Item("sctelf").ToString)
             objrep.SetParameterValue("Literal1", _Literal)
-            objrep.SetParameterValue("Literal2", " ")
-            objrep.SetParameterValue("Literal3", " ")
+            'objrep.SetParameterValue("Literal2", " ")
+            'objrep.SetParameterValue("Literal3", " ")
             objrep.SetParameterValue("NroFactura", _NumFac)
             objrep.SetParameterValue("NroAutoriz", _Autorizacion)
-            objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scneg").ToString) '?
+            'objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scneg").ToString) '?
             objrep.SetParameterValue("ECasaMatriz", _Ds2.Tables(0).Rows(0).Item("scsuc").ToString)
             objrep.SetParameterValue("ECiudadPais", _Ds2.Tables(0).Rows(0).Item("scpai").ToString)
-            objrep.SetParameterValue("ESFC", _Ds1.Tables(0).Rows(0).Item("sbsfc").ToString)
+            objrep.SetParameterValue("Tipo", "ORIGINAL")
+            'objrep.SetParameterValue("ESFC", _Ds1.Tables(0).Rows(0).Item("sbsfc").ToString)
             objrep.SetParameterValue("ENit", _Ds2.Tables(0).Rows(0).Item("scnit").ToString)
             objrep.SetParameterValue("EActividad", _Ds2.Tables(0).Rows(0).Item("scact").ToString)
             objrep.SetParameterValue("ESms", "''" + _Ds1.Tables(0).Rows(0).Item("sbnota").ToString + "''")
             objrep.SetParameterValue("ESms2", "''" + _Ds1.Tables(0).Rows(0).Item("sbnota2").ToString + "''")
             objrep.SetParameterValue("EDuenho", _Ds2.Tables(0).Rows(0).Item("scnom").ToString) '?
-            objrep.SetParameterValue("URLImageLogo", gs_CarpetaRaiz + "\LogoFactura.jpg")
-            objrep.SetParameterValue("URLImageMarcaAgua", gs_CarpetaRaiz + "\MarcaAguaFactura.jpg")
+            'objrep.SetParameterValue("URLImageLogo", gs_CarpetaRaiz + "\LogoFactura.jpg")
+            'objrep.SetParameterValue("URLImageMarcaAgua", gs_CarpetaRaiz + "\MarcaAguaFactura.jpg")
 
             If (_Ds3.Tables(0).Rows(0).Item("cbvp")) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
                 P_Global.Visualizador.CrGeneral.ReportSource = objrep 'Comentar
@@ -1369,7 +1374,7 @@ Public Class F0_Ventas
 
     Private Sub P_prCargarParametro()
         'El sistema factura?
-        GroupPanelFactura.Visible = False 'gb_FacturaEmite
+        GroupPanelFactura.Visible = True 'gb_FacturaEmite
 
         'Si factura, preguntar si, Se incluye el Importe ICE / IEHD / TASAS?
         If (gb_FacturaEmite) Then
@@ -1579,50 +1584,50 @@ Public Class F0_Ventas
 
     End Sub
     Private Sub tbVendedor_KeyDown(sender As Object, e As KeyEventArgs) Handles tbVendedor.KeyDown
-        'If (_fnAccesible()) Then
-        '    If e.KeyData = Keys.Control + Keys.Enter Then
+        If (_fnAccesible()) Then
+            If e.KeyData = Keys.Control + Keys.Enter Then
 
-        '        Dim dt As DataTable
+                Dim dt As DataTable
 
-        '        dt = L_fnListarEmpleado()
-        '        '              a.ydnumi, a.ydcod, a.yddesc, a.yddctnum, a.yddirec
-        '        ',a.ydtelf1 ,a.ydfnac 
+                dt = L_fnListarEmpleado()
+                '              a.ydnumi, a.ydcod, a.yddesc, a.yddctnum, a.yddirec
+                ',a.ydtelf1 ,a.ydfnac 
 
-        '        Dim listEstCeldas As New List(Of Modelo.Celda)
-        '        listEstCeldas.Add(New Modelo.Celda("ydnumi,", False, "ID", 50))
-        '        listEstCeldas.Add(New Modelo.Celda("ydcod", True, "ID", 50))
-        '        listEstCeldas.Add(New Modelo.Celda("yddesc", True, "NOMBRE", 280))
-        '        listEstCeldas.Add(New Modelo.Celda("yddctnum", True, "N. Documento".ToUpper, 150))
-        '        listEstCeldas.Add(New Modelo.Celda("yddirec", True, "DIRECCION", 220))
-        '        listEstCeldas.Add(New Modelo.Celda("ydtelf1", True, "Telefono".ToUpper, 200))
-        '        listEstCeldas.Add(New Modelo.Celda("ydfnac", True, "F.Nacimiento".ToUpper, 150, "MM/dd,YYYY"))
-        '        Dim ef = New Efecto
-        '        ef.tipo = 3
-        '        ef.dt = dt
-        '        ef.SeleclCol = 1
-        '        ef.listEstCeldas = listEstCeldas
-        '        ef.alto = 50
-        '        ef.ancho = 350
-        '        ef.Context = "Seleccione Vendedor".ToUpper
-        '        ef.ShowDialog()
-        '        Dim bandera As Boolean = False
-        '        bandera = ef.band
-        '        If (bandera = True) Then
-        '            Dim Row As Janus.Windows.GridEX.GridEXRow = ef.Row
-        '            If (IsNothing(Row)) Then
-        '                tbVendedor.Focus()
-        '                Return
+                Dim listEstCeldas As New List(Of Modelo.Celda)
+                listEstCeldas.Add(New Modelo.Celda("ydnumi,", False, "ID", 50))
+                listEstCeldas.Add(New Modelo.Celda("ydcod", True, "ID", 50))
+                listEstCeldas.Add(New Modelo.Celda("yddesc", True, "NOMBRE", 280))
+                listEstCeldas.Add(New Modelo.Celda("yddctnum", True, "N. Documento".ToUpper, 150))
+                listEstCeldas.Add(New Modelo.Celda("yddirec", True, "DIRECCION", 220))
+                listEstCeldas.Add(New Modelo.Celda("ydtelf1", True, "Telefono".ToUpper, 200))
+                listEstCeldas.Add(New Modelo.Celda("ydfnac", True, "F.Nacimiento".ToUpper, 150, "MM/dd,YYYY"))
+                Dim ef = New Efecto
+                ef.tipo = 3
+                ef.dt = dt
+                ef.SeleclCol = 1
+                ef.listEstCeldas = listEstCeldas
+                ef.alto = 50
+                ef.ancho = 350
+                ef.Context = "Seleccione Vendedor".ToUpper
+                ef.ShowDialog()
+                Dim bandera As Boolean = False
+                bandera = ef.band
+                If (bandera = True) Then
+                    Dim Row As Janus.Windows.GridEX.GridEXRow = ef.Row
+                    If (IsNothing(Row)) Then
+                        tbVendedor.Focus()
+                        Return
 
-        '            End If
-        '            _CodEmpleado = Row.Cells("ydnumi").Value
-        '            tbVendedor.Text = Row.Cells("yddesc").Value
-        '            grdetalle.Select()
+                    End If
+                    _CodEmpleado = Row.Cells("ydnumi").Value
+                    tbVendedor.Text = Row.Cells("yddesc").Value
+                    grdetalle.Select()
 
-        '        End If
+                End If
 
-        '    End If
+            End If
 
-        'End If
+        End If
     End Sub
     Private Sub swTipoVenta_ValueChanged(sender As Object, e As EventArgs) Handles swTipoVenta.ValueChanged
         If (swTipoVenta.Value = False) Then

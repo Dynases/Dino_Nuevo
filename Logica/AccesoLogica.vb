@@ -2543,6 +2543,19 @@ Public Class AccesoLogica
         Return _Ds
     End Function
 
+    ''VR_MAM_FacturaServicio
+    Public Shared Function L_Reporte_FacturaServicio(_Numi As String, _Numi2 As String) As DataSet
+        Dim _Tabla As DataTable
+        Dim _Ds As New DataSet
+        Dim _Where As String
+        _Where = " fvanumi = " + _Numi + " and fvanumi = " + _Numi2
+
+        _Tabla = D_Datos_Tabla("*", "VR_MAM_FacturaServicio", _Where)
+        _Ds.Tables.Add(_Tabla)
+        Return _Ds
+    End Function
+
+
     Public Shared Function L_Reporte_Factura_Cia(_Cia As String) As DataSet
         Dim _Tabla As DataTable
         Dim _Ds As New DataSet
