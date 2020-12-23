@@ -72,6 +72,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enum\ENProductoAyuda.vb" />
     <Compile Include="Enum\ENReporte.vb" />
     <Compile Include="Enum\ENReporteTipo.vb" />
     <Compile Include="Form1.Designer.vb">

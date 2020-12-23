@@ -97,7 +97,7 @@ Public Class F0_VentasSupermercado
         tbTotal.Value = 0
         lbFecha.Text = Now.Date.ToString("dd/MM/yyyy")
         lbCliente.Text = "S/N"
-        lbNit.Text = "0"
+        lbNit.Text = ""
 
 
         _prCargarDetalleVenta(-1)
@@ -1070,7 +1070,7 @@ Public Class F0_VentasSupermercado
                         P_fnGenerarFactura(numi)
                         '_prImiprimirNotaVenta(numi)
                     Else
-                        '_prImiprimirNotaVenta(numi)
+                        _prImiprimirNotaVenta(numi)
                     End If
                 Else
                     _prImiprimirNotaVenta(numi)
@@ -1427,6 +1427,10 @@ Public Class F0_VentasSupermercado
                         objrep = New R_FacturaMediaCarta
                         SerPArametros(_Ds, _Ds1, _Ds2, _Autorizacion, _Hora, _Literal, _NumFac, objrep,
                                       fila.Item("TipoReporte").ToString, _Fecha, grabarPDF, _numidosif, numi)
+                    Case ENReporteTipo.FACTURA_Carta
+                        objrep = New R_FacturaCarta
+                        SerPArametros(_Ds, _Ds1, _Ds2, _Autorizacion, _Hora, _Literal, _NumFac, objrep,
+                                      fila.Item("TipoReporte").ToString, _Fecha, grabarPDF, _numidosif, numi)
                 End Select
             Next
         End If
@@ -1453,7 +1457,7 @@ Public Class F0_VentasSupermercado
                 objrep.SetParameterValue("EDuenho", _Ds2.Tables(0).Rows(0).Item("scnom").ToString)
                 'objrep.SetParameterValue("ENota", "''" + "ESTA FACTURA CONTRIBUYE AL DESARROLLO DEL PAÍS EL USO ILÍCITO DE ÉSTA SERÁ SANCIONADO DE ACUERDO A LA LEY" + "''")
                 objrep.SetParameterValue("ENota", _Ds1.Tables(0).Rows(0).Item("sbNota").ToString)
-                objrep.SetParameterValue("ELey", _Ds1.Tables(0).Rows(0).Item("sbnota").ToString)
+                objrep.SetParameterValue("ELey", _Ds1.Tables(0).Rows(0).Item("sbnota2").ToString)
                 objrep.SetParameterValue("FechaLim", _Ds1.Tables(0).Rows(0).Item("sbfal"))
                 objrep.SetParameterValue("Usuario", gs_user)
                 objrep.SetParameterValue("TipoVenta", "CONTADO")
@@ -1476,6 +1480,28 @@ Public Class F0_VentasSupermercado
                 objrep.SetParameterValue("Logo", gb_UbiLogo)
                 objrep.SetParameterValue("TipoPago", "CONTADO")
                 objrep.SetParameterValue("Nota2", _Ds1.Tables(0).Rows(0).Item("sbnota").ToString)
+            Case ENReporteTipo.FACTURA_Carta
+                objrep.SetDataSource(_Ds.Tables(0))
+                objrep.SetParameterValue("Hora", _Hora)
+                objrep.SetParameterValue("Direccionpr", _Ds2.Tables(0).Rows(0).Item("scdir").ToString)
+                objrep.SetParameterValue("Telefonopr", _Ds2.Tables(0).Rows(0).Item("sctelf").ToString)
+                objrep.SetParameterValue("Literal1", _Literal)
+                objrep.SetParameterValue("Literal2", " ")
+                objrep.SetParameterValue("Literal3", " ")
+                objrep.SetParameterValue("NroFactura", _NumFac)
+                objrep.SetParameterValue("NroAutoriz", _Autorizacion)
+                objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scneg").ToString) '?
+                objrep.SetParameterValue("ECasaMatriz", _Ds2.Tables(0).Rows(0).Item("scsuc").ToString)
+                objrep.SetParameterValue("ECiudadPais", _Ds2.Tables(0).Rows(0).Item("scpai").ToString)
+                objrep.SetParameterValue("ESFC", _Ds1.Tables(0).Rows(0).Item("sbsfc").ToString)
+                objrep.SetParameterValue("ENit", _Ds2.Tables(0).Rows(0).Item("scnit").ToString)
+                objrep.SetParameterValue("EActividad", _Ds2.Tables(0).Rows(0).Item("scact").ToString)
+                objrep.SetParameterValue("EDuenho", _Ds2.Tables(0).Rows(0).Item("scnom").ToString)
+                objrep.SetParameterValue("ESms", "''" + _Ds1.Tables(0).Rows(0).Item("sbnota").ToString + "''")
+                objrep.SetParameterValue("ESms2", "''" + _Ds1.Tables(0).Rows(0).Item("sbnota2").ToString + "''")
+
+                objrep.SetParameterValue("Logo", gb_UbiLogo)
+                objrep.SetParameterValue("URLImageMarcaAgua", gs_CarpetaRaiz + "\MarcaAguaFactura.jpg")
         End Select
         Dim _Ds3 As DataSet = L_ObtenerRutaImpresora("1") ' Datos de Impresion de Facturación
         If (_Ds3.Tables(0).Rows(0).Item("cbvp")) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
@@ -1494,8 +1520,8 @@ Public Class F0_VentasSupermercado
                                        My.Resources.WARNING, 5000,
                                        eToastGlowColor.Blue, eToastPosition.BottomRight)
             Else
-                'objrep.PrintOptions.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString '"EPSON TM-T20II Receipt5 (1)"
-                'objrep.PrintToPrinter(1, True, 0, 0)
+                objrep.PrintOptions.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString '"EPSON TM-T20II Receipt5 (1)"
+                objrep.PrintToPrinter(1, True, 0, 0)
                 'crystalReportDocument.PrintOptions.PrinterName = "your printer name"
                 'objrep.PrintTicket("EPSON TM-T20II Receipt")
             End If
@@ -1655,6 +1681,10 @@ Public Class F0_VentasSupermercado
                             objrep = New R_FacturaMediaCarta
                             SerPArametros(_Ds, _Ds1, _Ds2, _Autorizacion, _Hora, _Literal, _NumFac, objrep,
                                       fila.Item("TipoReporte").ToString, _Fecha, False, _numidosif, numi)
+                        Case ENReporteTipo.FACTURA_Carta
+                            objrep = New R_FacturaCarta
+                            SerPArametros(_Ds, _Ds1, _Ds2, _Autorizacion, _Hora, _Literal, _NumFac, objrep,
+                                          fila.Item("TipoReporte").ToString, _Fecha, grabarPDF, _numidosif, numi)
                     End Select
                 Next
             End If
@@ -1740,59 +1770,55 @@ Public Class F0_VentasSupermercado
         _FechaAct = fechaven
         _Fecha = Split(_FechaAct, "-")
         _FechaPar = "Cochabamba, " + _Fecha(0).Trim + " De " + _Meses(_Fecha(1) - 1).Trim + " Del " + _Fecha(2).Trim
+        Dim objrep As Object = Nothing
+        Dim empresaId = ObtenerEmpresaHabilitada()
+        Dim empresaHabilitada As DataTable = ObtenerEmpresaTipoReporte(empresaId, Convert.ToInt32(ENReporte.NOTAVENTA))
+        For Each fila As DataRow In empresaHabilitada.Rows
+            Select Case fila.Item("TipoReporte").ToString
+                Case ENReporteTipo.NOTAVENTA_Carta
+                    objrep = New R_NotaVenta_Carta
+                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep)
+                Case ENReporteTipo.NOTAVENTA_Ticket
+                    objrep = New R_NotaVenta_7_5X100
+                    SetParametrosNotaVenta(dt, total, li, _Hora, _Ds2, _Ds3, fila.Item("TipoReporte").ToString, objrep)
+            End Select
+        Next
+    End Sub
+    Private Sub SetParametrosNotaVenta(dt As DataTable, total As Decimal, li As String, _Hora As String, _Ds2 As DataSet, _Ds3 As DataSet, tipoReporte As String, objrep As Object)
 
-        If (_Ds3.Tables(0).Rows(0).Item("cbtimp") = 1) Then
-            Dim objrep As New R_NotaVenta_Carta
-            objrep.SetDataSource(dt)
-            objrep.SetParameterValue("Literal", li)
-            objrep.SetParameterValue("TipoVenta", "CONTADO")
-            objrep.SetParameterValue("Logo", gb_UbiLogo)
-            objrep.SetParameterValue("NotaAdicional1", gb_NotaAdicional)
-            objrep.SetParameterValue("Descuento", 0)
-            objrep.SetParameterValue("Total", total)
-            'objrep.SetParameterValue("usuario", gs_user)
-
-            If (_Ds3.Tables(0).Rows(0).Item("cbvp")) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
-                P_Global.Visualizador.CrGeneral.ReportSource = objrep 'Comentar
-                P_Global.Visualizador.ShowDialog() 'Comentar
-                P_Global.Visualizador.BringToFront() 'Comentar
-            Else
-                Dim pd As New PrintDocument()
-                pd.PrinterSettings.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString
-                If (Not pd.PrinterSettings.IsValid) Then
-                    ToastNotification.Show(Me, "La Impresora ".ToUpper + _Ds3.Tables(0).Rows(0).Item("cbrut").ToString + Chr(13) + "No Existe".ToUpper,
-                                           My.Resources.WARNING, 5 * 1000,
-                                           eToastGlowColor.Blue, eToastPosition.BottomRight)
-                Else
-                    objrep.PrintOptions.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString
-                    objrep.PrintToPrinter(1, True, 0, 0)
-                End If
-            End If
+        Select Case tipoReporte
+            Case ENReporteTipo.NOTAVENTA_Carta
+                objrep.SetDataSource(dt)
+                objrep.SetParameterValue("Literal", li)
+                objrep.SetParameterValue("TipoVenta", "CONTADO")
+                objrep.SetParameterValue("Logo", gb_UbiLogo)
+                objrep.SetParameterValue("NotaAdicional1", gb_NotaAdicional)
+                objrep.SetParameterValue("Descuento", "0")
+                objrep.SetParameterValue("Total", total)
+            Case ENReporteTipo.NOTAVENTA_Ticket
+                objrep.SetDataSource(dt)
+                objrep.SetParameterValue("ECasaMatriz", _Ds2.Tables(0).Rows(0).Item("scsuc").ToString)
+                objrep.SetParameterValue("ECiudadPais", _Ds2.Tables(0).Rows(0).Item("scpai").ToString)
+                objrep.SetParameterValue("EDuenho", _Ds2.Tables(0).Rows(0).Item("scnom").ToString) '?
+                objrep.SetParameterValue("Direccionpr", _Ds2.Tables(0).Rows(0).Item("scdir").ToString)
+                objrep.SetParameterValue("Hora", _Hora)
+                objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scneg").ToString) '?
+                objrep.SetParameterValue("Literal1", li)
+        End Select
+        If (_Ds3.Tables(0).Rows(0).Item("cbvp")) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
+            P_Global.Visualizador.CrGeneral.ReportSource = objrep 'Comentar
+            P_Global.Visualizador.ShowDialog() 'Comentar
+            P_Global.Visualizador.BringToFront() 'Comentar
         Else
-            Dim objrep As New R_NotaVenta_7_5X100
-            objrep.SetDataSource(dt)
-            objrep.SetParameterValue("ECasaMatriz", _Ds2.Tables(0).Rows(0).Item("scsuc").ToString)
-            objrep.SetParameterValue("ECiudadPais", _Ds2.Tables(0).Rows(0).Item("scpai").ToString)
-            objrep.SetParameterValue("EDuenho", _Ds2.Tables(0).Rows(0).Item("scnom").ToString) '?
-            objrep.SetParameterValue("Direccionpr", _Ds2.Tables(0).Rows(0).Item("scdir").ToString)
-            objrep.SetParameterValue("Hora", _Hora)
-            objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scneg").ToString) '?
-            objrep.SetParameterValue("Literal1", li)
-            If (_Ds3.Tables(0).Rows(0).Item("cbvp")) Then 'Vista Previa de la Ventana de Vizualización 1 = True 0 = False
-                P_Global.Visualizador.CrGeneral.ReportSource = objrep 'Comentar
-                P_Global.Visualizador.ShowDialog() 'Comentar
-                P_Global.Visualizador.BringToFront() 'Comentar
+            Dim pd As New PrintDocument()
+            pd.PrinterSettings.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString
+            If (Not pd.PrinterSettings.IsValid) Then
+                ToastNotification.Show(Me, "La Impresora ".ToUpper + _Ds3.Tables(0).Rows(0).Item("cbrut").ToString + Chr(13) + "No Existe".ToUpper,
+                                       My.Resources.WARNING, 5 * 1000,
+                                       eToastGlowColor.Blue, eToastPosition.BottomRight)
             Else
-                Dim pd As New PrintDocument()
-                pd.PrinterSettings.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString
-                If (Not pd.PrinterSettings.IsValid) Then
-                    ToastNotification.Show(Me, "La Impresora ".ToUpper + _Ds3.Tables(0).Rows(0).Item("cbrut").ToString + Chr(13) + "No Existe".ToUpper,
-                                           My.Resources.WARNING, 5 * 1000,
-                                           eToastGlowColor.Blue, eToastPosition.BottomRight)
-                Else
-                    objrep.PrintOptions.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString
-                    objrep.PrintToPrinter(1, True, 0, 0)
-                End If
+                objrep.PrintOptions.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString
+                objrep.PrintToPrinter(1, True, 0, 0)
             End If
         End If
     End Sub
