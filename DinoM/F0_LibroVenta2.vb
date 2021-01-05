@@ -31,6 +31,7 @@ Public Class F0_LibroVenta2
     Private Sub P_Inicio()
         'L_prAbrirConexion(gs_Ip, gs_UsuarioSql, gs_ClaveSql, gs_NombreBD)
         _prCargarComboAlmacen(CbAlmacen)
+        _prCargarComboTipos(cbTipo)
         ' Me.WindowState = FormWindowState.Maximized
         Me.Text = "L I B R O   D E   V E N T A S"
 
@@ -54,6 +55,14 @@ Public Class F0_LibroVenta2
             Cb3RazonSocial.SelectedIndex = 0
         End If
         _prCargarComboEstados()
+        If (gi_Ver_Servicios = 1) Then
+
+            cbTipo.Visible = True
+            lbtipo.Visible = True
+        Else
+            lbtipo.Visible = False
+            cbTipo.Visible = False
+        End If
     End Sub
 
     Private Sub _prCargarComboEstados()
@@ -80,7 +89,49 @@ Public Class F0_LibroVenta2
         End With
 
     End Sub
+    Private Sub _prCargarComboTipos(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo)
+        Dim dt As New DataTable
+        dt = L_fnGeneralSucursales()
+        dt.Rows.Clear()
 
+        dt.Rows.Add(1, "PRODUCTOS")
+        dt.Rows.Add(2, "SERVICIOS")
+        dt.Rows.Add(3, "TODOS")
+        'dt.Rows.Add(-1, "TODOS MENOS LA PRINCIPAL")
+        'With mCombo
+        '    .DropDownList.Columns.Clear()
+        '    .DropDownList.Columns.Add("cod").Width = 60
+        '    .DropDownList.Columns("cod").Caption = "COD"
+        '    .DropDownList.Columns.Add("desc").Width = 500
+        '    .DropDownList.Columns("desc").Caption = "ALMACEN"
+        '    .ValueMember = "cod"
+        '    .DisplayMember = "desc"
+        '    .DataSource = dt
+        '    .Refresh()
+        'End With
+        With mCombo
+            .DropDownList.Columns.Clear()
+            .DropDownList.Columns.Add("aanumi").Width = 70
+            .DropDownList.Columns("aanumi").Caption = "COD"
+            .DropDownList.Columns.Add("aabdes").Width = 200
+            .DropDownList.Columns("aabdes").Caption = "DESCRIPCION"
+            .ValueMember = "aanumi"
+            .DisplayMember = "aabdes"
+            .DataSource = dt
+            .Refresh()
+        End With
+        'If (gb_userTodasSuc = False And CType(CbAlmacen.DataSource, DataTable).Rows.Count > 0) Then
+
+
+        '    CbAlmacen.SelectedIndex = _fnObtenerPosSucursal(gi_userNumiSucursal)
+        '    CbAlmacen.ReadOnly = True
+        'Else
+        '    CbAlmacen.ReadOnly = False
+        'End If
+        If dt.Rows.Count > 0 Then
+            mCombo.SelectedIndex = 0
+        End If
+    End Sub
     Private Sub _prCargarComboAlmacen(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo)
         Dim dt As New DataTable
         dt = L_fnGeneralSucursales()
@@ -408,12 +459,26 @@ Public Class F0_LibroVenta2
 
     Private Sub P_LlenarDatosGrilla()
         _DsLV = New DataTable
-        If tbTipoFactura.Value = 2 Then 'es ambos
-            _DsLV = L_fnObtenerLibroVentaAmbosTipoFactura(CbAlmacen.Value, tbFechaI.Value.ToString("yyyy-MM-dd"), tbFechaF.Value.ToString("yyyy-MM-dd"))
-        Else 'filtrado por tipo factura
-            _DsLV = L_fnObtenerLibroVenta2(CbAlmacen.Value, tbFechaI.Value.ToString("yyyy-MM-dd"), tbFechaF.Value.ToString("yyyy-MM-dd"),
-                                      tbTipoFactura.Value)
+
+
+        If (gi_Ver_Servicios = 0) Then
+            If tbTipoFactura.Value = 2 Then 'es ambos
+                _DsLV = L_fnObtenerLibroVentaAmbosTipoFactura(CbAlmacen.Value, tbFechaI.Value.ToString("yyyy-MM-dd"), tbFechaF.Value.ToString("yyyy-MM-dd"), 1)
+            Else 'filtrado por tipo factura
+                _DsLV = L_fnObtenerLibroVenta2(CbAlmacen.Value, tbFechaI.Value.ToString("yyyy-MM-dd"), tbFechaF.Value.ToString("yyyy-MM-dd"),
+                                          tbTipoFactura.Value, 1)
+            End If
+
+        Else ''' Obtener Servicios
+            If tbTipoFactura.Value = 2 Then 'es ambos
+                _DsLV = L_fnObtenerLibroVentaAmbosTipoFactura(CbAlmacen.Value, tbFechaI.Value.ToString("yyyy-MM-dd"), tbFechaF.Value.ToString("yyyy-MM-dd"), cbTipo.Value)
+            Else 'filtrado por tipo factura
+                _DsLV = L_fnObtenerLibroVenta2(CbAlmacen.Value, tbFechaI.Value.ToString("yyyy-MM-dd"), tbFechaF.Value.ToString("yyyy-MM-dd"),
+                                          tbTipoFactura.Value, cbTipo.Value)
+            End If
+
         End If
+
 
 
         For Each fil As DataRow In _DsLV.Rows

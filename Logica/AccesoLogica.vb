@@ -363,6 +363,14 @@ Public Class AccesoLogica
         _Tabla = D_Datos_Tabla("ydnumi,yduser,ydrol,ydpass,ydest,ydcant,ydfontsize,ydsuc", "ZY003", "yduser = '" + _Nom + "' AND ydpass = '" + _Pass + "'")
         Return _Tabla
     End Function
+
+    Public Shared Function L_VerConfiguracion() As DataTable
+        Dim _Tabla As DataTable
+        _Tabla = D_Datos_Tabla("VerServicios", "SY000", "1=1")
+        Return _Tabla
+    End Function
+
+
 #End Region
 
 #End Region
@@ -2734,18 +2742,56 @@ Public Class AccesoLogica
 #End Region
 
 #Region "Libro de ventas"
-    Public Shared Function L_fnObtenerLibroVentaAmbosTipoFactura(_CodAlm As String, _fechai As String, _FechaF As String) As DataTable
+    Public Shared Function L_fnObtenerLibroVentaAmbosTipoFactura(_CodAlm As String, _fechai As String, _FechaF As String, TipoFactura As Integer) As DataTable
         Dim _Tabla As DataTable
         Dim _Where As String = ""
 
         If _CodAlm > 0 Then
-            _Where = "fvaalm = " + _CodAlm + " and fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' " + " ORDER BY fvanfac"
+            If (TipoFactura = 1) Then
+                _Where = "sbcia=1 and fvaalm = " + _CodAlm + " and fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' " + " ORDER BY fvanfac"
+
+            End If
+            If (TipoFactura = 2) Then
+                _Where = "sbcia=2 and fvaalm = " + _CodAlm + " and fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' " + " ORDER BY fvanfac"
+
+            End If
+            If (TipoFactura = 3) Then
+                _Where = " fvaalm = " + _CodAlm + " and fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' " + " ORDER BY fvanfac"
+
+            End If
         End If
         If _CodAlm = 0 Then 'todas las sucursales
-            _Where = " fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' " + " ORDER BY fvanfac"
+            If (TipoFactura = 1) Then
+                _Where = "sbcia=1 and  fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' " + " ORDER BY fvanfac"
+
+            End If
+            If (TipoFactura = 2) Then
+                _Where = "sbcia=2 and  fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' " + " ORDER BY fvanfac"
+
+            End If
+            If (TipoFactura = 3) Then
+                _Where = " fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' " + " ORDER BY fvanfac"
+
+            End If
+
+
         End If
         If _CodAlm = -1 Then 'todas las sucursales menos la principal
-            _Where = "fvaalm <>1 " + " and fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' " + " ORDER BY fvanfac"
+            If (TipoFactura = 1) Then
+
+                _Where = "sbcia=1 and fvaalm <>1 " + " and fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' " + " ORDER BY fvanfac"
+
+            End If
+            If (TipoFactura = 2) Then
+                _Where = "sbcia=2 and fvaalm <>1 " + " and fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' " + " ORDER BY fvanfac"
+
+            End If
+            If (TipoFactura = 3) Then
+                _Where = "fvaalm <>1 " + " and fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' " + " ORDER BY fvanfac"
+
+            End If
+
+
         End If
 
         Dim _select As String = "fvanumi, FORMAT(fvafec,'dd/MM/yyyy') as fvafec, fvanfac, fvaautoriz,fvaest, fvanitcli, fvadescli, fvastot, fvaimpsi, fvaimpeo, fvaimptc, fvasubtotal, fvadesc, fvatotal, fvadebfis, fvaccont,fvaflim,fvaalm,scneg, factura"
@@ -2761,17 +2807,61 @@ Public Class AccesoLogica
                                "VR_GO_LibroVenta", _Where)
         Return _Tabla
     End Function
-    Public Shared Function L_fnObtenerLibroVenta2(_CodAlm As String, _fechai As String, _FechaF As String, factura As Integer) As DataTable
+    Public Shared Function L_fnObtenerLibroVenta2(_CodAlm As String, _fechai As String, _FechaF As String, factura As Integer, TipoFactura As Integer) As DataTable
         Dim _Tabla As DataTable
         Dim _Where As String = ""
         If _CodAlm > 0 Then
-            _Where = "fvaalm = " + _CodAlm + " and fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' and factura=" + Str(factura) + " ORDER BY fvanfac"
+            If (TipoFactura = 1) Then
+
+                _Where = "sbcia=1 and fvaalm = " + _CodAlm + " and fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' and factura=" + Str(factura) + " ORDER BY fvanfac"
+
+            End If
+            If (TipoFactura = 2) Then
+                _Where = "sbcia=2 and fvaalm = " + _CodAlm + " and fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' and factura=" + Str(factura) + " ORDER BY fvanfac"
+
+            End If
+            If (TipoFactura = 3) Then
+                _Where = " fvaalm = " + _CodAlm + " and fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' and factura=" + Str(factura) + " ORDER BY fvanfac"
+
+            End If
+
+
+
         End If
         If _CodAlm = 0 Then 'todas las sucursales
-            _Where = " fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' and factura=" + Str(factura) + " ORDER BY fvanfac"
+
+            If (TipoFactura = 1) Then
+
+
+                _Where = "sbcia=1 and fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' and factura=" + Str(factura) + " ORDER BY fvanfac"
+
+            End If
+            If (TipoFactura = 2) Then
+                _Where = "sbcia=2 and fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' and factura=" + Str(factura) + " ORDER BY fvanfac"
+
+            End If
+            If (TipoFactura = 3) Then
+                _Where = "fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' and factura=" + Str(factura) + " ORDER BY fvanfac"
+
+            End If
+
         End If
         If _CodAlm = -1 Then 'todas las sucursales menos la principal
-            _Where = "fvaalm <>1 " + " and fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' and factura=" + Str(factura) + " ORDER BY fvanfac"
+            If (TipoFactura = 1) Then
+
+
+                _Where = "sbcia=1 and fvaalm <>1 " + " and fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' and factura=" + Str(factura) + " ORDER BY fvanfac"
+            End If
+            If (TipoFactura = 2) Then
+                _Where = "sbcia=2 and fvaalm <>1 " + " and fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' and factura=" + Str(factura) + " ORDER BY fvanfac"
+
+            End If
+            If (TipoFactura = 3) Then
+                _Where = "fvaalm <>1 " + " and fvafec >= '" + _fechai + "' and fvafec <= '" + _FechaF + "' and factura=" + Str(factura) + " ORDER BY fvanfac"
+
+            End If
+
+
         End If
         Dim _select As String = "fvanumi, FORMAT(fvafec,'dd/MM/yyyy') as fvafec, fvanfac, fvaautoriz,fvaest, fvanitcli, fvadescli, fvastot, fvaimpsi, fvaimpeo, fvaimptc, fvasubtotal, fvadesc, fvatotal, fvadebfis, fvaccont,fvaflim,fvaalm,scneg, factura"
 

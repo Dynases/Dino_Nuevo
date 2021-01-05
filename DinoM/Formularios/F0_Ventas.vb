@@ -1044,7 +1044,8 @@ Public Class F0_Ventas
 
 
 
-        Dim existe As Boolean = _fnExisteProducto(grProductos.GetValue("Id"))
+        Dim existe As Boolean = False
+        ''_fnExisteProducto(grProductos.GetValue("Id"))
         Dim DetalleServicio As String = ""
         Dim PrecioServicio As Double = 0
         If ((Not existe)) Then
@@ -1170,7 +1171,7 @@ Public Class F0_Ventas
                         "",
                         Now.Date.ToString("yyyy/MM/dd"),
                         "''",
-                        "0",
+                        "1",
                         numi, "")
 
         'Grabado de Detalle de Factura
@@ -1221,7 +1222,7 @@ Public Class F0_Ventas
 
         _Fecha = Now.Date '.ToString("dd/MM/yyyy")
         _Hora = Now.Hour.ToString + ":" + Now.Minute.ToString
-        _Ds1 = L_Dosificacion("1", "1", _Fecha)
+        _Ds1 = L_Dosificacion("2", "1", _Fecha)
 
         _Ds = L_Reporte_FacturaServicio(numi, numi)
         _Autorizacion = _Ds1.Tables(0).Rows(0).Item("sbautoriz").ToString
@@ -1290,6 +1291,7 @@ Public Class F0_Ventas
                 'objrep = New R_FacturaG
             ElseIf (gi_FacturaTipo = 2) Then
                 objrep = New R_FacturaServicio
+
                 'If (Not _Ds.Tables(0).Rows.Count = gi_FacturaCantidadItems) Then
                 '    For index = _Ds.Tables(0).Rows.Count To gi_FacturaCantidadItems - 1
                 '        'Insertamos la primera fila con el saldo Inicial

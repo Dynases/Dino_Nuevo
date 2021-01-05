@@ -82,6 +82,8 @@ Public Class Login
         If dtUsuario.Rows.Count = 0 Then
             ToastNotification.Show(Me, "Codigo de Usuario y Password Incorrecto..!!!".ToUpper, My.Resources.WARNING, 1000, eToastGlowColor.Red, eToastPosition.BottomLeft)
         Else
+
+
             gs_user = tbUsuario.Text
             gi_userFuente = dtUsuario.Rows(0).Item("ydfontsize")
             gi_userNumi = dtUsuario.Rows(0).Item("ydnumi")
@@ -90,6 +92,15 @@ Public Class Login
             'gb_userTodasSuc = IIf(dtUsuario.Rows(0).Item("ydall") = 1, True, False)
 
             _prDesvenecerPantalla()
+
+            Try
+                Dim dt As DataTable = L_VerConfiguracion()
+                gi_Ver_Servicios = dt.Rows(0).Item("VerServicios")
+            Catch ex As Exception
+
+            End Try
+
+
             Close()
         End If
     End Sub
