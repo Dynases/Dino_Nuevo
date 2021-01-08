@@ -138,6 +138,9 @@
     <Reference Include="GMap.NET.WindowsForms">
       <HintPath>C:\librerias\GMap.NET.WindowsForms.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>C:\librerias\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Janus.Data.v3">
       <HintPath>C:\librerias\Janus.Data.v3.dll</HintPath>
     </Reference>
@@ -186,6 +189,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Control\Codigos.vb" />
     <Compile Include="Control\Imageus.Designer.vb">
       <DependentUpon>Imageus.vb</DependentUpon>
     </Compile>
@@ -576,6 +580,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>R_CierreCaja.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reporte\R_CodigoBarras.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>R_CodigoBarras.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reporte\R_EstadoCuentasClientesTodos.vb">
@@ -1169,6 +1179,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>R_CierreCaja.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\R_CodigoBarras.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>R_CodigoBarras.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reporte\R_EstadoCuentasClientesTodos.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>R_EstadoCuentasClientesTodos.vb</LastGenOutput>
@@ -1726,6 +1740,7 @@
     <None Include="Resources\cobro.png" />
     <None Include="Resources\creditopagos.png" />
     <None Include="Resources\cuentas.png" />
+    <None Include="Resources\codigobarra.png" />
     <Content Include="Resources\dinases.png" />
     <None Include="Resources\MapaClientes.png" />
     <None Include="Resources\ventasCostos.png" />

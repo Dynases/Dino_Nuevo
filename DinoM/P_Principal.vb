@@ -394,19 +394,19 @@ Public Class P_Principal
     End Sub
 
     Private Sub btInvAmacen_Click(sender As Object, e As EventArgs) Handles btInvAmacen.Click
-        SideNav1.IsMenuExpanded = False
-        Ventana.Select()
+        'SideNav1.IsMenuExpanded = False
+        'Ventana.Select()
         Dim frm As New F1_Almacen
         frm._nameButton = btZonas.Name
         frm._modulo = FP_INVENTARIO
-        Dim tab3 As SuperTabItem = superTabControl3.CreateTab(frm.Text)
-        frm._tab = tab3
-        Dim panel As Panel = P_Global._fnCrearPanelVentanas(frm)
-        superTabControl3.SelectedTabIndex = superTabControl3.Tabs.Count - 1
-        tab3.AttachedControl.Controls.Add(panel)
+        'Dim tab3 As SuperTabItem = superTabControl3.CreateTab(frm.Text)
+        'frm._tab = tab3
+        'Dim panel As Panel = P_Global._fnCrearPanelVentanas(frm)
+        'superTabControl3.SelectedTabIndex = superTabControl3.Tabs.Count - 1
+        'tab3.AttachedControl.Controls.Add(panel)
         frm.Show()
-        tab3.Text = frm.Text
-        tab3.Icon = frm.Icon
+        'tab3.Text = frm.Text
+        'tab3.Icon = frm.Icon
     End Sub
 
     Private Sub btComProveedor_Click(sender As Object, e As EventArgs) Handles btComProveedor.Click

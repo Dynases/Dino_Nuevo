@@ -1,10 +1,10 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class F1_Productos
     Inherits Modelo.ModeloF1
 
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -21,7 +21,7 @@ Partial Class F1_Productos
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F1_Productos))
@@ -227,8 +227,8 @@ Partial Class F1_Productos
         Me.PanelToolBar2.Controls.Add(Me.btExcel)
         Me.PanelToolBar2.Location = New System.Drawing.Point(1167, 0)
         Me.PanelToolBar2.Size = New System.Drawing.Size(155, 72)
-        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimir, 0)
         Me.PanelToolBar2.Controls.SetChildIndex(Me.btExcel, 0)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimir, 0)
         '
         'MPanelSup
         '
@@ -312,8 +312,9 @@ Partial Class F1_Productos
         '
         'btnImprimir
         '
-        Me.btnImprimir.Dock = System.Windows.Forms.DockStyle.Right
-        Me.btnImprimir.Location = New System.Drawing.Point(75, 0)
+        Me.btnImprimir.Dock = System.Windows.Forms.DockStyle.Left
+        Me.btnImprimir.Image = Global.DinoM.My.Resources.Resources.codigobarra
+        Me.btnImprimir.Text = "CDD. BARRAS"
         Me.btnImprimir.Visible = False
         '
         'MPanelUserAct
@@ -1329,12 +1330,12 @@ Partial Class F1_Productos
         '
         Me.btExcel.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
         Me.btExcel.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
-        Me.btExcel.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.btExcel.Dock = System.Windows.Forms.DockStyle.Right
         Me.btExcel.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btExcel.Image = Global.DinoM.My.Resources.Resources.sheets
         Me.btExcel.ImageFixedSize = New System.Drawing.Size(45, 50)
         Me.btExcel.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btExcel.Location = New System.Drawing.Point(0, 0)
+        Me.btExcel.Location = New System.Drawing.Point(80, 0)
         Me.btExcel.Name = "btExcel"
         Me.btExcel.Padding = New System.Windows.Forms.Padding(0, 0, 0, 20)
         Me.btExcel.Size = New System.Drawing.Size(75, 72)

@@ -644,6 +644,30 @@ Public Class AccesoLogica
 
         Return _Tabla
     End Function
+    Public Shared Function L_fnCodigoBarra() As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 12))
+        _listParam.Add(New Datos.DParametro("@yfuact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TY005", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnCodigoBarraUno(yfnumi As String) As DataTable
+
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 13))
+        _listParam.Add(New Datos.DParametro("@yfnumi", yfnumi))
+        _listParam.Add(New Datos.DParametro("@yfuact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TY005", _listParam)
+
+        Return _Tabla
+    End Function
 #End Region
 
 #Region "TY004 CLIENTES"

@@ -22,6 +22,7 @@ Partial Class F1_Almacen
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F1_Almacen))
         Dim cbDepositoVenta_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim cbDeposito_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
@@ -53,6 +54,7 @@ Partial Class F1_Almacen
         Me.BtAdicionar = New DevComponents.DotNetBar.ButtonX()
         Me.LabelX15 = New DevComponents.DotNetBar.LabelX()
         Me.SuperTabItem3 = New DevComponents.DotNetBar.SuperTabItem()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -97,7 +99,7 @@ Partial Class F1_Almacen
         Me.SuperTabPrincipal.ControlBox.MenuBox.Name = ""
         Me.SuperTabPrincipal.ControlBox.Name = ""
         Me.SuperTabPrincipal.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabPrincipal.ControlBox.MenuBox, Me.SuperTabPrincipal.ControlBox.CloseBox})
-        Me.SuperTabPrincipal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SuperTabPrincipal.Margin = New System.Windows.Forms.Padding(4)
         Me.SuperTabPrincipal.Size = New System.Drawing.Size(1354, 609)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelBuscador, 0)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelRegistro, 0)
@@ -105,12 +107,12 @@ Partial Class F1_Almacen
         'SuperTabControlPanelBuscador
         '
         Me.SuperTabControlPanelBuscador.Location = New System.Drawing.Point(0, 0)
-        Me.SuperTabControlPanelBuscador.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SuperTabControlPanelBuscador.Margin = New System.Windows.Forms.Padding(4)
         Me.SuperTabControlPanelBuscador.Size = New System.Drawing.Size(1039, 613)
         '
         'SuperTabControlPanelRegistro
         '
-        Me.SuperTabControlPanelRegistro.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.SuperTabControlPanelRegistro.Margin = New System.Windows.Forms.Padding(4)
         Me.SuperTabControlPanelRegistro.Size = New System.Drawing.Size(1322, 609)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelSuperior, 0)
         Me.SuperTabControlPanelRegistro.Controls.SetChildIndex(Me.PanelInferior, 0)
@@ -118,7 +120,7 @@ Partial Class F1_Almacen
         '
         'PanelSuperior
         '
-        Me.PanelSuperior.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PanelSuperior.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelSuperior.Size = New System.Drawing.Size(1322, 72)
         Me.PanelSuperior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelSuperior.Style.BackColor1.Color = System.Drawing.Color.DarkSlateGray
@@ -132,7 +134,7 @@ Partial Class F1_Almacen
         'PanelInferior
         '
         Me.PanelInferior.Location = New System.Drawing.Point(0, 573)
-        Me.PanelInferior.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PanelInferior.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelInferior.Size = New System.Drawing.Size(1322, 36)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.DarkSlateGray
@@ -168,7 +170,7 @@ Partial Class F1_Almacen
         '
         'TxtNombreUsu
         '
-        Me.TxtNombreUsu.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.TxtNombreUsu.Margin = New System.Windows.Forms.Padding(4)
         '
         'btnSalir
         '
@@ -183,25 +185,25 @@ Partial Class F1_Almacen
         'PanelToolBar2
         '
         Me.PanelToolBar2.Location = New System.Drawing.Point(1242, 0)
-        Me.PanelToolBar2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PanelToolBar2.Margin = New System.Windows.Forms.Padding(4)
         '
         'MPanelSup
         '
         Me.MPanelSup.Controls.Add(Me.TableLayoutPanel1)
-        Me.MPanelSup.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MPanelSup.Margin = New System.Windows.Forms.Padding(4)
         Me.MPanelSup.Size = New System.Drawing.Size(1322, 334)
         Me.MPanelSup.Controls.SetChildIndex(Me.PanelUsuario, 0)
         Me.MPanelSup.Controls.SetChildIndex(Me.TableLayoutPanel1, 0)
         '
         'PanelPrincipal
         '
-        Me.PanelPrincipal.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PanelPrincipal.Margin = New System.Windows.Forms.Padding(4)
         Me.PanelPrincipal.Size = New System.Drawing.Size(1322, 501)
         '
         'GroupPanelBuscador
         '
         Me.GroupPanelBuscador.Location = New System.Drawing.Point(0, 334)
-        Me.GroupPanelBuscador.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupPanelBuscador.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupPanelBuscador.Size = New System.Drawing.Size(1322, 167)
         '
         '
@@ -241,7 +243,7 @@ Partial Class F1_Almacen
         Me.JGrM_Buscador.HeaderFormatStyle.BackColorGradient = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(72, Byte), Integer), CType(CType(127, Byte), Integer))
         Me.JGrM_Buscador.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.JGrM_Buscador.HeaderFormatStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Center
-        Me.JGrM_Buscador.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.JGrM_Buscador.Margin = New System.Windows.Forms.Padding(4)
         Me.JGrM_Buscador.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.JGrM_Buscador.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.JGrM_Buscador.RowCheckStateBehavior = Janus.Windows.GridEX.RowCheckStateBehavior.CheckStateDependsOnChild
@@ -254,16 +256,16 @@ Partial Class F1_Almacen
         'PanelUsuario
         '
         Me.PanelUsuario.Location = New System.Drawing.Point(796, 6)
-        Me.PanelUsuario.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.PanelUsuario.Margin = New System.Windows.Forms.Padding(4)
         '
         'btnUltimo
         '
-        Me.btnUltimo.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnUltimo.Margin = New System.Windows.Forms.Padding(2)
         '
         'MPanelUserAct
         '
         Me.MPanelUserAct.Location = New System.Drawing.Point(1122, 0)
-        Me.MPanelUserAct.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.MPanelUserAct.Margin = New System.Windows.Forms.Padding(4)
         '
         'LabelX1
         '
@@ -704,7 +706,7 @@ Partial Class F1_Almacen
         Me.UsImg.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.UsImg.BackColor = System.Drawing.Color.Transparent
         Me.UsImg.Location = New System.Drawing.Point(100, 14)
-        Me.UsImg.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.UsImg.Margin = New System.Windows.Forms.Padding(4)
         Me.UsImg.Name = "UsImg"
         Me.UsImg.Size = New System.Drawing.Size(310, 257)
         Me.UsImg.TabIndex = 222
@@ -750,12 +752,18 @@ Partial Class F1_Almacen
         Me.SuperTabItem3.Name = "SuperTabItem3"
         Me.SuperTabItem3.Text = "Imagen"
         '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        Me.Timer1.Interval = 500
+        '
         'F1_Almacen
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1354, 609)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Location = New System.Drawing.Point(0, 0)
+        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "F1_Almacen"
         Me.Text = "F1_Clientes"
         Me.Controls.SetChildIndex(Me.SuperTabPrincipal, 0)
@@ -821,4 +829,5 @@ Partial Class F1_Almacen
     Friend WithEvents cbDeposito As Janus.Windows.GridEX.EditControls.MultiColumnCombo
     Friend WithEvents cbDepositoVenta As Janus.Windows.GridEX.EditControls.MultiColumnCombo
     Friend WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents Timer1 As Timer
 End Class

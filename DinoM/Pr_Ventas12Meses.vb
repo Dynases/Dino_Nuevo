@@ -46,7 +46,7 @@ Public Class Pr_Ventas12Meses
                         FechaFinalMes = tbFechaF.Value
                         fechaInicialMes = PrimerDiaDelMes(tbFechaF.Value)
                     Else
-                        Dim ano = DateTime.Today
+                        Dim ano = tbFechaF.Value
                         fechaInicialMes = DateSerial(ano.Year, k, 1)
                         FechaFinalMes = UltimoDiaDelMes(fechaInicialMes)
 
@@ -91,7 +91,7 @@ Public Class Pr_Ventas12Meses
                         FechaFinalMes = tbFechaF.Value
                         fechaInicialMes = PrimerDiaDelMes(tbFechaF.Value)
                     Else
-                        Dim ano = New DateTime()
+                        Dim ano = tbFechaF.Value
                         fechaInicialMes = DateSerial(ano.Year, k, 1)
                         FechaFinalMes = UltimoDiaDelMes(fechaInicialMes)
 
@@ -136,7 +136,7 @@ Public Class Pr_Ventas12Meses
                         FechaFinalMes = tbFechaF.Value
                         fechaInicialMes = PrimerDiaDelMes(tbFechaF.Value)
                     Else
-                        Dim ano = DateTime.Today
+                        Dim ano = tbFechaF.Value
                         fechaInicialMes = DateSerial(ano.Year, k, 1)
                         FechaFinalMes = UltimoDiaDelMes(fechaInicialMes)
 
@@ -180,7 +180,7 @@ Public Class Pr_Ventas12Meses
                         FechaFinalMes = tbFechaF.Value
                         fechaInicialMes = PrimerDiaDelMes(tbFechaF.Value)
                     Else
-                        Dim ano = DateTime.Today
+                        Dim ano = tbFechaF.Value
                         fechaInicialMes = DateSerial(ano.Year, k, 1)
                         FechaFinalMes = UltimoDiaDelMes(fechaInicialMes)
 
@@ -224,7 +224,7 @@ Public Class Pr_Ventas12Meses
                         FechaFinalMes = tbFechaF.Value
                         fechaInicialMes = PrimerDiaDelMes(tbFechaF.Value)
                     Else
-                        Dim ano = DateTime.Today
+                        Dim ano = tbFechaF.Value
                         fechaInicialMes = DateSerial(ano.Year, k, 1)
                         FechaFinalMes = UltimoDiaDelMes(fechaInicialMes)
 
