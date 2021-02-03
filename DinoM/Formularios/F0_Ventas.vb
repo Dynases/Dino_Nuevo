@@ -1220,8 +1220,8 @@ Public Class F0_Ventas
                 P_Global.Visualizador.Close()
             End If
 
-            _Ds1 = L_Dosificacion("1", "1", _Fecha)
-            _Ds = L_Reporte_FacturaServicio(numi, numi)
+            _Ds1 = L_Dosificacion("2", "1", _Fecha)
+            '_Ds = L_Reporte_FacturaServicio(numi, numi)
             _Fecha = _Ds.Tables(0).Rows(0).Item("fvafec").ToString
             _Hora = _Ds.Tables(0).Rows(0).Item("fvahora").ToString
             _Autorizacion = _Ds1.Tables(0).Rows(0).Item("sbautoriz").ToString
