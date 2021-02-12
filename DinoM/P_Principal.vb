@@ -381,7 +381,7 @@ Public Class P_Principal
         'SideNav1.IsMenuExpanded = False
         'Ventana.Select()
         Dim frm As New F1_Deposito
-        frm._nameButton = btZonas.Name
+        frm._nameButton = btInvDeposito.Name
         frm._modulo = FP_INVENTARIO
         'Dim tab3 As SuperTabItem = superTabControl3.CreateTab(frm.Text)
         'frm._tab = tab3
@@ -397,7 +397,7 @@ Public Class P_Principal
         'SideNav1.IsMenuExpanded = False
         'Ventana.Select()
         Dim frm As New F1_Almacen
-        frm._nameButton = btZonas.Name
+        frm._nameButton = btInvAmacen.Name
         frm._modulo = FP_INVENTARIO
         'Dim tab3 As SuperTabItem = superTabControl3.CreateTab(frm.Text)
         'frm._tab = tab3

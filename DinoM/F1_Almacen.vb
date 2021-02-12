@@ -620,7 +620,7 @@ Public Class F1_Almacen
         Else
             '  Public _modulo As SideNavItem
             _modulo.Select()
-            _tab.Close()
+            Close()
         End If
     End Sub
 
