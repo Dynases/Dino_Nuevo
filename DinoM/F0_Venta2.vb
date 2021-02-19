@@ -1617,7 +1617,7 @@ Public Class F0_Venta2
             End If
         Else
             Me.Close()
-            _modulo.Select()
+            '_modulo.Select()
         End If
     End Sub
     Public Sub _prCargarIconELiminar()
