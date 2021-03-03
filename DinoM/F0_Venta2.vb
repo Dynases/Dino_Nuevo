@@ -2452,23 +2452,28 @@ Public Class F0_Venta2
         End If
     End Sub
     Private Sub AsignarClienteEmpleado()
-        Dim _tabla11 As DataTable = L_fnListarClientesUsuario(gi_userNumi)
-        If _tabla11.Rows.Count > 0 Then
-            tbCliente.Text = _tabla11.Rows(0).Item("yddesc")
-            _CodCliente = _tabla11.Rows(0).Item("ydnumi") 'Codigo
-            tbVendedor.Text = _tabla11.Rows(0).Item("vendedor") 'Codigo
-            _CodEmpleado = _tabla11.Rows(0).Item("ydnumivend") 'Codigo
-        Else
-            Dim dt As DataTable
-            dt = L_fnListarClientes()
-            If dt.Rows.Count > 0 Then
-                Dim fila As DataRow() = dt.Select("ydnumi =MIN(ydnumi)")
-                tbCliente.Text = fila(0).ItemArray(3)
-                _CodCliente = fila(0).ItemArray(0)
-                tbVendedor.Text = fila(0).ItemArray(9)
-                _CodEmpleado = fila(0).ItemArray(8)
+        Try
+            Dim _tabla11 As DataTable = L_fnListarClientesUsuario(gi_userNumi)
+            If _tabla11.Rows.Count > 0 Then
+                tbCliente.Text = _tabla11.Rows(0).Item("yddesc")
+                _CodCliente = _tabla11.Rows(0).Item("ydnumi") 'Codigo
+                tbVendedor.Text = _tabla11.Rows(0).Item("vendedor") 'Codigo
+                _CodEmpleado = _tabla11.Rows(0).Item("ydnumivend") 'Codigo
+            Else
+                Dim dt As DataTable
+                dt = L_fnListarClientes()
+                If dt.Rows.Count > 0 Then
+                    Dim fila As DataRow() = dt.Select("ydnumi =MIN(ydnumi)")
+                    tbCliente.Text = fila(0).ItemArray(3)
+                    _CodCliente = fila(0).ItemArray(0)
+                    tbVendedor.Text = fila(0).ItemArray(9)
+                    _CodEmpleado = fila(0).ItemArray(8)
+                End If
             End If
-        End If
+        Catch ex As Exception
+            MostrarMensajeError("Debe asiganar un vendedor al cliente")
+        End Try
+
     End Sub
     Private Sub MostrarMensajeError(mensaje As String)
         ToastNotification.Show(Me,
@@ -2967,21 +2972,21 @@ salirIf:
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("codigo") = fila(0).ItemArray(1)
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("yfcbarra") = fila(0).ItemArray(2)
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto") = fila(0).ItemArray(3)
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbumin") = fila(0).ItemArray(13)
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("unidad") = fila(0).ItemArray(14)
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpbas") = fila(0).ItemArray(15)
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = fila(0).ItemArray(15)
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = fila(0).ItemArray(15)
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbumin") = fila(0).ItemArray(15)
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("unidad") = fila(0).ItemArray(16)
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpbas") = fila(0).ItemArray(17)
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = fila(0).ItemArray(17)
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = fila(0).ItemArray(17)
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = 1
                     If (gb_FacturaIncluirICE) Then
                         CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = fila(0).ItemArray(17)
                     Else
                         CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = 0
                     End If
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = fila(0).ItemArray(16)
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = fila(0).ItemArray(16)
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = fila(0).ItemArray(18)
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = fila(0).ItemArray(18)
                     'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = fila(0).ItemArray(17)
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = fila(0).ItemArray(17)
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = fila(0).ItemArray(19)
                     'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tblote") = grProductos.GetValue("iclot")
                     'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbfechaVenc") = grProductos.GetValue("icfven")
                     'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = grProductos.GetValue("iccven")
