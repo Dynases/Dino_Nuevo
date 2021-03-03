@@ -2965,7 +2965,7 @@ salirIf:
             Dim fila As DataRow() = Table_Producto.Select("yfcbarra='" + codigo.Trim + "'", "")
             If (fila.Count > 0) Then
                 'Si tiene stock > 0
-                If fila(0).ItemArray(17) > 0 Then
+                If fila(0).ItemArray(19) > 0 Then
                     Dim pos As Integer = -1
                     _fnObtenerFilaDetalle(pos, grdetalle.GetValue("tbnumi"))
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbty5prod") = fila(0).ItemArray(0)
