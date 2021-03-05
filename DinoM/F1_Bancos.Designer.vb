@@ -212,6 +212,10 @@ Partial Class F1_Bancos
         Me.JGrM_Buscador.SelectedFormatStyle.ForeColor = System.Drawing.Color.White
         Me.JGrM_Buscador.Size = New System.Drawing.Size(1324, 326)
         '
+        'btnImprimir
+        '
+        Me.btnImprimir.Visible = False
+        '
         'MPanelUserAct
         '
         Me.MPanelUserAct.Location = New System.Drawing.Point(1130, 0)
