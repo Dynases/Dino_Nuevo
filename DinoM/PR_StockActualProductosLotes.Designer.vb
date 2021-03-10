@@ -37,14 +37,16 @@ Partial Class PR_StockActualProductosLotes
         Me.CrystalReportViewer1.TabIndex = 0
         Me.CrystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         '
-        'PR_StockActualEquipoProducto
+        'PR_StockActualProductosLotes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(404, 405)
         Me.Controls.Add(Me.CrystalReportViewer1)
-        Me.Name = "PR_StockActualEquipoProducto"
+        Me.Name = "PR_StockActualProductosLotes"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "PR_StockActual"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ResumeLayout(False)
 
     End Sub

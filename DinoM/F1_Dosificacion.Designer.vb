@@ -95,6 +95,7 @@ Partial Class F1_Dosificacion
         Me.SuperTabPrincipal.ControlBox.MenuBox.Name = ""
         Me.SuperTabPrincipal.ControlBox.Name = ""
         Me.SuperTabPrincipal.ControlBox.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabPrincipal.ControlBox.MenuBox, Me.SuperTabPrincipal.ControlBox.CloseBox})
+        Me.SuperTabPrincipal.Size = New System.Drawing.Size(1362, 741)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelBuscador, 0)
         Me.SuperTabPrincipal.Controls.SetChildIndex(Me.SuperTabControlPanelRegistro, 0)
         '
@@ -124,6 +125,7 @@ Partial Class F1_Dosificacion
         '
         'PanelInferior
         '
+        Me.PanelInferior.Location = New System.Drawing.Point(0, 705)
         Me.PanelInferior.Size = New System.Drawing.Size(1330, 36)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.DarkSlateGray
@@ -216,7 +218,7 @@ Partial Class F1_Dosificacion
         '
         Me.JGrM_Buscador.CardBorders = False
         Me.JGrM_Buscador.FlatBorderColor = System.Drawing.Color.DodgerBlue
-        Me.JGrM_Buscador.Font = New System.Drawing.Font("Open Sans Light", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.JGrM_Buscador.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.JGrM_Buscador.GridLineColor = System.Drawing.Color.DodgerBlue
         Me.JGrM_Buscador.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Bold)
         Me.JGrM_Buscador.HeaderFormatStyle.FontUnderline = Janus.Windows.GridEX.TriState.[False]
@@ -224,10 +226,14 @@ Partial Class F1_Dosificacion
         Me.JGrM_Buscador.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.JGrM_Buscador.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.JGrM_Buscador.SelectedFormatStyle.BackColor = System.Drawing.Color.DodgerBlue
-        Me.JGrM_Buscador.SelectedFormatStyle.Font = New System.Drawing.Font("Open Sans", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.JGrM_Buscador.SelectedFormatStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.JGrM_Buscador.SelectedFormatStyle.ForeColor = System.Drawing.Color.White
         Me.JGrM_Buscador.Size = New System.Drawing.Size(1324, 375)
         Me.JGrM_Buscador.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
+        '
+        'btnImprimir
+        '
+        Me.btnImprimir.Visible = False
         '
         'MPanelUserAct
         '
@@ -338,12 +344,12 @@ Partial Class F1_Dosificacion
         '
         Me.TbNroAutoriz.Border.Class = "TextBoxBorder"
         Me.TbNroAutoriz.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TbNroAutoriz.Font = New System.Drawing.Font("Open Sans Light", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TbNroAutoriz.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TbNroAutoriz.Location = New System.Drawing.Point(152, 120)
         Me.TbNroAutoriz.MaxLength = 18
         Me.TbNroAutoriz.Name = "TbNroAutoriz"
         Me.TbNroAutoriz.PreventEnterBeep = True
-        Me.TbNroAutoriz.Size = New System.Drawing.Size(200, 24)
+        Me.TbNroAutoriz.Size = New System.Drawing.Size(200, 21)
         Me.TbNroAutoriz.TabIndex = 4
         Me.TbNroAutoriz.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -355,11 +361,11 @@ Partial Class F1_Dosificacion
         Me.TbiSfc.BackgroundStyle.Class = "DateTimeInputBackground"
         Me.TbiSfc.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.TbiSfc.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.TbiSfc.Font = New System.Drawing.Font("Open Sans Light", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TbiSfc.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TbiSfc.Location = New System.Drawing.Point(152, 90)
         Me.TbiSfc.MinValue = 0
         Me.TbiSfc.Name = "TbiSfc"
-        Me.TbiSfc.Size = New System.Drawing.Size(100, 24)
+        Me.TbiSfc.Size = New System.Drawing.Size(100, 21)
         Me.TbiSfc.TabIndex = 3
         '
         'TbNota2
@@ -369,7 +375,7 @@ Partial Class F1_Dosificacion
         '
         Me.TbNota2.Border.Class = "TextBoxBorder"
         Me.TbNota2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TbNota2.Font = New System.Drawing.Font("Open Sans Light", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TbNota2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TbNota2.Location = New System.Drawing.Point(426, 119)
         Me.TbNota2.MaxLength = 255
         Me.TbNota2.Multiline = True
@@ -399,12 +405,12 @@ Partial Class F1_Dosificacion
         '
         Me.TbLlave.Border.Class = "TextBoxBorder"
         Me.TbLlave.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TbLlave.Font = New System.Drawing.Font("Open Sans Light", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TbLlave.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TbLlave.Location = New System.Drawing.Point(152, 177)
         Me.TbLlave.MaxLength = 255
         Me.TbLlave.Name = "TbLlave"
         Me.TbLlave.PreventEnterBeep = True
-        Me.TbLlave.Size = New System.Drawing.Size(635, 24)
+        Me.TbLlave.Size = New System.Drawing.Size(635, 21)
         Me.TbLlave.TabIndex = 6
         '
         'LabelX1
@@ -441,14 +447,14 @@ Partial Class F1_Dosificacion
         '
         CbCompania_DesignTimeLayout.LayoutString = resources.GetString("CbCompania_DesignTimeLayout.LayoutString")
         Me.CbCompania.DesignTimeLayout = CbCompania_DesignTimeLayout
-        Me.CbCompania.Font = New System.Drawing.Font("Open Sans Light", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbCompania.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CbCompania.Location = New System.Drawing.Point(152, 32)
         Me.CbCompania.Name = "CbCompania"
         Me.CbCompania.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.CbCompania.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.CbCompania.SelectedIndex = -1
         Me.CbCompania.SelectedItem = Nothing
-        Me.CbCompania.Size = New System.Drawing.Size(200, 24)
+        Me.CbCompania.Size = New System.Drawing.Size(200, 21)
         Me.CbCompania.TabIndex = 1
         Me.CbCompania.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -473,11 +479,11 @@ Partial Class F1_Dosificacion
         '
         Me.TbCodigo.Border.Class = "TextBoxBorder"
         Me.TbCodigo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TbCodigo.Font = New System.Drawing.Font("Open Sans Light", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TbCodigo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TbCodigo.Location = New System.Drawing.Point(152, 3)
         Me.TbCodigo.Name = "TbCodigo"
         Me.TbCodigo.PreventEnterBeep = True
-        Me.TbCodigo.Size = New System.Drawing.Size(100, 24)
+        Me.TbCodigo.Size = New System.Drawing.Size(100, 21)
         Me.TbCodigo.TabIndex = 0
         '
         'TbNota1
@@ -487,7 +493,7 @@ Partial Class F1_Dosificacion
         '
         Me.TbNota1.Border.Class = "TextBoxBorder"
         Me.TbNota1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.TbNota1.Font = New System.Drawing.Font("Open Sans Light", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TbNota1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TbNota1.Location = New System.Drawing.Point(426, 61)
         Me.TbNota1.MaxLength = 255
         Me.TbNota1.Multiline = True
@@ -505,7 +511,7 @@ Partial Class F1_Dosificacion
         Me.DtiFechaIni.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.DtiFechaIni.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown
         Me.DtiFechaIni.ButtonDropDown.Visible = True
-        Me.DtiFechaIni.Font = New System.Drawing.Font("Open Sans Light", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DtiFechaIni.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DtiFechaIni.IsPopupCalendarOpen = False
         Me.DtiFechaIni.Location = New System.Drawing.Point(526, 3)
         '
@@ -538,7 +544,7 @@ Partial Class F1_Dosificacion
         Me.DtiFechaIni.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.DtiFechaIni.MonthCalendar.TodayButtonVisible = True
         Me.DtiFechaIni.Name = "DtiFechaIni"
-        Me.DtiFechaIni.Size = New System.Drawing.Size(100, 24)
+        Me.DtiFechaIni.Size = New System.Drawing.Size(100, 21)
         Me.DtiFechaIni.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.DtiFechaIni.TabIndex = 7
         '
@@ -579,7 +585,7 @@ Partial Class F1_Dosificacion
         Me.DtiFechaLim.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.DtiFechaLim.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown
         Me.DtiFechaLim.ButtonDropDown.Visible = True
-        Me.DtiFechaLim.Font = New System.Drawing.Font("Open Sans Light", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DtiFechaLim.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DtiFechaLim.IsPopupCalendarOpen = False
         Me.DtiFechaLim.Location = New System.Drawing.Point(526, 32)
         '
@@ -612,7 +618,7 @@ Partial Class F1_Dosificacion
         Me.DtiFechaLim.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.DtiFechaLim.MonthCalendar.TodayButtonVisible = True
         Me.DtiFechaLim.Name = "DtiFechaLim"
-        Me.DtiFechaLim.Size = New System.Drawing.Size(100, 24)
+        Me.DtiFechaLim.Size = New System.Drawing.Size(100, 21)
         Me.DtiFechaLim.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.DtiFechaLim.TabIndex = 8
         '
@@ -710,25 +716,25 @@ Partial Class F1_Dosificacion
         Me.TbiNroFactura.BackgroundStyle.Class = "DateTimeInputBackground"
         Me.TbiNroFactura.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.TbiNroFactura.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.TbiNroFactura.Font = New System.Drawing.Font("Open Sans Light", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TbiNroFactura.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TbiNroFactura.Location = New System.Drawing.Point(152, 148)
         Me.TbiNroFactura.MinValue = 0
         Me.TbiNroFactura.Name = "TbiNroFactura"
-        Me.TbiNroFactura.Size = New System.Drawing.Size(100, 24)
+        Me.TbiNroFactura.Size = New System.Drawing.Size(100, 21)
         Me.TbiNroFactura.TabIndex = 5
         '
         'CbAlmacen
         '
         CbAlmacen_DesignTimeLayout.LayoutString = resources.GetString("CbAlmacen_DesignTimeLayout.LayoutString")
         Me.CbAlmacen.DesignTimeLayout = CbAlmacen_DesignTimeLayout
-        Me.CbAlmacen.Font = New System.Drawing.Font("Open Sans Light", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbAlmacen.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CbAlmacen.Location = New System.Drawing.Point(152, 61)
         Me.CbAlmacen.Name = "CbAlmacen"
         Me.CbAlmacen.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.CbAlmacen.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.CbAlmacen.SelectedIndex = -1
         Me.CbAlmacen.SelectedItem = Nothing
-        Me.CbAlmacen.Size = New System.Drawing.Size(200, 24)
+        Me.CbAlmacen.Size = New System.Drawing.Size(200, 21)
         Me.CbAlmacen.TabIndex = 2
         Me.CbAlmacen.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '

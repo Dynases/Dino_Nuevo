@@ -43,6 +43,7 @@ Public Class F1_Productos
         Dim ico As Icon = Icon.FromHandle(blah.GetHicon())
         Me.Icon = ico
 
+        btnImprimir.Visible = False
     End Sub
 
     Private Sub armarGrillaDetalleProducto(numi As Integer)

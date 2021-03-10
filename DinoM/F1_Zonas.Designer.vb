@@ -421,6 +421,7 @@ Partial Class F1_Zonas
         Me.LabelX4.Size = New System.Drawing.Size(41, 16)
         Me.LabelX4.TabIndex = 237
         Me.LabelX4.Text = "Color:"
+        Me.LabelX4.Visible = False
         '
         'tbColor
         '
@@ -437,6 +438,7 @@ Partial Class F1_Zonas
         Me.tbColor.Size = New System.Drawing.Size(63, 22)
         Me.tbColor.TabIndex = 236
         Me.tbColor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.tbColor.Visible = False
         '
         'LabelX3
         '

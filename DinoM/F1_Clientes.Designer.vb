@@ -57,7 +57,6 @@ Partial Class F1_Clientes
         Me.SuperTabItem1 = New DevComponents.DotNetBar.SuperTabItem()
         Me.SuperTabControlPanel3 = New DevComponents.DotNetBar.SuperTabControlPanel()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.UsImg = New DinoM.UCImg()
         Me.BtAdicionar = New DevComponents.DotNetBar.ButtonX()
         Me.LabelX15 = New DevComponents.DotNetBar.LabelX()
         Me.SuperTabItem3 = New DevComponents.DotNetBar.SuperTabItem()
@@ -96,6 +95,7 @@ Partial Class F1_Clientes
         Me.cbZona = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.cbTipoDoc = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.UsImg = New DinoM.UCImg()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -313,6 +313,7 @@ Partial Class F1_Clientes
         '
         'btnImprimir
         '
+        Me.btnImprimir.Visible = False
         '
         'btnUltimo
         '
@@ -839,16 +840,6 @@ Partial Class F1_Clientes
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(430, 286)
         Me.Panel2.TabIndex = 223
-        '
-        'UsImg
-        '
-        Me.UsImg.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.UsImg.BackColor = System.Drawing.Color.Transparent
-        Me.UsImg.Location = New System.Drawing.Point(100, 14)
-        Me.UsImg.Margin = New System.Windows.Forms.Padding(4)
-        Me.UsImg.Name = "UsImg"
-        Me.UsImg.Size = New System.Drawing.Size(310, 257)
-        Me.UsImg.TabIndex = 222
         '
         'BtAdicionar
         '
@@ -1464,6 +1455,16 @@ Partial Class F1_Clientes
         '
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
+        '
+        'UsImg
+        '
+        Me.UsImg.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.UsImg.BackColor = System.Drawing.Color.Transparent
+        Me.UsImg.Location = New System.Drawing.Point(100, 14)
+        Me.UsImg.Margin = New System.Windows.Forms.Padding(4)
+        Me.UsImg.Name = "UsImg"
+        Me.UsImg.Size = New System.Drawing.Size(310, 257)
+        Me.UsImg.TabIndex = 222
         '
         'F1_Clientes
         '
