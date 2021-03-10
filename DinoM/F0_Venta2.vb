@@ -3871,6 +3871,7 @@ salirIf:
         End If
     End Sub
 
+
     'Private Sub TbNombre1_KeyDown(sender As Object, e As KeyEventArgs) Handles TbNombre1.KeyDown
     '    If (e.KeyData = Keys.Enter) Then
     '        grdetalle.Col = 7
