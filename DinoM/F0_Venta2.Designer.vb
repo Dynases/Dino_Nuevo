@@ -477,10 +477,10 @@ Partial Class F0_Venta2
         Me.txtEstado.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.txtEstado.Font = New System.Drawing.Font("Georgia", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtEstado.ForeColor = System.Drawing.Color.Black
-        Me.txtEstado.Location = New System.Drawing.Point(782, 35)
+        Me.txtEstado.Location = New System.Drawing.Point(784, 35)
         Me.txtEstado.Name = "txtEstado"
         Me.txtEstado.PreventEnterBeep = True
-        Me.txtEstado.Size = New System.Drawing.Size(100, 26)
+        Me.txtEstado.Size = New System.Drawing.Size(95, 26)
         Me.txtEstado.TabIndex = 359
         Me.txtEstado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -542,7 +542,7 @@ Partial Class F0_Venta2
         Me.tbFechaVenc.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbFechaVenc.MonthCalendar.TodayButtonVisible = True
         Me.tbFechaVenc.Name = "tbFechaVenc"
-        Me.tbFechaVenc.Size = New System.Drawing.Size(135, 26)
+        Me.tbFechaVenc.Size = New System.Drawing.Size(120, 26)
         Me.tbFechaVenc.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.tbFechaVenc.TabIndex = 0
         Me.tbFechaVenc.Visible = False
@@ -576,7 +576,7 @@ Partial Class F0_Venta2
         Me.swTipoVenta.OffText = "CREDITO"
         Me.swTipoVenta.OnBackColor = System.Drawing.Color.Gold
         Me.swTipoVenta.OnText = "CONTADO"
-        Me.swTipoVenta.Size = New System.Drawing.Size(135, 22)
+        Me.swTipoVenta.Size = New System.Drawing.Size(120, 22)
         Me.swTipoVenta.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.swTipoVenta.TabIndex = 0
         Me.swTipoVenta.Value = True
@@ -591,7 +591,7 @@ Partial Class F0_Venta2
         Me.LabelX17.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX17.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX17.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.LabelX17.Location = New System.Drawing.Point(1156, 7)
+        Me.LabelX17.Location = New System.Drawing.Point(1137, 5)
         Me.LabelX17.Name = "LabelX17"
         Me.LabelX17.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX17.Size = New System.Drawing.Size(90, 23)
@@ -636,7 +636,7 @@ Partial Class F0_Venta2
         cbSucursal_DesignTimeLayout.LayoutString = resources.GetString("cbSucursal_DesignTimeLayout.LayoutString")
         Me.cbSucursal.DesignTimeLayout = cbSucursal_DesignTimeLayout
         Me.cbSucursal.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbSucursal.Location = New System.Drawing.Point(1131, 38)
+        Me.cbSucursal.Location = New System.Drawing.Point(1112, 36)
         Me.cbSucursal.Name = "cbSucursal"
         Me.cbSucursal.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.cbSucursal.Office2007CustomColor = System.Drawing.Color.DodgerBlue
