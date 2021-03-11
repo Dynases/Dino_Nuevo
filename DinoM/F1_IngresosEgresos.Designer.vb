@@ -153,9 +153,6 @@ Partial Class F1_IngresosEgresos
         'btnSalir
         '
         '
-        'btnEliminar
-        '
-        '
         'btnModificar
         '
         '
@@ -361,7 +358,7 @@ Partial Class F1_IngresosEgresos
         Me.btConcepto.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
         Me.btConcepto.Image = Global.DinoM.My.Resources.Resources.add
         Me.btConcepto.ImageFixedSize = New System.Drawing.Size(25, 23)
-        Me.btConcepto.Location = New System.Drawing.Point(934, 20)
+        Me.btConcepto.Location = New System.Drawing.Point(934, 13)
         Me.btConcepto.Name = "btConcepto"
         Me.btConcepto.Size = New System.Drawing.Size(28, 23)
         Me.btConcepto.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled

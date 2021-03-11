@@ -2054,6 +2054,7 @@ Partial Class F0_Venta2
         Me.btnDuplicar.TabIndex = 13
         Me.btnDuplicar.Text = "DUPLICAR"
         Me.btnDuplicar.TextColor = System.Drawing.Color.White
+        Me.btnDuplicar.Visible = False
         '
         'Timer1
         '

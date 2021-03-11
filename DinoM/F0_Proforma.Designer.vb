@@ -60,14 +60,14 @@ Partial Class F0_Proforma
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.LabelX13 = New DevComponents.DotNetBar.LabelX()
         Me.tbSubTotal = New DevComponents.Editors.DoubleInput()
-        Me.tbIce = New DevComponents.Editors.DoubleInput()
-        Me.lbIce = New DevComponents.DotNetBar.LabelX()
         Me.tbMdesc = New DevComponents.Editors.DoubleInput()
         Me.tbtotal = New DevComponents.Editors.DoubleInput()
-        Me.LabelX8 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX11 = New DevComponents.DotNetBar.LabelX()
-        Me.tbPdesc = New DevComponents.Editors.DoubleInput()
         Me.LabelX9 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX8 = New DevComponents.DotNetBar.LabelX()
+        Me.tbIce = New DevComponents.Editors.DoubleInput()
+        Me.tbPdesc = New DevComponents.Editors.DoubleInput()
+        Me.lbIce = New DevComponents.DotNetBar.LabelX()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
@@ -106,9 +106,9 @@ Partial Class F0_Proforma
         Me.PanelTotal.SuspendLayout()
         Me.Panel4.SuspendLayout()
         CType(Me.tbSubTotal, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbIce, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbMdesc, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbtotal, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tbIce, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbPdesc, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -788,7 +788,7 @@ Partial Class F0_Proforma
         '
         Me.GroupPanel4.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.GroupPanel4.TabIndex = 0
-        Me.GroupPanel4.Text = "DETALLE DE LA VENTA"
+        Me.GroupPanel4.Text = "DETALLE DE LA PROFORMA"
         '
         'Panel5
         '
@@ -948,41 +948,6 @@ Partial Class F0_Proforma
         Me.tbSubTotal.TabIndex = 2
         Me.tbSubTotal.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
         '
-        'tbIce
-        '
-        '
-        '
-        '
-        Me.tbIce.BackgroundStyle.Class = "DateTimeInputBackground"
-        Me.tbIce.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbIce.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.tbIce.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbIce.Increment = 1.0R
-        Me.tbIce.Location = New System.Drawing.Point(846, 40)
-        Me.tbIce.MinValue = 0R
-        Me.tbIce.Name = "tbIce"
-        Me.tbIce.Size = New System.Drawing.Size(89, 21)
-        Me.tbIce.TabIndex = 3
-        Me.tbIce.Visible = False
-        Me.tbIce.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
-        '
-        'lbIce
-        '
-        Me.lbIce.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.lbIce.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.lbIce.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbIce.ForeColor = System.Drawing.Color.White
-        Me.lbIce.Location = New System.Drawing.Point(739, 43)
-        Me.lbIce.Name = "lbIce"
-        Me.lbIce.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.lbIce.Size = New System.Drawing.Size(44, 18)
-        Me.lbIce.TabIndex = 40
-        Me.lbIce.Text = "ICE:"
-        Me.lbIce.Visible = False
-        '
         'tbMdesc
         '
         '
@@ -1017,6 +982,38 @@ Partial Class F0_Proforma
         Me.tbtotal.TabIndex = 4
         Me.tbtotal.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
         '
+        'LabelX11
+        '
+        Me.LabelX11.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX11.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX11.ForeColor = System.Drawing.Color.White
+        Me.LabelX11.Location = New System.Drawing.Point(40, 69)
+        Me.LabelX11.Name = "LabelX11"
+        Me.LabelX11.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX11.Size = New System.Drawing.Size(75, 18)
+        Me.LabelX11.TabIndex = 38
+        Me.LabelX11.Text = "Total Neto:"
+        '
+        'LabelX9
+        '
+        Me.LabelX9.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX9.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX9.ForeColor = System.Drawing.Color.White
+        Me.LabelX9.Location = New System.Drawing.Point(40, 41)
+        Me.LabelX9.Name = "LabelX9"
+        Me.LabelX9.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX9.Size = New System.Drawing.Size(101, 18)
+        Me.LabelX9.TabIndex = 36
+        Me.LabelX9.Text = "M. Descuento:"
+        '
         'LabelX8
         '
         Me.LabelX8.BackColor = System.Drawing.Color.Transparent
@@ -1034,21 +1031,23 @@ Partial Class F0_Proforma
         Me.LabelX8.Text = "P. Descuento:"
         Me.LabelX8.Visible = False
         '
-        'LabelX11
-        '
-        Me.LabelX11.BackColor = System.Drawing.Color.Transparent
+        'tbIce
         '
         '
         '
-        Me.LabelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX11.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX11.ForeColor = System.Drawing.Color.White
-        Me.LabelX11.Location = New System.Drawing.Point(40, 69)
-        Me.LabelX11.Name = "LabelX11"
-        Me.LabelX11.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX11.Size = New System.Drawing.Size(75, 18)
-        Me.LabelX11.TabIndex = 38
-        Me.LabelX11.Text = "Total Neto:"
+        '
+        Me.tbIce.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbIce.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbIce.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbIce.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbIce.Increment = 1.0R
+        Me.tbIce.Location = New System.Drawing.Point(846, 40)
+        Me.tbIce.MinValue = 0R
+        Me.tbIce.Name = "tbIce"
+        Me.tbIce.Size = New System.Drawing.Size(89, 21)
+        Me.tbIce.TabIndex = 3
+        Me.tbIce.Visible = False
+        Me.tbIce.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
         '
         'tbPdesc
         '
@@ -1069,21 +1068,22 @@ Partial Class F0_Proforma
         Me.tbPdesc.Visible = False
         Me.tbPdesc.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
         '
-        'LabelX9
+        'lbIce
         '
-        Me.LabelX9.BackColor = System.Drawing.Color.Transparent
+        Me.lbIce.BackColor = System.Drawing.Color.Transparent
         '
         '
         '
-        Me.LabelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX9.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelX9.ForeColor = System.Drawing.Color.White
-        Me.LabelX9.Location = New System.Drawing.Point(40, 41)
-        Me.LabelX9.Name = "LabelX9"
-        Me.LabelX9.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX9.Size = New System.Drawing.Size(101, 18)
-        Me.LabelX9.TabIndex = 36
-        Me.LabelX9.Text = "M. Descuento:"
+        Me.lbIce.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.lbIce.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbIce.ForeColor = System.Drawing.Color.White
+        Me.lbIce.Location = New System.Drawing.Point(739, 43)
+        Me.lbIce.Name = "lbIce"
+        Me.lbIce.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.lbIce.Size = New System.Drawing.Size(44, 18)
+        Me.lbIce.TabIndex = 40
+        Me.lbIce.Text = "ICE:"
+        Me.lbIce.Visible = False
         '
         'Timer1
         '
@@ -1140,9 +1140,9 @@ Partial Class F0_Proforma
         Me.PanelTotal.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)
         CType(Me.tbSubTotal, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tbIce, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbMdesc, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbtotal, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tbIce, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbPdesc, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
