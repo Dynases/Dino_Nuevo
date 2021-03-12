@@ -51,7 +51,7 @@ Public Class F0_Venta2
         _prCargarVenta()
         _prInhabiliitar()
         grVentas.Focus()
-        Me.Text = "DESPACHOS"
+        Me.Text = "VENTAS"
         Dim blah As New Bitmap(New Bitmap(My.Resources.compra), 20, 20)
         Dim ico As Icon = Icon.FromHandle(blah.GetHicon())
         Me.Icon = ico

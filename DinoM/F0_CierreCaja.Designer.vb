@@ -284,8 +284,8 @@ Partial Class F0_CierreCaja
         Me.MSuperTabControl.SelectedTabIndex = 1
         Me.MSuperTabControl.Size = New System.Drawing.Size(1362, 630)
         Me.MSuperTabControl.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabItem1})
-        Me.MSuperTabControl.Controls.SetChildIndex(Me.SuperTabControlPanel2, 0)
         Me.MSuperTabControl.Controls.SetChildIndex(Me.MSuperTabControlPanel1, 0)
+        Me.MSuperTabControl.Controls.SetChildIndex(Me.SuperTabControlPanel2, 0)
         '
         'PictureBox1
         '
@@ -343,7 +343,7 @@ Partial Class F0_CierreCaja
         '
         Me.GroupPanel3.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.GroupPanel3.TabIndex = 1
-        Me.GroupPanel3.Text = "INFORMACION ADICCIONAL"
+        Me.GroupPanel3.Text = "INFORMACIÓN  CORTES Y DEPÓSITOS"
         '
         'SuperTabControl2
         '
@@ -1274,7 +1274,7 @@ Partial Class F0_CierreCaja
         Me.SuperTabControlPanel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SuperTabControlPanel2.Location = New System.Drawing.Point(0, 0)
         Me.SuperTabControlPanel2.Name = "SuperTabControlPanel2"
-        Me.SuperTabControlPanel2.Size = New System.Drawing.Size(1111, 585)
+        Me.SuperTabControlPanel2.Size = New System.Drawing.Size(1329, 630)
         Me.SuperTabControlPanel2.TabIndex = 2
         Me.SuperTabControlPanel2.TabItem = Me.SuperTabItem1
         '
@@ -1285,7 +1285,7 @@ Partial Class F0_CierreCaja
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel4.Location = New System.Drawing.Point(0, 0)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(1111, 585)
+        Me.Panel4.Size = New System.Drawing.Size(1329, 630)
         Me.Panel4.TabIndex = 0
         '
         'GroupPanel1
@@ -1297,7 +1297,7 @@ Partial Class F0_CierreCaja
         Me.GroupPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupPanel1.Location = New System.Drawing.Point(0, 0)
         Me.GroupPanel1.Name = "GroupPanel1"
-        Me.GroupPanel1.Size = New System.Drawing.Size(1111, 585)
+        Me.GroupPanel1.Size = New System.Drawing.Size(1329, 630)
         '
         '
         '
@@ -1327,7 +1327,7 @@ Partial Class F0_CierreCaja
         '
         Me.GroupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.GroupPanel1.TabIndex = 0
-        Me.GroupPanel1.Text = "BUSCAR"
+        Me.GroupPanel1.Text = "BUSCAR CIERRE DE CAJA"
         '
         'Dgv_Buscador
         '
@@ -1335,7 +1335,7 @@ Partial Class F0_CierreCaja
         Me.Dgv_Buscador.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold)
         Me.Dgv_Buscador.Location = New System.Drawing.Point(0, 0)
         Me.Dgv_Buscador.Name = "Dgv_Buscador"
-        Me.Dgv_Buscador.Size = New System.Drawing.Size(1105, 562)
+        Me.Dgv_Buscador.Size = New System.Drawing.Size(1323, 607)
         Me.Dgv_Buscador.TabIndex = 0
         '
         'Timer1
