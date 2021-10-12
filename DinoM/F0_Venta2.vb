@@ -1961,7 +1961,7 @@ Public Class F0_Venta2
                 objrep.SetParameterValue("ESms", "''" + _Ds1.Tables(0).Rows(0).Item("sbnota").ToString + "''")
                 objrep.SetParameterValue("ESms2", "''" + _Ds1.Tables(0).Rows(0).Item("sbnota2").ToString + "''")
 
-                objrep.SetParameterValue("URLImageLogo", gs_CarpetaRaiz + "\URLImageLogo.jpg")
+                objrep.SetParameterValue("URLImageLogo", gb_UbiLogo)
                 objrep.SetParameterValue("URLImageMarcaAgua", gs_CarpetaRaiz + "\MarcaAguaFactura.jpg")
                 If tipoFactura = 1 Then
                     objrep.SetParameterValue("Tipo", "ORIGINAL")
@@ -2067,9 +2067,10 @@ Public Class F0_Venta2
                 P_Global.Visualizador.Close()
             End If
 
-            _Ds1 = L_Dosificacion("1", "1", _Fecha)
+
             _Ds = L_Reporte_Factura(numi, numi)
             _Fecha = _Ds.Tables(0).Rows(0).Item("fvafec").ToString
+            _Ds1 = L_Dosificacion("1", "1", _Fecha)
             _Hora = _Ds.Tables(0).Rows(0).Item("fvahora").ToString
             _Autorizacion = _Ds1.Tables(0).Rows(0).Item("sbautoriz").ToString
             _NumFac = CInt(_Ds.Tables(0).Rows(0).Item("fvanfac").ToString)
