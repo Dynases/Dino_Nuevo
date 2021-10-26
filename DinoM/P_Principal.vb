@@ -34,7 +34,11 @@ Public Class P_Principal
         'iniciar login de usuario
         _prLogin()
 
-        Me.Icon = Icon.ExtractAssociatedIcon(gs_CarpetaRaiz + "\LogoIco.ico")
+        If My.Computer.FileSystem.FileExists(gs_CarpetaRaiz + "\LogoIco.ico") Then
+            Me.Icon = Icon.ExtractAssociatedIcon(gs_CarpetaRaiz + "\LogoIco.ico")
+        End If
+
+
 
     End Sub
     Private Sub _prCambiarStyle()
