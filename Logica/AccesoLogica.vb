@@ -1316,6 +1316,58 @@ Public Class AccesoLogica
         Return _Tabla
     End Function
 
+    Public Shared Function L_fnListarProductosDescuentos() As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 4))
+        _listParam.Add(New Datos.DParametro("@Usuario", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_Descuentos", _listParam)
+
+        Return _Tabla
+    End Function
+
+    Public Shared Function L_fnListarDescuentos(ProductoId As Integer) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 3))
+        _listParam.Add(New Datos.DParametro("@Usuario", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@ProductoId", ProductoId))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_Descuentos", _listParam)
+
+        Return _Tabla
+    End Function
+
+    Public Shared Function L_fnGrabarPreciosDescuentos(ByRef numi As String, codpro As String, desde As Integer, hasta As Integer, precio As Double) As Boolean
+        Dim _resultado As Boolean
+
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 1))
+        _listParam.Add(New Datos.DParametro("@ProductoId", codpro))
+        _listParam.Add(New Datos.DParametro("@CantidadInicial", desde))
+        _listParam.Add(New Datos.DParametro("@CantidadFinal", hasta))
+        _listParam.Add(New Datos.DParametro("@Precio", precio))
+        _listParam.Add(New Datos.DParametro("@FechaInicial", Now.Date.ToString("yyyy/MM/dd")))
+        _listParam.Add(New Datos.DParametro("@FechaFinal", Now.Date.ToString("yyyy/MM/dd")))
+        _listParam.Add(New Datos.DParametro("@Estado", 1))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_Descuentos", _listParam)
+
+        If _Tabla.Rows.Count > 0 Then
+            numi = _Tabla.Rows(0).Item(0)
+            _resultado = True
+        Else
+            _resultado = False
+        End If
+
+        Return _resultado
+    End Function
+
     Public Shared Function L_fnDetalleVentaServicios(_numi As String) As DataTable
         Dim _Tabla As DataTable
 

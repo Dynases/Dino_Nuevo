@@ -28,20 +28,33 @@ Partial Class Descuentos
         Me.grdetalle = New Janus.Windows.GridEX.GridEX()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.GroupPanel2 = New DevComponents.DotNetBar.Controls.GroupPanel()
-        Me.GridEX1 = New Janus.Windows.GridEX.GridEX()
+        Me.grProducto = New Janus.Windows.GridEX.GridEX()
         Me.btnNuevo = New DevComponents.DotNetBar.ButtonX()
         Me.btnGrabar = New DevComponents.DotNetBar.ButtonX()
+        Me.LabelX2 = New DevComponents.DotNetBar.LabelX()
+        Me.tbDesde = New DevComponents.Editors.IntegerInput()
+        Me.tbHasta = New DevComponents.Editors.IntegerInput()
+        Me.LabelX1 = New DevComponents.DotNetBar.LabelX()
+        Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
+        Me.tbPrecio = New DevComponents.Editors.DoubleInput()
+        Me.lbProducto = New DevComponents.DotNetBar.LabelX()
+        Me.ButtonX1 = New DevComponents.DotNetBar.ButtonX()
+        Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.GroupPanel1.SuspendLayout()
         CType(Me.grdetalle, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
         Me.GroupPanel2.SuspendLayout()
-        CType(Me.GridEX1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grProducto, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tbDesde, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tbHasta, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tbPrecio, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
         '
         Me.Panel1.BackgroundImage = Global.DinoM.My.Resources.Resources.fondo1
+        Me.Panel1.Controls.Add(Me.ButtonX1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
@@ -106,26 +119,33 @@ Partial Class Descuentos
         'grdetalle
         '
         Me.grdetalle.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grdetalle.Location = New System.Drawing.Point(0, 192)
+        Me.grdetalle.Location = New System.Drawing.Point(0, 232)
         Me.grdetalle.Name = "grdetalle"
-        Me.grdetalle.Size = New System.Drawing.Size(474, 218)
+        Me.grdetalle.Size = New System.Drawing.Size(474, 178)
         Me.grdetalle.TabIndex = 1
         '
         'Panel3
         '
+        Me.Panel3.Controls.Add(Me.lbProducto)
+        Me.Panel3.Controls.Add(Me.tbPrecio)
+        Me.Panel3.Controls.Add(Me.LabelX3)
+        Me.Panel3.Controls.Add(Me.tbHasta)
+        Me.Panel3.Controls.Add(Me.LabelX1)
+        Me.Panel3.Controls.Add(Me.tbDesde)
+        Me.Panel3.Controls.Add(Me.LabelX2)
         Me.Panel3.Controls.Add(Me.btnGrabar)
         Me.Panel3.Controls.Add(Me.btnNuevo)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(474, 192)
+        Me.Panel3.Size = New System.Drawing.Size(474, 232)
         Me.Panel3.TabIndex = 0
         '
         'GroupPanel2
         '
         Me.GroupPanel2.CanvasColor = System.Drawing.SystemColors.Control
         Me.GroupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
-        Me.GroupPanel2.Controls.Add(Me.GridEX1)
+        Me.GroupPanel2.Controls.Add(Me.grProducto)
         Me.GroupPanel2.DisabledBackColor = System.Drawing.Color.Empty
         Me.GroupPanel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupPanel2.Location = New System.Drawing.Point(0, 0)
@@ -161,13 +181,16 @@ Partial Class Descuentos
         Me.GroupPanel2.TabIndex = 1
         Me.GroupPanel2.Text = "LISTADO DE PRODUCTOS"
         '
-        'GridEX1
+        'grProducto
         '
-        Me.GridEX1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GridEX1.Location = New System.Drawing.Point(0, 0)
-        Me.GridEX1.Name = "GridEX1"
-        Me.GridEX1.Size = New System.Drawing.Size(580, 413)
-        Me.GridEX1.TabIndex = 0
+        Me.grProducto.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grProducto.HideSelection = Janus.Windows.GridEX.HideSelection.Highlight
+        Me.grProducto.Location = New System.Drawing.Point(0, 0)
+        Me.grProducto.Name = "grProducto"
+        Me.grProducto.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
+        Me.grProducto.Office2007CustomColor = System.Drawing.Color.DodgerBlue
+        Me.grProducto.Size = New System.Drawing.Size(580, 413)
+        Me.grProducto.TabIndex = 0
         '
         'btnNuevo
         '
@@ -177,11 +200,11 @@ Partial Class Descuentos
         Me.btnNuevo.Image = Global.DinoM.My.Resources.Resources.add
         Me.btnNuevo.ImageFixedSize = New System.Drawing.Size(25, 25)
         Me.btnNuevo.ImageTextSpacing = 5
-        Me.btnNuevo.Location = New System.Drawing.Point(47, 127)
+        Me.btnNuevo.Location = New System.Drawing.Point(55, 167)
         Me.btnNuevo.Name = "btnNuevo"
-        Me.btnNuevo.Size = New System.Drawing.Size(135, 47)
+        Me.btnNuevo.Size = New System.Drawing.Size(163, 47)
         Me.btnNuevo.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2013
-        Me.btnNuevo.TabIndex = 0
+        Me.btnNuevo.TabIndex = 4
         Me.btnNuevo.Text = "Nuevo"
         Me.btnNuevo.TextColor = System.Drawing.Color.MidnightBlue
         '
@@ -193,13 +216,143 @@ Partial Class Descuentos
         Me.btnGrabar.Image = Global.DinoM.My.Resources.Resources.save
         Me.btnGrabar.ImageFixedSize = New System.Drawing.Size(25, 25)
         Me.btnGrabar.ImageTextSpacing = 5
-        Me.btnGrabar.Location = New System.Drawing.Point(267, 127)
+        Me.btnGrabar.Location = New System.Drawing.Point(275, 167)
         Me.btnGrabar.Name = "btnGrabar"
-        Me.btnGrabar.Size = New System.Drawing.Size(135, 47)
+        Me.btnGrabar.Size = New System.Drawing.Size(163, 47)
         Me.btnGrabar.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2013
-        Me.btnGrabar.TabIndex = 1
+        Me.btnGrabar.TabIndex = 8
         Me.btnGrabar.Text = "Grabar"
         Me.btnGrabar.TextColor = System.Drawing.Color.MidnightBlue
+        '
+        'LabelX2
+        '
+        Me.LabelX2.AutoSize = True
+        Me.LabelX2.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX2.Location = New System.Drawing.Point(45, 83)
+        Me.LabelX2.Margin = New System.Windows.Forms.Padding(4)
+        Me.LabelX2.Name = "LabelX2"
+        Me.LabelX2.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX2.Size = New System.Drawing.Size(55, 20)
+        Me.LabelX2.TabIndex = 226
+        Me.LabelX2.Text = "Desde:"
+        '
+        'tbDesde
+        '
+        '
+        '
+        '
+        Me.tbDesde.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbDesde.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbDesde.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbDesde.Font = New System.Drawing.Font("Arial", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbDesde.Location = New System.Drawing.Point(108, 80)
+        Me.tbDesde.Name = "tbDesde"
+        Me.tbDesde.Size = New System.Drawing.Size(110, 28)
+        Me.tbDesde.TabIndex = 5
+        '
+        'tbHasta
+        '
+        '
+        '
+        '
+        Me.tbHasta.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbHasta.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbHasta.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbHasta.Font = New System.Drawing.Font("Arial", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbHasta.Location = New System.Drawing.Point(300, 80)
+        Me.tbHasta.Name = "tbHasta"
+        Me.tbHasta.Size = New System.Drawing.Size(110, 28)
+        Me.tbHasta.TabIndex = 6
+        '
+        'LabelX1
+        '
+        Me.LabelX1.AutoSize = True
+        Me.LabelX1.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX1.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX1.Location = New System.Drawing.Point(238, 83)
+        Me.LabelX1.Margin = New System.Windows.Forms.Padding(4)
+        Me.LabelX1.Name = "LabelX1"
+        Me.LabelX1.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX1.Size = New System.Drawing.Size(53, 20)
+        Me.LabelX1.TabIndex = 228
+        Me.LabelX1.Text = "Hasta:"
+        '
+        'LabelX3
+        '
+        Me.LabelX3.AutoSize = True
+        Me.LabelX3.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX3.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX3.Location = New System.Drawing.Point(45, 128)
+        Me.LabelX3.Margin = New System.Windows.Forms.Padding(4)
+        Me.LabelX3.Name = "LabelX3"
+        Me.LabelX3.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX3.Size = New System.Drawing.Size(58, 20)
+        Me.LabelX3.TabIndex = 230
+        Me.LabelX3.Text = "Precio:"
+        '
+        'tbPrecio
+        '
+        '
+        '
+        '
+        Me.tbPrecio.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbPrecio.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbPrecio.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbPrecio.Font = New System.Drawing.Font("Arial", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbPrecio.Increment = 1.0R
+        Me.tbPrecio.Location = New System.Drawing.Point(111, 128)
+        Me.tbPrecio.Name = "tbPrecio"
+        Me.tbPrecio.Size = New System.Drawing.Size(107, 28)
+        Me.tbPrecio.TabIndex = 7
+        '
+        'lbProducto
+        '
+        Me.lbProducto.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.lbProducto.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.lbProducto.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbProducto.ForeColor = System.Drawing.Color.Black
+        Me.lbProducto.Location = New System.Drawing.Point(27, 4)
+        Me.lbProducto.Margin = New System.Windows.Forms.Padding(4)
+        Me.lbProducto.Name = "lbProducto"
+        Me.lbProducto.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.lbProducto.Size = New System.Drawing.Size(437, 69)
+        Me.lbProducto.TabIndex = 231
+        Me.lbProducto.TextAlignment = System.Drawing.StringAlignment.Center
+        '
+        'ButtonX1
+        '
+        Me.ButtonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.Magenta
+        Me.ButtonX1.Font = New System.Drawing.Font("Calibri", 10.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ButtonX1.Image = Global.DinoM.My.Resources.Resources.atras1
+        Me.ButtonX1.ImageFixedSize = New System.Drawing.Size(25, 25)
+        Me.ButtonX1.ImageTextSpacing = 5
+        Me.ButtonX1.Location = New System.Drawing.Point(28, 12)
+        Me.ButtonX1.Name = "ButtonX1"
+        Me.ButtonX1.Size = New System.Drawing.Size(163, 47)
+        Me.ButtonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.Office2013
+        Me.ButtonX1.TabIndex = 5
+        Me.ButtonX1.Text = "Salir"
+        Me.ButtonX1.TextColor = System.Drawing.Color.MidnightBlue
         '
         'Descuentos
         '
@@ -210,12 +363,18 @@ Partial Class Descuentos
         Me.Controls.Add(Me.Panel1)
         Me.Name = "Descuentos"
         Me.Text = "Descuentos"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
+        Me.Panel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.GroupPanel1.ResumeLayout(False)
         CType(Me.grdetalle, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel3.ResumeLayout(False)
+        Me.Panel3.PerformLayout()
         Me.GroupPanel2.ResumeLayout(False)
-        CType(Me.GridEX1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grProducto, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tbDesde, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tbHasta, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tbPrecio, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -226,7 +385,15 @@ Partial Class Descuentos
     Friend WithEvents grdetalle As Janus.Windows.GridEX.GridEX
     Friend WithEvents Panel3 As Panel
     Friend WithEvents GroupPanel2 As DevComponents.DotNetBar.Controls.GroupPanel
-    Friend WithEvents GridEX1 As Janus.Windows.GridEX.GridEX
+    Friend WithEvents grProducto As Janus.Windows.GridEX.GridEX
     Friend WithEvents btnGrabar As DevComponents.DotNetBar.ButtonX
     Friend WithEvents btnNuevo As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents LabelX2 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents tbDesde As DevComponents.Editors.IntegerInput
+    Friend WithEvents tbHasta As DevComponents.Editors.IntegerInput
+    Friend WithEvents LabelX1 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents LabelX3 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents tbPrecio As DevComponents.Editors.DoubleInput
+    Friend WithEvents lbProducto As DevComponents.DotNetBar.LabelX
+    Friend WithEvents ButtonX1 As DevComponents.DotNetBar.ButtonX
 End Class
