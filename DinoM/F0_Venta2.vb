@@ -1233,8 +1233,8 @@ Public Class F0_Venta2
         For i As Integer = 0 To dt.Rows.Count - 1 Step 1
 
             If (dt.Rows(i).Item("estado") >= 0) Then
-                TotalDescuento = TotalDescuento + dt.Rows(i).Item("tbtotdesc")
-                TotalCosto = TotalDescuento + dt.Rows(i).Item("tbptot2")
+                TotalDescuento = TotalDescuento + dt.Rows(i).Item("tbptot")
+                TotalCosto = TotalCosto + dt.Rows(i).Item("tbptot2")
             End If
         Next
 
@@ -1418,7 +1418,7 @@ Public Class F0_Venta2
                                 Dim total As Decimal = CStr(Format(precio * saldo, "####0.00"))
 
                                 dtDetalle.Rows(pos).Item("tbptot") = total
-                                dtDetalle.Rows(pos).Item("tbtotdesc") = total
+                                dtDetalle.Rows(pos).Item("tbtotdesc") = total - dtDetalle.Rows(pos).Item("tbdesc")
                                 'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = total
                                 'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = saldo
                                 dtDetalle.Rows(pos).Item("tbcmin") = saldo
@@ -1440,7 +1440,7 @@ Public Class F0_Venta2
                                     Dim precio As Double = dtDetalle.Rows(pos).Item("tbpbas")
                                     Dim total As Decimal = CStr(Format(precio * inventario, "####0.00"))
                                     dtDetalle.Rows(pos).Item("tbptot") = total
-                                    dtDetalle.Rows(pos).Item("tbtotdesc") = total
+                                    dtDetalle.Rows(pos).Item("tbtotdesc") = total - dtDetalle.Rows(pos).Item("tbdesc")
                                     'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = total
                                     'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = inventario
                                     dtDetalle.Rows(pos).Item("tbcmin") = inventario
@@ -1463,7 +1463,7 @@ Public Class F0_Venta2
                             Dim precio As Double = dtDetalle.Rows(pos).Item("tbpbas")
                             Dim total As Decimal = CStr(Format(precio * saldo, "####0.00"))
                             dtDetalle.Rows(pos).Item("tbptot") = total
-                            dtDetalle.Rows(pos).Item("tbtotdesc") = total
+                            dtDetalle.Rows(pos).Item("tbtotdesc") = total - dtDetalle.Rows(pos).Item("tbdesc")
                             dtDetalle.Rows(pos).Item("tbcmin") = saldo
                             Dim precioCosto As Double = dtDetalle.Rows(pos).Item("tbpcos")
                             dtDetalle.Rows(pos).Item("tbptot2") = precioCosto * saldo
@@ -3188,6 +3188,9 @@ salirIf:
                 Dim Descuento As Double = (Cantidad * Precio) - SubTotalDescuento
                 CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbdesc") = Descuento
                 grdetalle.SetValue("tbdesc", Descuento)
+                CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbtotdesc") = (grdetalle.GetValue("tbpbas") * grdetalle.GetValue("tbcmin")) - Descuento
+
+                grdetalle.SetValue("tbtotdesc", ((grdetalle.GetValue("tbpbas") * grdetalle.GetValue("tbcmin")) - Descuento))
                 Return
 
 
@@ -3233,9 +3236,9 @@ salirIf:
                         _fnObtenerFilaDetalle(pos, lin)
                         CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = grdetalle.GetValue("tbpbas") * grdetalle.GetValue("tbcmin")
 
-                        CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbdesc") = montodesc
-                        grdetalle.SetValue("tbdesc", montodesc)
-                        CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = (grdetalle.GetValue("tbpbas") * grdetalle.GetValue("tbcmin")) - montodesc
+                        'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbdesc") = montodesc
+                        'grdetalle.SetValue("tbdesc", montodesc)
+                        'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = (grdetalle.GetValue("tbpbas") * grdetalle.GetValue("tbcmin")) - montodesc
 
                         CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = grdetalle.GetValue("tbpcos") * grdetalle.GetValue("tbcmin")
 
