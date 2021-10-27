@@ -1316,6 +1316,19 @@ Public Class AccesoLogica
         Return _Tabla
     End Function
 
+    Public Shared Function L_fnEliminarDescuento(Id As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", -1))
+        _listParam.Add(New Datos.DParametro("@Id", Id))
+        _listParam.Add(New Datos.DParametro("@Usuario", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_Descuentos", _listParam)
+
+        Return _Tabla
+    End Function
+
     Public Shared Function L_fnListarProductosDescuentos() As DataTable
         Dim _Tabla As DataTable
 
@@ -1355,7 +1368,7 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@FechaInicial", Now.Date.ToString("yyyy/MM/dd")))
         _listParam.Add(New Datos.DParametro("@FechaFinal", Now.Date.ToString("yyyy/MM/dd")))
         _listParam.Add(New Datos.DParametro("@Estado", 1))
-        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@usuario", L_Usuario))
         _Tabla = D_ProcedimientoConParam("sp_Mam_Descuentos", _listParam)
 
         If _Tabla.Rows.Count > 0 Then

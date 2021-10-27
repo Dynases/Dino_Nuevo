@@ -1126,6 +1126,11 @@ Public Class P_Principal
         tab3.Icon = frm.Icon
     End Sub
 
+    Private Sub btConfDescuentos_Click(sender As Object, e As EventArgs) Handles btConfDescuentos.Click
+        Dim frm As New Descuentos
+        frm.Show()
+    End Sub
+
     'Private Sub btnCredPagoCliente_Click(sender As Object, e As EventArgs) Handles btnCredPagoCliente.Click
     '    SideNav1.IsMenuExpanded = False
     '    Ventana.Select()

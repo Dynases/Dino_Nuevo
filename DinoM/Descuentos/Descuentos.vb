@@ -25,7 +25,7 @@ Public Class Descuentos
 #End Region
     Private Sub _PIniciarTodo()
 
-        L_prAbrirConexion()
+        'L_prAbrirConexion()
 
 
         Me.Text = " P R E C I O S  -  D E S C U E N T O S "
@@ -50,25 +50,34 @@ Public Class Descuentos
         'a.tbfact ,a.tbhact ,a.tbuact
 
         With grProducto.RootTable.Columns("ProductoId")
-            .Width = 100
+            .Width = 50
             .Caption = "Id"
+            .WordWrap = True
+            .MaxLines = 3
             .Visible = True
         End With
 
         With grProducto.RootTable.Columns("CodigoExterno")
             .Caption = "Cod.Externo"
-            .Width = 90
+            .Width = 50
+            .WordWrap = True
+            .MaxLines = 3
             .Visible = True
         End With
         With grProducto.RootTable.Columns("CodigoBarra")
             .Caption = "Cod.Barra"
-            .Width = 90
+            .Width = 50
+            .WordWrap = True
+            .MaxLines = 3
             .Visible = True
         End With
         With grProducto.RootTable.Columns("NombreProducto")
             .Caption = "PRODUCTOS"
             .Width = 250
             .Visible = True
+            .WordWrap = True
+            .MaxLines = 3
+
         End With
 
         With grProducto
@@ -174,12 +183,45 @@ Public Class Descuentos
         btnGrabar.Visible = True
 
     End Sub
+
+    Function validarDescuento(ByRef posicion As Integer) As Boolean
+
+        Dim dt As DataTable = CType(grdetalle.DataSource, DataTable)
+
+        For i As Integer = 0 To dt.Rows.Count - 1 Step 1
+
+            Dim estadoRegistro As Integer = dt.Rows(i).Item("estado")
+            If (estadoRegistro >= 0) Then
+                If (tbDesde.Value >= dt.Rows(i).Item("CantidadInicial") And tbDesde.Value <= dt.Rows(i).Item("CantidadFinal")) Then
+                    posicion = i
+                    Return True
+                End If
+                If (tbHasta.Value >= dt.Rows(i).Item("CantidadInicial") And tbHasta.Value <= dt.Rows(i).Item("CantidadFinal")) Then
+                    posicion = i
+                    Return True
+                End If
+            End If
+
+        Next
+        Return False
+
+
+
+    End Function
     Public Function _ValidarCampos() As Boolean
         If (grProducto.Row < 0) Then
             Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
             ToastNotification.Show(Me, "Por Favor debe dar click a un producto".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
             Return False
         End If
+        If (tbDesde.Value > tbHasta.Value) Then
+            Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
+            ToastNotification.Show(Me, "La cantidad Hasta es mayor al Desde".ToUpper, img, 3000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+
+            Return False
+
+        End If
+
 
 
         If tbDesde.Value.ToString = String.Empty Or tbHasta.Value.ToString = String.Empty Or tbPrecio.Value.ToString = String.Empty Then
@@ -193,7 +235,14 @@ Public Class Descuentos
                 Return False
             End If
         End If
+        Dim posicion As Integer = -1
+        If (validarDescuento(posicion)) Then
+            Dim dt As DataTable = CType(grdetalle.DataSource, DataTable)
 
+            Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
+            ToastNotification.Show(Me, "Ya existe un Descuento Programado con los datos a Insertar, Desde = " + Str(dt.Rows(posicion).Item("CantidadInicial")) + "  Hasta " + Str(dt.Rows(posicion).Item("CantidadFinal")), img, 4500, eToastGlowColor.Red, eToastPosition.BottomCenter)
+            Return False
+        End If
 
         Return True
     End Function
@@ -236,5 +285,27 @@ Public Class Descuentos
     Private Sub ButtonX1_Click(sender As Object, e As EventArgs) Handles ButtonX1.Click
         Me.Close()
 
+    End Sub
+
+    Private Sub Descuentos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        _PIniciarTodo()
+
+    End Sub
+
+    Private Sub EliminarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EliminarToolStripMenuItem.Click
+        If (grdetalle.Row >= 0) Then
+            L_fnEliminarDescuento(grdetalle.GetValue("id"))
+
+
+
+            ToastNotification.Show(Me, "Descuento Eliminado Correctamente.".ToUpper,
+                                My.Resources.GRABACION_EXITOSA,
+                                3000,
+                                eToastGlowColor.Green,
+                                eToastPosition.TopCenter)
+
+            _prCargarDescuentos(grProducto.GetValue("ProductoId"))
+
+        End If
     End Sub
 End Class
