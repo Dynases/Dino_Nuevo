@@ -82,6 +82,10 @@ Public Class Descuentos
 
         With grProducto
             .GroupByBoxVisible = False
+            .DefaultFilterRowComparison = FilterConditionOperator.Contains
+            .FilterMode = FilterMode.Automatic
+            .FilterRowUpdateMode = FilterRowUpdateMode.WhenValueChanges
+
             'diseño de la grilla
             .VisualStyle = VisualStyle.Office2007
         End With
