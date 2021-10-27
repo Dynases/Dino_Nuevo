@@ -34,6 +34,9 @@ Public Class F0_Venta2
     Dim Table_Producto As DataTable
     Dim G_Lote As Boolean = False '1=igual a mostrar las columnas de lote y fecha de Vencimiento
 
+    Dim dtDescuentos As DataTable = Nothing
+
+
 #End Region
 #Region "Metodos Privados"
     Private Sub _IniciarTodo()
@@ -226,7 +229,16 @@ Public Class F0_Venta2
             cbSucursal.ReadOnly = False
 
         End If
+
+
+        dtDescuentos = L_fnListarDescuentosTodos()
     End Sub
+
+
+
+
+
+
     Public Sub _prFiltrar()
         'cargo el buscador
         Dim _Mpos As Integer
@@ -475,7 +487,7 @@ Public Class F0_Venta2
         With grdetalle.RootTable.Columns("tbptot")
             .Width = 100
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-            .Visible = False
+            .Visible = True
             .FormatString = "0.00"
             .Caption = "Total".ToUpper
         End With
@@ -496,7 +508,7 @@ Public Class F0_Venta2
         With grdetalle.RootTable.Columns("tbtotdesc")
             .Width = 100
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-            .Visible = True
+            .Visible = False
             .FormatString = "0.00"
             .Caption = "Total".ToUpper
         End With
@@ -1175,6 +1187,9 @@ Public Class F0_Venta2
         Return False
     End Function
     Public Sub P_PonerTotal(rowIndex As Integer)
+
+        CalcularDescuentosTotal()
+
         If (rowIndex < grdetalle.RowCount) Then
             'grdetalle.UpdateData()
             Dim lin As Integer = grdetalle.GetValue("tbnumi")
@@ -3135,13 +3150,61 @@ salirIf:
             MostrarMensajeError(ex.Message)
         End Try
     End Sub
+
+
+    Public Sub CalcularDescuentosTotal()
+
+        Dim dt As DataTable = CType(grdetalle.DataSource, DataTable)
+
+        Dim sumaDescuento As Double = 0
+
+        For i As Integer = 0 To dt.Rows.Count - 1 Step 1
+
+            If (dt.Rows(i).Item("estado") >= 0) Then
+
+                sumaDescuento += dt.Rows(i).Item("tbdesc")
+
+            End If
+
+        Next
+
+        tbMdesc.Value = sumaDescuento
+
+    End Sub
+    Public Sub CalcularDescuentos(ProductoId As Integer, Cantidad As Integer, Precio As Integer, Posicion As Integer)
+
+
+        Dim fila As DataRow() = dtDescuentos.Select("ProductoId=" + Str(ProductoId).ToString.Trim + "", "")
+
+        For Each dr As DataRow In fila
+
+            Dim CantidadInicial As Integer = dr.Item("CantidadInicial")
+            Dim CantidadFinal As Integer = dr.Item("CantidadFinal")
+            Dim PrecioDescuento As Double = dr.Item("Precio")
+
+            If (Cantidad >= CantidadInicial And Cantidad <= CantidadFinal) Then
+
+                Dim SubTotalDescuento As Double = Cantidad * PrecioDescuento
+                Dim Descuento As Double = (Cantidad * Precio) - SubTotalDescuento
+                CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbdesc") = Descuento
+                grdetalle.SetValue("tbdesc", Descuento)
+                Return
+
+
+            End If
+
+        Next
+
+
+
+
+    End Sub
     Private Sub grdetalle_CellValueChanged(sender As Object, e As ColumnActionEventArgs) Handles grdetalle.CellValueChanged
         Try
             If (e.Column.Index = grdetalle.RootTable.Columns("tbcmin").Index) Or (e.Column.Index = grdetalle.RootTable.Columns("tbpbas").Index) Then
                 If (Not IsNumeric(grdetalle.GetValue("tbcmin")) Or grdetalle.GetValue("tbcmin").ToString = String.Empty) Then
 
-                    'grDetalle.GetRow(rowIndex).Cells("cant").Value = 1
-                    '  grDetalle.CurrentRow.Cells.Item("cant").Value = 1
+                    'L_fnListarDescuentosTodos
                     Dim lin As Integer = grdetalle.GetValue("tbnumi")
                     Dim pos As Integer = -1
                     Dim rowIndex As Integer = grdetalle.Row
@@ -3155,6 +3218,10 @@ salirIf:
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos")
                     grdetalle.SetValue("tbcmin", 1)
                     grdetalle.SetValue("tbptot", grdetalle.GetValue("tbpbas"))
+
+
+                    CalcularDescuentos(grdetalle.GetValue("tbty5prod"), 1, grdetalle.GetValue("tbpbas"), pos)
+
                     P_PonerTotal(rowIndex)
                 Else
                     If (grdetalle.GetValue("tbcmin") > 0) Then
@@ -3172,9 +3239,14 @@ salirIf:
 
                         CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = grdetalle.GetValue("tbpcos") * grdetalle.GetValue("tbcmin")
 
+
+                        CalcularDescuentos(grdetalle.GetValue("tbty5prod"), grdetalle.GetValue("tbcmin"), grdetalle.GetValue("tbpbas"), pos)
+
+
                         P_PonerTotal(rowIndex)
 
                     Else
+                        Dim rowIndex As Integer = grdetalle.Row
                         Dim lin As Integer = grdetalle.GetValue("tbnumi")
                         Dim pos As Integer = -1
                         _fnObtenerFilaDetalle(pos, lin)
@@ -3187,7 +3259,12 @@ salirIf:
                         CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos")
                         grdetalle.SetValue("tbcmin", 1)
                         grdetalle.SetValue("tbptot", grdetalle.GetValue("tbpbas"))
+
+                        CalcularDescuentos(grdetalle.GetValue("tbty5prod"), grdetalle.GetValue("tbcmin"), grdetalle.GetValue("tbpbas"), pos)
+
+
                         _prCalcularPrecioTotal()
+                        P_PonerTotal(rowIndex)
                         'grdetalle.SetValue("tbcmin", 1)
                         'grdetalle.SetValue("tbptot", grdetalle.GetValue("tbpbas"))
 
