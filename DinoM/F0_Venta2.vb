@@ -219,7 +219,8 @@ Public Class F0_Venta2
         tbMontoBs.IsInputReadOnly = False
         tbMontoDolar.IsInputReadOnly = False
         tbMontoTarej.IsInputReadOnly = False
-        tbMdesc.IsInputReadOnly = False
+        'tbMdesc.IsInputReadOnly = False
+
         'txtCambio1.IsInputReadOnly = False
         'txtMontoPagado1.IsInputReadOnly = False
 
@@ -1955,6 +1956,7 @@ Public Class F0_Venta2
                 objrep.SetParameterValue("Logo", gb_UbiLogo)
                 objrep.SetParameterValue("TipoPago", IIf(swTipoVenta.Value = True, "CONTADO", "CRÉDITO"))
                 objrep.SetParameterValue("Nota2", _Ds1.Tables(0).Rows(0).Item("sbnota").ToString)
+                objrep.SetParameterValue("ELey", _Ds1.Tables(0).Rows(0).Item("sbnota2").ToString)
             Case ENReporteTipo.FACTURA_Carta
                 objrep = New R_FacturaCarta
                 objrep.SetDataSource(_Ds.Tables(0))
