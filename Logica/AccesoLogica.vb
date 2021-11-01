@@ -2759,6 +2759,28 @@ Public Class AccesoLogica
         _Ds.Tables.Add(_Tabla)
         Return _Ds
     End Function
+    Public Shared Function L_DosificacionCajas(_cia As String, _alm As String, _fecha As String, _NroCaja As String) As DataSet
+        Dim _Tabla As DataTable
+        Dim _Ds As New DataSet
+        Dim _Where As String
+        _fecha = Now.Date.ToString("yyyy/MM/dd")
+        _Where = "sbcia = " + _cia + " AND sbalm = " + _alm + " AND sbsfc = " + _NroCaja + " AND sbfdel <= '" + _fecha + "' AND sbfal >= '" + _fecha + "' AND sbest = 1"
+
+        _Tabla = D_Datos_Tabla("*", "TS002", _Where)
+        _Ds.Tables.Add(_Tabla)
+        Return _Ds
+    End Function
+    Public Shared Function L_DosificacionReImprimir(_cia As String, _alm As String, _fecha As String, _NroAut As String) As DataSet
+        Dim _Tabla As DataTable
+        Dim _Ds As New DataSet
+        Dim _Where As String
+        _fecha = Now.Date.ToString("yyyy/MM/dd")
+        _Where = "sbcia = " + _cia + " AND sbalm = " + _alm + " AND sbautoriz = " + _NroAut + " AND sbfdel <= '" + _fecha + "' AND sbfal >= '" + _fecha + "' "
+
+        _Tabla = D_Datos_Tabla("*", "TS002", _Where)
+        _Ds.Tables.Add(_Tabla)
+        Return _Ds
+    End Function
 
     Public Shared Sub L_Actualiza_Dosificacion(_Numi As String, _NumFac As String, _Numi2 As String)
         Dim _Err As Boolean

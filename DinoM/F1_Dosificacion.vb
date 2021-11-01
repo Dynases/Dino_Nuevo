@@ -302,7 +302,7 @@ Public Class F1_Dosificacion
             MEP.SetError(CbAlmacen, "")
         End If
 
-        If (TbiSfc.Value < 0) Then
+        If (TbiSfc.Value <= 0) Then
             TbiSfc.BackColor = Color.Red
             MEP.SetError(TbiSfc, "el sfc debe ser mayor a cero!".ToUpper)
             _ok = False

@@ -121,6 +121,7 @@ Module P_Global
     Public gi_Ver_Servicios As Integer = 0
     'configuracion del sistema tabla TCG011
     Public gd_notaAproTeo As Double = 0
+    Public gs_NroCaja As Integer = 1
 #End Region
 
 #Region "Toast"

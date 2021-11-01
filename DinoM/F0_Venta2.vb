@@ -1346,7 +1346,7 @@ Public Class F0_Venta2
             'Validación para controlar caducidad de Dosificacion
             If tbNit.Text <> String.Empty Then
                 Dim fecha As String = Now.Date
-                Dim dtDosificacion As DataSet = L_Dosificacion("1", "1", fecha)
+                Dim dtDosificacion As DataSet = L_DosificacionCajas("1", "1", fecha, gs_NroCaja)
                 If dtDosificacion.Tables(0).Rows.Count = 0 Then
                     'dtDosificacion.Tables.Cast(Of DataTable)().Any(Function(x) x.DefaultView.Count = 0)
                     Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
@@ -1822,7 +1822,7 @@ Public Class F0_Venta2
         '_Fecha = Now.Date '.ToString("dd/MM/yyyy")
         _Fecha = tbFechaVenta.Value
         _Hora = Now.Hour.ToString + ":" + Now.Minute.ToString
-        _Ds1 = L_Dosificacion("1", "1", _Fecha)
+        _Ds1 = L_DosificacionCajas("1", "1", _Fecha, gs_NroCaja)
 
         _Ds = L_Reporte_Factura(numi, numi)
         _Autorizacion = _Ds1.Tables(0).Rows(0).Item("sbautoriz").ToString
@@ -1926,7 +1926,7 @@ Public Class F0_Venta2
                 objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scneg").ToString) '?
                 objrep.SetParameterValue("ECasaMatriz", _Ds2.Tables(0).Rows(0).Item("scsuc").ToString)
                 objrep.SetParameterValue("ECiudadPais", _Ds2.Tables(0).Rows(0).Item("scpai").ToString)
-                objrep.SetParameterValue("ESFC", _Ds1.Tables(0).Rows(0).Item("sbsfc").ToString)
+                objrep.SetParameterValue("ESFC", "SFC " + _Ds1.Tables(0).Rows(0).Item("sbsfc").ToString)
                 objrep.SetParameterValue("ENit", _Ds2.Tables(0).Rows(0).Item("scnit").ToString)
                 objrep.SetParameterValue("EActividad", _Ds2.Tables(0).Rows(0).Item("scact").ToString)
                 objrep.SetParameterValue("EDuenho", _Ds2.Tables(0).Rows(0).Item("scnom").ToString)
@@ -1949,7 +1949,7 @@ Public Class F0_Venta2
                 objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scneg").ToString)
                 objrep.SetParameterValue("ECasaMatriz", _Ds2.Tables(0).Rows(0).Item("scsuc").ToString)
                 objrep.SetParameterValue("ECiudadPais", _Ds2.Tables(0).Rows(0).Item("scpai").ToString)
-                objrep.SetParameterValue("ESFC", _Ds1.Tables(0).Rows(0).Item("sbsfc").ToString)
+                objrep.SetParameterValue("ESFC", "SFC " + _Ds1.Tables(0).Rows(0).Item("sbsfc").ToString)
                 objrep.SetParameterValue("ENit", _Ds2.Tables(0).Rows(0).Item("scnit").ToString)
                 objrep.SetParameterValue("EActividad", _Ds2.Tables(0).Rows(0).Item("scact").ToString)
                 objrep.SetParameterValue("Tipo", "ORIGINAL")
@@ -1971,7 +1971,7 @@ Public Class F0_Venta2
                 objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scneg").ToString) '?
                 objrep.SetParameterValue("ECasaMatriz", _Ds2.Tables(0).Rows(0).Item("scsuc").ToString)
                 objrep.SetParameterValue("ECiudadPais", _Ds2.Tables(0).Rows(0).Item("scpai").ToString)
-                objrep.SetParameterValue("ESFC", _Ds1.Tables(0).Rows(0).Item("sbsfc").ToString)
+                objrep.SetParameterValue("ESFC", "SFC " + _Ds1.Tables(0).Rows(0).Item("sbsfc").ToString)
                 objrep.SetParameterValue("ENit", _Ds2.Tables(0).Rows(0).Item("scnit").ToString)
                 objrep.SetParameterValue("EActividad", _Ds2.Tables(0).Rows(0).Item("scact").ToString)
                 objrep.SetParameterValue("EDuenho", _Ds2.Tables(0).Rows(0).Item("scnom").ToString)
@@ -2087,35 +2087,29 @@ Public Class F0_Venta2
 
             _Ds = L_Reporte_Factura(numi, numi)
             _Fecha = _Ds.Tables(0).Rows(0).Item("fvafec").ToString
-            _Ds1 = L_Dosificacion("1", "1", _Fecha)
+            _Ds1 = L_DosificacionReImprimir("1", "1", _Fecha, _Ds.Tables(0).Rows(0).Item("fvaautoriz").ToString)
             _Hora = _Ds.Tables(0).Rows(0).Item("fvahora").ToString
             _Autorizacion = _Ds1.Tables(0).Rows(0).Item("sbautoriz").ToString
             _NumFac = CInt(_Ds.Tables(0).Rows(0).Item("fvanfac").ToString)
-            '_NumFac = CInt(_Ds1.Tables(0).Rows(0).Item("sbnfac"))
             _Nit = _Ds.Tables(0).Rows(0).Item("fvanitcli").ToString
 
             _Fechainv = Microsoft.VisualBasic.Right(_Fecha.ToShortDateString, 4) +
                         Microsoft.VisualBasic.Right(Microsoft.VisualBasic.Left(_Fecha.ToShortDateString, 5), 2) +
                         Microsoft.VisualBasic.Left(_Fecha.ToShortDateString, 2)
             _Total = _Ds.Tables(0).Rows(0).Item("fvatotal").ToString
-            '_Total = "45.82"
-            ' _Total = _Ds.Tables(0).Rows(0).Item("fvastot").ToString
+
             ice = _Ds.Tables(0).Rows(0).Item("fvaimpsi")
             _numidosif = _Ds1.Tables(0).Rows(0).Item("sbnumi").ToString
             _Key = _Ds1.Tables(0).Rows(0).Item("sbkey")
             _FechaAl = _Ds1.Tables(0).Rows(0).Item("sbfal")
 
-            'Dim maxNFac As Integer = L_fnObtenerMaxIdTabla("TFV001", "fvanfac", "fvaautoriz = " + _Autorizacion)
-            '_NumFac = maxNFac + 1
+
 
             _TotalCC = Math.Round(CDbl(_Total), MidpointRounding.AwayFromZero)
             _Cod_Control = ControlCode.generateControlCode(_Autorizacion, _NumFac, _Nit, _Fechainv, CStr(_TotalCC), _Key)
 
-            'Literal 
-            '_TotalLi = "2740.38"
             _TotalLi = _Ds.Tables(0).Rows(0).Item("fvastot") - _Ds.Tables(0).Rows(0).Item("fvadesc")
             _TotalDecimal = _TotalLi - Math.Truncate(_TotalLi)
-            '_TotalDecimal = "0.93"
             _TotalDecimal2 = CDbl(_TotalDecimal) * 100
 
             'Dim li As String = Facturacion.ConvertirLiteral.A_fnConvertirLiteral(CDbl(_Total) - CDbl(_TotalDecimal)) + " con " + IIf(_TotalDecimal2.Equals("0"), "00", _TotalDecimal2) + "/100 Bolivianos"
@@ -2123,28 +2117,28 @@ Public Class F0_Venta2
             _Ds2 = L_Reporte_Factura_Cia("2")
             QrFactura.Text = _Ds2.Tables(0).Rows(0).Item("scnit").ToString + "|" + Str(_NumFac).Trim + "|" + _Autorizacion + "|" + _Fecha + "|" + _Total + "|" + _TotalLi.ToString + "|" + _Cod_Control + "|" + tbNit.Text.Trim + "|" + ice.ToString + "|0|0|" + Str(_Desc).Trim
 
-            L_Modificar_Factura("fvanumi = " + CStr(numi),
-                                "",
-                                CStr(_NumFac),
-                                CStr(_Autorizacion),
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                "",
-                                _Cod_Control,
-                                _FechaAl.ToString("yyyy/MM/dd"),
-                                "",
-                                "",
-                                CStr(numi))
+            'L_Modificar_Factura("fvanumi = " + CStr(numi),
+            '                    "",
+            '                    CStr(_NumFac),
+            '                    CStr(_Autorizacion),
+            '                    "",
+            '                    "",
+            '                    "",
+            '                    "",
+            '                    "",
+            '                    "",
+            '                    "",
+            '                    "",
+            '                    "",
+            '                    "",
+            '                    "",
+            '                    "",
+            '                    "",
+            '                    _Cod_Control,
+            '                    _FechaAl.ToString("yyyy/MM/dd"),
+            '                    "",
+            '                    "",
+            '                    CStr(numi))
 
             _Ds = L_Reporte_Factura(numi, numi)
 
