@@ -35,6 +35,8 @@ Public Class F0_VentasSupermercado
     Dim ListImagenes As String()
     Dim contador As Integer = 0
 
+    Dim dtDescuentos As DataTable = Nothing
+
 #Region "Metodos Privados"
     Private Sub _IniciarTodo()
         L_prAbrirConexion(gs_Ip, gs_UsuarioSql, gs_ClaveSql, gs_NombreBD)
@@ -52,7 +54,56 @@ Public Class F0_VentasSupermercado
         TimerImagenes.Start()
 
     End Sub
+    Public Sub CalcularDescuentosTotal()
 
+        Dim dt As DataTable = CType(grdetalle.DataSource, DataTable)
+
+        Dim sumaDescuento As Double = 0
+
+        For i As Integer = 0 To dt.Rows.Count - 1 Step 1
+
+            If (dt.Rows(i).Item("estado") >= 0) Then
+
+                sumaDescuento += dt.Rows(i).Item("tbdesc")
+
+            End If
+
+        Next
+
+        tbDescuento.Value = sumaDescuento
+
+    End Sub
+    Public Sub CalcularDescuentos(ProductoId As Integer, Cantidad As Integer, Precio As Integer, Posicion As Integer)
+
+
+        Dim fila As DataRow() = dtDescuentos.Select("ProductoId=" + Str(ProductoId).ToString.Trim + "", "")
+
+        For Each dr As DataRow In fila
+
+            Dim CantidadInicial As Integer = dr.Item("CantidadInicial")
+            Dim CantidadFinal As Integer = dr.Item("CantidadFinal")
+            Dim PrecioDescuento As Double = dr.Item("Precio")
+
+            If (Cantidad >= CantidadInicial And Cantidad <= CantidadFinal) Then
+
+                Dim SubTotalDescuento As Double = Cantidad * PrecioDescuento
+                Dim Descuento As Double = (Cantidad * Precio) - SubTotalDescuento
+                CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbdesc") = Descuento
+                grdetalle.SetValue("tbdesc", Descuento)
+                CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbtotdesc") = (grdetalle.GetValue("tbpbas") * grdetalle.GetValue("tbcmin")) - Descuento
+
+                grdetalle.SetValue("tbtotdesc", ((grdetalle.GetValue("tbpbas") * grdetalle.GetValue("tbcmin")) - Descuento))
+                Return
+
+
+            End If
+
+        Next
+
+
+
+
+    End Sub
     Private Sub AsignarClienteEmpleado()
         Dim _tabla11 As DataTable = L_fnListarClientesUsuario(gi_userNumi)
         If _tabla11.Rows.Count > 0 Then
@@ -128,6 +179,12 @@ Public Class F0_VentasSupermercado
         Table_Producto = Nothing
         tbDescripcion.Clear()
         tbPrecio.Text = ""
+
+
+
+        tbDescuento.Value = 0
+        dtDescuentos = L_fnListarDescuentosTodos()
+
     End Sub
 
 
@@ -227,7 +284,7 @@ Public Class F0_VentasSupermercado
         With grdetalle.RootTable.Columns("tbptot")
             .Width = 85
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-            .Visible = False
+            .Visible = True
             .FormatString = "0.00"
             .Caption = "Total"
         End With
@@ -248,7 +305,7 @@ Public Class F0_VentasSupermercado
         With grdetalle.RootTable.Columns("tbtotdesc")
             .Width = 70
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-            .Visible = True
+            .Visible = False
             .FormatString = "0.00"
             .Caption = "Total".ToUpper
         End With
@@ -802,6 +859,8 @@ Public Class F0_VentasSupermercado
 
 
         Dim TotalDescuento As Double = 0
+
+        Dim Descuento As Double = 0
         Dim TotalCosto As Double = 0
         Dim dt As DataTable = CType(grdetalle.DataSource, DataTable)
         For i As Integer = 0 To dt.Rows.Count - 1 Step 1
@@ -809,6 +868,7 @@ Public Class F0_VentasSupermercado
             If (dt.Rows(i).Item("estado") >= 0) Then
                 TotalDescuento = TotalDescuento + dt.Rows(i).Item("tbtotdesc")
                 TotalCosto = TotalDescuento + dt.Rows(i).Item("tbptot2")
+                Descuento += dt.Rows(i).Item("tbdesc")
             End If
         Next
 
@@ -818,7 +878,7 @@ Public Class F0_VentasSupermercado
         Dim montodesc As Double = 0
         Dim pordesc As Double = ((montodesc * 100) / TotalDescuento)
         tbTotal.Value = TotalDescuento
-
+        tbDescuento.Value = Descuento
 
 
     End Sub
@@ -943,7 +1003,7 @@ Public Class F0_VentasSupermercado
                                 Dim total As Decimal = CStr(Format(precio * saldo, "####0.00"))
 
                                 dtDetalle.Rows(pos).Item("tbptot") = total
-                                dtDetalle.Rows(pos).Item("tbtotdesc") = total
+
                                 'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = total
                                 'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = saldo
                                 dtDetalle.Rows(pos).Item("tbcmin") = saldo
@@ -965,7 +1025,10 @@ Public Class F0_VentasSupermercado
                                     Dim precio As Double = dtDetalle.Rows(pos).Item("tbpbas")
                                     Dim total As Decimal = CStr(Format(precio * inventario, "####0.00"))
                                     dtDetalle.Rows(pos).Item("tbptot") = total
-                                    dtDetalle.Rows(pos).Item("tbtotdesc") = total
+
+                                    Dim descuento As Double = (dt.Rows(i).Item("tbtotdesc") / dt.Rows(i).Item("tbcmin"))
+
+                                    dtDetalle.Rows(pos).Item("tbtotdesc") = total - (inventario * descuento)
                                     'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = total
                                     'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = inventario
                                     dtDetalle.Rows(pos).Item("tbcmin") = inventario
@@ -988,7 +1051,9 @@ Public Class F0_VentasSupermercado
                             Dim precio As Double = dtDetalle.Rows(pos).Item("tbpbas")
                             Dim total As Decimal = CStr(Format(precio * saldo, "####0.00"))
                             dtDetalle.Rows(pos).Item("tbptot") = total
-                            dtDetalle.Rows(pos).Item("tbtotdesc") = total
+                            Dim descuento As Double = (dt.Rows(i).Item("tbtotdesc") / dt.Rows(i).Item("tbcmin"))
+                            dtDetalle.Rows(pos).Item("tbtotdesc") = total - (saldo * descuento)
+                            'dtDetalle.Rows(pos).Item("tbtotdesc") = total
                             dtDetalle.Rows(pos).Item("tbcmin") = saldo
                             Dim precioCosto As Double = dtDetalle.Rows(pos).Item("tbpcos")
                             dtDetalle.Rows(pos).Item("tbptot2") = precioCosto * saldo
@@ -1061,7 +1126,7 @@ Public Class F0_VentasSupermercado
             'prCargando.Show()
 
             Dim dtDetalle As DataTable = rearmarDetalle()
-            Dim res As Boolean = L_fnGrabarVenta(numi, "", Now.Date.ToString("yyyy/MM/dd"), _CodEmpleado, 1, Now.Date.ToString("yyyy/MM/dd"), _CodCliente, 1, "", 0, 0, Str(tbTotal.Value), dtDetalle, Sucursal, 0, tabla)
+            Dim res As Boolean = L_fnGrabarVenta(numi, "", Now.Date.ToString("yyyy/MM/dd"), _CodEmpleado, 1, Now.Date.ToString("yyyy/MM/dd"), _CodCliente, 1, "", tbDescuento.Value, 0, Str(tbTotal.Value), dtDetalle, Sucursal, 0, tabla)
             If res Then
                 'res = P_fnGrabarFacturarTFV001(numi)
                 'Emite factura
@@ -2246,6 +2311,7 @@ Public Class F0_VentasSupermercado
                     'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tblote") = grProductos.GetValue("iclot")
                     'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbfechaVenc") = grProductos.GetValue("icfven")
                     'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = grProductos.GetValue("iccven")
+                    CalcularDescuentos(grdetalle.GetValue("tbty5prod"), Cantidad, grdetalle.GetValue("tbpbas"), pos)
                     _prCalcularPrecioTotal()
                     tbDescripcion.Text = fila(0).ItemArray(3)
                     tbPrecio.Value = fila(0).ItemArray(15)
@@ -2305,6 +2371,7 @@ Public Class F0_VentasSupermercado
                 'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = grProductos.GetValue("iccven")
                 tbDescripcion.Text = fila(0).ItemArray(3)
                 tbPrecio.Value = precio
+                CalcularDescuentos(grdetalle.GetValue("tbty5prod"), cantidad, grdetalle.GetValue("tbpbas"), pos)
                 _prCalcularPrecioTotal()
             End If
         Catch ex As Exception
@@ -2354,6 +2421,48 @@ Public Class F0_VentasSupermercado
     Private Sub grdetalle_KeyDown(sender As Object, e As KeyEventArgs) Handles grdetalle.KeyDown
         If (e.KeyData = Keys.Escape And grdetalle.Row >= 0) Then
             _prEliminarFila()
+        End If
+
+        If (e.KeyData = Keys.Control + Keys.C And grdetalle.Row >= 0) Then
+            Dim ef = New Efecto
+            ef.tipo = 7
+            ef.Stock = grdetalle.GetValue("stock")
+            ef.Cantidad = grdetalle.GetValue("tbcmin")
+            ef.NameProducto = grdetalle.GetValue("producto")
+            Dim Cantidad As Double = grdetalle.GetValue("tbcmin")
+            ef.ShowDialog()
+            Dim bandera As Boolean = False
+            bandera = ef.band
+            If (bandera = True) Then
+
+                Cantidad = ef.Cantidad
+                If (Cantidad > 0) Then
+                    Dim lin As Integer = grdetalle.GetValue("tbnumi")
+                    Dim pos As Integer = -1
+                    _fnObtenerFilaDetalle(pos, lin)
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = Cantidad
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = grdetalle.GetValue("tbpbas") * Cantidad
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = grdetalle.GetValue("tbpbas") * Cantidad
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = grdetalle.GetValue("tbpcos") * Cantidad
+
+
+
+                    CalcularDescuentos(grdetalle.GetValue("tbty5prod"), Cantidad, grdetalle.GetValue("tbpbas"), pos)
+
+
+
+                    _prCalcularPrecioTotal()
+                    tbProducto.Focus()
+
+                End If
+
+            Else
+                ToastNotification.Show(Me, "No Modifica Cantidad del Producto", My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
+
+
+
+            End If
+            tbProducto.Focus()
         End If
 
         If (e.KeyData = Keys.Enter) Then
@@ -2417,6 +2526,9 @@ Public Class F0_VentasSupermercado
                             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tblote") = grProductos.GetValue("iclot")
                             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbfechaVenc") = grProductos.GetValue("icfven")
                             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = grProductos.GetValue("iccven")
+
+
+
                             _prCalcularPrecioTotal()
                             _DesHabilitarProductos()
 
@@ -2665,6 +2777,13 @@ Public Class F0_VentasSupermercado
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = grdetalle.GetValue("tbpbas") * Cantidad
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = grdetalle.GetValue("tbpbas") * Cantidad
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = grdetalle.GetValue("tbpcos") * Cantidad
+
+
+
+                    CalcularDescuentos(grdetalle.GetValue("tbty5prod"), Cantidad, grdetalle.GetValue("tbpbas"), pos)
+
+
+
                     _prCalcularPrecioTotal()
                     tbProducto.Focus()
 
