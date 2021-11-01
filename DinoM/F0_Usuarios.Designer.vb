@@ -26,7 +26,6 @@ Partial Class F0_Usuarios
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F0_Usuarios))
         Dim JMC_Categoria_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Dim tbSuc_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
-        Me.Tb_fuenteTam = New DevComponents.Editors.IntegerInput()
         Me.Tb_DiasPedidos = New DevComponents.Editors.IntegerInput()
         Me.JMC_Categoria = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.Tb_Estado = New DevComponents.DotNetBar.Controls.SwitchButton()
@@ -51,6 +50,7 @@ Partial Class F0_Usuarios
         Me.GroupPanel1 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.JGr_Buscador = New Janus.Windows.GridEX.GridEX()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Tb_Cajero = New DevComponents.DotNetBar.Controls.SwitchButton()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -64,7 +64,6 @@ Partial Class F0_Usuarios
         Me.PanelNavegacion.SuspendLayout()
         Me.MPanelUserAct.SuspendLayout()
         CType(Me.MEP, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Tb_fuenteTam, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Tb_DiasPedidos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.JMC_Categoria, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -200,6 +199,7 @@ Partial Class F0_Usuarios
         '
         'btnUltimo
         '
+        Me.btnUltimo.Location = New System.Drawing.Point(129, 0)
         '
         'btnSiguiente
         '
@@ -221,24 +221,6 @@ Partial Class F0_Usuarios
         '
         Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.MRlAccion.Size = New System.Drawing.Size(874, 72)
-        '
-        'Tb_fuenteTam
-        '
-        '
-        '
-        '
-        Me.Tb_fuenteTam.BackgroundStyle.Class = "DateTimeInputBackground"
-        Me.Tb_fuenteTam.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.Tb_fuenteTam.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.Tb_fuenteTam.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Tb_fuenteTam.Location = New System.Drawing.Point(553, 46)
-        Me.Tb_fuenteTam.MaxValue = 12
-        Me.Tb_fuenteTam.MinValue = 7
-        Me.Tb_fuenteTam.Name = "Tb_fuenteTam"
-        Me.Tb_fuenteTam.ShowUpDown = True
-        Me.Tb_fuenteTam.Size = New System.Drawing.Size(59, 21)
-        Me.Tb_fuenteTam.TabIndex = 6
-        Me.Tb_fuenteTam.Value = 7
         '
         'Tb_DiasPedidos
         '
@@ -337,6 +319,7 @@ Partial Class F0_Usuarios
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.Tb_Cajero)
         Me.Panel1.Controls.Add(Me.btnSearch)
         Me.Panel1.Controls.Add(Me.tbVendedor)
         Me.Panel1.Controls.Add(Me.LabelX10)
@@ -351,7 +334,6 @@ Partial Class F0_Usuarios
         Me.Panel1.Controls.Add(Me.LabelX9)
         Me.Panel1.Controls.Add(Me.tbTodasSucursales)
         Me.Panel1.Controls.Add(Me.tbSuc)
-        Me.Panel1.Controls.Add(Me.Tb_fuenteTam)
         Me.Panel1.Controls.Add(Me.Tb_Id)
         Me.Panel1.Controls.Add(Me.Tb_DiasPedidos)
         Me.Panel1.Controls.Add(Me.Tb_Nombre)
@@ -457,7 +439,7 @@ Partial Class F0_Usuarios
         Me.LabelX4.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX4.Size = New System.Drawing.Size(127, 23)
         Me.LabelX4.TabIndex = 232
-        Me.LabelX4.Text = "TAMAÑO FUENTE.:"
+        Me.LabelX4.Text = "CAJERO:"
         '
         'LabelX6
         '
@@ -660,15 +642,35 @@ Partial Class F0_Usuarios
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
         '
+        'Tb_Cajero
+        '
+        '
+        '
+        '
+        Me.Tb_Cajero.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.Tb_Cajero.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Tb_Cajero.Location = New System.Drawing.Point(553, 46)
+        Me.Tb_Cajero.Name = "Tb_Cajero"
+        Me.Tb_Cajero.OffBackColor = System.Drawing.Color.DodgerBlue
+        Me.Tb_Cajero.OffText = "NO"
+        Me.Tb_Cajero.OffTextColor = System.Drawing.Color.White
+        Me.Tb_Cajero.OnBackColor = System.Drawing.Color.Gold
+        Me.Tb_Cajero.OnText = "SI"
+        Me.Tb_Cajero.Size = New System.Drawing.Size(100, 22)
+        Me.Tb_Cajero.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.Tb_Cajero.TabIndex = 240
+        Me.Tb_Cajero.ValueFalse = "0"
+        Me.Tb_Cajero.ValueTrue = "1"
+        '
         'F0_Usuarios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1362, 741)
+        Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "F0_Usuarios"
         Me.Opacity = 0.05R
         Me.Text = "F0_Usuarios"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Minimized
         Me.Controls.SetChildIndex(Me.SuperTabPrincipal, 0)
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SuperTabPrincipal.ResumeLayout(False)
@@ -685,7 +687,6 @@ Partial Class F0_Usuarios
         Me.MPanelUserAct.ResumeLayout(False)
         Me.MPanelUserAct.PerformLayout()
         CType(Me.MEP, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Tb_fuenteTam, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Tb_DiasPedidos, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.JMC_Categoria, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
@@ -696,7 +697,6 @@ Partial Class F0_Usuarios
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents Tb_fuenteTam As DevComponents.Editors.IntegerInput
     Friend WithEvents Tb_DiasPedidos As DevComponents.Editors.IntegerInput
     Friend WithEvents JMC_Categoria As Janus.Windows.GridEX.EditControls.MultiColumnCombo
     Friend WithEvents Tb_Estado As DevComponents.DotNetBar.Controls.SwitchButton
@@ -721,4 +721,5 @@ Partial Class F0_Usuarios
     Friend WithEvents btnSearch As DevComponents.DotNetBar.ButtonX
     Friend WithEvents tbVendedor As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents Tb_Cajero As DevComponents.DotNetBar.Controls.SwitchButton
 End Class

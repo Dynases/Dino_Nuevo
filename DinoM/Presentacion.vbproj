@@ -464,6 +464,12 @@
       <DependentUpon>KardexClienteRes.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="NroCaja.Designer.vb">
+      <DependentUpon>NroCaja.vb</DependentUpon>
+    </Compile>
+    <Compile Include="NroCaja.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Pr_EstadoCuentasClientesTodos.Designer.vb">
       <DependentUpon>Pr_EstadoCuentasClientesTodos.vb</DependentUpon>
     </Compile>
@@ -1123,6 +1129,9 @@
     <EmbeddedResource Include="KardexClienteRes.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>KardexClienteRes.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NroCaja.resx">
+      <DependentUpon>NroCaja.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pr_EstadoCuentasClientesTodos.resx">
       <DependentUpon>Pr_EstadoCuentasClientesTodos.vb</DependentUpon>

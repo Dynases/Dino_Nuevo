@@ -159,7 +159,7 @@ Public Class F0_Usuarios
             Tb_Estado.Value = CBool(.GetValue("ydest").ToString)
             tbTodasSucursales.Value = CBool(IIf(.GetValue("ydall") = 1, True, False))
             Tb_DiasPedidos.Value = CInt(.GetValue("ydcant").ToString)
-            Tb_fuenteTam.Value = CInt(.GetValue("ydfontsize").ToString)
+            Tb_Cajero.Value = IIf(.GetValue("ydfontsize") = 0, False, True)
 
             JMC_Categoria.Value = CInt(.GetValue("ybnumi").ToString)
             tbSuc.Value = CInt(.GetValue("ydsuc").ToString)
@@ -189,7 +189,7 @@ Public Class F0_Usuarios
         Tb_Nombre.ReadOnly = True
         TextBoxX1.ReadOnly = True
         Tb_DiasPedidos.Enabled = False
-        Tb_fuenteTam.Enabled = False
+        Tb_Cajero.Enabled = False
         tbSuc.ReadOnly = True
         btnSearch.Visible = False
         tbVendedor.ReadOnly = True
@@ -214,7 +214,7 @@ Public Class F0_Usuarios
         Tb_Nombre.BackColor = Color.White
         TextBoxX1.BackColor = Color.White
         Tb_DiasPedidos.BackColor = Color.White
-        Tb_fuenteTam.BackColor = Color.White
+        Tb_Cajero.BackColor = Color.White
         JMC_Categoria.BackColor = Color.White
         tbSuc.BackColor = Color.White
     End Sub
@@ -229,7 +229,7 @@ Public Class F0_Usuarios
         JMC_Categoria.TabIndex = 3
         Tb_Estado.TabIndex = 4
         Tb_DiasPedidos.TabIndex = 5
-        Tb_fuenteTam.TabIndex = 6
+        Tb_Cajero.TabIndex = 6
     End Sub
 
     Private Sub _PCargarBuscador()
@@ -282,10 +282,11 @@ Public Class F0_Usuarios
         End With
 
         With JGr_Buscador.RootTable.Columns("ydfontsize")
-            .Caption = "Tam. Fuente".ToUpper
+            .Caption = "Caja".ToUpper
             .Width = 130
             .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            .Visible = False
 
         End With
 
@@ -346,7 +347,7 @@ Public Class F0_Usuarios
         Tb_Estado.IsReadOnly = True
         tbTodasSucursales.IsReadOnly = False
         Tb_DiasPedidos.Enabled = True
-        Tb_fuenteTam.Enabled = True
+        Tb_Cajero.Enabled = True
         tbSuc.ReadOnly = False
         btnSearch.Visible = True
         tbVendedor.ReadOnly = False
@@ -365,7 +366,7 @@ Public Class F0_Usuarios
         Tb_Estado.Value = True
         tbTodasSucursales.Value = False
         Tb_DiasPedidos.Value = 0
-        Tb_fuenteTam.Value = 7
+        Tb_Cajero.Value = False
         tbSuc.SelectedIndex = -1
         tbVendedor.Clear()
         LblPaginacion.Text = String.Empty
@@ -419,14 +420,14 @@ Public Class F0_Usuarios
             MEP.SetError(Tb_DiasPedidos, String.Empty)
         End If
 
-        If Tb_fuenteTam.Text.Trim = String.Empty Then
-            Tb_fuenteTam.BackColor = Color.Red
-            MEP.SetError(Tb_fuenteTam, "Ingrese el tamaño de fuente!".ToUpper)
-            _Error = False
-        Else
-            Tb_fuenteTam.BackColor = Color.White
-            MEP.SetError(Tb_fuenteTam, String.Empty)
-        End If
+        'If Tb_Cajero.Text.Trim = String.Empty Then
+        '    Tb_Cajero.BackColor = Color.Red
+        '    MEP.SetError(Tb_Cajero, "Ingrese el tamaño de fuente!".ToUpper)
+        '    _Error = False
+        'Else
+        '    Tb_Cajero.BackColor = Color.White
+        '    MEP.SetError(Tb_Cajero, String.Empty)
+        'End If
 
         MHighlighterFocus.UpdateHighlights()
         Return _Error
@@ -467,7 +468,7 @@ Public Class F0_Usuarios
             End If
 
             If _Nuevo Then
-                L_Usuario_Grabar(Tb_Id.Text, Tb_Nombre.Text, TextBoxX1.Text, JMC_Categoria.Value, Tb_Estado.Value, Tb_DiasPedidos.Value, Tb_fuenteTam.Value, tbSuc.Value, IIf(tbTodasSucursales.Value = True, "1", "0"), NumiVendedor)
+                L_Usuario_Grabar(Tb_Id.Text, Tb_Nombre.Text, TextBoxX1.Text, JMC_Categoria.Value, Tb_Estado.Value, Tb_DiasPedidos.Value, IIf(Tb_Cajero.Value = False, 0, 1), tbSuc.Value, IIf(tbTodasSucursales.Value = True, "1", "0"), NumiVendedor)
 
                 Tb_Nombre.Focus()
                 ToastNotification.Show(Me, "Codigo Usuario ".ToUpper + Tb_Id.Text + " Grabado con Exito.".ToUpper, My.Resources.GRABACION_EXITOSA, 5000, eToastGlowColor.Green, eToastPosition.TopCenter)
@@ -476,7 +477,7 @@ Public Class F0_Usuarios
                 _PCargarBuscador()
                 _PLimpiar()
             Else
-                L_Usuario_Modificar(Tb_Id.Text, Tb_Nombre.Text, TextBoxX1.Text, JMC_Categoria.Value, Tb_Estado.Value, Tb_DiasPedidos.Value, Tb_fuenteTam.Value, tbSuc.Value, IIf(tbTodasSucursales.Value = True, "1", "0"), NumiVendedor)
+                L_Usuario_Modificar(Tb_Id.Text, Tb_Nombre.Text, TextBoxX1.Text, JMC_Categoria.Value, Tb_Estado.Value, Tb_DiasPedidos.Value, IIf(Tb_Cajero.Value = False, 0, 1), tbSuc.Value, IIf(tbTodasSucursales.Value = True, "1", "0"), NumiVendedor)
 
                 ToastNotification.Show(Me, "Codigo Usuario ".ToUpper + Tb_Id.Text + " Modificado con Exito.".ToUpper, My.Resources.GRABACION_EXITOSA, 5000, eToastGlowColor.Green, eToastPosition.TopCenter)
 
