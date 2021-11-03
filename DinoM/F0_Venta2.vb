@@ -1742,7 +1742,7 @@ Public Class F0_Venta2
         Dim h As Double = g * (gi_IVA / 100)
 
         Dim res As Boolean = False
-        Dim _Hora As String = Now.Hour.ToString + ":" + Now.Minute.ToString
+        Dim _Hora As String = Now.Hour.ToString("D2") + ":" + Now.Minute.ToString("D2")
         'Grabado de Cabesera Factura
         L_Grabar_Factura(numi,
                         dtiFechaFactura.Value.ToString("yyyy/MM/dd"),
@@ -1821,7 +1821,7 @@ Public Class F0_Venta2
 
         '_Fecha = Now.Date '.ToString("dd/MM/yyyy")
         _Fecha = tbFechaVenta.Value
-        _Hora = Now.Hour.ToString + ":" + Now.Minute.ToString
+        _Hora = Now.Hour.ToString("D2") + ":" + Now.Minute.ToString("D2")
         _Ds1 = L_DosificacionCajas("1", "1", _Fecha, gs_NroCaja)
 
         _Ds = L_Reporte_Factura(numi, numi)

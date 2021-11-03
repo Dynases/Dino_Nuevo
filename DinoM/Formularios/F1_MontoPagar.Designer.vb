@@ -24,6 +24,8 @@ Partial Class F1_MontoPagar
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F1_MontoPagar))
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.BtnSalir = New DevComponents.DotNetBar.ButtonX()
+        Me.btnContinuar = New DevComponents.DotNetBar.ButtonX()
         Me.txtMontoPagado1 = New DevComponents.DotNetBar.LabelX()
         Me.txtCambio1 = New DevComponents.DotNetBar.LabelX()
         Me.lbCambio = New DevComponents.DotNetBar.LabelX()
@@ -43,8 +45,6 @@ Partial Class F1_MontoPagar
         Me.tbNit = New System.Windows.Forms.TextBox()
         Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
-        Me.btnContinuar = New DevComponents.DotNetBar.ButtonX()
-        Me.BtnSalir = New DevComponents.DotNetBar.ButtonX()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.tbMontoTarej, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -66,14 +66,42 @@ Partial Class F1_MontoPagar
         Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox2.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.ForeColor = System.Drawing.Color.Gold
-        Me.GroupBox2.Location = New System.Drawing.Point(0, 278)
-        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4)
+        Me.GroupBox2.Location = New System.Drawing.Point(0, 225)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox2.Size = New System.Drawing.Size(566, 170)
+        Me.GroupBox2.Size = New System.Drawing.Size(424, 139)
         Me.GroupBox2.TabIndex = 364
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Monto Pagado/Cambio:"
+        '
+        'BtnSalir
+        '
+        Me.BtnSalir.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.BtnSalir.ColorTable = DevComponents.DotNetBar.eButtonColor.Office2007WithBackground
+        Me.BtnSalir.Font = New System.Drawing.Font("Calibri", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnSalir.Image = Global.DinoM.My.Resources.Resources.cancel
+        Me.BtnSalir.ImageFixedSize = New System.Drawing.Size(30, 30)
+        Me.BtnSalir.Location = New System.Drawing.Point(177, 89)
+        Me.BtnSalir.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.BtnSalir.Name = "BtnSalir"
+        Me.BtnSalir.Size = New System.Drawing.Size(110, 39)
+        Me.BtnSalir.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
+        Me.BtnSalir.TabIndex = 371
+        Me.BtnSalir.Text = "Salir"
+        '
+        'btnContinuar
+        '
+        Me.btnContinuar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnContinuar.ColorTable = DevComponents.DotNetBar.eButtonColor.Office2007WithBackground
+        Me.btnContinuar.Font = New System.Drawing.Font("Calibri", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnContinuar.Image = Global.DinoM.My.Resources.Resources.checked
+        Me.btnContinuar.ImageFixedSize = New System.Drawing.Size(30, 30)
+        Me.btnContinuar.Location = New System.Drawing.Point(298, 89)
+        Me.btnContinuar.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnContinuar.Name = "btnContinuar"
+        Me.btnContinuar.Size = New System.Drawing.Size(110, 39)
+        Me.btnContinuar.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
+        Me.btnContinuar.TabIndex = 370
+        Me.btnContinuar.Text = "Continuar"
         '
         'txtMontoPagado1
         '
@@ -84,11 +112,10 @@ Partial Class F1_MontoPagar
         Me.txtMontoPagado1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.txtMontoPagado1.Font = New System.Drawing.Font("Calibri", 19.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtMontoPagado1.ForeColor = System.Drawing.Color.YellowGreen
-        Me.txtMontoPagado1.Location = New System.Drawing.Point(120, 28)
-        Me.txtMontoPagado1.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtMontoPagado1.Location = New System.Drawing.Point(90, 23)
         Me.txtMontoPagado1.Name = "txtMontoPagado1"
         Me.txtMontoPagado1.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.txtMontoPagado1.Size = New System.Drawing.Size(160, 49)
+        Me.txtMontoPagado1.Size = New System.Drawing.Size(120, 40)
         Me.txtMontoPagado1.TabIndex = 369
         Me.txtMontoPagado1.Text = "0.00"
         Me.txtMontoPagado1.TextAlignment = System.Drawing.StringAlignment.Far
@@ -102,11 +129,10 @@ Partial Class F1_MontoPagar
         Me.txtCambio1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.txtCambio1.Font = New System.Drawing.Font("Calibri", 18.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtCambio1.ForeColor = System.Drawing.Color.YellowGreen
-        Me.txtCambio1.Location = New System.Drawing.Point(398, 26)
-        Me.txtCambio1.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtCambio1.Location = New System.Drawing.Point(298, 21)
         Me.txtCambio1.Name = "txtCambio1"
         Me.txtCambio1.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.txtCambio1.Size = New System.Drawing.Size(147, 49)
+        Me.txtCambio1.Size = New System.Drawing.Size(110, 40)
         Me.txtCambio1.TabIndex = 368
         Me.txtCambio1.Text = "0.00"
         Me.txtCambio1.TextAlignment = System.Drawing.StringAlignment.Far
@@ -120,11 +146,10 @@ Partial Class F1_MontoPagar
         Me.lbCambio.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.lbCambio.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbCambio.ForeColor = System.Drawing.Color.White
-        Me.lbCambio.Location = New System.Drawing.Point(292, 34)
-        Me.lbCambio.Margin = New System.Windows.Forms.Padding(4)
+        Me.lbCambio.Location = New System.Drawing.Point(219, 28)
         Me.lbCambio.Name = "lbCambio"
         Me.lbCambio.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.lbCambio.Size = New System.Drawing.Size(87, 22)
+        Me.lbCambio.Size = New System.Drawing.Size(65, 18)
         Me.lbCambio.TabIndex = 367
         Me.lbCambio.Text = "Cambio:"
         '
@@ -137,11 +162,10 @@ Partial Class F1_MontoPagar
         Me.lbMontoPagado.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.lbMontoPagado.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbMontoPagado.ForeColor = System.Drawing.Color.White
-        Me.lbMontoPagado.Location = New System.Drawing.Point(3, 35)
-        Me.lbMontoPagado.Margin = New System.Windows.Forms.Padding(4)
+        Me.lbMontoPagado.Location = New System.Drawing.Point(2, 28)
         Me.lbMontoPagado.Name = "lbMontoPagado"
         Me.lbMontoPagado.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.lbMontoPagado.Size = New System.Drawing.Size(135, 22)
+        Me.lbMontoPagado.Size = New System.Drawing.Size(101, 18)
         Me.lbMontoPagado.TabIndex = 366
         Me.lbMontoPagado.Text = "M.Pagado:"
         '
@@ -161,11 +185,9 @@ Partial Class F1_MontoPagar
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Top
         Me.GroupBox1.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.ForeColor = System.Drawing.Color.Gold
-        Me.GroupBox1.Location = New System.Drawing.Point(0, 136)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4)
+        Me.GroupBox1.Location = New System.Drawing.Point(0, 110)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox1.Size = New System.Drawing.Size(566, 142)
+        Me.GroupBox1.Size = New System.Drawing.Size(424, 115)
         Me.GroupBox1.TabIndex = 362
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Efectivo:"
@@ -177,10 +199,9 @@ Partial Class F1_MontoPagar
         Me.ButtonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
         Me.ButtonX3.Image = CType(resources.GetObject("ButtonX3.Image"), System.Drawing.Image)
         Me.ButtonX3.ImageFixedSize = New System.Drawing.Size(25, 23)
-        Me.ButtonX3.Location = New System.Drawing.Point(459, 86)
-        Me.ButtonX3.Margin = New System.Windows.Forms.Padding(4)
+        Me.ButtonX3.Location = New System.Drawing.Point(344, 70)
         Me.ButtonX3.Name = "ButtonX3"
-        Me.ButtonX3.Size = New System.Drawing.Size(80, 25)
+        Me.ButtonX3.Size = New System.Drawing.Size(60, 20)
         Me.ButtonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.ButtonX3.TabIndex = 363
         Me.ButtonX3.Visible = False
@@ -196,11 +217,10 @@ Partial Class F1_MontoPagar
         Me.tbMontoTarej.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbMontoTarej.ForeColor = System.Drawing.Color.Black
         Me.tbMontoTarej.Increment = 1.0R
-        Me.tbMontoTarej.Location = New System.Drawing.Point(124, 84)
-        Me.tbMontoTarej.Margin = New System.Windows.Forms.Padding(4)
+        Me.tbMontoTarej.Location = New System.Drawing.Point(93, 68)
         Me.tbMontoTarej.MinValue = 0R
         Me.tbMontoTarej.Name = "tbMontoTarej"
-        Me.tbMontoTarej.Size = New System.Drawing.Size(160, 30)
+        Me.tbMontoTarej.Size = New System.Drawing.Size(120, 26)
         Me.tbMontoTarej.TabIndex = 4
         Me.tbMontoTarej.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
         '
@@ -211,10 +231,9 @@ Partial Class F1_MontoPagar
         Me.ButtonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
         Me.ButtonX2.Image = CType(resources.GetObject("ButtonX2.Image"), System.Drawing.Image)
         Me.ButtonX2.ImageFixedSize = New System.Drawing.Size(25, 23)
-        Me.ButtonX2.Location = New System.Drawing.Point(381, 87)
-        Me.ButtonX2.Margin = New System.Windows.Forms.Padding(4)
+        Me.ButtonX2.Location = New System.Drawing.Point(286, 71)
         Me.ButtonX2.Name = "ButtonX2"
-        Me.ButtonX2.Size = New System.Drawing.Size(80, 25)
+        Me.ButtonX2.Size = New System.Drawing.Size(60, 20)
         Me.ButtonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.ButtonX2.TabIndex = 362
         Me.ButtonX2.Visible = False
@@ -227,10 +246,9 @@ Partial Class F1_MontoPagar
         '
         Me.chbTarjeta.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.chbTarjeta.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chbTarjeta.Location = New System.Drawing.Point(5, 80)
-        Me.chbTarjeta.Margin = New System.Windows.Forms.Padding(4)
+        Me.chbTarjeta.Location = New System.Drawing.Point(4, 65)
         Me.chbTarjeta.Name = "chbTarjeta"
-        Me.chbTarjeta.Size = New System.Drawing.Size(116, 37)
+        Me.chbTarjeta.Size = New System.Drawing.Size(87, 30)
         Me.chbTarjeta.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.chbTarjeta.TabIndex = 279
         Me.chbTarjeta.Text = "Tarjeta:"
@@ -243,10 +261,9 @@ Partial Class F1_MontoPagar
         Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
         Me.ButtonX1.Image = CType(resources.GetObject("ButtonX1.Image"), System.Drawing.Image)
         Me.ButtonX1.ImageFixedSize = New System.Drawing.Size(25, 23)
-        Me.ButtonX1.Location = New System.Drawing.Point(303, 86)
-        Me.ButtonX1.Margin = New System.Windows.Forms.Padding(4)
+        Me.ButtonX1.Location = New System.Drawing.Point(227, 70)
         Me.ButtonX1.Name = "ButtonX1"
-        Me.ButtonX1.Size = New System.Drawing.Size(80, 25)
+        Me.ButtonX1.Size = New System.Drawing.Size(60, 20)
         Me.ButtonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.ButtonX1.TabIndex = 360
         Me.ButtonX1.Visible = False
@@ -262,11 +279,10 @@ Partial Class F1_MontoPagar
         Me.tbMontoBs.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbMontoBs.ForeColor = System.Drawing.Color.Black
         Me.tbMontoBs.Increment = 1.0R
-        Me.tbMontoBs.Location = New System.Drawing.Point(124, 39)
-        Me.tbMontoBs.Margin = New System.Windows.Forms.Padding(4)
+        Me.tbMontoBs.Location = New System.Drawing.Point(93, 32)
         Me.tbMontoBs.MinValue = 0R
         Me.tbMontoBs.Name = "tbMontoBs"
-        Me.tbMontoBs.Size = New System.Drawing.Size(160, 30)
+        Me.tbMontoBs.Size = New System.Drawing.Size(120, 26)
         Me.tbMontoBs.TabIndex = 2
         Me.tbMontoBs.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
         '
@@ -279,11 +295,10 @@ Partial Class F1_MontoPagar
         Me.LabelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX5.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX5.ForeColor = System.Drawing.Color.White
-        Me.LabelX5.Location = New System.Drawing.Point(4, 43)
-        Me.LabelX5.Margin = New System.Windows.Forms.Padding(4)
+        Me.LabelX5.Location = New System.Drawing.Point(3, 35)
         Me.LabelX5.Name = "LabelX5"
         Me.LabelX5.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX5.Size = New System.Drawing.Size(113, 22)
+        Me.LabelX5.Size = New System.Drawing.Size(85, 18)
         Me.LabelX5.TabIndex = 64
         Me.LabelX5.Text = "M.Pagado:"
         '
@@ -298,11 +313,10 @@ Partial Class F1_MontoPagar
         Me.tbMontoDolar.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbMontoDolar.ForeColor = System.Drawing.Color.Black
         Me.tbMontoDolar.Increment = 1.0R
-        Me.tbMontoDolar.Location = New System.Drawing.Point(399, 41)
-        Me.tbMontoDolar.Margin = New System.Windows.Forms.Padding(4)
+        Me.tbMontoDolar.Location = New System.Drawing.Point(299, 33)
         Me.tbMontoDolar.MinValue = 0R
         Me.tbMontoDolar.Name = "tbMontoDolar"
-        Me.tbMontoDolar.Size = New System.Drawing.Size(147, 30)
+        Me.tbMontoDolar.Size = New System.Drawing.Size(110, 26)
         Me.tbMontoDolar.TabIndex = 3
         Me.tbMontoDolar.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
         '
@@ -315,11 +329,10 @@ Partial Class F1_MontoPagar
         Me.LabelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX6.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX6.ForeColor = System.Drawing.Color.White
-        Me.LabelX6.Location = New System.Drawing.Point(296, 43)
-        Me.LabelX6.Margin = New System.Windows.Forms.Padding(4)
+        Me.LabelX6.Location = New System.Drawing.Point(222, 35)
         Me.LabelX6.Name = "LabelX6"
         Me.LabelX6.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX6.Size = New System.Drawing.Size(93, 22)
+        Me.LabelX6.Size = New System.Drawing.Size(70, 18)
         Me.LabelX6.TabIndex = 66
         Me.LabelX6.Text = "Mont. $:"
         '
@@ -335,10 +348,8 @@ Partial Class F1_MontoPagar
         Me.GroupBox3.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.ForeColor = System.Drawing.Color.Gold
         Me.GroupBox3.Location = New System.Drawing.Point(0, 0)
-        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4)
-        Me.GroupBox3.Size = New System.Drawing.Size(566, 136)
+        Me.GroupBox3.Size = New System.Drawing.Size(424, 110)
         Me.GroupBox3.TabIndex = 365
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Datos de Factura"
@@ -346,17 +357,19 @@ Partial Class F1_MontoPagar
         'tbRazonSocial
         '
         Me.tbRazonSocial.Font = New System.Drawing.Font("Calibri", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbRazonSocial.Location = New System.Drawing.Point(124, 71)
+        Me.tbRazonSocial.Location = New System.Drawing.Point(93, 58)
+        Me.tbRazonSocial.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.tbRazonSocial.Name = "tbRazonSocial"
-        Me.tbRazonSocial.Size = New System.Drawing.Size(435, 28)
+        Me.tbRazonSocial.Size = New System.Drawing.Size(327, 24)
         Me.tbRazonSocial.TabIndex = 1
         '
         'tbNit
         '
         Me.tbNit.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbNit.Location = New System.Drawing.Point(124, 25)
+        Me.tbNit.Location = New System.Drawing.Point(93, 20)
+        Me.tbNit.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.tbNit.Name = "tbNit"
-        Me.tbNit.Size = New System.Drawing.Size(325, 32)
+        Me.tbNit.Size = New System.Drawing.Size(245, 27)
         Me.tbNit.TabIndex = 0
         '
         'LabelX3
@@ -368,11 +381,10 @@ Partial Class F1_MontoPagar
         Me.LabelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX3.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX3.ForeColor = System.Drawing.Color.White
-        Me.LabelX3.Location = New System.Drawing.Point(8, 35)
-        Me.LabelX3.Margin = New System.Windows.Forms.Padding(4)
+        Me.LabelX3.Location = New System.Drawing.Point(6, 28)
         Me.LabelX3.Name = "LabelX3"
         Me.LabelX3.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX3.Size = New System.Drawing.Size(87, 22)
+        Me.LabelX3.Size = New System.Drawing.Size(65, 18)
         Me.LabelX3.TabIndex = 367
         Me.LabelX3.Text = "Nit:"
         '
@@ -385,51 +397,23 @@ Partial Class F1_MontoPagar
         Me.LabelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.LabelX4.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LabelX4.ForeColor = System.Drawing.Color.White
-        Me.LabelX4.Location = New System.Drawing.Point(8, 77)
-        Me.LabelX4.Margin = New System.Windows.Forms.Padding(4)
+        Me.LabelX4.Location = New System.Drawing.Point(6, 63)
         Me.LabelX4.Name = "LabelX4"
         Me.LabelX4.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX4.Size = New System.Drawing.Size(135, 22)
+        Me.LabelX4.Size = New System.Drawing.Size(101, 18)
         Me.LabelX4.TabIndex = 366
         Me.LabelX4.Text = "Razón Social:"
         '
-        'btnContinuar
-        '
-        Me.btnContinuar.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.btnContinuar.ColorTable = DevComponents.DotNetBar.eButtonColor.Office2007WithBackground
-        Me.btnContinuar.Font = New System.Drawing.Font("Calibri", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnContinuar.Image = Global.DinoM.My.Resources.Resources.checked
-        Me.btnContinuar.ImageFixedSize = New System.Drawing.Size(30, 30)
-        Me.btnContinuar.Location = New System.Drawing.Point(398, 110)
-        Me.btnContinuar.Name = "btnContinuar"
-        Me.btnContinuar.Size = New System.Drawing.Size(147, 48)
-        Me.btnContinuar.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
-        Me.btnContinuar.TabIndex = 370
-        Me.btnContinuar.Text = "Continuar"
-        '
-        'BtnSalir
-        '
-        Me.BtnSalir.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.BtnSalir.ColorTable = DevComponents.DotNetBar.eButtonColor.Office2007WithBackground
-        Me.BtnSalir.Font = New System.Drawing.Font("Calibri", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnSalir.Image = Global.DinoM.My.Resources.Resources.cancel
-        Me.BtnSalir.ImageFixedSize = New System.Drawing.Size(30, 30)
-        Me.BtnSalir.Location = New System.Drawing.Point(236, 110)
-        Me.BtnSalir.Name = "BtnSalir"
-        Me.BtnSalir.Size = New System.Drawing.Size(147, 48)
-        Me.BtnSalir.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
-        Me.BtnSalir.TabIndex = 371
-        Me.BtnSalir.Text = "Salir"
-        '
         'F1_MontoPagar
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(566, 448)
+        Me.ClientSize = New System.Drawing.Size(424, 364)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GroupBox3)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Name = "F1_MontoPagar"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "F1_MontoPagar"
@@ -462,8 +446,8 @@ Partial Class F1_MontoPagar
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents LabelX3 As DevComponents.DotNetBar.LabelX
     Friend WithEvents LabelX4 As DevComponents.DotNetBar.LabelX
-    Friend WithEvents tbRazonSocial As TextBox
     Friend WithEvents tbNit As TextBox
     Friend WithEvents BtnSalir As DevComponents.DotNetBar.ButtonX
     Friend WithEvents btnContinuar As DevComponents.DotNetBar.ButtonX
+    Public WithEvents tbRazonSocial As TextBox
 End Class

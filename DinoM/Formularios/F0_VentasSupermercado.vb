@@ -148,7 +148,7 @@ Public Class F0_VentasSupermercado
         tbTotal.Value = 0
         lbFecha.Text = Now.Date.ToString("dd/MM/yyyy")
         lbCliente.Text = "S/N"
-        lbNit.Text = ""
+        lbNit.Text = "0"
 
 
         _prCargarDetalleVenta(-1)
@@ -913,21 +913,18 @@ Public Class F0_VentasSupermercado
     Public Function _ValidarCampos() As Boolean
         Try
 
-
-
-
-            'Validar datos de factura
-            'If (TbNit.Text = String.Empty) Then
-            '    Dim img As Bitmap = New Bitmap(My.Resources.Mensaje, 50, 50)
+            ''Validar datos de factura
+            'If (lbNit.Text = String.Empty) Then
+            '    Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
             '    ToastNotification.Show(Me, "Por Favor ponga el nit del cliente.".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-            '    tbVendedor.Focus()
+            '    lbNit.Focus()
             '    Return False
             'End If
 
-            'If (TbNombre1.Text = String.Empty) Then
-            '    Dim img As Bitmap = New Bitmap(My.Resources.Mensaje, 50, 50)
+            'If (lbCliente.Text = String.Empty) Then
+            '    Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
             '    ToastNotification.Show(Me, "Por Favor ponga la razon social del cliente.".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-            '    tbVendedor.Focus()
+            '    lbCliente.Focus()
             '    Return False
             'End If
 
@@ -935,12 +932,23 @@ Public Class F0_VentasSupermercado
                 grdetalle.Row = grdetalle.RowCount - 1
                 If (grdetalle.GetValue("tbty5prod") = 0) Then
                     Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-                    ToastNotification.Show(Me, "Por Favor Seleccione  un detalle de producto".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                    ToastNotification.Show(Me, "Por Favor Seleccione  un detalle de producto".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.TopCenter)
                     Return False
                 End If
 
             End If
 
+            'Validación para controlar caducidad de Dosificacion
+            If lbNit.Text <> String.Empty Then
+                Dim fecha As String = Now.Date
+                Dim dtDosificacion As DataSet = L_DosificacionCajas("1", "1", fecha, gs_NroCaja)
+                If dtDosificacion.Tables(0).Rows.Count = 0 Then
+                    'dtDosificacion.Tables.Cast(Of DataTable)().Any(Function(x) x.DefaultView.Count = 0)
+                    Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                    ToastNotification.Show(Me, "La Dosificación para las facturas ya caducó, ingrese nueva dosificación".ToUpper, img, 3500, eToastGlowColor.Red, eToastPosition.TopCenter)
+                    Return False
+                End If
+            End If
 
 
             Return True
@@ -1328,18 +1336,18 @@ Public Class F0_VentasSupermercado
     End Function
 
     Private Function P_fnGrabarFacturarTFV001(numi As String) As Boolean
-        Dim a As Double = CDbl(Convert.ToDouble(Str(tbTotal.Value)) + 0)
+        Dim a As Double = CDbl(Convert.ToDouble(Str(tbTotal.Value)) + tbDescuento.Value)
         'Dim b As Double = CDbl(IIf(IsDBNull(tbIce.Value), 0, tbIce.Value)) 'Ya esta calculado el 55% del ICE
         Dim b As Double = CDbl(0)
         Dim c As Double = CDbl("0")
         Dim d As Double = CDbl("0")
         Dim e As Double = a - b - c - d
-        Dim f As Double = CDbl(0)
+        Dim f As Double = CDbl(tbDescuento.Value)
         Dim g As Double = e - f
         Dim h As Double = g * (gi_IVA / 100)
 
         Dim res As Boolean = False
-        Dim _Hora As String = Now.Hour.ToString + ":" + Now.Minute.ToString
+        Dim _Hora As String = Now.Hour.ToString("D2") + ":" + Now.Minute.ToString("D2")
         'Grabado de Cabesera Factura
         L_Grabar_Factura(numi,
                         Now.Date.ToString("yyyy/MM/dd"), "0", "0",
@@ -1414,8 +1422,9 @@ Public Class F0_VentasSupermercado
 
         '_Fecha = Now.Date '.ToString("dd/MM/yyyy")
         _Fecha = Now.Date
-        _Hora = Now.Hour.ToString + ":" + Now.Minute.ToString
-        _Ds1 = L_Dosificacion("1", "1", _Fecha)
+        _Hora = Now.Hour.ToString("D2") + ":" + Now.Minute.ToString("D2")
+        '_Ds1 = L_Dosificacion("1", "1", _Fecha)
+        _Ds1 = L_DosificacionCajas("1", "1", _Fecha, gs_NroCaja)
 
         _Ds = L_Reporte_Factura(numi, numi)
         _Autorizacion = _Ds1.Tables(0).Rows(0).Item("sbautoriz").ToString
@@ -1516,7 +1525,7 @@ Public Class F0_VentasSupermercado
                 objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scneg").ToString) '?
                 objrep.SetParameterValue("ECasaMatriz", _Ds2.Tables(0).Rows(0).Item("scsuc").ToString)
                 objrep.SetParameterValue("ECiudadPais", _Ds2.Tables(0).Rows(0).Item("scpai").ToString)
-                objrep.SetParameterValue("ESFC", _Ds1.Tables(0).Rows(0).Item("sbsfc").ToString)
+                objrep.SetParameterValue("ESFC", "SFC " + _Ds1.Tables(0).Rows(0).Item("sbsfc").ToString)
                 objrep.SetParameterValue("ENit", _Ds2.Tables(0).Rows(0).Item("scnit").ToString)
                 objrep.SetParameterValue("EActividad", _Ds2.Tables(0).Rows(0).Item("scact").ToString)
                 objrep.SetParameterValue("EDuenho", _Ds2.Tables(0).Rows(0).Item("scnom").ToString)
@@ -1538,7 +1547,7 @@ Public Class F0_VentasSupermercado
                 objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scneg").ToString)
                 objrep.SetParameterValue("ECasaMatriz", _Ds2.Tables(0).Rows(0).Item("scsuc").ToString)
                 objrep.SetParameterValue("ECiudadPais", _Ds2.Tables(0).Rows(0).Item("scpai").ToString)
-                objrep.SetParameterValue("ESFC", _Ds1.Tables(0).Rows(0).Item("sbsfc").ToString)
+                objrep.SetParameterValue("ESFC", "SFC " + _Ds1.Tables(0).Rows(0).Item("sbsfc").ToString)
                 objrep.SetParameterValue("ENit", _Ds2.Tables(0).Rows(0).Item("scnit").ToString)
                 objrep.SetParameterValue("EActividad", _Ds2.Tables(0).Rows(0).Item("scact").ToString)
                 objrep.SetParameterValue("Tipo", "ORIGINAL")
@@ -1558,7 +1567,7 @@ Public Class F0_VentasSupermercado
                 objrep.SetParameterValue("ENombre", _Ds2.Tables(0).Rows(0).Item("scneg").ToString) '?
                 objrep.SetParameterValue("ECasaMatriz", _Ds2.Tables(0).Rows(0).Item("scsuc").ToString)
                 objrep.SetParameterValue("ECiudadPais", _Ds2.Tables(0).Rows(0).Item("scpai").ToString)
-                objrep.SetParameterValue("ESFC", _Ds1.Tables(0).Rows(0).Item("sbsfc").ToString)
+                objrep.SetParameterValue("ESFC", "SFC " + _Ds1.Tables(0).Rows(0).Item("sbsfc").ToString)
                 objrep.SetParameterValue("ENit", _Ds2.Tables(0).Rows(0).Item("scnit").ToString)
                 objrep.SetParameterValue("EActividad", _Ds2.Tables(0).Rows(0).Item("scact").ToString)
                 objrep.SetParameterValue("EDuenho", _Ds2.Tables(0).Rows(0).Item("scnom").ToString)
