@@ -2311,7 +2311,7 @@ Public Class F0_VentasSupermercado
                     'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tblote") = grProductos.GetValue("iclot")
                     'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbfechaVenc") = grProductos.GetValue("icfven")
                     'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = grProductos.GetValue("iccven")
-                    CalcularDescuentos(grdetalle.GetValue("tbty5prod"), Cantidad, grdetalle.GetValue("tbpbas"), pos)
+                    CalcularDescuentos(grdetalle.GetValue("tbty5prod"), 1, grdetalle.GetValue("tbpbas"), pos)
                     _prCalcularPrecioTotal()
                     tbDescripcion.Text = fila(0).ItemArray(3)
                     tbPrecio.Value = fila(0).ItemArray(15)
