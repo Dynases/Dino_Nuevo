@@ -46,6 +46,8 @@ Partial Class F0_VentasSupermercado
         Me.grdetalle = New Janus.Windows.GridEX.GridEX()
         Me.PanelButtom = New System.Windows.Forms.Panel()
         Me.PanelTotal = New System.Windows.Forms.Panel()
+        Me.tbDescuento = New DevComponents.Editors.DoubleInput()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.tbTotal = New DevComponents.Editors.DoubleInput()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -59,31 +61,29 @@ Partial Class F0_VentasSupermercado
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.QrFactura = New Gma.QrCodeNet.Encoding.Windows.Forms.QrCodeImgControl()
         Me.TimerImagenes = New System.Windows.Forms.Timer(Me.components)
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.tbDescuento = New DevComponents.Editors.DoubleInput()
-        Me.PanelImagen.SuspendLayout()
-        Me.PanelRight.SuspendLayout()
-        Me.PanelC.SuspendLayout()
-        Me.GPanelProductos.SuspendLayout()
-        Me.Panel5.SuspendLayout()
-        CType(Me.grProductos, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pictureImagen, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel2.SuspendLayout()
-        Me.Panel3.SuspendLayout()
-        CType(Me.tbPrecio, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel4.SuspendLayout()
-        Me.CmDetalle.SuspendLayout()
-        Me.PanelDatos.SuspendLayout()
-        CType(Me.grdetalle, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.PanelButtom.SuspendLayout()
-        Me.PanelTotal.SuspendLayout()
-        CType(Me.tbTotal, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel1.SuspendLayout()
-        Me.PanelTop.SuspendLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.QrFactura, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbDescuento, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuspendLayout()
+        Me.PanelImagen.SuspendLayout
+        Me.PanelRight.SuspendLayout
+        Me.PanelC.SuspendLayout
+        Me.GPanelProductos.SuspendLayout
+        Me.Panel5.SuspendLayout
+        CType(Me.grProductos,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.pictureImagen,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.Panel2.SuspendLayout
+        Me.Panel3.SuspendLayout
+        CType(Me.tbPrecio,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.Panel4.SuspendLayout
+        Me.CmDetalle.SuspendLayout
+        Me.PanelDatos.SuspendLayout
+        CType(Me.grdetalle,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.PanelButtom.SuspendLayout
+        Me.PanelTotal.SuspendLayout
+        CType(Me.tbDescuento,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbTotal,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.Panel1.SuspendLayout
+        Me.PanelTop.SuspendLayout
+        CType(Me.PictureBox2,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.QrFactura,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.SuspendLayout
         '
         'PanelImagen
         '
@@ -125,20 +125,20 @@ Partial Class F0_VentasSupermercado
         Me.GPanelProductos.Controls.Add(Me.Panel5)
         Me.GPanelProductos.DisabledBackColor = System.Drawing.Color.Empty
         Me.GPanelProductos.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GPanelProductos.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GPanelProductos.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.GPanelProductos.Location = New System.Drawing.Point(0, 0)
-        Me.GPanelProductos.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GPanelProductos.Margin = New System.Windows.Forms.Padding(4)
         Me.GPanelProductos.Name = "GPanelProductos"
         Me.GPanelProductos.Size = New System.Drawing.Size(700, 542)
         '
         '
         '
-        Me.GPanelProductos.Style.BackColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(72, Byte), Integer), CType(CType(127, Byte), Integer))
-        Me.GPanelProductos.Style.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(72, Byte), Integer), CType(CType(127, Byte), Integer))
+        Me.GPanelProductos.Style.BackColor = System.Drawing.Color.FromArgb(CType(CType(15,Byte),Integer), CType(CType(72,Byte),Integer), CType(CType(127,Byte),Integer))
+        Me.GPanelProductos.Style.BackColor2 = System.Drawing.Color.FromArgb(CType(CType(15,Byte),Integer), CType(CType(72,Byte),Integer), CType(CType(127,Byte),Integer))
         Me.GPanelProductos.Style.BackColorGradientAngle = 90
         Me.GPanelProductos.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid
         Me.GPanelProductos.Style.BorderBottomWidth = 1
-        Me.GPanelProductos.Style.BorderColor = System.Drawing.Color.FromArgb(CType(CType(15, Byte), Integer), CType(CType(72, Byte), Integer), CType(CType(127, Byte), Integer))
+        Me.GPanelProductos.Style.BorderColor = System.Drawing.Color.FromArgb(CType(CType(15,Byte),Integer), CType(CType(72,Byte),Integer), CType(CType(127,Byte),Integer))
         Me.GPanelProductos.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid
         Me.GPanelProductos.Style.BorderLeftWidth = 1
         Me.GPanelProductos.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid
@@ -147,7 +147,7 @@ Partial Class F0_VentasSupermercado
         Me.GPanelProductos.Style.BorderTopWidth = 1
         Me.GPanelProductos.Style.CornerDiameter = 4
         Me.GPanelProductos.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded
-        Me.GPanelProductos.Style.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GPanelProductos.Style.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.GPanelProductos.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center
         Me.GPanelProductos.Style.TextColor = System.Drawing.Color.White
         Me.GPanelProductos.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near
@@ -161,7 +161,7 @@ Partial Class F0_VentasSupermercado
         Me.GPanelProductos.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.GPanelProductos.TabIndex = 4
         Me.GPanelProductos.Text = "PRODUCTOS"
-        Me.GPanelProductos.Visible = False
+        Me.GPanelProductos.Visible = false
         '
         'Panel5
         '
@@ -170,7 +170,7 @@ Partial Class F0_VentasSupermercado
         Me.Panel5.Controls.Add(Me.grProductos)
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel5.Location = New System.Drawing.Point(0, 0)
-        Me.Panel5.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Panel5.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(694, 515)
         Me.Panel5.TabIndex = 0
@@ -182,29 +182,29 @@ Partial Class F0_VentasSupermercado
         '
         '
         Me.prCargando.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.prCargando.Font = New System.Drawing.Font("Calibri", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.prCargando.Font = New System.Drawing.Font("Calibri", 6!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.prCargando.Location = New System.Drawing.Point(-4, 14)
         Me.prCargando.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.prCargando.Name = "prCargando"
         Me.prCargando.ProgressBarType = DevComponents.DotNetBar.eCircularProgressType.Dot
         Me.prCargando.ProgressColor = System.Drawing.Color.LimeGreen
         Me.prCargando.ProgressTextColor = System.Drawing.Color.Black
-        Me.prCargando.ProgressTextVisible = True
+        Me.prCargando.ProgressTextVisible = true
         Me.prCargando.Size = New System.Drawing.Size(575, 256)
         Me.prCargando.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP
         Me.prCargando.TabIndex = 6
-        Me.prCargando.Visible = False
+        Me.prCargando.Visible = false
         '
         'grProductos
         '
         Me.grProductos.AllowEdit = Janus.Windows.GridEX.InheritableBoolean.[False]
         Me.grProductos.BackColor = System.Drawing.Color.White
         Me.grProductos.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grProductos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grProductos.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grProductos.HeaderFormatStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(49, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.grProductos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.grProductos.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.grProductos.HeaderFormatStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(49,Byte),Integer), CType(CType(59,Byte),Integer), CType(CType(66,Byte),Integer))
         Me.grProductos.Location = New System.Drawing.Point(0, 0)
-        Me.grProductos.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grProductos.Margin = New System.Windows.Forms.Padding(4)
         Me.grProductos.Name = "grProductos"
         Me.grProductos.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grProductos.Office2007CustomColor = System.Drawing.Color.DodgerBlue
@@ -222,7 +222,7 @@ Partial Class F0_VentasSupermercado
         Me.pictureImagen.Size = New System.Drawing.Size(700, 542)
         Me.pictureImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pictureImagen.TabIndex = 0
-        Me.pictureImagen.TabStop = False
+        Me.pictureImagen.TabStop = false
         '
         'Panel2
         '
@@ -244,7 +244,7 @@ Partial Class F0_VentasSupermercado
         Me.Panel3.Controls.Add(Me.Panel4)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel3.Location = New System.Drawing.Point(11, 20)
-        Me.Panel3.Margin = New System.Windows.Forms.Padding(20, 20, 20, 20)
+        Me.Panel3.Margin = New System.Windows.Forms.Padding(20)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Padding = New System.Windows.Forms.Padding(0, 5, 0, 5)
         Me.Panel3.Size = New System.Drawing.Size(676, 152)
@@ -252,23 +252,23 @@ Partial Class F0_VentasSupermercado
         '
         'tbPrecio
         '
-        Me.tbPrecio.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tbPrecio.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
+            Or System.Windows.Forms.AnchorStyles.Left)  _
+            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         '
         '
         '
-        Me.tbPrecio.BackgroundStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.tbPrecio.BackgroundStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(255,Byte),Integer), CType(CType(255,Byte),Integer), CType(CType(255,Byte),Integer))
         Me.tbPrecio.BackgroundStyle.BackColor2 = System.Drawing.Color.White
         Me.tbPrecio.BackgroundStyle.BorderColor = System.Drawing.Color.White
         Me.tbPrecio.BackgroundStyle.Class = "DateTimeInputBackground"
         Me.tbPrecio.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbPrecio.BackgroundStyle.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center
         Me.tbPrecio.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.tbPrecio.Font = New System.Drawing.Font("Calibri", 28.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbPrecio.Font = New System.Drawing.Font("Calibri", 28.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.tbPrecio.ForeColor = System.Drawing.Color.Black
-        Me.tbPrecio.Increment = 1.0R
-        Me.tbPrecio.IsInputReadOnly = True
+        Me.tbPrecio.Increment = 1R
+        Me.tbPrecio.IsInputReadOnly = true
         Me.tbPrecio.Location = New System.Drawing.Point(204, 89)
         Me.tbPrecio.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.tbPrecio.Name = "tbPrecio"
@@ -299,10 +299,10 @@ Partial Class F0_VentasSupermercado
         Me.tbDescripcion.Border.Class = "ItemPanel"
         Me.tbDescripcion.Border.CornerType = DevComponents.DotNetBar.eCornerType.Rounded
         Me.tbDescripcion.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.tbDescripcion.Font = New System.Drawing.Font("Calibri", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbDescripcion.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.tbDescripcion.Font = New System.Drawing.Font("Calibri", 24!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.tbDescripcion.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45,Byte),Integer), CType(CType(59,Byte),Integer), CType(CType(66,Byte),Integer))
         Me.tbDescripcion.Location = New System.Drawing.Point(299, 0)
-        Me.tbDescripcion.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tbDescripcion.Margin = New System.Windows.Forms.Padding(4)
         Me.tbDescripcion.Name = "tbDescripcion"
         Me.tbDescripcion.Size = New System.Drawing.Size(377, 62)
         Me.tbDescripcion.TabIndex = 4
@@ -319,17 +319,17 @@ Partial Class F0_VentasSupermercado
         Me.tbProducto.Border.Class = "ItemPanel"
         Me.tbProducto.Border.CornerType = DevComponents.DotNetBar.eCornerType.Rounded
         Me.tbProducto.Dock = System.Windows.Forms.DockStyle.Left
-        Me.tbProducto.Font = New System.Drawing.Font("Calibri", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbProducto.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.tbProducto.Font = New System.Drawing.Font("Calibri", 24!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.tbProducto.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45,Byte),Integer), CType(CType(59,Byte),Integer), CType(CType(66,Byte),Integer))
         Me.tbProducto.Location = New System.Drawing.Point(0, 0)
-        Me.tbProducto.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.tbProducto.Margin = New System.Windows.Forms.Padding(4)
         Me.tbProducto.Name = "tbProducto"
         Me.tbProducto.Size = New System.Drawing.Size(299, 62)
         Me.tbProducto.TabIndex = 3
         '
         'PrintDialog1
         '
-        Me.PrintDialog1.UseEXDialog = True
+        Me.PrintDialog1.UseEXDialog = true
         '
         'CmDetalle
         '
@@ -370,21 +370,21 @@ Partial Class F0_VentasSupermercado
         'grdetalle
         '
         Me.grdetalle.BackColor = System.Drawing.Color.White
-        Me.grdetalle.ColumnAutoResize = True
+        Me.grdetalle.ColumnAutoResize = true
         Me.grdetalle.ContextMenuStrip = Me.CmDetalle
         Me.grdetalle.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grdetalle.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdetalle.Font = New System.Drawing.Font("Calibri", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.grdetalle.GridLineColor = System.Drawing.Color.White
         Me.grdetalle.GridLines = Janus.Windows.GridEX.GridLines.None
         Me.grdetalle.GroupMode = Janus.Windows.GridEX.GroupMode.Collapsed
-        Me.grdetalle.HeaderFormatStyle.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdetalle.HeaderFormatStyle.Font = New System.Drawing.Font("Calibri", 9!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.grdetalle.HeaderFormatStyle.ForeColor = System.Drawing.Color.Black
         Me.grdetalle.Location = New System.Drawing.Point(8, 197)
-        Me.grdetalle.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.grdetalle.Margin = New System.Windows.Forms.Padding(4)
         Me.grdetalle.Name = "grdetalle"
         Me.grdetalle.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grdetalle.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.grdetalle.RowFormatStyle.Font = New System.Drawing.Font("Calibri", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grdetalle.RowFormatStyle.Font = New System.Drawing.Font("Calibri", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.grdetalle.Size = New System.Drawing.Size(825, 316)
         Me.grdetalle.TabIndex = 4
         Me.grdetalle.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
@@ -416,6 +416,39 @@ Partial Class F0_VentasSupermercado
         Me.PanelTotal.Size = New System.Drawing.Size(825, 143)
         Me.PanelTotal.TabIndex = 0
         '
+        'tbDescuento
+        '
+        '
+        '
+        '
+        Me.tbDescuento.BackgroundStyle.BackColor = System.Drawing.Color.Black
+        Me.tbDescuento.BackgroundStyle.BackColor2 = System.Drawing.Color.Black
+        Me.tbDescuento.BackgroundStyle.BorderColor = System.Drawing.Color.Black
+        Me.tbDescuento.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbDescuento.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbDescuento.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbDescuento.Font = New System.Drawing.Font("Calibri", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.tbDescuento.ForeColor = System.Drawing.Color.White
+        Me.tbDescuento.Increment = 1R
+        Me.tbDescuento.IsInputReadOnly = true
+        Me.tbDescuento.Location = New System.Drawing.Point(524, 23)
+        Me.tbDescuento.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.tbDescuento.Name = "tbDescuento"
+        Me.tbDescuento.Size = New System.Drawing.Size(276, 40)
+        Me.tbDescuento.TabIndex = 4
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = true
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
+        Me.Label1.Font = New System.Drawing.Font("Calibri", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.White
+        Me.Label1.Location = New System.Drawing.Point(17, 32)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(126, 29)
+        Me.Label1.TabIndex = 3
+        Me.Label1.Text = "Descuento:"
+        '
         'tbTotal
         '
         '
@@ -427,10 +460,10 @@ Partial Class F0_VentasSupermercado
         Me.tbTotal.BackgroundStyle.Class = "DateTimeInputBackground"
         Me.tbTotal.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbTotal.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.tbTotal.Font = New System.Drawing.Font("Calibri", 28.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbTotal.Font = New System.Drawing.Font("Calibri", 28.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.tbTotal.ForeColor = System.Drawing.Color.White
-        Me.tbTotal.Increment = 1.0R
-        Me.tbTotal.IsInputReadOnly = True
+        Me.tbTotal.Increment = 1R
+        Me.tbTotal.IsInputReadOnly = true
         Me.tbTotal.Location = New System.Drawing.Point(524, 67)
         Me.tbTotal.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.tbTotal.Name = "tbTotal"
@@ -439,9 +472,9 @@ Partial Class F0_VentasSupermercado
         '
         'Label2
         '
-        Me.Label2.AutoSize = True
+        Me.Label2.AutoSize = true
         Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Font = New System.Drawing.Font("Calibri", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Font = New System.Drawing.Font("Calibri", 24!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
         Me.Label2.Location = New System.Drawing.Point(13, 74)
         Me.Label2.Name = "Label2"
@@ -468,8 +501,8 @@ Partial Class F0_VentasSupermercado
         '
         'lbNit
         '
-        Me.lbNit.AutoSize = True
-        Me.lbNit.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbNit.AutoSize = true
+        Me.lbNit.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.lbNit.Location = New System.Drawing.Point(87, 38)
         Me.lbNit.Name = "lbNit"
         Me.lbNit.Size = New System.Drawing.Size(73, 17)
@@ -479,8 +512,8 @@ Partial Class F0_VentasSupermercado
         '
         'Label9
         '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.AutoSize = true
+        Me.Label9.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.Label9.Location = New System.Drawing.Point(8, 39)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(29, 17)
@@ -489,8 +522,8 @@ Partial Class F0_VentasSupermercado
         '
         'lbCliente
         '
-        Me.lbCliente.AutoSize = True
-        Me.lbCliente.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbCliente.AutoSize = true
+        Me.lbCliente.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.lbCliente.Location = New System.Drawing.Point(87, 21)
         Me.lbCliente.Name = "lbCliente"
         Me.lbCliente.Size = New System.Drawing.Size(178, 17)
@@ -500,8 +533,8 @@ Partial Class F0_VentasSupermercado
         '
         'Label7
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.AutoSize = true
+        Me.Label7.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.Label7.Location = New System.Drawing.Point(8, 22)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(52, 17)
@@ -510,8 +543,8 @@ Partial Class F0_VentasSupermercado
         '
         'lbFecha
         '
-        Me.lbFecha.AutoSize = True
-        Me.lbFecha.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbFecha.AutoSize = true
+        Me.lbFecha.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.lbFecha.Location = New System.Drawing.Point(87, 4)
         Me.lbFecha.Name = "lbFecha"
         Me.lbFecha.Size = New System.Drawing.Size(74, 17)
@@ -521,8 +554,8 @@ Partial Class F0_VentasSupermercado
         '
         'Label4
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.AutoSize = true
+        Me.Label4.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.Label4.Location = New System.Drawing.Point(8, 4)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(46, 17)
@@ -543,19 +576,19 @@ Partial Class F0_VentasSupermercado
         'PictureBox2
         '
         Me.PictureBox2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
+        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"),System.Drawing.Image)
         Me.PictureBox2.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(825, 190)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox2.TabIndex = 24
-        Me.PictureBox2.TabStop = False
+        Me.PictureBox2.TabStop = false
         '
         'QrFactura
         '
         Me.QrFactura.ErrorCorrectLevel = Gma.QrCodeNet.Encoding.ErrorCorrectionLevel.M
-        Me.QrFactura.Image = CType(resources.GetObject("QrFactura.Image"), System.Drawing.Image)
+        Me.QrFactura.Image = CType(resources.GetObject("QrFactura.Image"),System.Drawing.Image)
         Me.QrFactura.Location = New System.Drawing.Point(629, 22)
         Me.QrFactura.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
         Me.QrFactura.Name = "QrFactura"
@@ -563,50 +596,17 @@ Partial Class F0_VentasSupermercado
         Me.QrFactura.Size = New System.Drawing.Size(67, 65)
         Me.QrFactura.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.QrFactura.TabIndex = 23
-        Me.QrFactura.TabStop = False
+        Me.QrFactura.TabStop = false
         Me.QrFactura.Text = "QrCodeImgControl1"
-        Me.QrFactura.Visible = False
+        Me.QrFactura.Visible = false
         '
         'TimerImagenes
         '
         Me.TimerImagenes.Interval = 10000
         '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.BackColor = System.Drawing.Color.Transparent
-        Me.Label1.Font = New System.Drawing.Font("Calibri", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(17, 32)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(126, 29)
-        Me.Label1.TabIndex = 3
-        Me.Label1.Text = "Descuento:"
-        '
-        'tbDescuento
-        '
-        '
-        '
-        '
-        Me.tbDescuento.BackgroundStyle.BackColor = System.Drawing.Color.Black
-        Me.tbDescuento.BackgroundStyle.BackColor2 = System.Drawing.Color.Black
-        Me.tbDescuento.BackgroundStyle.BorderColor = System.Drawing.Color.Black
-        Me.tbDescuento.BackgroundStyle.Class = "DateTimeInputBackground"
-        Me.tbDescuento.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbDescuento.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.tbDescuento.Font = New System.Drawing.Font("Calibri", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbDescuento.ForeColor = System.Drawing.Color.White
-        Me.tbDescuento.Increment = 1.0R
-        Me.tbDescuento.IsInputReadOnly = True
-        Me.tbDescuento.Location = New System.Drawing.Point(524, 23)
-        Me.tbDescuento.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
-        Me.tbDescuento.Name = "tbDescuento"
-        Me.tbDescuento.Size = New System.Drawing.Size(276, 40)
-        Me.tbDescuento.TabIndex = 4
-        '
         'F0_VentasSupermercado
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8!, 16!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1541, 731)
         Me.Controls.Add(Me.PanelImagen)
@@ -616,33 +616,33 @@ Partial Class F0_VentasSupermercado
         Me.Name = "F0_VentasSupermercado"
         Me.Text = "Ventas"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
-        Me.PanelImagen.ResumeLayout(False)
-        Me.PanelRight.ResumeLayout(False)
-        Me.PanelC.ResumeLayout(False)
-        Me.GPanelProductos.ResumeLayout(False)
-        Me.Panel5.ResumeLayout(False)
-        CType(Me.grProductos, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pictureImagen, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel3.ResumeLayout(False)
-        CType(Me.tbPrecio, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel4.ResumeLayout(False)
-        Me.CmDetalle.ResumeLayout(False)
-        Me.PanelDatos.ResumeLayout(False)
-        CType(Me.grdetalle, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.PanelButtom.ResumeLayout(False)
-        Me.PanelTotal.ResumeLayout(False)
-        Me.PanelTotal.PerformLayout()
-        CType(Me.tbTotal, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
-        Me.PanelTop.ResumeLayout(False)
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.QrFactura, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tbDescuento, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ResumeLayout(False)
+        Me.PanelImagen.ResumeLayout(false)
+        Me.PanelRight.ResumeLayout(false)
+        Me.PanelC.ResumeLayout(false)
+        Me.GPanelProductos.ResumeLayout(false)
+        Me.Panel5.ResumeLayout(false)
+        CType(Me.grProductos,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.pictureImagen,System.ComponentModel.ISupportInitialize).EndInit
+        Me.Panel2.ResumeLayout(false)
+        Me.Panel3.ResumeLayout(false)
+        CType(Me.tbPrecio,System.ComponentModel.ISupportInitialize).EndInit
+        Me.Panel4.ResumeLayout(false)
+        Me.CmDetalle.ResumeLayout(false)
+        Me.PanelDatos.ResumeLayout(false)
+        CType(Me.grdetalle,System.ComponentModel.ISupportInitialize).EndInit
+        Me.PanelButtom.ResumeLayout(false)
+        Me.PanelTotal.ResumeLayout(false)
+        Me.PanelTotal.PerformLayout
+        CType(Me.tbDescuento,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbTotal,System.ComponentModel.ISupportInitialize).EndInit
+        Me.Panel1.ResumeLayout(false)
+        Me.Panel1.PerformLayout
+        Me.PanelTop.ResumeLayout(false)
+        CType(Me.PictureBox2,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.QrFactura,System.ComponentModel.ISupportInitialize).EndInit
+        Me.ResumeLayout(false)
 
-    End Sub
+End Sub
 
     Friend WithEvents PanelDatos As Panel
     Friend WithEvents PanelImagen As Panel
