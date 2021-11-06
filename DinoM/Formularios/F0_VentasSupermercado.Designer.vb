@@ -90,7 +90,7 @@ Partial Class F0_VentasSupermercado
         Me.PanelImagen.Controls.Add(Me.PanelRight)
         Me.PanelImagen.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelImagen.Location = New System.Drawing.Point(631, 0)
-        Me.PanelImagen.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PanelImagen.Margin = New System.Windows.Forms.Padding(2)
         Me.PanelImagen.Name = "PanelImagen"
         Me.PanelImagen.Size = New System.Drawing.Size(525, 594)
         Me.PanelImagen.TabIndex = 1
@@ -101,7 +101,7 @@ Partial Class F0_VentasSupermercado
         Me.PanelRight.Controls.Add(Me.Panel2)
         Me.PanelRight.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelRight.Location = New System.Drawing.Point(0, 0)
-        Me.PanelRight.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PanelRight.Margin = New System.Windows.Forms.Padding(2)
         Me.PanelRight.Name = "PanelRight"
         Me.PanelRight.Size = New System.Drawing.Size(525, 594)
         Me.PanelRight.TabIndex = 5
@@ -112,7 +112,7 @@ Partial Class F0_VentasSupermercado
         Me.PanelC.Controls.Add(Me.pictureImagen)
         Me.PanelC.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelC.Location = New System.Drawing.Point(0, 154)
-        Me.PanelC.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PanelC.Margin = New System.Windows.Forms.Padding(2)
         Me.PanelC.Name = "PanelC"
         Me.PanelC.Size = New System.Drawing.Size(525, 440)
         Me.PanelC.TabIndex = 1
@@ -182,7 +182,7 @@ Partial Class F0_VentasSupermercado
         Me.prCargando.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.prCargando.Font = New System.Drawing.Font("Calibri", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.prCargando.Location = New System.Drawing.Point(-3, 11)
-        Me.prCargando.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.prCargando.Margin = New System.Windows.Forms.Padding(2)
         Me.prCargando.Name = "prCargando"
         Me.prCargando.ProgressBarType = DevComponents.DotNetBar.eCircularProgressType.Dot
         Me.prCargando.ProgressColor = System.Drawing.Color.LimeGreen
@@ -214,7 +214,7 @@ Partial Class F0_VentasSupermercado
         Me.pictureImagen.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pictureImagen.Image = Global.DinoM.My.Resources.Resources.FondoMercado
         Me.pictureImagen.Location = New System.Drawing.Point(0, 0)
-        Me.pictureImagen.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.pictureImagen.Margin = New System.Windows.Forms.Padding(2)
         Me.pictureImagen.Name = "pictureImagen"
         Me.pictureImagen.Size = New System.Drawing.Size(525, 440)
         Me.pictureImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -228,7 +228,7 @@ Partial Class F0_VentasSupermercado
         Me.Panel2.Controls.Add(Me.Panel3)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Padding = New System.Windows.Forms.Padding(8, 16, 8, 12)
         Me.Panel2.Size = New System.Drawing.Size(525, 154)
@@ -267,7 +267,7 @@ Partial Class F0_VentasSupermercado
         Me.tbPrecio.Increment = 1.0R
         Me.tbPrecio.IsInputReadOnly = True
         Me.tbPrecio.Location = New System.Drawing.Point(153, 72)
-        Me.tbPrecio.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tbPrecio.Margin = New System.Windows.Forms.Padding(2)
         Me.tbPrecio.Name = "tbPrecio"
         Me.tbPrecio.Size = New System.Drawing.Size(205, 53)
         Me.tbPrecio.TabIndex = 4
@@ -279,7 +279,7 @@ Partial Class F0_VentasSupermercado
         Me.Panel4.Controls.Add(Me.tbProducto)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel4.Location = New System.Drawing.Point(0, 4)
-        Me.Panel4.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Panel4.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(507, 63)
         Me.Panel4.TabIndex = 5
@@ -356,9 +356,9 @@ Partial Class F0_VentasSupermercado
         Me.PanelDatos.Controls.Add(Me.PanelTop)
         Me.PanelDatos.Dock = System.Windows.Forms.DockStyle.Left
         Me.PanelDatos.Location = New System.Drawing.Point(0, 0)
-        Me.PanelDatos.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PanelDatos.Margin = New System.Windows.Forms.Padding(2)
         Me.PanelDatos.Name = "PanelDatos"
-        Me.PanelDatos.Padding = New System.Windows.Forms.Padding(6, 6, 6, 6)
+        Me.PanelDatos.Padding = New System.Windows.Forms.Padding(6)
         Me.PanelDatos.Size = New System.Drawing.Size(631, 594)
         Me.PanelDatos.TabIndex = 0
         '
@@ -390,7 +390,7 @@ Partial Class F0_VentasSupermercado
         Me.PanelButtom.Controls.Add(Me.Panel1)
         Me.PanelButtom.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.PanelButtom.Location = New System.Drawing.Point(6, 417)
-        Me.PanelButtom.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PanelButtom.Margin = New System.Windows.Forms.Padding(2)
         Me.PanelButtom.Name = "PanelButtom"
         Me.PanelButtom.Size = New System.Drawing.Size(619, 171)
         Me.PanelButtom.TabIndex = 5
@@ -405,7 +405,7 @@ Partial Class F0_VentasSupermercado
         Me.PanelTotal.Controls.Add(Me.Label2)
         Me.PanelTotal.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.PanelTotal.Location = New System.Drawing.Point(0, -2)
-        Me.PanelTotal.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PanelTotal.Margin = New System.Windows.Forms.Padding(2)
         Me.PanelTotal.Name = "PanelTotal"
         Me.PanelTotal.Size = New System.Drawing.Size(619, 117)
         Me.PanelTotal.TabIndex = 0
@@ -426,7 +426,7 @@ Partial Class F0_VentasSupermercado
         Me.tbDescuento.Increment = 1.0R
         Me.tbDescuento.IsInputReadOnly = True
         Me.tbDescuento.Location = New System.Drawing.Point(393, 19)
-        Me.tbDescuento.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tbDescuento.Margin = New System.Windows.Forms.Padding(2)
         Me.tbDescuento.Name = "tbDescuento"
         Me.tbDescuento.Size = New System.Drawing.Size(207, 34)
         Me.tbDescuento.TabIndex = 4
@@ -460,7 +460,7 @@ Partial Class F0_VentasSupermercado
         Me.tbTotal.Increment = 1.0R
         Me.tbTotal.IsInputReadOnly = True
         Me.tbTotal.Location = New System.Drawing.Point(393, 54)
-        Me.tbTotal.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tbTotal.Margin = New System.Windows.Forms.Padding(2)
         Me.tbTotal.Name = "tbTotal"
         Me.tbTotal.Size = New System.Drawing.Size(207, 53)
         Me.tbTotal.TabIndex = 2
@@ -490,7 +490,7 @@ Partial Class F0_VentasSupermercado
         Me.Panel1.Controls.Add(Me.Label4)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel1.Location = New System.Drawing.Point(0, 115)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(619, 56)
         Me.Panel1.TabIndex = 9
@@ -570,7 +570,7 @@ Partial Class F0_VentasSupermercado
         Me.PanelTop.Controls.Add(Me.QrFactura)
         Me.PanelTop.Dock = System.Windows.Forms.DockStyle.Top
         Me.PanelTop.Location = New System.Drawing.Point(6, 6)
-        Me.PanelTop.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PanelTop.Margin = New System.Windows.Forms.Padding(2)
         Me.PanelTop.Name = "PanelTop"
         Me.PanelTop.Size = New System.Drawing.Size(619, 154)
         Me.PanelTop.TabIndex = 0
@@ -580,7 +580,7 @@ Partial Class F0_VentasSupermercado
         Me.PictureBox2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
         Me.PictureBox2.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBox2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PictureBox2.Margin = New System.Windows.Forms.Padding(2)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(619, 154)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -592,7 +592,7 @@ Partial Class F0_VentasSupermercado
         Me.QrFactura.ErrorCorrectLevel = Gma.QrCodeNet.Encoding.ErrorCorrectionLevel.M
         Me.QrFactura.Image = CType(resources.GetObject("QrFactura.Image"), System.Drawing.Image)
         Me.QrFactura.Location = New System.Drawing.Point(472, 18)
-        Me.QrFactura.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.QrFactura.Margin = New System.Windows.Forms.Padding(2)
         Me.QrFactura.Name = "QrFactura"
         Me.QrFactura.QuietZoneModule = Gma.QrCodeNet.Encoding.Windows.Render.QuietZoneModules.Two
         Me.QrFactura.Size = New System.Drawing.Size(50, 53)
@@ -614,7 +614,7 @@ Partial Class F0_VentasSupermercado
         Me.Controls.Add(Me.PanelImagen)
         Me.Controls.Add(Me.PanelDatos)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "F0_VentasSupermercado"
         Me.Text = "Ventas"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized

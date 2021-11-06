@@ -239,7 +239,7 @@ Public Class F1_IngresosEgresos
     Public Overrides Function _PMOGrabarRegistro() As Boolean
 
         Dim tipo As Integer = IIf(swTipo.Value = True, 1, 0)
-        Dim res As Boolean = L_prIngresoEgresoGrabar(tbcodigo.Text, dpFecha.Value, tipo, tbDescripcion.Text, cbConcepto.Value, tbMonto.Value, tbObservacion.Text)
+        Dim res As Boolean = L_prIngresoEgresoGrabar(tbcodigo.Text, dpFecha.Value, tipo, tbDescripcion.Text, cbConcepto.Value, tbMonto.Value, tbObservacion.Text, gs_NroCaja)
         If res Then
             Modificado = False
             _PMOLimpiar()

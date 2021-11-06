@@ -81,7 +81,7 @@ Partial Class F1_MontoPagar
         Me.BtnSalir.Image = Global.DinoM.My.Resources.Resources.cancel
         Me.BtnSalir.ImageFixedSize = New System.Drawing.Size(30, 30)
         Me.BtnSalir.Location = New System.Drawing.Point(177, 89)
-        Me.BtnSalir.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.BtnSalir.Margin = New System.Windows.Forms.Padding(2)
         Me.BtnSalir.Name = "BtnSalir"
         Me.BtnSalir.Size = New System.Drawing.Size(110, 39)
         Me.BtnSalir.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
@@ -96,7 +96,7 @@ Partial Class F1_MontoPagar
         Me.btnContinuar.Image = Global.DinoM.My.Resources.Resources.checked
         Me.btnContinuar.ImageFixedSize = New System.Drawing.Size(30, 30)
         Me.btnContinuar.Location = New System.Drawing.Point(298, 89)
-        Me.btnContinuar.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnContinuar.Margin = New System.Windows.Forms.Padding(2)
         Me.btnContinuar.Name = "btnContinuar"
         Me.btnContinuar.Size = New System.Drawing.Size(110, 39)
         Me.btnContinuar.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
@@ -356,9 +356,10 @@ Partial Class F1_MontoPagar
         '
         'tbRazonSocial
         '
+        Me.tbRazonSocial.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.tbRazonSocial.Font = New System.Drawing.Font("Calibri", 10.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbRazonSocial.Location = New System.Drawing.Point(93, 58)
-        Me.tbRazonSocial.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tbRazonSocial.Margin = New System.Windows.Forms.Padding(2)
         Me.tbRazonSocial.Name = "tbRazonSocial"
         Me.tbRazonSocial.Size = New System.Drawing.Size(327, 24)
         Me.tbRazonSocial.TabIndex = 1
@@ -367,7 +368,7 @@ Partial Class F1_MontoPagar
         '
         Me.tbNit.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbNit.Location = New System.Drawing.Point(93, 20)
-        Me.tbNit.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tbNit.Margin = New System.Windows.Forms.Padding(2)
         Me.tbNit.Name = "tbNit"
         Me.tbNit.Size = New System.Drawing.Size(245, 27)
         Me.tbNit.TabIndex = 0
@@ -413,7 +414,7 @@ Partial Class F1_MontoPagar
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GroupBox3)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "F1_MontoPagar"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "F1_MontoPagar"

@@ -28,6 +28,7 @@ Public Class F1_MontoPagar
         tbMontoBs.Value = 0
         tbMontoDolar.Value = 0
         tbMontoTarej.Value = 0
+        tbMontoTarej.Enabled = False
         tbNit.Text = Nit
         tbRazonSocial.Text = RazonSocial
 
@@ -280,5 +281,20 @@ Public Class F1_MontoPagar
         Bandera = False
         Me.Close()
 
+    End Sub
+
+    Private Sub chbTarjeta_CheckedChanged(sender As Object, e As EventArgs) Handles chbTarjeta.CheckedChanged
+        If chbTarjeta.Checked Then
+            tbMontoBs.Value = 0
+            tbMontoDolar.Value = 0
+            tbMontoTarej.Enabled = True
+            tbMontoTarej.Value = Convert.ToDecimal(TotalVenta)
+            tbMontoBs.Enabled = False
+            tbMontoDolar.Enabled = False
+        Else
+            tbMontoBs.Enabled = True
+            tbMontoDolar.Enabled = True
+            tbMontoTarej.Value = 0
+        End If
     End Sub
 End Class
