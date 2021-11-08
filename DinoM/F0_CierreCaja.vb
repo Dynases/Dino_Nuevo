@@ -60,15 +60,23 @@ Public Class F0_CierreCaja
             TbCodigo.Clear()
             tbFecha.Value = Now.Date
             tbFecha.Focus()
-            tbTCredito.Value = 0
-            tbTTarjeta.Value = 0
-            tbTDeposito.Value = 0
+
+
             tbTContado.Value = 0
-            tbTotalGral.Value = 0
-            tbTEfectivo.Value = 0
-            tbTDiferencia.Value = 0
-            Tb_TipoCambio.Value = 0
             tbTPagos.Value = 0
+            tbTotalGral.Value = 0
+            tbTIngresos.Value = 0
+            tbTEgresos.Value = 0
+            tbTotalGral.Value = 0
+
+            tbTEfectivo.Value = 0
+            tbTDeposito.Value = 0
+            tbTTarjeta.Value = 0
+            tbTDiferencia.Value = 0
+            tbTCredito.Value = 0
+
+            Tb_TipoCambio.Value = 0
+
 
             cbTurno.SelectedIndex = 0
             tbMontoInicial.Value = 0
@@ -646,7 +654,7 @@ Public Class F0_CierreCaja
                 Dim TContado As Double = tbTContado.Value - tbTTarjeta.Value
                 Dim res As Boolean = L_fnModificarCaja(TbCodigo.Text, tbFecha.Value.ToString("yyyy/MM/dd"), tbTotalGral.Value, tbTCredito.Value,
                                                     tbTTarjeta.Value, TContado, tbTDeposito.Value, tbTEfectivo.Value,
-                                                    tbTDiferencia.Value, tbTPagos.Value, cbTurno.Text, tbMontoInicial.Value, tbTIngresos.Value, tbTEgresos.Value, Tb_TipoCambio.Value, tbObservacion.Text, CType(Dgv_Cortes.DataSource, DataTable), CType(Dgv_Depositos.DataSource, DataTable), dtventas)
+                                                    tbTDiferencia.Value, tbTPagos.Value, cbTurno.Text, tbMontoInicial.Value, tbTIngresos.Value, tbTEgresos.Value, Tb_TipoCambio.Value, tbObservacion.Text, CType(Dgv_Cortes.DataSource, DataTable), CType(Dgv_Depositos.DataSource, DataTable), dtventas, gs_NroCaja)
                 If res Then
 
                     Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
@@ -1030,32 +1038,38 @@ Public Class F0_CierreCaja
         Try
             Dim dtIngEgre As DataTable
             Dim DtVerificar As DataTable = L_fnVerificarSiExisteCierreCaja(tbFecha.Value, TbCodigo.Text, gs_NroCaja)
-            If DtVerificar.Rows(0).Item("ccEstado") = 0 Then
-                Throw New Exception("Ya existe Cierre de Caja de esta fecha: " + tbFecha.Value)
-            Else
-                CargarDetalleVentasPagos(tbFecha.Value, gs_NroCaja)
-                dtIngEgre = L_prIngresoEgresoPorFecha(tbFecha.Value.ToString("yyyy/MM/dd"), gs_NroCaja)
 
-                If Dgv_VentasPagos.RowCount > 0 Then
-                    Tb_TipoCambio.Text = (CType(Dgv_VentasPagos.DataSource, DataTable).Rows(0).Item("tipocambio"))
-                    tbTCredito.Text = Dgv_VentasPagos.GetTotal(Dgv_VentasPagos.RootTable.Columns("credito"), AggregateFunction.Sum)
-                    tbTTarjeta.Text = Dgv_VentasPagos.GetTotal(Dgv_VentasPagos.RootTable.Columns("tarjeta"), AggregateFunction.Sum)
-                    tbTContado.Text = Dgv_VentasPagos.GetTotal(Dgv_VentasPagos.RootTable.Columns("totalbs"), AggregateFunction.Sum) - tbTCredito.Text
-                    tbTPagos.Text = Dgv_VentasPagos.GetTotal(Dgv_VentasPagos.RootTable.Columns("pagos"), AggregateFunction.Sum)
-
-                    tbTIngresos.Text = IIf(IsDBNull(dtIngEgre.Compute("Sum(ieMonto)", "ieTipo=1 and ieIdCaja=0")), 0, dtIngEgre.Compute("Sum(ieMonto)", "ieTipo=1 and ieIdCaja=0"))
-                    tbTEgresos.Text = IIf(IsDBNull(dtIngEgre.Compute("Sum(ieMonto)", "ieTipo=0 and ieIdCaja=0")), 0, dtIngEgre.Compute("Sum(ieMonto)", "ieTipo=0 and ieIdCaja=0"))
-
-                    tbTotalGral.Text = (tbMontoInicial.Value + tbTContado.Value + tbTPagos.Value + tbTIngresos.Value) - tbTEgresos.Value
-
-
-                    tbTDeposito.Text = 0
-                    tbTEfectivo.Text = 0
-                    tbTDiferencia.Text = 0
-                    '_LimpiarGrillas()
+            If DtVerificar.Rows.Count > 0 Then
+                If DtVerificar.Rows(0).Item("ccEstado") = 0 Then
+                    Throw New Exception("Ya existe Cierre de Caja de esta fecha: " + tbFecha.Value)
                 Else
-                    Throw New Exception("No existen ventas y/o pagos de esta fecha o Ya existe Cierre de Caja de esta fecha, Verifique")
+                    CargarDetalleVentasPagos(tbFecha.Value, gs_NroCaja)
+                    dtIngEgre = L_prIngresoEgresoPorFecha(tbFecha.Value.ToString("yyyy/MM/dd"), gs_NroCaja)
+
+                    If Dgv_VentasPagos.RowCount > 0 Then
+                        Tb_TipoCambio.Text = (CType(Dgv_VentasPagos.DataSource, DataTable).Rows(0).Item("tipocambio"))
+                        tbTCredito.Text = Dgv_VentasPagos.GetTotal(Dgv_VentasPagos.RootTable.Columns("credito"), AggregateFunction.Sum)
+                        tbTTarjeta.Text = Dgv_VentasPagos.GetTotal(Dgv_VentasPagos.RootTable.Columns("tarjeta"), AggregateFunction.Sum)
+                        tbTContado.Text = Dgv_VentasPagos.GetTotal(Dgv_VentasPagos.RootTable.Columns("totalbs"), AggregateFunction.Sum) - tbTCredito.Text
+                        tbTPagos.Text = Dgv_VentasPagos.GetTotal(Dgv_VentasPagos.RootTable.Columns("pagos"), AggregateFunction.Sum)
+
+                        tbTIngresos.Text = IIf(IsDBNull(dtIngEgre.Compute("Sum(ieMonto)", "ieTipo=1 and ieIdCaja=0")), 0, dtIngEgre.Compute("Sum(ieMonto)", "ieTipo=1 and ieIdCaja=0"))
+                        tbTEgresos.Text = IIf(IsDBNull(dtIngEgre.Compute("Sum(ieMonto)", "ieTipo=0 and ieIdCaja=0")), 0, dtIngEgre.Compute("Sum(ieMonto)", "ieTipo=0 and ieIdCaja=0"))
+
+                        tbTotalGral.Text = (tbMontoInicial.Value + tbTContado.Value + tbTPagos.Value + tbTIngresos.Value) - tbTEgresos.Value
+
+
+                        tbTDeposito.Text = 0
+                        tbTEfectivo.Text = 0
+                        tbTDiferencia.Text = 0
+                        '_LimpiarGrillas()
+                    Else
+                        Throw New Exception("No existen ventas y/o pagos de esta fecha o Ya existe Cierre de Caja de esta fecha, Verifique")
+                    End If
                 End If
+            Else
+                Throw New Exception("No puede calcular ventas y/o pagos  y cerrar caja que abrió con otro Nro. de caja, Verifique")
+
             End If
 
         Catch ex As Exception

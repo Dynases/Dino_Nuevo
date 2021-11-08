@@ -667,9 +667,9 @@ Public Class F0_Venta2
             .Visible = False
         End With
         With grVentas.RootTable.Columns("moneda")
-            .Width = 150
+            .Width = 100
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
-            .Visible = True
+            .Visible = False
             .Caption = "MONEDA"
         End With
         With grVentas.RootTable.Columns("taobs")
@@ -707,6 +707,12 @@ Public Class F0_Venta2
             .Width = 50
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
+        End With
+        With grVentas.RootTable.Columns("NroCaja")
+            .Width = 100
+            .Caption = "NRO. CAJA"
+            .Visible = True
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
         End With
         With grVentas.RootTable.Columns("total")
             .Width = 150

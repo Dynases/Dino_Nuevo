@@ -3189,7 +3189,8 @@ Public Class AccesoLogica
         Return _resultado
     End Function
     '@tenumi ,@tefdoc,@tety4vend ,@teobs ,@newFecha ,@newHora ,@teuact 
-    Public Shared Function L_fnGrabarCobranza(_tenumi As String, _tefdoc As String, _tety4vend As Integer, _teobs As String, detalle As DataTable) As Boolean
+    Public Shared Function L_fnGrabarCobranza(_tenumi As String, _tefdoc As String, _tety4vend As Integer, _teobs As String,
+                                              detalle As DataTable, _Nrocaja As Integer) As Boolean
         Dim _Tabla As DataTable
         Dim _resultado As Boolean
         Dim _listParam As New List(Of Datos.DParametro)
@@ -3201,6 +3202,7 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@tety4vend", _tety4vend))
         _listParam.Add(New Datos.DParametro("@teobs", _teobs))
         _listParam.Add(New Datos.DParametro("@teuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@teNrocaja", _Nrocaja))
         _listParam.Add(New Datos.DParametro("@TV00121", "", detalle))
         _Tabla = D_ProcedimientoConParam("sp_Mam_TV00121Cheque", _listParam)
 
@@ -5720,7 +5722,7 @@ Public Class AccesoLogica
                                           _Tarjeta As Decimal, _ContadoBs As Decimal, _Depositos As Decimal, _Efectivo As Decimal,
                                           _Diferencia As Decimal, _Pagos As Decimal, _Turno As String, _MInicial As Decimal,
                                           _Ingresos As Decimal, _Egresos As Decimal, _TipoCambio As Decimal, _Obs As String,
-                                          _TCC0011 As DataTable, _TCC0012 As DataTable, _TCC0013 As DataTable) As Boolean
+                                          _TCC0011 As DataTable, _TCC0012 As DataTable, _TCC0013 As DataTable, _NroCaja As Integer) As Boolean
         Dim _resultado As Boolean
         Dim _Tabla As DataTable
         Dim _listParam As New List(Of Datos.DParametro)
@@ -5744,6 +5746,7 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@TipoCambio", _TipoCambio))
         _listParam.Add(New Datos.DParametro("@Obs", _Obs))
         _listParam.Add(New Datos.DParametro("@ccuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@Nrocaja", _NroCaja))
         _listParam.Add(New Datos.DParametro("@TCC0011", "", _TCC0011))
         _listParam.Add(New Datos.DParametro("@TCC0012", "", _TCC0012))
         _listParam.Add(New Datos.DParametro("@TCC0013", "", _TCC0013))

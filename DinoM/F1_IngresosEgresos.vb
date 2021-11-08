@@ -196,6 +196,7 @@ Public Class F1_IngresosEgresos
         listEstCeldas.Add(New Modelo.Celda("iefact", False))
         listEstCeldas.Add(New Modelo.Celda("iehact", False))
         listEstCeldas.Add(New Modelo.Celda("ieuact", False))
+        listEstCeldas.Add(New Modelo.Celda("NroCaja", True, "Nro. Caja", 100))
 
         Return listEstCeldas
 
