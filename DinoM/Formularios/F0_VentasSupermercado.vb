@@ -53,6 +53,22 @@ Public Class F0_VentasSupermercado
 
         TimerImagenes.Start()
 
+        lbNroCaja.Text = gs_NroCaja
+        lbUsuario.Text = gs_user
+
+        _CargarBanner()
+    End Sub
+    Private Sub _CargarBanner()
+        Dim ubicacion As String
+        ubicacion = gs_CarpetaRaiz + "\Banner.jpg"
+        ubicacion = gs_CarpetaRaiz + "\Banner.jpeg"
+        ubicacion = gs_CarpetaRaiz + "\Banner.png"
+
+        Try
+            PictureBox2.Image = Image.FromFile(ubicacion)
+        Catch ex As Exception
+            MessageBox.Show("No se encontro el logo en la ubicación específicada" + ubicacion)
+        End Try
     End Sub
     Public Sub CalcularDescuentosTotal()
 
@@ -240,16 +256,11 @@ Public Class F0_VentasSupermercado
 
         With grdetalle.RootTable.Columns("producto")
             .Caption = "Productos"
-            .Width = 350
+            .Width = 320
             .MaxLines = 3
             .WordWrap = True
             .Visible = True
-
         End With
-
-
-
-
         With grdetalle.RootTable.Columns("tbest")
             .Width = 50
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
@@ -286,7 +297,7 @@ Public Class F0_VentasSupermercado
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = True
             .FormatString = "0.00"
-            .Caption = "Total"
+            .Caption = "SubTotal"
         End With
         With grdetalle.RootTable.Columns("tbporc")
             .Width = 100
@@ -298,14 +309,14 @@ Public Class F0_VentasSupermercado
         With grdetalle.RootTable.Columns("tbdesc")
             .Width = 100
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-            .Visible = False
+            .Visible = True
             .FormatString = "0.00"
-            .Caption = "M.Desc"
+            .Caption = "Desct."
         End With
         With grdetalle.RootTable.Columns("tbtotdesc")
             .Width = 70
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-            .Visible = False
+            .Visible = True
             .FormatString = "0.00"
             .Caption = "Total".ToUpper
         End With
@@ -476,13 +487,17 @@ Public Class F0_VentasSupermercado
             .Visible = True
             .Caption = "Descripción"
         End With
+        With grProductos.RootTable.Columns("yfvsup")
+            .Width = 90
+            .Visible = True
+            .Caption = "Conversión"
+            .FormatString = "0.00"
+        End With
         With grProductos.RootTable.Columns("yfcdprod2")
             .Width = 150
             .Visible = False
             .Caption = "Descripcion Corta"
         End With
-
-
         With grProductos.RootTable.Columns("yfgr1")
             .Width = 160
             .Visible = False
@@ -563,7 +578,11 @@ Public Class F0_VentasSupermercado
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
         End With
-
+        With grProductos.RootTable.Columns("yfgr5")
+            .Width = 50
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
+            .Visible = False
+        End With
 
         With grProductos.RootTable.Columns("yfumin")
             .Width = 50
@@ -2125,7 +2144,7 @@ Public Class F0_VentasSupermercado
             _HabilitarProductos()
 
         End If
-        If (e.KeyData = Keys.Control + Keys.S) Then
+        If (e.KeyData = Keys.F) Then
             If _ValidarCampos() = False Then
                 Exit Sub
             End If
@@ -2148,10 +2167,7 @@ Public Class F0_VentasSupermercado
             Else
                 ToastNotification.Show(Me, "No se Ingreso Monto a Pagar ", My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
 
-
-
             End If
-
 
         End If
         If (e.KeyData = Keys.Enter) Then
@@ -2432,46 +2448,8 @@ Public Class F0_VentasSupermercado
             _prEliminarFila()
         End If
 
-        If (e.KeyData = Keys.Control + Keys.C And grdetalle.Row >= 0) Then
-            Dim ef = New Efecto
-            ef.tipo = 7
-            ef.Stock = grdetalle.GetValue("stock")
-            ef.Cantidad = grdetalle.GetValue("tbcmin")
-            ef.NameProducto = grdetalle.GetValue("producto")
-            Dim Cantidad As Double = grdetalle.GetValue("tbcmin")
-            ef.ShowDialog()
-            Dim bandera As Boolean = False
-            bandera = ef.band
-            If (bandera = True) Then
-
-                Cantidad = ef.Cantidad
-                If (Cantidad > 0) Then
-                    Dim lin As Integer = grdetalle.GetValue("tbnumi")
-                    Dim pos As Integer = -1
-                    _fnObtenerFilaDetalle(pos, lin)
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = Cantidad
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = grdetalle.GetValue("tbpbas") * Cantidad
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = grdetalle.GetValue("tbpbas") * Cantidad
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = grdetalle.GetValue("tbpcos") * Cantidad
-
-
-
-                    CalcularDescuentos(grdetalle.GetValue("tbty5prod"), Cantidad, grdetalle.GetValue("tbpbas"), pos)
-
-
-
-                    _prCalcularPrecioTotal()
-                    tbProducto.Focus()
-
-                End If
-
-            Else
-                ToastNotification.Show(Me, "No Modifica Cantidad del Producto", My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
-
-
-
-            End If
-            tbProducto.Focus()
+        If (e.KeyData = Keys.C And grdetalle.Row >= 0) Then
+            VentanaCantidad()
         End If
 
         If (e.KeyData = Keys.Enter) Then
@@ -2547,6 +2525,8 @@ Public Class F0_VentasSupermercado
                             FilaSelectLote = Nothing
                             tbProducto.Clear()
                             tbProducto.Focus()
+
+                            VentanaCantidad()
                         Else
                             'Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
                             'ToastNotification.Show(Me, "El producto con el lote ya existe modifique su cantidad".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)producto
@@ -2571,13 +2551,10 @@ Public Class F0_VentasSupermercado
                             End If
 
                         End If
-
-
-
                     End If
-
                 End If
             End If
+
             If e.KeyData = Keys.Escape Then
                 _DesHabilitarProductos()
                 FilaSelectLote = Nothing
@@ -2585,6 +2562,48 @@ Public Class F0_VentasSupermercado
         Catch ex As Exception
             MostrarMensajeError(ex.Message)
         End Try
+    End Sub
+    Private Sub VentanaCantidad()
+        Dim ef = New Efecto
+        ef.tipo = 7
+        ef.Stock = grdetalle.GetValue("stock")
+        ef.Cantidad = grdetalle.GetValue("tbcmin")
+        ef.NameProducto = grdetalle.GetValue("producto")
+        Dim Cantidad As Double = grdetalle.GetValue("tbcmin")
+        ef.ShowDialog()
+        Dim bandera As Boolean = False
+        bandera = ef.band
+        If (bandera = True) Then
+
+            Cantidad = ef.Cantidad
+            If (Cantidad > 0) Then
+                Dim lin As Integer = grdetalle.GetValue("tbnumi")
+                Dim pos As Integer = -1
+                _fnObtenerFilaDetalle(pos, lin)
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = Cantidad
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = grdetalle.GetValue("tbpbas") * Cantidad
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = grdetalle.GetValue("tbpbas") * Cantidad
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = grdetalle.GetValue("tbpcos") * Cantidad
+
+
+
+                CalcularDescuentos(grdetalle.GetValue("tbty5prod"), Cantidad, grdetalle.GetValue("tbpbas"), pos)
+
+
+
+                _prCalcularPrecioTotal()
+                tbProducto.Focus()
+
+            End If
+
+        Else
+            ToastNotification.Show(Me, "No Modifica Cantidad del Producto", My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
+
+
+
+        End If
+        tbProducto.Focus()
+
     End Sub
     Private Sub grdetalle_CellValueChanged(sender As Object, e As ColumnActionEventArgs) Handles grdetalle.CellValueChanged
         Try

@@ -142,6 +142,7 @@ Public Class F1_IngresosEgresos
         tbObservacion.Text = ""
 
         tbDescripcion.Focus()
+        lbNroCaja.Text = ""
     End Sub
     Public Overrides Sub _PMOLimpiarErrores()
         MEP.Clear()
@@ -220,6 +221,7 @@ Public Class F1_IngresosEgresos
             cbConcepto.Value = .GetValue("ieConcepto")
             tbMonto.Value = .GetValue("ieMonto")
             tbObservacion.Text = .GetValue("ieObs").ToString
+            lbNroCaja.Text = .GetValue("NroCaja")
 
             lbFecha.Text = CType(.GetValue("iefact"), Date).ToString("dd/MM/yyyy")
             lbHora.Text = .GetValue("iehact").ToString

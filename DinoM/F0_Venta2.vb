@@ -259,6 +259,7 @@ Public Class F0_Venta2
         'tbVendedor.Clear()
 
         swMoneda.Value = True
+        lbNroCaja.Text = ""
 
         '_CodCliente = 0
         '_CodEmpleado = 0
@@ -334,6 +335,8 @@ Public Class F0_Venta2
             tbFechaVenc.Value = .GetValue("tafvcr")
             swTipoVenta.Value = .GetValue("tatven")
             tbObservacion.Text = .GetValue("taobs")
+            lbNroCaja.Text = .GetValue("NroCaja")
+
             If grVentas.GetValue("taest") = 1 Then
                 txtEstado.Text = "VIGENTE"
                 txtEstado.BackColor = Color.Green
@@ -452,8 +455,8 @@ Public Class F0_Venta2
             .Caption = "Productos".ToUpper
             .Width = 440
             .Visible = True
-
         End With
+
         With grdetalle.RootTable.Columns("tbest")
             .Width = 50
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
@@ -827,8 +830,12 @@ Public Class F0_Venta2
             .Visible = False
             .Caption = "Descripcion Corta"
         End With
-
-
+        With grProductos.RootTable.Columns("yfvsup")
+            .Width = 90
+            .Visible = True
+            .Caption = "Conversión"
+            .FormatString = "0.00"
+        End With
         With grProductos.RootTable.Columns("yfgr1")
             .Width = 160
             .Visible = False
@@ -3953,6 +3960,7 @@ salirIf:
             Timer1.Enabled = False
         End If
     End Sub
+
 
 
     'Private Sub TbNombre1_KeyDown(sender As Object, e As KeyEventArgs) Handles TbNombre1.KeyDown

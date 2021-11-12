@@ -36,6 +36,8 @@ Partial Class F0_CierreCaja
         Me.Dgv_Depositos = New Janus.Windows.GridEX.GridEX()
         Me.DEPÓSITO = New DevComponents.DotNetBar.SuperTabItem()
         Me.GroupPanel2 = New DevComponents.DotNetBar.Controls.GroupPanel()
+        Me.LabelX19 = New DevComponents.DotNetBar.LabelX()
+        Me.lbNroCaja = New System.Windows.Forms.Label()
         Me.LabelX15 = New DevComponents.DotNetBar.LabelX()
         Me.tbObservacion = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.LabelX13 = New DevComponents.DotNetBar.LabelX()
@@ -434,6 +436,8 @@ Partial Class F0_CierreCaja
         '
         Me.GroupPanel2.CanvasColor = System.Drawing.SystemColors.Control
         Me.GroupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
+        Me.GroupPanel2.Controls.Add(Me.LabelX19)
+        Me.GroupPanel2.Controls.Add(Me.lbNroCaja)
         Me.GroupPanel2.Controls.Add(Me.LabelX15)
         Me.GroupPanel2.Controls.Add(Me.tbObservacion)
         Me.GroupPanel2.Controls.Add(Me.LabelX13)
@@ -487,6 +491,31 @@ Partial Class F0_CierreCaja
         Me.GroupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.GroupPanel2.TabIndex = 0
         Me.GroupPanel2.Text = "DATOS"
+        '
+        'LabelX19
+        '
+        Me.LabelX19.AutoSize = True
+        Me.LabelX19.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX19.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX19.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX19.Location = New System.Drawing.Point(254, 84)
+        Me.LabelX19.Name = "LabelX19"
+        Me.LabelX19.Size = New System.Drawing.Size(61, 18)
+        Me.LabelX19.TabIndex = 382
+        Me.LabelX19.Text = "Nro Caja:"
+        Me.LabelX19.TextAlignment = System.Drawing.StringAlignment.Far
+        '
+        'lbNroCaja
+        '
+        Me.lbNroCaja.Font = New System.Drawing.Font("Georgia", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbNroCaja.Location = New System.Drawing.Point(318, 84)
+        Me.lbNroCaja.Name = "lbNroCaja"
+        Me.lbNroCaja.Size = New System.Drawing.Size(60, 17)
+        Me.lbNroCaja.TabIndex = 381
+        Me.lbNroCaja.Text = "Label1"
         '
         'LabelX15
         '
@@ -1470,4 +1499,6 @@ Partial Class F0_CierreCaja
     Friend WithEvents LabelX18 As DevComponents.DotNetBar.LabelX
     Friend WithEvents tbTIngresos As DevComponents.Editors.DoubleInput
     Friend WithEvents tbTEgresos As DevComponents.Editors.DoubleInput
+    Friend WithEvents LabelX19 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents lbNroCaja As Label
 End Class

@@ -51,6 +51,10 @@ Partial Class F0_VentasSupermercado
         Me.tbTotal = New DevComponents.Editors.DoubleInput()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.lbUsuario = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.lbNroCaja = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.lbNit = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.lbCliente = New System.Windows.Forms.Label()
@@ -61,29 +65,31 @@ Partial Class F0_VentasSupermercado
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.QrFactura = New Gma.QrCodeNet.Encoding.Windows.Forms.QrCodeImgControl()
         Me.TimerImagenes = New System.Windows.Forms.Timer(Me.components)
-        Me.PanelImagen.SuspendLayout
-        Me.PanelRight.SuspendLayout
-        Me.PanelC.SuspendLayout
-        Me.GPanelProductos.SuspendLayout
-        Me.Panel5.SuspendLayout
-        CType(Me.grProductos,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.pictureImagen,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.Panel2.SuspendLayout
-        Me.Panel3.SuspendLayout
-        CType(Me.tbPrecio,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.Panel4.SuspendLayout
-        Me.CmDetalle.SuspendLayout
-        Me.PanelDatos.SuspendLayout
-        CType(Me.grdetalle,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.PanelButtom.SuspendLayout
-        Me.PanelTotal.SuspendLayout
-        CType(Me.tbDescuento,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.tbTotal,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.Panel1.SuspendLayout
-        Me.PanelTop.SuspendLayout
-        CType(Me.PictureBox2,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.QrFactura,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.SuspendLayout
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.PanelImagen.SuspendLayout()
+        Me.PanelRight.SuspendLayout()
+        Me.PanelC.SuspendLayout()
+        Me.GPanelProductos.SuspendLayout()
+        Me.Panel5.SuspendLayout()
+        CType(Me.grProductos, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pictureImagen, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel2.SuspendLayout()
+        Me.Panel3.SuspendLayout()
+        CType(Me.tbPrecio, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel4.SuspendLayout()
+        Me.CmDetalle.SuspendLayout()
+        Me.PanelDatos.SuspendLayout()
+        CType(Me.grdetalle, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanelButtom.SuspendLayout()
+        Me.PanelTotal.SuspendLayout()
+        CType(Me.tbDescuento, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tbTotal, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
+        Me.PanelTop.SuspendLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.QrFactura, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SuspendLayout()
         '
         'PanelImagen
         '
@@ -319,6 +325,7 @@ Partial Class F0_VentasSupermercado
         Me.tbProducto.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
         Me.tbProducto.Location = New System.Drawing.Point(0, 0)
         Me.tbProducto.Name = "tbProducto"
+        Me.tbProducto.ReadOnly = True
         Me.tbProducto.Size = New System.Drawing.Size(127, 53)
         Me.tbProducto.TabIndex = 3
         '
@@ -482,6 +489,12 @@ Partial Class F0_VentasSupermercado
         '
         Me.Panel1.BackColor = System.Drawing.Color.Azure
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.Label6)
+        Me.Panel1.Controls.Add(Me.Label3)
+        Me.Panel1.Controls.Add(Me.lbUsuario)
+        Me.Panel1.Controls.Add(Me.Label8)
+        Me.Panel1.Controls.Add(Me.lbNroCaja)
+        Me.Panel1.Controls.Add(Me.Label5)
         Me.Panel1.Controls.Add(Me.lbNit)
         Me.Panel1.Controls.Add(Me.Label9)
         Me.Panel1.Controls.Add(Me.lbCliente)
@@ -495,74 +508,126 @@ Partial Class F0_VentasSupermercado
         Me.Panel1.Size = New System.Drawing.Size(619, 56)
         Me.Panel1.TabIndex = 9
         '
+        'lbUsuario
+        '
+        Me.lbUsuario.AutoSize = True
+        Me.lbUsuario.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbUsuario.Location = New System.Drawing.Point(68, 20)
+        Me.lbUsuario.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lbUsuario.Name = "lbUsuario"
+        Me.lbUsuario.Size = New System.Drawing.Size(147, 13)
+        Me.lbUsuario.TabIndex = 10
+        Me.lbUsuario.Text = "Marco Antonio Mamani Chura"
+        Me.lbUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(9, 20)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(45, 13)
+        Me.Label8.TabIndex = 9
+        Me.Label8.Text = "Usuario:"
+        '
+        'lbNroCaja
+        '
+        Me.lbNroCaja.AutoSize = True
+        Me.lbNroCaja.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbNroCaja.Location = New System.Drawing.Point(68, 5)
+        Me.lbNroCaja.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lbNroCaja.Name = "lbNroCaja"
+        Me.lbNroCaja.Size = New System.Drawing.Size(13, 13)
+        Me.lbNroCaja.TabIndex = 8
+        Me.lbNroCaja.Text = "1"
+        Me.lbNroCaja.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(9, 5)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(51, 13)
+        Me.Label5.TabIndex = 7
+        Me.Label5.Text = "Nro. Caja:"
+        '
         'lbNit
         '
         Me.lbNit.AutoSize = True
         Me.lbNit.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbNit.Location = New System.Drawing.Point(65, 31)
+        Me.lbNit.Location = New System.Drawing.Point(284, 34)
         Me.lbNit.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lbNit.Name = "lbNit"
         Me.lbNit.Size = New System.Drawing.Size(62, 13)
         Me.lbNit.TabIndex = 6
         Me.lbNit.Text = "8230749 SC"
         Me.lbNit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.lbNit.Visible = False
         '
         'Label9
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(6, 32)
+        Me.Label9.Location = New System.Drawing.Point(225, 35)
         Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(24, 13)
         Me.Label9.TabIndex = 5
         Me.Label9.Text = "Nit:"
+        Me.Label9.Visible = False
         '
         'lbCliente
         '
         Me.lbCliente.AutoSize = True
         Me.lbCliente.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbCliente.Location = New System.Drawing.Point(65, 17)
+        Me.lbCliente.Location = New System.Drawing.Point(284, 20)
         Me.lbCliente.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lbCliente.Name = "lbCliente"
         Me.lbCliente.Size = New System.Drawing.Size(147, 13)
         Me.lbCliente.TabIndex = 4
         Me.lbCliente.Text = "Marco Antonio Mamani Chura"
         Me.lbCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.lbCliente.Visible = False
         '
         'Label7
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(6, 18)
+        Me.Label7.Location = New System.Drawing.Point(225, 21)
         Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(44, 13)
         Me.Label7.TabIndex = 3
         Me.Label7.Text = "Cliente:"
+        Me.Label7.Visible = False
         '
         'lbFecha
         '
         Me.lbFecha.AutoSize = True
         Me.lbFecha.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbFecha.Location = New System.Drawing.Point(65, 3)
+        Me.lbFecha.Location = New System.Drawing.Point(284, 6)
         Me.lbFecha.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lbFecha.Name = "lbFecha"
         Me.lbFecha.Size = New System.Drawing.Size(63, 13)
         Me.lbFecha.TabIndex = 2
         Me.lbFecha.Text = "30/10/2020"
         Me.lbFecha.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.lbFecha.Visible = False
         '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(6, 3)
+        Me.Label4.Location = New System.Drawing.Point(225, 6)
         Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(37, 13)
         Me.Label4.TabIndex = 1
         Me.Label4.Text = "Fecha:"
+        Me.Label4.Visible = False
         '
         'PanelTop
         '
@@ -578,7 +643,6 @@ Partial Class F0_VentasSupermercado
         'PictureBox2
         '
         Me.PictureBox2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
         Me.PictureBox2.Location = New System.Drawing.Point(0, 0)
         Me.PictureBox2.Margin = New System.Windows.Forms.Padding(2)
         Me.PictureBox2.Name = "PictureBox2"
@@ -605,6 +669,28 @@ Partial Class F0_VentasSupermercado
         'TimerImagenes
         '
         Me.TimerImagenes.Interval = 10000
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(482, 9)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(130, 13)
+        Me.Label3.TabIndex = 11
+        Me.Label3.Text = "Tecla C: Modificar Cantidad"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(482, 24)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(80, 13)
+        Me.Label6.TabIndex = 12
+        Me.Label6.Text = "Tecla F: Facturar"
         '
         'F0_VentasSupermercado
         '
@@ -683,4 +769,10 @@ End Sub
     Friend WithEvents TimerImagenes As Timer
     Friend WithEvents tbDescuento As DevComponents.Editors.DoubleInput
     Friend WithEvents Label1 As Label
+    Friend WithEvents lbUsuario As Label
+    Friend WithEvents Label8 As Label
+    Friend WithEvents lbNroCaja As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label3 As Label
 End Class

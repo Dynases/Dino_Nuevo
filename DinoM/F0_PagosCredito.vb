@@ -189,6 +189,7 @@ Public Class F0_PagosCredito
         tbObservacion.Clear()
         tbcodVendedor.Clear()
         tbcobrador.Clear()
+        lbNroCaja.Text = ""
 
         _prDetalleCobranzas(-1)
         _prAddDetalle()
@@ -358,6 +359,7 @@ Public Class F0_PagosCredito
             lbFecha.Text = CType(.GetValue("tefact"), Date).ToString("dd/MM/yyyy")
             lbHora.Text = .GetValue("tehact").ToString
             lbUsuario.Text = .GetValue("teuact").ToString
+            lbNroCaja.Text = .GetValue("NroCaja")
 
         End With
 

@@ -49,6 +49,8 @@ Partial Class F0_PagosCredito
         Me.GroupPanel5 = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.grcobranza = New Janus.Windows.GridEX.GridEX()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
+        Me.lbNroCaja = New System.Windows.Forms.Label()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -83,6 +85,7 @@ Partial Class F0_PagosCredito
         '
         'PanelSuperior
         '
+        Me.PanelSuperior.Size = New System.Drawing.Size(1362, 72)
         Me.PanelSuperior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelSuperior.Style.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
         Me.PanelSuperior.Style.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
@@ -99,7 +102,9 @@ Partial Class F0_PagosCredito
         '
         'PanelInferior
         '
+        Me.PanelInferior.Location = New System.Drawing.Point(0, 702)
         Me.PanelInferior.Margin = New System.Windows.Forms.Padding(2)
+        Me.PanelInferior.Size = New System.Drawing.Size(1362, 39)
         Me.PanelInferior.Style.Alignment = System.Drawing.StringAlignment.Center
         Me.PanelInferior.Style.BackColor1.Color = System.Drawing.Color.Transparent
         Me.PanelInferior.Style.BackColor2.Color = System.Drawing.Color.Transparent
@@ -163,9 +168,14 @@ Partial Class F0_PagosCredito
         'btnNuevo
         '
         '
+        'PanelToolBar2
+        '
+        Me.PanelToolBar2.Location = New System.Drawing.Point(1282, 0)
+        '
         'PanelPrincipal
         '
         Me.PanelPrincipal.Margin = New System.Windows.Forms.Padding(2)
+        Me.PanelPrincipal.Size = New System.Drawing.Size(1362, 741)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelInferior, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelUsuario, 0)
         Me.PanelPrincipal.Controls.SetChildIndex(Me.PanelSuperior, 0)
@@ -187,6 +197,10 @@ Partial Class F0_PagosCredito
         'btnPrimero
         '
         '
+        'MPanelUserAct
+        '
+        Me.MPanelUserAct.Location = New System.Drawing.Point(1162, 0)
+        '
         'MRlAccion
         '
         '
@@ -206,14 +220,17 @@ Partial Class F0_PagosCredito
         Me.PanelContent.Controls.Add(Me.Panel3)
         Me.PanelContent.Controls.Add(Me.Panel2)
         Me.PanelContent.Margin = New System.Windows.Forms.Padding(2)
+        Me.PanelContent.Size = New System.Drawing.Size(1329, 630)
         '
         'Panel1
         '
         Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
+        Me.Panel1.Size = New System.Drawing.Size(1362, 630)
         '
         'MSuperTabControlPanel1
         '
         Me.MSuperTabControlPanel1.Margin = New System.Windows.Forms.Padding(2)
+        Me.MSuperTabControlPanel1.Size = New System.Drawing.Size(1329, 630)
         '
         'MSuperTabControl
         '
@@ -233,9 +250,14 @@ Partial Class F0_PagosCredito
         Me.MSuperTabControl.Controls.Add(Me.SuperTabControlPanel1)
         Me.MSuperTabControl.Margin = New System.Windows.Forms.Padding(2)
         Me.MSuperTabControl.SelectedTabIndex = 1
+        Me.MSuperTabControl.Size = New System.Drawing.Size(1362, 630)
         Me.MSuperTabControl.Tabs.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.SuperTabItem1})
         Me.MSuperTabControl.Controls.SetChildIndex(Me.MSuperTabControlPanel1, 0)
         Me.MSuperTabControl.Controls.SetChildIndex(Me.SuperTabControlPanel1, 0)
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Location = New System.Drawing.Point(1089, 0)
         '
         'Panel2
         '
@@ -309,6 +331,8 @@ Partial Class F0_PagosCredito
         '
         Me.GroupPanel1.CanvasColor = System.Drawing.SystemColors.Control
         Me.GroupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007
+        Me.GroupPanel1.Controls.Add(Me.lbNroCaja)
+        Me.GroupPanel1.Controls.Add(Me.LabelX5)
         Me.GroupPanel1.Controls.Add(Me.cbbanco)
         Me.GroupPanel1.Controls.Add(Me.tbcodVendedor)
         Me.GroupPanel1.Controls.Add(Me.tbObservacion)
@@ -378,7 +402,7 @@ Partial Class F0_PagosCredito
         Me.tbcodVendedor.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbcodVendedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbcodVendedor.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbcodVendedor.Location = New System.Drawing.Point(376, 82)
+        Me.tbcodVendedor.Location = New System.Drawing.Point(416, 82)
         Me.tbcodVendedor.Name = "tbcodVendedor"
         Me.tbcodVendedor.PreventEnterBeep = True
         Me.tbcodVendedor.ReadOnly = True
@@ -399,7 +423,7 @@ Partial Class F0_PagosCredito
         Me.tbObservacion.Multiline = True
         Me.tbObservacion.Name = "tbObservacion"
         Me.tbObservacion.PreventEnterBeep = True
-        Me.tbObservacion.Size = New System.Drawing.Size(196, 92)
+        Me.tbObservacion.Size = New System.Drawing.Size(255, 92)
         Me.tbObservacion.TabIndex = 4
         '
         'LabelX3
@@ -514,7 +538,7 @@ Partial Class F0_PagosCredito
         Me.tbcobrador.Name = "tbcobrador"
         Me.tbcobrador.PreventEnterBeep = True
         Me.tbcobrador.ReadOnly = True
-        Me.tbcobrador.Size = New System.Drawing.Size(229, 21)
+        Me.tbcobrador.Size = New System.Drawing.Size(255, 21)
         Me.tbcobrador.TabIndex = 2
         '
         'LabelX2
@@ -769,6 +793,34 @@ Partial Class F0_PagosCredito
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
         '
+        'LabelX5
+        '
+        Me.LabelX5.AutoSize = True
+        Me.LabelX5.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX5.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX5.Location = New System.Drawing.Point(269, 53)
+        Me.LabelX5.Name = "LabelX5"
+        Me.LabelX5.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX5.Size = New System.Drawing.Size(65, 16)
+        Me.LabelX5.TabIndex = 235
+        Me.LabelX5.Text = "Nro. Caja:"
+        '
+        'lbNroCaja
+        '
+        Me.lbNroCaja.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.lbNroCaja.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.lbNroCaja.Location = New System.Drawing.Point(336, 52)
+        Me.lbNroCaja.Name = "lbNroCaja"
+        Me.lbNroCaja.Size = New System.Drawing.Size(60, 17)
+        Me.lbNroCaja.TabIndex = 382
+        Me.lbNroCaja.Text = "Label1"
+        Me.lbNroCaja.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'F0_PagosCredito
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -839,4 +891,6 @@ Partial Class F0_PagosCredito
     Friend WithEvents tbcodVendedor As DevComponents.DotNetBar.Controls.TextBoxX
     Friend WithEvents cbbanco As Janus.Windows.GridEX.EditControls.MultiColumnCombo
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents LabelX5 As DevComponents.DotNetBar.LabelX
+    Friend WithEvents lbNroCaja As Label
 End Class

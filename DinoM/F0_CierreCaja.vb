@@ -60,6 +60,7 @@ Public Class F0_CierreCaja
             TbCodigo.Clear()
             tbFecha.Value = Now.Date
             tbFecha.Focus()
+            lbNroCaja.Text = ""
 
 
             tbTContado.Value = 0
@@ -851,6 +852,7 @@ Public Class F0_CierreCaja
                 tbTEgresos.Value = .GetValue("ccEgreso")
                 swEstado.Value = .GetValue("ccEstado")
                 tbObservacion.Text = .GetValue("ccObs")
+                lbNroCaja.Text = .GetValue("ccNrocaja")
 
                 'Montos del Detalle de Ventas y/o pagos
                 tbTCredito.Value = .GetValue("ccCredito")

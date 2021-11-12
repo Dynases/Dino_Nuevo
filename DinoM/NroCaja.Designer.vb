@@ -77,23 +77,23 @@ Partial Class NroCaja
         Me.tbNroCaja.BackgroundStyle.Class = "DateTimeInputBackground"
         Me.tbNroCaja.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbNroCaja.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.tbNroCaja.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbNroCaja.Location = New System.Drawing.Point(140, 30)
+        Me.tbNroCaja.Font = New System.Drawing.Font("Georgia", 17.0!, System.Drawing.FontStyle.Bold)
+        Me.tbNroCaja.Location = New System.Drawing.Point(208, 35)
         Me.tbNroCaja.MinValue = 0
         Me.tbNroCaja.Name = "tbNroCaja"
         Me.tbNroCaja.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.tbNroCaja.Size = New System.Drawing.Size(111, 21)
+        Me.tbNroCaja.ShowUpDown = True
+        Me.tbNroCaja.Size = New System.Drawing.Size(85, 33)
         Me.tbNroCaja.TabIndex = 16
         Me.tbNroCaja.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
         '
         'Label1
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Font = New System.Drawing.Font("Georgia", 17.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.DodgerBlue
-        Me.Label1.Location = New System.Drawing.Point(39, 30)
+        Me.Label1.Location = New System.Drawing.Point(19, 38)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(92, 16)
+        Me.Label1.Size = New System.Drawing.Size(182, 32)
         Me.Label1.TabIndex = 15
         Me.Label1.Text = "NRO. CAJA:"
         '
@@ -105,12 +105,12 @@ Partial Class NroCaja
         Me.btnAceptar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DeepSkyBlue
         Me.btnAceptar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkTurquoise
         Me.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAceptar.Font = New System.Drawing.Font("Arial", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAceptar.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnAceptar.ForeColor = System.Drawing.SystemColors.ControlLightLight
         Me.btnAceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnAceptar.Location = New System.Drawing.Point(140, 71)
+        Me.btnAceptar.Location = New System.Drawing.Point(109, 87)
         Me.btnAceptar.Name = "btnAceptar"
-        Me.btnAceptar.Size = New System.Drawing.Size(111, 30)
+        Me.btnAceptar.Size = New System.Drawing.Size(116, 32)
         Me.btnAceptar.TabIndex = 2
         Me.btnAceptar.TabStop = False
         Me.btnAceptar.Text = "ACEPTAR"
@@ -130,7 +130,6 @@ Partial Class NroCaja
         Me.Text = "Login"
         Me.Panel2.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
         CType(Me.tbNroCaja, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 

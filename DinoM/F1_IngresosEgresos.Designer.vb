@@ -47,6 +47,8 @@ Partial Class F1_IngresosEgresos
         Me.swTipo = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.LabelX9 = New DevComponents.DotNetBar.LabelX()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.lbNroCaja = New System.Windows.Forms.Label()
+        Me.LabelX6 = New DevComponents.DotNetBar.LabelX()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -295,6 +297,8 @@ Partial Class F1_IngresosEgresos
         'Panel3
         '
         Me.Panel3.AutoScroll = True
+        Me.Panel3.Controls.Add(Me.lbNroCaja)
+        Me.Panel3.Controls.Add(Me.LabelX6)
         Me.Panel3.Controls.Add(Me.LabelX4)
         Me.Panel3.Controls.Add(Me.tbIdCaja)
         Me.Panel3.Controls.Add(Me.btConcepto)
@@ -344,7 +348,7 @@ Partial Class F1_IngresosEgresos
         Me.tbIdCaja.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbIdCaja.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbIdCaja.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbIdCaja.Location = New System.Drawing.Point(202, 45)
+        Me.tbIdCaja.Location = New System.Drawing.Point(188, 45)
         Me.tbIdCaja.Name = "tbIdCaja"
         Me.tbIdCaja.PreventEnterBeep = True
         Me.tbIdCaja.Size = New System.Drawing.Size(83, 21)
@@ -433,7 +437,7 @@ Partial Class F1_IngresosEgresos
         '
         Me.dpFecha.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dpFecha.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dpFecha.Location = New System.Drawing.Point(202, 73)
+        Me.dpFecha.Location = New System.Drawing.Point(188, 73)
         Me.dpFecha.Name = "dpFecha"
         Me.dpFecha.Size = New System.Drawing.Size(97, 22)
         Me.dpFecha.TabIndex = 248
@@ -496,7 +500,7 @@ Partial Class F1_IngresosEgresos
         Me.tbcodigo.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbcodigo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbcodigo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbcodigo.Location = New System.Drawing.Point(202, 19)
+        Me.tbcodigo.Location = New System.Drawing.Point(188, 19)
         Me.tbcodigo.Name = "tbcodigo"
         Me.tbcodigo.PreventEnterBeep = True
         Me.tbcodigo.Size = New System.Drawing.Size(83, 21)
@@ -528,7 +532,7 @@ Partial Class F1_IngresosEgresos
         Me.tbDescripcion.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbDescripcion.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbDescripcion.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbDescripcion.Location = New System.Drawing.Point(202, 129)
+        Me.tbDescripcion.Location = New System.Drawing.Point(188, 129)
         Me.tbDescripcion.Name = "tbDescripcion"
         Me.tbDescripcion.PreventEnterBeep = True
         Me.tbDescripcion.Size = New System.Drawing.Size(204, 21)
@@ -557,7 +561,7 @@ Partial Class F1_IngresosEgresos
         '
         Me.swTipo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.swTipo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.swTipo.Location = New System.Drawing.Point(202, 101)
+        Me.swTipo.Location = New System.Drawing.Point(188, 101)
         Me.swTipo.Name = "swTipo"
         Me.swTipo.OffBackColor = System.Drawing.Color.DodgerBlue
         Me.swTipo.OffText = "EGRESO"
@@ -591,6 +595,34 @@ Partial Class F1_IngresosEgresos
         '
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
+        '
+        'lbNroCaja
+        '
+        Me.lbNroCaja.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.lbNroCaja.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.lbNroCaja.Location = New System.Drawing.Point(186, 160)
+        Me.lbNroCaja.Name = "lbNroCaja"
+        Me.lbNroCaja.Size = New System.Drawing.Size(60, 17)
+        Me.lbNroCaja.TabIndex = 384
+        Me.lbNroCaja.Text = "Label1"
+        Me.lbNroCaja.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'LabelX6
+        '
+        Me.LabelX6.AutoSize = True
+        Me.LabelX6.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX6.Font = New System.Drawing.Font("Georgia", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LabelX6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.LabelX6.Location = New System.Drawing.Point(43, 160)
+        Me.LabelX6.Name = "LabelX6"
+        Me.LabelX6.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX6.Size = New System.Drawing.Size(65, 16)
+        Me.LabelX6.TabIndex = 383
+        Me.LabelX6.Text = "Nro. Caja:"
         '
         'F1_IngresosEgresos
         '
@@ -652,4 +684,6 @@ Partial Class F1_IngresosEgresos
     Friend WithEvents btConcepto As DevComponents.DotNetBar.ButtonX
     Friend WithEvents LabelX4 As DevComponents.DotNetBar.LabelX
     Friend WithEvents tbIdCaja As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents lbNroCaja As Label
+    Friend WithEvents LabelX6 As DevComponents.DotNetBar.LabelX
 End Class
