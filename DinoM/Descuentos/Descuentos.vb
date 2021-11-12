@@ -72,14 +72,18 @@ Public Class Descuentos
             .Visible = True
         End With
         With grProducto.RootTable.Columns("NombreProducto")
-            .Caption = "PRODUCTOS"
+            .Caption = "Productos"
             .Width = 250
             .Visible = True
             .WordWrap = True
             .MaxLines = 3
-
         End With
-
+        With grProducto.RootTable.Columns("PrecioVenta")
+            .Caption = "Precio Venta"
+            .Width = 50
+            .Visible = True
+            .FormatString = "0.00"
+        End With
         With grProducto
             .GroupByBoxVisible = False
             .DefaultFilterRowComparison = FilterConditionOperator.Contains

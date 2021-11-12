@@ -2473,6 +2473,7 @@ Public Class F0_VentasSupermercado
                             InsertarProductosConLote()
                         Else
                             InsertarProductosSinLote()
+                            VentanaCantidad()
                         End If
                         '''''''''''''''
                     Else
