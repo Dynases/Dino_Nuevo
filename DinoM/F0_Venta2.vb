@@ -2017,10 +2017,10 @@ Public Class F0_Venta2
                                        My.Resources.WARNING, 5000,
                                        eToastGlowColor.Blue, eToastPosition.BottomRight)
             Else
-                'objrep.PrintOptions.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString '"EPSON TM-T20II Receipt5 (1)"
-                'objrep.PrintToPrinter(1, True, 0, 0)
+                objrep.PrintOptions.PrinterName = _Ds3.Tables(0).Rows(0).Item("cbrut").ToString '"EPSON TM-T20II Receipt5 (1)"
+                objrep.PrintToPrinter(1, True, 0, 0)
                 'crystalReportDocument.PrintOptions.PrinterName = "your printer name"
-                'objrep.PrintTicket("EPSON TM-T20II Receipt")
+                'objrep.PrintTicket(impresosaPredt)
             End If
         End If
         If (grabarPDF) Then
