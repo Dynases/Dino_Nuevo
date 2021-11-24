@@ -325,7 +325,6 @@ Partial Class F0_VentasSupermercado
         Me.tbProducto.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
         Me.tbProducto.Location = New System.Drawing.Point(0, 0)
         Me.tbProducto.Name = "tbProducto"
-        Me.tbProducto.ReadOnly = True
         Me.tbProducto.Size = New System.Drawing.Size(127, 53)
         Me.tbProducto.TabIndex = 3
         '
@@ -515,9 +514,9 @@ Partial Class F0_VentasSupermercado
         Me.Label6.Location = New System.Drawing.Point(482, 24)
         Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(80, 13)
+        Me.Label6.Size = New System.Drawing.Size(106, 13)
         Me.Label6.TabIndex = 12
-        Me.Label6.Text = "Tecla F: Facturar"
+        Me.Label6.Text = "Tecla Ctrl + S: Facturar"
         '
         'Label3
         '

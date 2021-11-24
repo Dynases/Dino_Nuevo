@@ -35,6 +35,7 @@ Public Class F0_Venta2
     Dim G_Lote As Boolean = False '1=igual a mostrar las columnas de lote y fecha de Vencimiento
 
     Dim dtDescuentos As DataTable = Nothing
+    Public Programa As String
 
 
 #End Region
@@ -70,7 +71,7 @@ Public Class F0_Venta2
             lblObservacion.Visible = True
         End If
 
-
+        Programa = P_Principal.btVentVenta.Text
     End Sub
 
     Public Sub _prCargarNameLabel()
@@ -1543,7 +1544,7 @@ Public Class F0_Venta2
             Dim dtDetalle As DataTable = rearmarDetalle()
             Dim res As Boolean = L_fnGrabarVenta(numi, "", tbFechaVenta.Value.ToString("yyyy/MM/dd"), _CodEmpleado, IIf(swTipoVenta.Value = True, 1, 0), IIf(swTipoVenta.Value = True,
                                                 Now.Date.ToString("yyyy/MM/dd"), tbFechaVenc.Value.ToString("yyyy/MM/dd")), _CodCliente, IIf(swMoneda.Value = True, 1, 0),
-                                                  tbObservacion.Text, tbMdesc.Value, tbIce.Value, tbTotalBs.Text, dtDetalle, cbSucursal.Value, 0, tabla, gs_NroCaja)
+                                                  tbObservacion.Text, tbMdesc.Value, tbIce.Value, tbTotalBs.Text, dtDetalle, cbSucursal.Value, 0, tabla, gs_NroCaja, Programa)
             If res Then
                 'res = P_fnGrabarFacturarTFV001(numi)
                 'Emite factura
@@ -3607,6 +3608,7 @@ salirIf:
             If result Then
                 Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
                 ToastNotification.Show(Me, "La Venta no puede ser anulada porque ya fue contabilizada".ToUpper, img, 4500, eToastGlowColor.Red, eToastPosition.TopCenter)
+                Exit Sub
             End If
             Dim ef = New Efecto
             ef.tipo = 2
@@ -3617,7 +3619,7 @@ salirIf:
             bandera = ef.band
             If (bandera = True) Then
                 Dim mensajeError As String = ""
-                Dim res As Boolean = L_fnEliminarVenta(tbCodigo.Text, mensajeError)
+                Dim res As Boolean = L_fnEliminarVenta(tbCodigo.Text, mensajeError, Programa)
                 If res Then
                     Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
                     ToastNotification.Show(Me, "Código de Venta ".ToUpper + tbCodigo.Text + " eliminado con Exito.".ToUpper,
@@ -3959,6 +3961,32 @@ salirIf:
             Me.Opacity = 100
             Timer1.Enabled = False
         End If
+    End Sub
+
+    Private Sub btnBitacora_Click(sender As Object, e As EventArgs) Handles btnBitacora.Click
+        'Dim dtb As DataTable
+        'dtb = L_prBitacora(tbCodigo.Text)
+        'If dtb.Rows.Count > 0 Then
+        '    Dim listEstCeldas As New List(Of Modelo.Celda)
+        '    listEstCeldas.Add(New Modelo.Celda("accion", True, "ACCIÓN", 120))
+        '    listEstCeldas.Add(New Modelo.Celda("vcfact", True, "FECHA", 80))
+        '    listEstCeldas.Add(New Modelo.Celda("vchact", True, "HORA", 70))
+        '    listEstCeldas.Add(New Modelo.Celda("vcuact", True, "USUARIO", 120))
+        '    listEstCeldas.Add(New Modelo.Celda("vcnumi", False, "ID", 50))
+
+        '    Dim ef = New Efecto
+        '    ef.tipo = 3
+        '    ef.dt = dtb
+        '    ef.SeleclCol = 2
+        '    ef.listEstCeldas = listEstCeldas
+        '    ef.AutoScrollPosition = AutoScrollPosition
+        '    'ef.alto = 450
+        '    'ef.ancho = 180
+        '    ef.Context = "BITÁCORA DE LA VENTA"
+        '    ef.ShowDialog()
+        'Else
+        '    ToastNotification.Show(Me, "No existe bitácora para este registro".ToUpper, My.Resources.WARNING, 3000, eToastGlowColor.Blue, eToastPosition.TopCenter)
+        'End If
     End Sub
 
 

@@ -1545,7 +1545,8 @@ Public Class AccesoLogica
     Public Shared Function L_fnGrabarVenta(ByRef _tanumi As String, _taidCorelativo As String, _tafdoc As String, _taven As Integer, _tatven As Integer, _tafvcr As String, _taclpr As Integer,
                                            _tamon As Integer, _taobs As String,
                                            _tadesc As Double, _taice As Double,
-                                           _tatotal As Double, detalle As DataTable, _almacen As Integer, _taprforma As Integer, Monto As DataTable, _NroCaja As Integer) As Boolean
+                                           _tatotal As Double, detalle As DataTable, _almacen As Integer, _taprforma As Integer, Monto As DataTable, _NroCaja As Integer,
+                                           _programa As String) As Boolean
         Dim _Tabla As DataTable
         Dim _resultado As Boolean
         Dim _listParam As New List(Of Datos.DParametro)
@@ -1568,6 +1569,7 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@taice", _taice))
         _listParam.Add(New Datos.DParametro("@tatotal", _tatotal))
         _listParam.Add(New Datos.DParametro("@taNrocaja", _NroCaja))
+        _listParam.Add(New Datos.DParametro("@bcprograma", _programa))
         _listParam.Add(New Datos.DParametro("@tauact", L_Usuario))
         _listParam.Add(New Datos.DParametro("@TV0011", "", detalle))
         _listParam.Add(New Datos.DParametro("@TV0014", "", Monto))
@@ -1700,7 +1702,7 @@ Public Class AccesoLogica
         Return _resultado
     End Function
 
-    Public Shared Function L_fnEliminarVenta(numi As String, ByRef mensaje As String) As Boolean
+    Public Shared Function L_fnEliminarVenta(numi As String, ByRef mensaje As String, programa As String) As Boolean
         Dim _resultado As Boolean
         If L_fnbValidarEliminacion(numi, "TV001", "tanumi", mensaje) = True Then
             Dim _Tabla As DataTable
@@ -1708,6 +1710,7 @@ Public Class AccesoLogica
 
             _listParam.Add(New Datos.DParametro("@tipo", -1))
             _listParam.Add(New Datos.DParametro("@tanumi", numi))
+            _listParam.Add(New Datos.DParametro("@bcprograma", programa))
             _listParam.Add(New Datos.DParametro("@tauact", L_Usuario))
             _Tabla = D_ProcedimientoConParam("sp_Mam_TV001", _listParam)
 
@@ -1792,6 +1795,20 @@ Public Class AccesoLogica
             _resultado = False
         End If
         Return _resultado
+    End Function
+
+    Public Shared Function L_prBitacora(_numi As String) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 25))
+        _listParam.Add(New Datos.DParametro("@vcnumi", _numi))
+        _listParam.Add(New Datos.DParametro("@vcuact", L_Usuario))
+
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TV002", _listParam)
+
+        Return _Tabla
     End Function
 #End Region
 

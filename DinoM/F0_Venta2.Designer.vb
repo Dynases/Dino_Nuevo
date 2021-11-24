@@ -121,6 +121,7 @@ Partial Class F0_Venta2
         Me.PanelFondoDetalle = New System.Windows.Forms.Panel()
         Me.PanelFacturaYCobranza = New System.Windows.Forms.Panel()
         Me.PanelEncabezado = New System.Windows.Forms.Panel()
+        Me.btnBitacora = New DevComponents.DotNetBar.ButtonX()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -175,7 +176,6 @@ Partial Class F0_Venta2
         '
         'PanelSuperior
         '
-        Me.PanelSuperior.Controls.Add(Me.btnDuplicar)
         Me.PanelSuperior.Margin = New System.Windows.Forms.Padding(2)
         Me.PanelSuperior.Size = New System.Drawing.Size(1319, 72)
         Me.PanelSuperior.Style.Alignment = System.Drawing.StringAlignment.Center
@@ -191,11 +191,6 @@ Partial Class F0_Venta2
         Me.PanelSuperior.StyleMouseOver.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
         Me.PanelSuperior.StyleMouseOver.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
         Me.PanelSuperior.StyleMouseOver.BackgroundImage = CType(resources.GetObject("PanelSuperior.StyleMouseOver.BackgroundImage"), System.Drawing.Image)
-        Me.PanelSuperior.Controls.SetChildIndex(Me.btnDuplicar, 0)
-        Me.PanelSuperior.Controls.SetChildIndex(Me.PanelToolBar1, 0)
-        Me.PanelSuperior.Controls.SetChildIndex(Me.PanelToolBar2, 0)
-        Me.PanelSuperior.Controls.SetChildIndex(Me.MRlAccion, 0)
-        Me.PanelSuperior.Controls.SetChildIndex(Me.PictureBox1, 0)
         '
         'PanelInferior
         '
@@ -259,8 +254,14 @@ Partial Class F0_Venta2
         '
         'PanelToolBar2
         '
-        Me.PanelToolBar2.Location = New System.Drawing.Point(1159, 0)
+        Me.PanelToolBar2.Controls.Add(Me.btnDuplicar)
+        Me.PanelToolBar2.Controls.Add(Me.btnBitacora)
+        Me.PanelToolBar2.Location = New System.Drawing.Point(1059, 0)
         Me.PanelToolBar2.Margin = New System.Windows.Forms.Padding(2)
+        Me.PanelToolBar2.Size = New System.Drawing.Size(260, 72)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnImprimir, 0)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnBitacora, 0)
+        Me.PanelToolBar2.Controls.SetChildIndex(Me.btnDuplicar, 0)
         '
         'PanelPrincipal
         '
@@ -273,6 +274,7 @@ Partial Class F0_Venta2
         '
         'btnImprimir
         '
+        Me.btnImprimir.Size = New System.Drawing.Size(260, 72)
         '
         'btnUltimo
         '
@@ -299,7 +301,7 @@ Partial Class F0_Venta2
         '
         Me.MRlAccion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.MRlAccion.Margin = New System.Windows.Forms.Padding(2)
-        Me.MRlAccion.Size = New System.Drawing.Size(783, 72)
+        Me.MRlAccion.Size = New System.Drawing.Size(683, 72)
         Me.MRlAccion.Visible = False
         '
         'PanelContent
@@ -343,7 +345,7 @@ Partial Class F0_Venta2
         '
         'PictureBox1
         '
-        Me.PictureBox1.Location = New System.Drawing.Point(966, 0)
+        Me.PictureBox1.Location = New System.Drawing.Point(866, 0)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(4)
         '
         'GroupPanel2
@@ -2097,7 +2099,7 @@ Partial Class F0_Venta2
         Me.btnDuplicar.Image = Global.DinoM.My.Resources.Resources._14
         Me.btnDuplicar.ImageFixedSize = New System.Drawing.Size(48, 48)
         Me.btnDuplicar.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
-        Me.btnDuplicar.Location = New System.Drawing.Point(1239, 0)
+        Me.btnDuplicar.Location = New System.Drawing.Point(180, 0)
         Me.btnDuplicar.Name = "btnDuplicar"
         Me.btnDuplicar.Size = New System.Drawing.Size(80, 72)
         Me.btnDuplicar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
@@ -2140,6 +2142,24 @@ Partial Class F0_Venta2
         Me.PanelEncabezado.Name = "PanelEncabezado"
         Me.PanelEncabezado.Size = New System.Drawing.Size(1286, 598)
         Me.PanelEncabezado.TabIndex = 1
+        '
+        'btnBitacora
+        '
+        Me.btnBitacora.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btnBitacora.ColorTable = DevComponents.DotNetBar.eButtonColor.Orange
+        Me.btnBitacora.Dock = System.Windows.Forms.DockStyle.Left
+        Me.btnBitacora.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBitacora.Image = Global.DinoM.My.Resources.Resources.BUSQUEDA
+        Me.btnBitacora.ImageFixedSize = New System.Drawing.Size(48, 48)
+        Me.btnBitacora.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top
+        Me.btnBitacora.Location = New System.Drawing.Point(0, 0)
+        Me.btnBitacora.Name = "btnBitacora"
+        Me.btnBitacora.Size = New System.Drawing.Size(88, 72)
+        Me.btnBitacora.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.btnBitacora.TabIndex = 18
+        Me.btnBitacora.Text = "BITÁCORA"
+        Me.btnBitacora.TextColor = System.Drawing.Color.White
+        Me.btnBitacora.Visible = False
         '
         'F0_Venta2
         '
@@ -2304,4 +2324,5 @@ Partial Class F0_Venta2
     Friend WithEvents LabelX23 As DevComponents.DotNetBar.LabelX
     Friend WithEvents lbNroCaja As Label
     Friend WithEvents LabelX24 As DevComponents.DotNetBar.LabelX
+    Protected WithEvents btnBitacora As DevComponents.DotNetBar.ButtonX
 End Class

@@ -14,6 +14,7 @@ Public Class F0_AnularFactura
     Dim NroAutorizacion As String
     Public _nameButton As String
     Public _tab As SuperTabItem
+    Public Programa As String
 #End Region
 
 #Region "Eventos"
@@ -56,6 +57,7 @@ Public Class F0_AnularFactura
 
         P_ArmarGrilla()
 
+        Programa = P_Principal.btVentAnularFactura.Text
     End Sub
 
 #End Region
@@ -305,11 +307,45 @@ Public Class F0_AnularFactura
                                        eToastGlowColor.Blue, eToastPosition.BottomLeft)
             End If
         Else
-            If (MessageBox.Show("Esta seguro de ANULAR la Factura " + Tb2NroFactura.Text + "?", "PREGUNTA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes) Then
+
+            Dim res1 As Boolean = L_fnVerificarPagos(Tb1Codigo.Text)
+            If res1 Then
+                Dim img As Bitmap = New Bitmap(My.Resources.WARNING, 50, 50)
+                ToastNotification.Show(Me, "No se puede anular esta factura con código de venta:  ".ToUpper + Tb1Codigo.Text + ", porque tiene pagos realizados, por favor primero elimine los pagos correspondientes a esta venta".ToUpper,
+                                                  img, 5000,
+                                                  eToastGlowColor.Green,
+                                                  eToastPosition.TopCenter)
+                Exit Sub
+            End If
+
+            Dim res2 As Boolean = L_fnVerificarCierreCaja(Tb1Codigo.Text, "V")
+            If res2 Then
+                Dim img As Bitmap = New Bitmap(My.Resources.WARNING, 50, 50)
+
+                ToastNotification.Show(Me, "No se puede anular esta factura con código de venta: ".ToUpper + Tb1Codigo.Text + ", porque ya se hizo cierre de caja, por favor primero elimine cierre de caja".ToUpper,
+                                                  img, 5000,
+                                                  eToastGlowColor.Green,
+                                                  eToastPosition.TopCenter)
+                Exit Sub
+            End If
+
+            Dim result As Boolean = L_fnVerificarSiSeContabilizoVenta(Tb1Codigo.Text)
+            If result Then
+                Dim img As Bitmap = New Bitmap(My.Resources.cancel, 50, 50)
+                ToastNotification.Show(Me, "La Factura y Venta no puede ser anulada porque ya fue contabilizada".ToUpper, img, 4500, eToastGlowColor.Red, eToastPosition.TopCenter)
+                Exit Sub
+            End If
+
+
+            If (MessageBox.Show("Esta seguro de ANULAR la Factura " + Tb2NroFactura.Text + " y la Venta " + Tb1Codigo.Text + "?", "PREGUNTA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes) Then
+                'Primero modifica factura correspondiente a la venta
                 L_Modificar_Factura("fvanumi = " + Tb1Codigo.Text + " and fvanfac = " + NroFactura + " and fvaautoriz = " + NroAutorizacion, "", "", "", IIf(Sb1Estado.Value, "1", "0"))
-                'P_ActStock()
+                'Luego anula venta
+                Dim mensajeError As String = ""
+                Dim res As Boolean = L_fnEliminarVenta(Tb1Codigo.Text, mensajeError, Programa)
+
                 P_LlenarDatosGrilla()
-                ToastNotification.Show(Me, "La Factura " + Tb2NroFactura.Text + ", Se ANULADO correctamente",
+                ToastNotification.Show(Me, "La Factura: " + Tb2NroFactura.Text + " y Venta con código: " + Tb1Codigo.Text + " Se ANULARON correctamente",
                                        My.Resources.OK, _DuracionSms * 1000,
                                        eToastGlowColor.Blue, eToastPosition.BottomLeft)
             End If
