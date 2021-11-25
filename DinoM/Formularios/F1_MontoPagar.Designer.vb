@@ -100,7 +100,7 @@ Partial Class F1_MontoPagar
         Me.btnContinuar.Name = "btnContinuar"
         Me.btnContinuar.Size = New System.Drawing.Size(110, 39)
         Me.btnContinuar.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeMobile2014
-        Me.btnContinuar.TabIndex = 370
+        Me.btnContinuar.TabIndex = 3
         Me.btnContinuar.Text = "Continuar"
         '
         'txtMontoPagado1
@@ -221,7 +221,7 @@ Partial Class F1_MontoPagar
         Me.tbMontoTarej.MinValue = 0R
         Me.tbMontoTarej.Name = "tbMontoTarej"
         Me.tbMontoTarej.Size = New System.Drawing.Size(120, 26)
-        Me.tbMontoTarej.TabIndex = 4
+        Me.tbMontoTarej.TabIndex = 101
         Me.tbMontoTarej.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
         '
         'ButtonX2
@@ -317,7 +317,7 @@ Partial Class F1_MontoPagar
         Me.tbMontoDolar.MinValue = 0R
         Me.tbMontoDolar.Name = "tbMontoDolar"
         Me.tbMontoDolar.Size = New System.Drawing.Size(110, 26)
-        Me.tbMontoDolar.TabIndex = 3
+        Me.tbMontoDolar.TabIndex = 100
         Me.tbMontoDolar.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
         '
         'LabelX6
@@ -366,6 +366,8 @@ Partial Class F1_MontoPagar
         '
         'tbNit
         '
+        Me.tbNit.AcceptsTab = True
+        Me.tbNit.Cursor = System.Windows.Forms.Cursors.Default
         Me.tbNit.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbNit.Location = New System.Drawing.Point(93, 20)
         Me.tbNit.Margin = New System.Windows.Forms.Padding(2)

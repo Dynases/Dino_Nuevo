@@ -2452,7 +2452,7 @@ Public Class F0_VentasSupermercado
             _prEliminarFila()
         End If
 
-        If (e.KeyData = Keys.C And grdetalle.Row >= 0) Then
+        If (e.KeyData = Keys.Control + Keys.C And grdetalle.Row >= 0) Then
             VentanaCantidad()
         End If
 

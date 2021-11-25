@@ -22,7 +22,9 @@ Public Class F1_MontoPagar
 
 
     Private Sub F1_MontoPagar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        tbMontoBs.Focus()
+
+        tbNit.Focus()
+        tbNit.Select()
         txtMontoPagado1.Text = "0.00"
         txtCambio1.Text = "0.00"
         tbMontoBs.Value = 0
@@ -32,7 +34,7 @@ Public Class F1_MontoPagar
         tbNit.Text = Nit
         tbRazonSocial.Text = RazonSocial
 
-        tbNit.Focus()
+        'tbNit.Focus()
     End Sub
 
     Private Sub tbMontoBs_ValueChanged(sender As Object, e As EventArgs) Handles tbMontoBs.ValueChanged
@@ -89,7 +91,8 @@ Public Class F1_MontoPagar
             tbMontoDolar.Focus()
         End If
         If (e.KeyData = Keys.Enter) Then
-            tbMontoDolar.Focus()
+            'tbMontoDolar.Focus()
+            btnContinuar.Focus()
         End If
         If (e.KeyData = Keys.Down) Then
             tbMontoTarej.Focus()
