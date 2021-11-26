@@ -25,6 +25,7 @@ Public Class Efecto
     Public Cantidad As Double = 0
     Public Nit As String = ""
     Public RazonSocial As String = ""
+    Public Conversion As Double = 0
 
     Public DetalleServicio As String = ""
     Public PrecioServicio As Double = 0
@@ -134,6 +135,7 @@ Public Class Efecto
         frmAyuda.Stock = Stock
         frmAyuda.Cantidad = Cantidad
         frmAyuda.Producto = NameProducto
+        frmAyuda.Conversion = Conversion
         frmAyuda.ShowDialog()
         If frmAyuda.Bandera = True Then
 

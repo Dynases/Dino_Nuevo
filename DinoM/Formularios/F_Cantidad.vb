@@ -6,6 +6,7 @@ Public Class F_Cantidad
     Public Cantidad As Decimal
     Public Producto As String
     Public bandera As Boolean
+    Public Conversion As Decimal
 
 
     Private Sub F_Cantidad_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -14,6 +15,7 @@ Public Class F_Cantidad
         tbCantidad.Focus()
         lbStock.Text = "Stock Disponible = " + Str(Stock)
         lbProducto.Text = Producto
+        tbConversion.Value = Conversion
     End Sub
 
     Private Sub tbCantidad_Enter(sender As Object, e As EventArgs) Handles tbCantidad.Enter

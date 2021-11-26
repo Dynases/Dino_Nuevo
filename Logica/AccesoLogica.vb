@@ -668,6 +668,12 @@ Public Class AccesoLogica
 
         Return _Tabla
     End Function
+    Public Shared Function L_fnBuscarProductoConversion(_Numi As String) As DataTable
+        Dim _Tabla As DataTable
+        Dim _Where As String = "yfnumi = " + _Numi + " ORDER BY yfnumi"
+        _Tabla = D_Datos_Tabla("*", "TY005", _Where)
+        Return _Tabla
+    End Function
 #End Region
 
 #Region "TY004 CLIENTES"

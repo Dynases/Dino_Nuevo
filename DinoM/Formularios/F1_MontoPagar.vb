@@ -294,6 +294,8 @@ Public Class F1_MontoPagar
             tbMontoTarej.Value = Convert.ToDecimal(TotalVenta)
             tbMontoBs.Enabled = False
             tbMontoDolar.Enabled = False
+            tbMontoTarej.IsInputReadOnly = True
+            tbMontoTarej.Focus()
         Else
             tbMontoBs.Enabled = True
             tbMontoDolar.Enabled = True
