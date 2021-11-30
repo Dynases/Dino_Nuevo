@@ -28,6 +28,7 @@ Partial Class F0_KardexMovimiento
         Dim cbAlmacen_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Me.GroupPanelDatos = New DevComponents.DotNetBar.Controls.GroupPanel()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.tbFechaVenc = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.tblote = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.lblote = New DevComponents.DotNetBar.LabelX()
@@ -50,7 +51,6 @@ Partial Class F0_KardexMovimiento
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -297,6 +297,17 @@ Partial Class F0_KardexMovimiento
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(1323, 194)
         Me.Panel2.TabIndex = 0
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Georgia", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
+        Me.Label1.Location = New System.Drawing.Point(138, 3)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(51, 9)
+        Me.Label1.TabIndex = 244
+        Me.Label1.Text = "Ctrl+Enter"
         '
         'tbFechaVenc
         '
@@ -734,17 +745,6 @@ Partial Class F0_KardexMovimiento
         '
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Georgia", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(85, Byte), Integer), CType(CType(139, Byte), Integer))
-        Me.Label1.Location = New System.Drawing.Point(138, 3)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(51, 9)
-        Me.Label1.TabIndex = 244
-        Me.Label1.Text = "Ctrl+Enter"
         '
         'F0_KardexMovimiento
         '

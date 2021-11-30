@@ -506,6 +506,12 @@
     <Compile Include="Pr_StockMinimo.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Pr_ReporteStock.Designer.vb">
+      <DependentUpon>Pr_ReporteStock.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Pr_ReporteStock.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Pr_Ventas12Meses.Designer.vb">
       <DependentUpon>Pr_Ventas12Meses.vb</DependentUpon>
     </Compile>
@@ -564,6 +570,12 @@
       <DependentUpon>Pr_ReporteMorosidadGeneral.vb</DependentUpon>
     </Compile>
     <Compile Include="Pr_ReporteMorosidadGeneral.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pr_ReporteVentasCajeras.Designer.vb">
+      <DependentUpon>Pr_ReporteVentasCajeras.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Pr_ReporteVentasCajeras.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Pr_VentasVsCostos.Designer.vb">
@@ -878,6 +890,12 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Reporte\R_StockDiferencia.vb">
+      <DependentUpon>R_StockDiferencia.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Reporte\R_StockActualUtilidad.vb">
       <DependentUpon>R_StockActualUtilidad.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -1151,6 +1169,9 @@
     <EmbeddedResource Include="Pr_StockMinimo.resx">
       <DependentUpon>Pr_StockMinimo.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pr_ReporteStock.resx">
+      <DependentUpon>Pr_ReporteStock.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pr_Ventas12Meses.resx">
       <DependentUpon>Pr_Ventas12Meses.vb</DependentUpon>
     </EmbeddedResource>
@@ -1180,6 +1201,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pr_ReporteMorosidadGeneral.resx">
       <DependentUpon>Pr_ReporteMorosidadGeneral.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pr_ReporteVentasCajeras.resx">
+      <DependentUpon>Pr_ReporteVentasCajeras.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pr_VentasVsCostos.resx">
       <DependentUpon>Pr_VentasVsCostos.vb</DependentUpon>
@@ -1385,6 +1409,10 @@
     <EmbeddedResource Include="Reporte\R_StockActualLote.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>R_StockActualLote.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\R_StockDiferencia.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>R_StockDiferencia.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reporte\R_StockActualUtilidad.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

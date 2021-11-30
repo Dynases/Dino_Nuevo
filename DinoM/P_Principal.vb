@@ -1131,6 +1131,11 @@ Public Class P_Principal
         frm.Show()
     End Sub
 
+    Private Sub btInvStockDif_Click(sender As Object, e As EventArgs) Handles btInvStockDif.Click
+        Dim frm As New Pr_ReporteStock
+        frm.Show()
+    End Sub
+
     'Private Sub btnCredPagoCliente_Click(sender As Object, e As EventArgs) Handles btnCredPagoCliente.Click
     '    SideNav1.IsMenuExpanded = False
     '    Ventana.Select()

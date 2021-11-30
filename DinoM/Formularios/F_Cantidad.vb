@@ -18,9 +18,7 @@ Public Class F_Cantidad
         tbConversion.Value = Conversion
     End Sub
 
-    Private Sub tbCantidad_Enter(sender As Object, e As EventArgs) Handles tbCantidad.Enter
 
-    End Sub
 
     Private Sub tbCantidad_KeyDown(sender As Object, e As KeyEventArgs) Handles tbCantidad.KeyDown
         If (e.KeyData = Keys.Escape) Then
@@ -42,5 +40,13 @@ Public Class F_Cantidad
             End If
         End If
 
+    End Sub
+
+    Private Sub tbCantCajas_KeyDown(sender As Object, e As KeyEventArgs) Handles tbCantCajas.KeyDown
+
+        If (e.KeyData = Keys.Enter) Then
+            tbCantidad.Text = tbCantCajas.Value * tbConversion.Value
+            tbCantidad.Focus()
+        End If
     End Sub
 End Class

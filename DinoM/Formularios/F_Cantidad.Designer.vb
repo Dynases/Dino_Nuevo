@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class F_Cantidad
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class F_Cantidad
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.ReflectionLabel1 = New DevComponents.DotNetBar.Controls.ReflectionLabel()
@@ -30,9 +30,13 @@ Partial Class F_Cantidad
         Me.lbConversion = New System.Windows.Forms.Label()
         Me.tbConversion = New DevComponents.Editors.DoubleInput()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.tbCantCajas = New DevComponents.Editors.IntegerInput()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.tbCantidad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbConversion, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tbCantCajas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -41,7 +45,7 @@ Partial Class F_Cantidad
         Me.Panel1.Controls.Add(Me.ReflectionLabel1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(520, 55)
         Me.Panel1.TabIndex = 0
@@ -56,7 +60,7 @@ Partial Class F_Cantidad
         Me.ReflectionLabel1.Font = New System.Drawing.Font("Calibri", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ReflectionLabel1.ForeColor = System.Drawing.Color.White
         Me.ReflectionLabel1.Location = New System.Drawing.Point(9, 10)
-        Me.ReflectionLabel1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.ReflectionLabel1.Margin = New System.Windows.Forms.Padding(2)
         Me.ReflectionLabel1.Name = "ReflectionLabel1"
         Me.ReflectionLabel1.Size = New System.Drawing.Size(278, 43)
         Me.ReflectionLabel1.TabIndex = 0
@@ -79,10 +83,10 @@ Partial Class F_Cantidad
         Me.lbStock.BackColor = System.Drawing.Color.Black
         Me.lbStock.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbStock.ForeColor = System.Drawing.Color.White
-        Me.lbStock.Location = New System.Drawing.Point(104, 133)
+        Me.lbStock.Location = New System.Drawing.Point(91, 133)
         Me.lbStock.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lbStock.Name = "lbStock"
-        Me.lbStock.Size = New System.Drawing.Size(327, 28)
+        Me.lbStock.Size = New System.Drawing.Size(345, 28)
         Me.lbStock.TabIndex = 2
         Me.lbStock.Text = "Stock Disponible = 52.00"
         Me.lbStock.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -95,23 +99,23 @@ Partial Class F_Cantidad
         Me.tbCantidad.BackgroundStyle.Class = "DateTimeInputBackground"
         Me.tbCantidad.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbCantidad.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.tbCantidad.Font = New System.Drawing.Font("Calibri", 25.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbCantidad.Font = New System.Drawing.Font("Calibri", 22.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbCantidad.Increment = 1.0R
-        Me.tbCantidad.Location = New System.Drawing.Point(160, 205)
-        Me.tbCantidad.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.tbCantidad.Location = New System.Drawing.Point(223, 218)
+        Me.tbCantidad.Margin = New System.Windows.Forms.Padding(2)
         Me.tbCantidad.Name = "tbCantidad"
-        Me.tbCantidad.Size = New System.Drawing.Size(227, 49)
+        Me.tbCantidad.Size = New System.Drawing.Size(213, 43)
         Me.tbCantidad.TabIndex = 0
         '
         'lbConversion
         '
-        Me.lbConversion.BackColor = System.Drawing.Color.Black
-        Me.lbConversion.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbConversion.ForeColor = System.Drawing.Color.White
-        Me.lbConversion.Location = New System.Drawing.Point(179, 164)
+        Me.lbConversion.BackColor = System.Drawing.Color.Transparent
+        Me.lbConversion.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbConversion.ForeColor = System.Drawing.Color.SteelBlue
+        Me.lbConversion.Location = New System.Drawing.Point(90, 180)
         Me.lbConversion.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lbConversion.Name = "lbConversion"
-        Me.lbConversion.Size = New System.Drawing.Size(95, 25)
+        Me.lbConversion.Size = New System.Drawing.Size(91, 26)
         Me.lbConversion.TabIndex = 3
         Me.lbConversion.Text = "Conversión:"
         Me.lbConversion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -121,29 +125,72 @@ Partial Class F_Cantidad
         '
         '
         '
-        Me.tbConversion.BackgroundStyle.BackColor = System.Drawing.Color.Black
+        Me.tbConversion.BackgroundStyle.BackColor = System.Drawing.Color.SteelBlue
         Me.tbConversion.BackgroundStyle.Class = "DateTimeInputBackground"
         Me.tbConversion.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbConversion.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.tbConversion.Font = New System.Drawing.Font("Calibri", 12.0!)
+        Me.tbConversion.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold)
         Me.tbConversion.ForeColor = System.Drawing.Color.White
         Me.tbConversion.Increment = 1.0R
         Me.tbConversion.IsInputReadOnly = True
-        Me.tbConversion.Location = New System.Drawing.Point(276, 164)
+        Me.tbConversion.Location = New System.Drawing.Point(186, 179)
         Me.tbConversion.MinValue = 0R
         Me.tbConversion.Name = "tbConversion"
-        Me.tbConversion.Size = New System.Drawing.Size(95, 27)
+        Me.tbConversion.Size = New System.Drawing.Size(88, 27)
         Me.tbConversion.TabIndex = 4
         Me.tbConversion.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
         '
         'Label1
         '
-        Me.Label1.Font = New System.Drawing.Font("Calibri", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(24, 216)
+        Me.Label1.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(90, 228)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(130, 28)
+        Me.Label1.Size = New System.Drawing.Size(128, 28)
         Me.Label1.TabIndex = 5
         Me.Label1.Text = "Cant.Unidades:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'Label2
+        '
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
+        Me.Label2.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label2.Location = New System.Drawing.Point(289, 180)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(55, 25)
+        Me.Label2.TabIndex = 6
+        Me.Label2.Text = "Cajas:"
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'tbCantCajas
+        '
+        '
+        '
+        '
+        Me.tbCantCajas.BackgroundStyle.BackColor = System.Drawing.Color.SteelBlue
+        Me.tbCantCajas.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbCantCajas.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbCantCajas.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbCantCajas.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.tbCantCajas.ForeColor = System.Drawing.Color.White
+        Me.tbCantCajas.Location = New System.Drawing.Point(348, 180)
+        Me.tbCantCajas.LockUpdateChecked = False
+        Me.tbCantCajas.Name = "tbCantCajas"
+        Me.tbCantCajas.Size = New System.Drawing.Size(88, 27)
+        Me.tbCantCajas.TabIndex = 8
+        '
+        'Label3
+        '
+        Me.Label3.BackColor = System.Drawing.Color.Transparent
+        Me.Label3.Font = New System.Drawing.Font("Calibri", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.SteelBlue
+        Me.Label3.Location = New System.Drawing.Point(364, 166)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(75, 10)
+        Me.Label3.TabIndex = 9
+        Me.Label3.Text = "Presione Enter"
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'F_Cantidad
         '
@@ -151,6 +198,9 @@ Partial Class F_Cantidad
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(520, 281)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.tbCantCajas)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.tbConversion)
         Me.Controls.Add(Me.lbConversion)
@@ -159,13 +209,14 @@ Partial Class F_Cantidad
         Me.Controls.Add(Me.lbProducto)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "F_Cantidad"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "F_Cantidad"
         Me.Panel1.ResumeLayout(False)
         CType(Me.tbCantidad, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbConversion, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tbCantCajas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -178,4 +229,7 @@ Partial Class F_Cantidad
     Friend WithEvents lbConversion As Label
     Public WithEvents tbConversion As DevComponents.Editors.DoubleInput
     Friend WithEvents Label1 As Label
+    Friend WithEvents Label2 As Label
+    Public WithEvents tbCantCajas As DevComponents.Editors.IntegerInput
+    Friend WithEvents Label3 As Label
 End Class
