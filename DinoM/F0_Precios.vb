@@ -103,7 +103,7 @@ Public Class F0_Precios
 
                 With grprecio.RootTable.Columns(columnprecio)
                     .Caption = fc.Item("ygcod").ToString
-                    .Width = 70
+                    .Width = 80
                     .HeaderAlignment = Janus.Windows.GridEX.TextAlignment.Center
                     .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
                     .Visible = True
@@ -115,23 +115,23 @@ Public Class F0_Precios
             'a.yfcprod ,a.yfnumi ,a.yfcdprod1,gr3.ycdes3 as Laboratorio,gr4.ycdes3 as Presentacion 
             With grprecio.RootTable.Columns("yfcprod")
                 .Caption = "COD PR"
-                .Width = 60
+                .Width = 100
                 .Visible = True
             End With
             With grprecio.RootTable.Columns("yfnumi")
                 .Caption = "Cod P"
-                .Width = 70
+                .Width = 100
                 .Visible = False
             End With
             With grprecio.RootTable.Columns("yfcdprod1")
                 .Caption = "PRODUCTO"
-                .Width = 210
+                .Width = 370
                 .Visible = True
             End With
             With grprecio.RootTable.Columns("Laboratorio")
                 .Caption = "PROCEDENCIA"
                 .Width = 150
-                .Visible = True
+                .Visible = False
             End With
             With grprecio.RootTable.Columns("Presentacion")
                 .Caption = "Presentacion"

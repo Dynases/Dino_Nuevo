@@ -269,16 +269,15 @@ Partial Class F0_VentasSupermercado
         Me.tbPrecio.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbPrecio.BackgroundStyle.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center
         Me.tbPrecio.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.tbPrecio.Font = New System.Drawing.Font("Calibri", 28.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbPrecio.Font = New System.Drawing.Font("Calibri", 26.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbPrecio.ForeColor = System.Drawing.Color.Black
         Me.tbPrecio.Increment = 1.0R
         Me.tbPrecio.IsInputReadOnly = True
-        Me.tbPrecio.Location = New System.Drawing.Point(153, 72)
+        Me.tbPrecio.Location = New System.Drawing.Point(129, 72)
         Me.tbPrecio.Margin = New System.Windows.Forms.Padding(2)
         Me.tbPrecio.Name = "tbPrecio"
-        Me.tbPrecio.Size = New System.Drawing.Size(205, 53)
+        Me.tbPrecio.Size = New System.Drawing.Size(205, 50)
         Me.tbPrecio.TabIndex = 4
-        Me.tbPrecio.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Center
         '
         'Panel4
         '
@@ -322,11 +321,11 @@ Partial Class F0_VentasSupermercado
         Me.tbProducto.Border.Class = "ItemPanel"
         Me.tbProducto.Border.CornerType = DevComponents.DotNetBar.eCornerType.Rounded
         Me.tbProducto.Dock = System.Windows.Forms.DockStyle.Left
-        Me.tbProducto.Font = New System.Drawing.Font("Calibri", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbProducto.Font = New System.Drawing.Font("Calibri", 22.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbProducto.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
         Me.tbProducto.Location = New System.Drawing.Point(0, 0)
         Me.tbProducto.Name = "tbProducto"
-        Me.tbProducto.Size = New System.Drawing.Size(127, 53)
+        Me.tbProducto.Size = New System.Drawing.Size(127, 49)
         Me.tbProducto.TabIndex = 3
         '
         'PrintDialog1

@@ -92,7 +92,7 @@ Public Class F0_VentasSupermercado
         tbDescuento.Value = sumaDescuento
 
     End Sub
-    Public Sub CalcularDescuentos(ProductoId As Integer, Cantidad As Integer, Precio As Integer, Posicion As Integer)
+    Public Sub CalcularDescuentos(ProductoId As Integer, Cantidad As Integer, Precio As Decimal, Posicion As Integer)
 
 
         Dim fila As DataRow() = dtDescuentos.Select("ProductoId=" + Str(ProductoId).ToString.Trim + "", "")
@@ -483,7 +483,7 @@ Public Class F0_VentasSupermercado
             .Visible = gb_CodigoBarra
         End With
         With grProductos.RootTable.Columns("yfcdprod1")
-            .Width = 360
+            .Width = 340
             .Visible = True
             .Caption = "Descripción"
         End With
@@ -583,7 +583,11 @@ Public Class F0_VentasSupermercado
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
         End With
-
+        With grProductos.RootTable.Columns("Grupo5")
+            .Width = 50
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
+            .Visible = False
+        End With
         With grProductos.RootTable.Columns("yfumin")
             .Width = 50
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
@@ -592,11 +596,11 @@ Public Class F0_VentasSupermercado
         With grProductos.RootTable.Columns("UnidMin")
             .Width = 120
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
-            .Visible = True
+            .Visible = False
             .Caption = "Unidad Min."
         End With
         With grProductos.RootTable.Columns("yhprecio")
-            .Width = 100
+            .Width = 90
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = True
             .Caption = "Precio"
