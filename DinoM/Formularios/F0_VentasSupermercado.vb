@@ -2184,68 +2184,69 @@ Public Class F0_VentasSupermercado
             cargarProductos()
             Dim codigoBarrasCompleto = tbProducto.Text.Trim
             Dim primerDigito As String = Mid(codigoBarrasCompleto, 1, 1)
-            If primerDigito = "2" Then
-                Dim codigoBarrasProducto As Integer
-                Dim totalEntero, totalDecimal, total2, total As Decimal
-                codigoBarrasProducto = Mid(codigoBarrasCompleto, 1, 6)
-                'CUANDO EL COD BARRA TENGA 6 DIGITOS  EJEM: 200001
-                If (existeProducto(codigoBarrasProducto)) Then
 
-                    totalEntero = Mid(codigoBarrasCompleto, 7, 4)
-                    totalDecimal = Mid(codigoBarrasCompleto, 11, 2)
-                    total2 = CDbl(totalEntero).ToString() + "." + CDbl(totalDecimal).ToString()
-                    total = CDbl(total2)
-                    If (Not verificarExistenciaUnica(codigoBarrasProducto)) Then
-                        ponerProducto2(codigoBarrasProducto, total, -1)
+            'If primerDigito = "2" Then
+            '    Dim codigoBarrasProducto As Integer
+            '    Dim totalEntero, totalDecimal, total2, total As Decimal
+            '    codigoBarrasProducto = Mid(codigoBarrasCompleto, 1, 6)
+            '    'CUANDO EL COD BARRA TENGA 6 DIGITOS  EJEM: 200001
+            '    If (existeProducto(codigoBarrasProducto)) Then
 
-                    Else
-                        ponerProducto2(codigoBarrasProducto, total, grdetalle.RowCount - 1)
+            '        totalEntero = Mid(codigoBarrasCompleto, 7, 4)
+            '        totalDecimal = Mid(codigoBarrasCompleto, 11, 2)
+            '        total2 = CDbl(totalEntero).ToString() + "." + CDbl(totalDecimal).ToString()
+            '        total = CDbl(total2)
+            '        If (Not verificarExistenciaUnica(codigoBarrasProducto)) Then
+            '            ponerProducto2(codigoBarrasProducto, total, -1)
 
-                    End If
+            '        Else
+            '            ponerProducto2(codigoBarrasProducto, total, grdetalle.RowCount - 1)
+            '        End If
 
+            '    Else
+            '        ''CUANDO EL CODIGO DE BARRAS TENGA 7 DIGITOS EJEM: 2000001
+            '        codigoBarrasProducto = Mid(codigoBarrasCompleto, 1, 7)
+            '        If (existeProducto(codigoBarrasProducto)) Then
+            '            totalEntero = Mid(codigoBarrasCompleto, 8, 3)
+            '            totalDecimal = Mid(codigoBarrasCompleto, 11, 2)
+            '            total2 = CDbl(totalEntero).ToString() + "." + CDbl(totalDecimal).ToString()
+            '            total = CDbl(total2)
+            '            If (Not verificarExistenciaUnica(codigoBarrasProducto)) Then
+            '                ponerProducto2(codigoBarrasProducto, total, -1)
+
+            '            Else
+            '                ponerProducto2(codigoBarrasProducto, total, grdetalle.RowCount - 1)
+
+            '            End If
+            '        Else
+            '            grdetalle.DataChanged = False
+            '            ToastNotification.Show(Me, "El código de barra del producto no existe", My.Resources.WARNING, 3000, eToastGlowColor.Red, eToastPosition.TopCenter)
+            '        End If
+            '    End If
+            'Else
+
+            If (existeProducto(tbProducto.Text.Trim)) Then
+                If (Not verificarExistenciaUnica(tbProducto.Text.Trim)) Then
+                    Dim resultado As Boolean = False
+                    ponerProducto(tbProducto.Text.Trim, resultado)
+                    VentanaCantidad()
                 Else
-                    ''CUANDO EL CODIGO DE BARRAS TENGA 7 DIGITOS EJEM: 2000001
-                    codigoBarrasProducto = Mid(codigoBarrasCompleto, 1, 7)
-                    If (existeProducto(codigoBarrasProducto)) Then
-                        totalEntero = Mid(codigoBarrasCompleto, 8, 3)
-                        totalDecimal = Mid(codigoBarrasCompleto, 11, 2)
-                        total2 = CDbl(totalEntero).ToString() + "." + CDbl(totalDecimal).ToString()
-                        total = CDbl(total2)
-                        If (Not verificarExistenciaUnica(codigoBarrasProducto)) Then
-                            ponerProducto2(codigoBarrasProducto, total, -1)
-
-                        Else
-                            ponerProducto2(codigoBarrasProducto, total, grdetalle.RowCount - 1)
-
-                        End If
-                    Else
-                        grdetalle.DataChanged = False
-                        ToastNotification.Show(Me, "El código de barra del producto no existe", My.Resources.WARNING, 3000, eToastGlowColor.Red, eToastPosition.TopCenter)
-                    End If
+                    'If (grdetalle.GetValue("producto").ToString <> String.Empty) Then
+                    sumarCantidad(tbProducto.Text.Trim)
+                    VentanaCantidad()
+                    'Else
+                    '    Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                    '    ToastNotification.Show(Me, "El Producto: NO CUENTA CON STOCK DISPONIBLE", img, 5000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                    '    FilaSelectLote = Nothing
+                    'End If
                 End If
             Else
-
-                If (existeProducto(tbProducto.Text.Trim)) Then
-                    If (Not verificarExistenciaUnica(tbProducto.Text.Trim)) Then
-                        Dim resultado As Boolean = False
-                        ponerProducto(tbProducto.Text.Trim, resultado)
-                        VentanaCantidad()
-                    Else
-                        'If (grdetalle.GetValue("producto").ToString <> String.Empty) Then
-                        sumarCantidad(tbProducto.Text.Trim)
-                        VentanaCantidad()
-                        'Else
-                        '    Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-                        '    ToastNotification.Show(Me, "El Producto: NO CUENTA CON STOCK DISPONIBLE", img, 5000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-                        '    FilaSelectLote = Nothing
-                        'End If
-                    End If
-                Else
-                    grdetalle.DataChanged = False
-                    ToastNotification.Show(Me, "El código de barra del producto no existe", My.Resources.WARNING, 3000, eToastGlowColor.Red, eToastPosition.TopCenter)
-                End If
+                grdetalle.DataChanged = False
+                ToastNotification.Show(Me, "El código de barra del producto no existe", My.Resources.WARNING, 3000, eToastGlowColor.Red, eToastPosition.TopCenter)
             End If
-            'tbProducto.Clear()
+
+            'End If
+
             tbProducto.Clear()
             tbProducto.Focus()
         End If
