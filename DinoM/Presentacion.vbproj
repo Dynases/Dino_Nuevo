@@ -478,12 +478,6 @@
     <Compile Include="NroCaja.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Prueba.Designer.vb">
-      <DependentUpon>Prueba.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Prueba.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="Pr_EstadoCuentasClientesTodos.Designer.vb">
       <DependentUpon>Pr_EstadoCuentasClientesTodos.vb</DependentUpon>
     </Compile>
@@ -1164,9 +1158,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NroCaja.resx">
       <DependentUpon>NroCaja.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Prueba.resx">
-      <DependentUpon>Prueba.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pr_EstadoCuentasClientesTodos.resx">
       <DependentUpon>Pr_EstadoCuentasClientesTodos.vb</DependentUpon>
