@@ -20,6 +20,7 @@ Public Class Efecto
     Public TotalTarjeta As Double = 0
     Public TotalVenta As Double
     Public NameProducto As String = ""
+    Public TipoCambio As Double = 0
 
     Public Stock As Double = 0
     Public Cantidad As Double = 0
@@ -96,6 +97,7 @@ Public Class Efecto
             TotalTarjeta = frmAyuda.TotalTarjeta
             Nit = frmAyuda.Nit
             RazonSocial = frmAyuda.RazonSocial
+            TipoCambio = frmAyuda.TipoCambio
             band = True
             Me.Close()
         Else

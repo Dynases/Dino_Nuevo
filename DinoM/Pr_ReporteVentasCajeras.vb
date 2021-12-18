@@ -11,7 +11,7 @@ Public Class Pr_ReporteVentasCajeras
         tbFechaF.Value = Now.Date
         _PMIniciarTodo()
 
-        Me.Text = "REPORTE VENTAS ATENDIDAS"
+        Me.Text = "REPORTE VENTAS POR CAJERA"
         MReportViewer.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         _IniciarComponentes()
     End Sub
@@ -22,7 +22,7 @@ Public Class Pr_ReporteVentasCajeras
         tbAlmacen.Enabled = False
         CheckTodosVendedor.CheckValue = True
         CheckTodosAlmacen.CheckValue = True
-        ckTodosCliente.CheckValue = True
+        ckTodosProveedor.CheckValue = True
         If (gb_FacturaIncluirICE) Then
             'swIce.Visible = True
         Else
@@ -35,7 +35,7 @@ Public Class Pr_ReporteVentasCajeras
         Dim fechaDesde As DateTime = tbFechaI.Value.ToString("yyyy/MM/dd")
         Dim fechaHasta As DateTime = tbFechaF.Value.ToString("yyyy/MM/dd")
         Dim idVendedor As Integer = 0
-        Dim idCliente As Integer = 0
+        Dim idProveedor As Integer = 0
         Dim idAlmacen As Integer = 0
         If CheckTodosAlmacen.Checked = False And CheckUnaALmacen.Checked = True And tbCodAlmacen.Text <> String.Empty Then
             idAlmacen = tbCodAlmacen.Text
@@ -43,12 +43,12 @@ Public Class Pr_ReporteVentasCajeras
         If CheckTodosVendedor.Checked = False And checkUnaVendedor.Checked = True And tbCodigoVendedor.Text <> String.Empty Then
             idVendedor = tbCodigoVendedor.Text
         End If
-        If ckTodosCliente.Checked = False And ckUnoCliente.Checked = True And tbCodigoCliente.Text <> String.Empty Then
-            idCliente = tbCodigoCliente.Text
+        If ckTodosProveedor.Checked = False And ckUnoProveedor.Checked = True And tbCodigoProveedor.Text <> String.Empty Then
+            idProveedor = tbCodigoProveedor.Text
         End If
 
         'Obtiene las ventas con y sin factura
-        Dim ventasAtendidas As DataTable = L_BuscarVentasAtentidas(fechaDesde, fechaHasta, idAlmacen, idVendedor, idCliente)
+        Dim ventasAtendidas As DataTable = L_BuscarVentasAtentidas(fechaDesde, fechaHasta, idAlmacen, idVendedor, idProveedor)
         Return ventasAtendidas
 
     End Function
@@ -103,7 +103,7 @@ Public Class Pr_ReporteVentasCajeras
         _prCargarReporte()
     End Sub
 
-    Private Sub Pr_VentasAtendidas_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub Pr_VentasCajeras_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _prIniciarTodo()
     End Sub
     Private Sub checkUnaVendedor_CheckValueChanged(sender As Object, e As EventArgs) Handles checkUnaVendedor.CheckValueChanged
@@ -139,22 +139,22 @@ Public Class Pr_ReporteVentasCajeras
         End If
     End Sub
 
-    Private Sub ckTodosCliente_CheckValueChanged(sender As Object, e As EventArgs) Handles ckTodosCliente.CheckValueChanged
-        If (ckTodosCliente.Checked) Then
-            ckUnoCliente.CheckValue = False
-            tbCliente.Enabled = True
-            tbCliente.BackColor = Color.Gainsboro
-            tbCliente.Clear()
-            tbCodigoCliente.Clear()
+    Private Sub ckTodosCliente_CheckValueChanged(sender As Object, e As EventArgs) Handles ckTodosProveedor.CheckValueChanged
+        If (ckTodosProveedor.Checked) Then
+            ckUnoProveedor.CheckValue = False
+            tbProveedor.Enabled = True
+            tbProveedor.BackColor = Color.Gainsboro
+            tbProveedor.Clear()
+            tbCodigoProveedor.Clear()
         End If
     End Sub
 
-    Private Sub ckUnoCliente_CheckedChanged(sender As Object, e As EventArgs) Handles ckUnoCliente.CheckedChanged
-        If (ckUnoCliente.Checked) Then
-            ckTodosCliente.CheckValue = False
-            tbCliente.Enabled = True
-            tbCliente.BackColor = Color.White
-            tbCliente.Focus()
+    Private Sub ckUnoCliente_CheckedChanged(sender As Object, e As EventArgs) Handles ckUnoProveedor.CheckedChanged
+        If (ckUnoProveedor.Checked) Then
+            ckTodosProveedor.CheckValue = False
+            tbProveedor.Enabled = True
+            tbProveedor.BackColor = Color.White
+            tbProveedor.Focus()
         End If
     End Sub
     Private Sub CheckTodosAlmacen_CheckValueChanged(sender As Object, e As EventArgs) Handles CheckTodosAlmacen.CheckValueChanged
@@ -243,28 +243,17 @@ Public Class Pr_ReporteVentasCajeras
         End If
     End Sub
 
-    Private Sub tbCliente_KeyDown(sender As Object, e As KeyEventArgs) Handles tbCliente.KeyDown
-        If (ckUnoCliente.Checked) Then
+    Private Sub tbProveedor_KeyDown(sender As Object, e As KeyEventArgs) Handles tbProveedor.KeyDown
+        If (ckUnoProveedor.Checked) Then
             If e.KeyData = Keys.Control + Keys.Enter Then
 
                 Dim dt As DataTable
-                'dt = L_fnListarClientes()
-                dt = L_fnListarClientesVenta()
+                dt = L_prLibreriaClienteLGeneral(1, 1)
 
                 Dim listEstCeldas As New List(Of Modelo.Celda)
-                listEstCeldas.Add(New Modelo.Celda("ydnumi,", True, "ID", 50))
-                listEstCeldas.Add(New Modelo.Celda("ydcod", False, "ID", 50))
-                listEstCeldas.Add(New Modelo.Celda("ydrazonsocial", True, "RAZÓN SOCIAL", 180))
-                listEstCeldas.Add(New Modelo.Celda("yddesc", True, "NOMBRE", 280))
-                listEstCeldas.Add(New Modelo.Celda("yddctnum", True, "N. Documento".ToUpper, 150))
-                listEstCeldas.Add(New Modelo.Celda("yddirec", True, "DIRECCIÓN", 220))
-                listEstCeldas.Add(New Modelo.Celda("ydtelf1", True, "Teléfono".ToUpper, 200))
-                listEstCeldas.Add(New Modelo.Celda("ydfnac", True, "F.Nacimiento".ToUpper, 150, "MM/dd,YYYY"))
-                listEstCeldas.Add(New Modelo.Celda("ydnumivend,", False, "ID", 50))
-                listEstCeldas.Add(New Modelo.Celda("vendedor,", False, "ID", 50))
-                listEstCeldas.Add(New Modelo.Celda("yddias", False, "CRED", 50))
-                listEstCeldas.Add(New Modelo.Celda("ydnomfac", False, "Nombre Factura", 50))
-                listEstCeldas.Add(New Modelo.Celda("ydnit", False, "Nit/CI", 50))
+                listEstCeldas.Add(New Modelo.Celda("yccod3,", True, "CÓDIGO", 70))
+                listEstCeldas.Add(New Modelo.Celda("ycdes3", True, "PROVEEDOR", 200))
+
                 Dim ef = New Efecto
                 ef.tipo = 3
                 ef.dt = dt
@@ -272,17 +261,55 @@ Public Class Pr_ReporteVentasCajeras
                 ef.listEstCeldas = listEstCeldas
                 ef.alto = 50
                 ef.ancho = 350
-                ef.Context = "Seleccione Cliente".ToUpper
+                ef.Context = "Seleccione Proveedor".ToUpper
                 ef.ShowDialog()
                 Dim bandera As Boolean = False
                 bandera = ef.band
                 If (bandera = True) Then
                     Dim Row As Janus.Windows.GridEX.GridEXRow = ef.Row
-
-                    tbCodigoCliente.Text = Row.Cells("ydnumi").Value
-                    tbCliente.Text = Row.Cells("yddesc").Value
+                    tbCodigoProveedor.Text = Row.Cells("yccod3").Value
+                    tbProveedor.Text = Row.Cells("ycdes3").Value
                 End If
             End If
+        End If
+    End Sub
+
+    Private Sub tbUsuario_KeyDown(sender As Object, e As KeyEventArgs) Handles tbUsuario.KeyDown
+        If (checkUnaVendedor.Checked) Then
+            If e.KeyData = Keys.Control + Keys.Enter Then
+                Dim dt As DataTable
+                dt = L_ListarUsuarios()
+
+                Dim listEstCeldas As New List(Of Modelo.Celda)
+                listEstCeldas.Add(New Modelo.Celda("ydnumi,", True, "ID", 50))
+                listEstCeldas.Add(New Modelo.Celda("yduser", True, "USUARIO", 150))
+                listEstCeldas.Add(New Modelo.Celda("ydrol", False, "IDROL".ToUpper, 150))
+                listEstCeldas.Add(New Modelo.Celda("yd_numiVend", False, "IDVENDEDOR", 220))
+
+                Dim ef = New Efecto
+                ef.tipo = 3
+                ef.dt = dt
+                ef.SeleclCol = 1
+                ef.listEstCeldas = listEstCeldas
+                ef.alto = 50
+                ef.ancho = 350
+                ef.Context = "Seleccione Usuario".ToUpper
+                ef.ShowDialog()
+                Dim bandera As Boolean = False
+                bandera = ef.band
+                If (bandera = True) Then
+                    Dim Row As Janus.Windows.GridEX.GridEXRow = ef.Row
+                    If (IsNothing(Row)) Then
+                        tbUsuario.Focus()
+                        Return
+                    End If
+                    tbCodigoUsuario.Text = Row.Cells("ydnumi").Value
+                    tbUsuario.Text = Row.Cells("yduser").Value
+                    btnGenerar.Focus()
+                End If
+
+            End If
+
         End If
     End Sub
 End Class

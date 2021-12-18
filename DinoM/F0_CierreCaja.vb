@@ -948,6 +948,7 @@ Public Class F0_CierreCaja
             objrep.SetParameterValue("turno", cbTurno.Text)
             objrep.SetParameterValue("tipocambio", Tb_TipoCambio.Text)
             objrep.SetParameterValue("usuario", L_Usuario)
+            objrep.SetParameterValue("NroCaja", lbNroCaja.Text)
 
             'Totales
             objrep.SetParameterValue("MInicial", tbMontoI.Text)

@@ -32,6 +32,7 @@ Public Class F0_VentasSupermercado
     Public TotalBs As Double = 0
     Public TotalSus As Double = 0
     Public TotalTarjeta As Double = 0
+    Public TipoCambio As Double = 0
     Dim ListImagenes As String()
     Dim contador As Integer = 0
 
@@ -1139,7 +1140,7 @@ Public Class F0_VentasSupermercado
         Return True
     End Function
     Private Sub _prInsertarMontoNuevo(ByRef tabla As DataTable)
-        tabla.Rows.Add(0, TotalBs, TotalSus, TotalTarjeta, "6.96", 0)
+        tabla.Rows.Add(0, TotalBs, TotalSus, TotalTarjeta, TipoCambio, 0)
     End Sub
 
     'Private Sub _prInsertarMontoModificar(ByRef tabla As DataTable)
@@ -1155,9 +1156,11 @@ Public Class F0_VentasSupermercado
             'If _prExisteStockParaProducto() Then
             'prCargando.Visible = True
             'prCargando.Show()
+            Dim dtUsuario = L_BuscarPoUsuario(L_Usuario)
+            Dim Vendedor As Integer = dtUsuario.Rows(0).Item("yd_numiVend")
 
             Dim dtDetalle As DataTable = rearmarDetalle()
-            Dim res As Boolean = L_fnGrabarVenta(numi, "", Now.Date.ToString("yyyy/MM/dd"), _CodEmpleado, 1, Now.Date.ToString("yyyy/MM/dd"), _CodCliente, 1, "", tbDescuento.Value, 0, Str(tbTotal.Value), dtDetalle, Sucursal, 0, tabla, gs_NroCaja, Programa)
+            Dim res As Boolean = L_fnGrabarVenta(numi, "", Now.Date.ToString("yyyy/MM/dd"), Vendedor, 1, Now.Date.ToString("yyyy/MM/dd"), _CodCliente, 1, "", tbDescuento.Value, 0, Str(tbTotal.Value), dtDetalle, Sucursal, 0, tabla, gs_NroCaja, Programa)
             If res Then
                 'res = P_fnGrabarFacturarTFV001(numi)
                 'Emite factura
@@ -2169,6 +2172,8 @@ Public Class F0_VentasSupermercado
                 TotalTarjeta = ef.TotalTarjeta
                 lbNit.Text = ef.Nit
                 lbCliente.Text = ef.RazonSocial
+                TipoCambio = ef.TipoCambio
+
                 _prGuardar()
             Else
                 ToastNotification.Show(Me, "No se Ingreso Monto a Pagar ", My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)

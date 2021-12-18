@@ -910,7 +910,7 @@ Partial Class F0_CierreCaja
         '
         Me.GroupPanel5.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.GroupPanel5.TabIndex = 382
-        Me.GroupPanel5.Text = "TOTALES"
+        Me.GroupPanel5.Text = "TOTALES  Bs."
         '
         'Panel6
         '

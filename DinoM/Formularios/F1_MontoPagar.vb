@@ -19,9 +19,12 @@ Public Class F1_MontoPagar
     Public TotalTarjeta As Double = 0
     Public Nit As String = ""
     Public RazonSocial As String = ""
+    Public TipoCambio As Double = 0
 
 
     Private Sub F1_MontoPagar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        _prCargarComboLibreria(cbCambioDolar, 7, 1)
+        cbCambioDolar.SelectedIndex = CType(cbCambioDolar.DataSource, DataTable).Rows.Count - 1
 
         tbNit.Focus()
         tbNit.Select()
@@ -34,9 +37,24 @@ Public Class F1_MontoPagar
         tbNit.Text = Nit
         tbRazonSocial.Text = RazonSocial
 
+
         'tbNit.Focus()
     End Sub
-
+    Private Sub _prCargarComboLibreria(mCombo As Janus.Windows.GridEX.EditControls.MultiColumnCombo, cod1 As String, cod2 As String)
+        Dim dt As New DataTable
+        dt = L_prLibreriaClienteLGeneral(cod1, cod2)
+        With mCombo
+            .DropDownList.Columns.Clear()
+            .DropDownList.Columns.Add("yccod3").Width = 70
+            .DropDownList.Columns("yccod3").Caption = "COD"
+            .DropDownList.Columns.Add("ycdes3").Width = 200
+            .DropDownList.Columns("ycdes3").Caption = "DESCRIPCION"
+            .ValueMember = "yccod3"
+            .DisplayMember = "ycdes3"
+            .DataSource = dt
+            .Refresh()
+        End With
+    End Sub
     Private Sub tbMontoBs_ValueChanged(sender As Object, e As EventArgs) Handles tbMontoBs.ValueChanged
         tbMontoDolar.Value = 0
         tbMontoTarej.Value = 0
@@ -56,7 +74,7 @@ Public Class F1_MontoPagar
     Private Sub tbMontoDolar_ValueChanged(sender As Object, e As EventArgs) Handles tbMontoDolar.ValueChanged
         tbMontoBs.Value = 0
         tbMontoTarej.Value = 0
-        Dim diferencia As Double = (tbMontoDolar.Value * 6.96) - TotalVenta
+        Dim diferencia As Double = (tbMontoDolar.Value * cbCambioDolar.Text) - TotalVenta
         If (diferencia >= 0) Then
             txtMontoPagado1.Text = TotalVenta.ToString
             txtCambio1.Text = diferencia.ToString
@@ -262,13 +280,14 @@ Public Class F1_MontoPagar
     End Sub
 
     Private Sub btnContinuar_Click(sender As Object, e As EventArgs) Handles btnContinuar.Click
-        If (tbMontoTarej.Value + tbMontoDolar.Value + tbMontoBs.Value >= TotalVenta) Then
+        If (tbMontoTarej.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value >= TotalVenta) Then
             Bandera = True
             TotalBs = tbMontoBs.Value
             TotalSus = tbMontoDolar.Value
             TotalTarjeta = tbMontoTarej.Value
             Nit = tbNit.Text
             RazonSocial = tbRazonSocial.Text
+            TipoCambio = cbCambioDolar.Text
             Me.Close()
 
         Else
@@ -300,6 +319,23 @@ Public Class F1_MontoPagar
             tbMontoBs.Enabled = True
             tbMontoDolar.Enabled = True
             tbMontoTarej.Value = 0
+        End If
+    End Sub
+
+    Private Sub cbCambioDolar_ValueChanged(sender As Object, e As EventArgs) Handles cbCambioDolar.ValueChanged
+        If cbCambioDolar.SelectedIndex < 0 And cbCambioDolar.Text <> String.Empty Then
+            btgrupo1.Visible = True
+        Else
+            btgrupo1.Visible = False
+        End If
+    End Sub
+
+    Private Sub btgrupo1_Click(sender As Object, e As EventArgs) Handles btgrupo1.Click
+        Dim numi As String = ""
+
+        If L_prLibreriaGrabar(numi, "7", "1", cbCambioDolar.Text, "") Then
+            _prCargarComboLibreria(cbCambioDolar, "7", "1")
+            cbCambioDolar.SelectedIndex = CType(cbCambioDolar.DataSource, DataTable).Rows.Count - 1
         End If
     End Sub
 End Class

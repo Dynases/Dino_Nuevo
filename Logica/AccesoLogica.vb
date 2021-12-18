@@ -369,8 +369,19 @@ Public Class AccesoLogica
         _Tabla = D_Datos_Tabla("VerServicios", "SY000", "1=1")
         Return _Tabla
     End Function
+    Public Shared Function L_ListarUsuarios() As DataTable
+        Dim _Tabla As DataTable
+        Dim _Where As String
+        _Where = "1=1"
 
-
+        _Tabla = D_Datos_Tabla("ydnumi,yduser,ydrol,yd_numiVend", "ZY003", _Where)
+        Return _Tabla
+    End Function
+    Public Shared Function L_BuscarPoUsuario(_Nom As String) As DataTable
+        Dim _Tabla As DataTable
+        _Tabla = D_Datos_Tabla("ydnumi,yduser,ydrol, yd_numiVend", "ZY003", "yduser = '" + _Nom + "'")
+        Return _Tabla
+    End Function
 #End Region
 
 #End Region
