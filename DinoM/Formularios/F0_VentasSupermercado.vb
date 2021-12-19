@@ -2597,8 +2597,19 @@ Public Class F0_VentasSupermercado
         'ef.Cantidad = grdetalle.GetValue("tbcmin")
         'ef.NameProducto = grdetalle.GetValue("producto")
         'Dim Cantidad As Double = grdetalle.GetValue("tbcmin")
+        Dim fila As DataRow()
+        If (tbProducto.Text.Trim.Length <= 0) Then
 
-        Dim fila As DataRow() = CType(grdetalle.DataSource, DataTable).Select("yfcbarra='" + tbProducto.Text.Trim + "'", "")
+            fila = CType(grdetalle.DataSource, DataTable).Select("tbnumi=" + Str(grdetalle.GetValue("tbnumi")), "")
+        Else
+            fila = CType(grdetalle.DataSource, DataTable).Select("yfcbarra='" + tbProducto.Text.Trim + "'", "")
+
+        End If
+
+
+
+
+
         Dim dtProdConversion As DataTable = L_fnBuscarProductoConversion(fila(0).Item("tbty5prod"))
         ef.Stock = fila(0).Item("stock")
         ef.Cantidad = fila(0).Item("tbcmin")
