@@ -599,7 +599,7 @@ Public Class F0_CierreCaja
         '    ToastNotification.Show(Me, "Por Favor presione el boton de Calcular Ventas y/o Pagos del día".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
         '    Return False
         'End If
-        If (tbMontoInicial.Text <= 0) Then
+        If (tbMontoInicial.Text < 0) Then
             Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
             ToastNotification.Show(Me, "Por Favor introduzca monto inicial".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
             Return False

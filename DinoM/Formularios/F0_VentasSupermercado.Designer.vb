@@ -34,6 +34,7 @@ Partial Class F0_VentasSupermercado
         Me.pictureImagen = New System.Windows.Forms.PictureBox()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.txtNumi = New DevComponents.DotNetBar.Controls.TextBoxX()
         Me.tbPrecio = New DevComponents.Editors.DoubleInput()
         Me.Panel4 = New System.Windows.Forms.Panel()
         Me.tbDescripcion = New DevComponents.DotNetBar.Controls.TextBoxX()
@@ -96,10 +97,10 @@ Partial Class F0_VentasSupermercado
         '
         Me.PanelImagen.Controls.Add(Me.PanelRight)
         Me.PanelImagen.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PanelImagen.Location = New System.Drawing.Point(841, 0)
-        Me.PanelImagen.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.PanelImagen.Location = New System.Drawing.Point(631, 0)
+        Me.PanelImagen.Margin = New System.Windows.Forms.Padding(2)
         Me.PanelImagen.Name = "PanelImagen"
-        Me.PanelImagen.Size = New System.Drawing.Size(700, 731)
+        Me.PanelImagen.Size = New System.Drawing.Size(525, 594)
         Me.PanelImagen.TabIndex = 1
         '
         'PanelRight
@@ -108,9 +109,9 @@ Partial Class F0_VentasSupermercado
         Me.PanelRight.Controls.Add(Me.Panel2)
         Me.PanelRight.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelRight.Location = New System.Drawing.Point(0, 0)
-        Me.PanelRight.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.PanelRight.Margin = New System.Windows.Forms.Padding(2)
         Me.PanelRight.Name = "PanelRight"
-        Me.PanelRight.Size = New System.Drawing.Size(700, 731)
+        Me.PanelRight.Size = New System.Drawing.Size(525, 594)
         Me.PanelRight.TabIndex = 5
         '
         'PanelC
@@ -118,10 +119,10 @@ Partial Class F0_VentasSupermercado
         Me.PanelC.Controls.Add(Me.GPanelProductos)
         Me.PanelC.Controls.Add(Me.pictureImagen)
         Me.PanelC.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PanelC.Location = New System.Drawing.Point(0, 189)
-        Me.PanelC.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.PanelC.Location = New System.Drawing.Point(0, 154)
+        Me.PanelC.Margin = New System.Windows.Forms.Padding(2)
         Me.PanelC.Name = "PanelC"
-        Me.PanelC.Size = New System.Drawing.Size(700, 542)
+        Me.PanelC.Size = New System.Drawing.Size(525, 440)
         Me.PanelC.TabIndex = 1
         '
         'GPanelProductos
@@ -134,9 +135,8 @@ Partial Class F0_VentasSupermercado
         Me.GPanelProductos.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GPanelProductos.Font = New System.Drawing.Font("Georgia", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GPanelProductos.Location = New System.Drawing.Point(0, 0)
-        Me.GPanelProductos.Margin = New System.Windows.Forms.Padding(4)
         Me.GPanelProductos.Name = "GPanelProductos"
-        Me.GPanelProductos.Size = New System.Drawing.Size(700, 542)
+        Me.GPanelProductos.Size = New System.Drawing.Size(525, 440)
         '
         '
         '
@@ -177,9 +177,8 @@ Partial Class F0_VentasSupermercado
         Me.Panel5.Controls.Add(Me.grProductos)
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel5.Location = New System.Drawing.Point(0, 0)
-        Me.Panel5.Margin = New System.Windows.Forms.Padding(4)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(694, 515)
+        Me.Panel5.Size = New System.Drawing.Size(519, 417)
         Me.Panel5.TabIndex = 0
         '
         'prCargando
@@ -190,14 +189,14 @@ Partial Class F0_VentasSupermercado
         '
         Me.prCargando.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.prCargando.Font = New System.Drawing.Font("Calibri", 6.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.prCargando.Location = New System.Drawing.Point(-4, 14)
-        Me.prCargando.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.prCargando.Location = New System.Drawing.Point(-3, 11)
+        Me.prCargando.Margin = New System.Windows.Forms.Padding(2)
         Me.prCargando.Name = "prCargando"
         Me.prCargando.ProgressBarType = DevComponents.DotNetBar.eCircularProgressType.Dot
         Me.prCargando.ProgressColor = System.Drawing.Color.LimeGreen
         Me.prCargando.ProgressTextColor = System.Drawing.Color.Black
         Me.prCargando.ProgressTextVisible = True
-        Me.prCargando.Size = New System.Drawing.Size(575, 256)
+        Me.prCargando.Size = New System.Drawing.Size(431, 208)
         Me.prCargando.Style = DevComponents.DotNetBar.eDotNetBarStyle.OfficeXP
         Me.prCargando.TabIndex = 6
         Me.prCargando.Visible = False
@@ -211,11 +210,10 @@ Partial Class F0_VentasSupermercado
         Me.grProductos.HeaderFormatStyle.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grProductos.HeaderFormatStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(49, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
         Me.grProductos.Location = New System.Drawing.Point(0, 0)
-        Me.grProductos.Margin = New System.Windows.Forms.Padding(4)
         Me.grProductos.Name = "grProductos"
         Me.grProductos.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grProductos.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.grProductos.Size = New System.Drawing.Size(694, 515)
+        Me.grProductos.Size = New System.Drawing.Size(519, 417)
         Me.grProductos.TabIndex = 0
         Me.grProductos.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -224,9 +222,9 @@ Partial Class F0_VentasSupermercado
         Me.pictureImagen.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pictureImagen.Image = Global.DinoM.My.Resources.Resources.FondoMercado
         Me.pictureImagen.Location = New System.Drawing.Point(0, 0)
-        Me.pictureImagen.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.pictureImagen.Margin = New System.Windows.Forms.Padding(2)
         Me.pictureImagen.Name = "pictureImagen"
-        Me.pictureImagen.Size = New System.Drawing.Size(700, 542)
+        Me.pictureImagen.Size = New System.Drawing.Size(525, 440)
         Me.pictureImagen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.pictureImagen.TabIndex = 0
         Me.pictureImagen.TabStop = False
@@ -238,24 +236,45 @@ Partial Class F0_VentasSupermercado
         Me.Panel2.Controls.Add(Me.Panel3)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Panel2.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Padding = New System.Windows.Forms.Padding(11, 20, 11, 15)
-        Me.Panel2.Size = New System.Drawing.Size(700, 189)
+        Me.Panel2.Padding = New System.Windows.Forms.Padding(8, 16, 8, 12)
+        Me.Panel2.Size = New System.Drawing.Size(525, 154)
         Me.Panel2.TabIndex = 0
         '
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.Color.White
+        Me.Panel3.Controls.Add(Me.txtNumi)
         Me.Panel3.Controls.Add(Me.tbPrecio)
         Me.Panel3.Controls.Add(Me.Panel4)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel3.Location = New System.Drawing.Point(11, 20)
-        Me.Panel3.Margin = New System.Windows.Forms.Padding(20)
+        Me.Panel3.Location = New System.Drawing.Point(8, 16)
+        Me.Panel3.Margin = New System.Windows.Forms.Padding(15, 16, 15, 16)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Padding = New System.Windows.Forms.Padding(0, 5, 0, 5)
-        Me.Panel3.Size = New System.Drawing.Size(676, 152)
+        Me.Panel3.Padding = New System.Windows.Forms.Padding(0, 4, 0, 4)
+        Me.Panel3.Size = New System.Drawing.Size(507, 124)
         Me.Panel3.TabIndex = 5
+        '
+        'txtNumi
+        '
+        Me.txtNumi.BackColor = System.Drawing.Color.White
+        '
+        '
+        '
+        Me.txtNumi.Border.BackColor = System.Drawing.Color.White
+        Me.txtNumi.Border.BackColor2 = System.Drawing.Color.White
+        Me.txtNumi.Border.BorderColor = System.Drawing.Color.White
+        Me.txtNumi.Border.Class = "ItemPanel"
+        Me.txtNumi.Border.CornerType = DevComponents.DotNetBar.eCornerType.Rounded
+        Me.txtNumi.Dock = System.Windows.Forms.DockStyle.Left
+        Me.txtNumi.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNumi.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
+        Me.txtNumi.Location = New System.Drawing.Point(0, 67)
+        Me.txtNumi.Name = "txtNumi"
+        Me.txtNumi.Size = New System.Drawing.Size(90, 28)
+        Me.txtNumi.TabIndex = 6
+        Me.txtNumi.Visible = False
         '
         'tbPrecio
         '
@@ -276,10 +295,10 @@ Partial Class F0_VentasSupermercado
         Me.tbPrecio.ForeColor = System.Drawing.Color.Black
         Me.tbPrecio.Increment = 1.0R
         Me.tbPrecio.IsInputReadOnly = True
-        Me.tbPrecio.Location = New System.Drawing.Point(172, 89)
-        Me.tbPrecio.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.tbPrecio.Location = New System.Drawing.Point(129, 72)
+        Me.tbPrecio.Margin = New System.Windows.Forms.Padding(2)
         Me.tbPrecio.Name = "tbPrecio"
-        Me.tbPrecio.Size = New System.Drawing.Size(273, 60)
+        Me.tbPrecio.Size = New System.Drawing.Size(205, 50)
         Me.tbPrecio.TabIndex = 4
         '
         'Panel4
@@ -287,10 +306,10 @@ Partial Class F0_VentasSupermercado
         Me.Panel4.Controls.Add(Me.tbDescripcion)
         Me.Panel4.Controls.Add(Me.tbProducto)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel4.Location = New System.Drawing.Point(0, 5)
-        Me.Panel4.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Panel4.Location = New System.Drawing.Point(0, 4)
+        Me.Panel4.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(676, 78)
+        Me.Panel4.Size = New System.Drawing.Size(507, 63)
         Me.Panel4.TabIndex = 5
         '
         'tbDescripcion
@@ -307,10 +326,10 @@ Partial Class F0_VentasSupermercado
         Me.tbDescripcion.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tbDescripcion.Font = New System.Drawing.Font("Calibri", 22.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbDescripcion.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
-        Me.tbDescripcion.Location = New System.Drawing.Point(169, 0)
-        Me.tbDescripcion.Margin = New System.Windows.Forms.Padding(4)
+        Me.tbDescripcion.Location = New System.Drawing.Point(127, 0)
         Me.tbDescripcion.Name = "tbDescripcion"
-        Me.tbDescripcion.Size = New System.Drawing.Size(507, 58)
+        Me.tbDescripcion.ReadOnly = True
+        Me.tbDescripcion.Size = New System.Drawing.Size(380, 49)
         Me.tbDescripcion.TabIndex = 4
         '
         'tbProducto
@@ -328,9 +347,8 @@ Partial Class F0_VentasSupermercado
         Me.tbProducto.Font = New System.Drawing.Font("Calibri", 22.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbProducto.ForeColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(59, Byte), Integer), CType(CType(66, Byte), Integer))
         Me.tbProducto.Location = New System.Drawing.Point(0, 0)
-        Me.tbProducto.Margin = New System.Windows.Forms.Padding(4)
         Me.tbProducto.Name = "tbProducto"
-        Me.tbProducto.Size = New System.Drawing.Size(169, 58)
+        Me.tbProducto.Size = New System.Drawing.Size(127, 49)
         Me.tbProducto.TabIndex = 3
         '
         'PrintDialog1
@@ -342,21 +360,21 @@ Partial Class F0_VentasSupermercado
         Me.CmDetalle.ImageScalingSize = New System.Drawing.Size(20, 20)
         Me.CmDetalle.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ModificarCantidadMenu, Me.EliminarProductoMenu})
         Me.CmDetalle.Name = "CmDetalle"
-        Me.CmDetalle.Size = New System.Drawing.Size(221, 76)
+        Me.CmDetalle.Size = New System.Drawing.Size(191, 76)
         '
         'ModificarCantidadMenu
         '
         Me.ModificarCantidadMenu.Image = Global.DinoM.My.Resources.Resources.edit2
         Me.ModificarCantidadMenu.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ModificarCantidadMenu.Name = "ModificarCantidadMenu"
-        Me.ModificarCantidadMenu.Size = New System.Drawing.Size(220, 36)
+        Me.ModificarCantidadMenu.Size = New System.Drawing.Size(190, 36)
         Me.ModificarCantidadMenu.Text = "Modificar Cantidad"
         '
         'EliminarProductoMenu
         '
         Me.EliminarProductoMenu.Image = Global.DinoM.My.Resources.Resources._051_prohibition
         Me.EliminarProductoMenu.Name = "EliminarProductoMenu"
-        Me.EliminarProductoMenu.Size = New System.Drawing.Size(220, 36)
+        Me.EliminarProductoMenu.Size = New System.Drawing.Size(190, 36)
         Me.EliminarProductoMenu.Text = "Eliminar Producto"
         '
         'PanelDatos
@@ -367,10 +385,10 @@ Partial Class F0_VentasSupermercado
         Me.PanelDatos.Controls.Add(Me.PanelTop)
         Me.PanelDatos.Dock = System.Windows.Forms.DockStyle.Left
         Me.PanelDatos.Location = New System.Drawing.Point(0, 0)
-        Me.PanelDatos.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.PanelDatos.Margin = New System.Windows.Forms.Padding(2)
         Me.PanelDatos.Name = "PanelDatos"
-        Me.PanelDatos.Padding = New System.Windows.Forms.Padding(8, 7, 8, 7)
-        Me.PanelDatos.Size = New System.Drawing.Size(841, 731)
+        Me.PanelDatos.Padding = New System.Windows.Forms.Padding(6)
+        Me.PanelDatos.Size = New System.Drawing.Size(631, 594)
         Me.PanelDatos.TabIndex = 0
         '
         'grdetalle
@@ -385,13 +403,12 @@ Partial Class F0_VentasSupermercado
         Me.grdetalle.GroupMode = Janus.Windows.GridEX.GroupMode.Collapsed
         Me.grdetalle.HeaderFormatStyle.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grdetalle.HeaderFormatStyle.ForeColor = System.Drawing.Color.Black
-        Me.grdetalle.Location = New System.Drawing.Point(8, 197)
-        Me.grdetalle.Margin = New System.Windows.Forms.Padding(4)
+        Me.grdetalle.Location = New System.Drawing.Point(6, 160)
         Me.grdetalle.Name = "grdetalle"
         Me.grdetalle.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grdetalle.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.grdetalle.RowFormatStyle.Font = New System.Drawing.Font("Calibri", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grdetalle.Size = New System.Drawing.Size(825, 317)
+        Me.grdetalle.Size = New System.Drawing.Size(619, 257)
         Me.grdetalle.TabIndex = 4
         Me.grdetalle.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -401,10 +418,10 @@ Partial Class F0_VentasSupermercado
         Me.PanelButtom.Controls.Add(Me.PanelTotal)
         Me.PanelButtom.Controls.Add(Me.Panel1)
         Me.PanelButtom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PanelButtom.Location = New System.Drawing.Point(8, 514)
-        Me.PanelButtom.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.PanelButtom.Location = New System.Drawing.Point(6, 417)
+        Me.PanelButtom.Margin = New System.Windows.Forms.Padding(2)
         Me.PanelButtom.Name = "PanelButtom"
-        Me.PanelButtom.Size = New System.Drawing.Size(825, 210)
+        Me.PanelButtom.Size = New System.Drawing.Size(619, 171)
         Me.PanelButtom.TabIndex = 5
         '
         'PanelTotal
@@ -417,9 +434,9 @@ Partial Class F0_VentasSupermercado
         Me.PanelTotal.Controls.Add(Me.Label2)
         Me.PanelTotal.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.PanelTotal.Location = New System.Drawing.Point(0, -2)
-        Me.PanelTotal.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.PanelTotal.Margin = New System.Windows.Forms.Padding(2)
         Me.PanelTotal.Name = "PanelTotal"
-        Me.PanelTotal.Size = New System.Drawing.Size(825, 144)
+        Me.PanelTotal.Size = New System.Drawing.Size(619, 117)
         Me.PanelTotal.TabIndex = 0
         '
         'tbDescuento
@@ -437,10 +454,10 @@ Partial Class F0_VentasSupermercado
         Me.tbDescuento.ForeColor = System.Drawing.Color.White
         Me.tbDescuento.Increment = 1.0R
         Me.tbDescuento.IsInputReadOnly = True
-        Me.tbDescuento.Location = New System.Drawing.Point(524, 23)
-        Me.tbDescuento.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.tbDescuento.Location = New System.Drawing.Point(393, 19)
+        Me.tbDescuento.Margin = New System.Windows.Forms.Padding(2)
         Me.tbDescuento.Name = "tbDescuento"
-        Me.tbDescuento.Size = New System.Drawing.Size(276, 40)
+        Me.tbDescuento.Size = New System.Drawing.Size(207, 34)
         Me.tbDescuento.TabIndex = 4
         '
         'Label1
@@ -449,9 +466,10 @@ Partial Class F0_VentasSupermercado
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Calibri", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(17, 32)
+        Me.Label1.Location = New System.Drawing.Point(13, 26)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(126, 29)
+        Me.Label1.Size = New System.Drawing.Size(100, 23)
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Descuento:"
         '
@@ -470,10 +488,10 @@ Partial Class F0_VentasSupermercado
         Me.tbTotal.ForeColor = System.Drawing.Color.White
         Me.tbTotal.Increment = 1.0R
         Me.tbTotal.IsInputReadOnly = True
-        Me.tbTotal.Location = New System.Drawing.Point(524, 66)
-        Me.tbTotal.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.tbTotal.Location = New System.Drawing.Point(393, 54)
+        Me.tbTotal.Margin = New System.Windows.Forms.Padding(2)
         Me.tbTotal.Name = "tbTotal"
-        Me.tbTotal.Size = New System.Drawing.Size(276, 65)
+        Me.tbTotal.Size = New System.Drawing.Size(207, 53)
         Me.tbTotal.TabIndex = 2
         '
         'Label2
@@ -482,9 +500,10 @@ Partial Class F0_VentasSupermercado
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Font = New System.Drawing.Font("Calibri", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(13, 74)
+        Me.Label2.Location = New System.Drawing.Point(10, 60)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(163, 49)
+        Me.Label2.Size = New System.Drawing.Size(129, 39)
         Me.Label2.TabIndex = 0
         Me.Label2.Text = "Total Bs:"
         '
@@ -506,19 +525,20 @@ Partial Class F0_VentasSupermercado
         Me.Panel1.Controls.Add(Me.lbFecha)
         Me.Panel1.Controls.Add(Me.Label4)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 142)
-        Me.Panel1.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Panel1.Location = New System.Drawing.Point(0, 115)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(825, 68)
+        Me.Panel1.Size = New System.Drawing.Size(619, 56)
         Me.Panel1.TabIndex = 9
         '
         'Label10
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(599, 46)
+        Me.Label10.Location = New System.Drawing.Point(449, 37)
+        Me.Label10.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(179, 18)
+        Me.Label10.Size = New System.Drawing.Size(144, 14)
         Me.Label10.TabIndex = 13
         Me.Label10.Text = "Tecla Ctrl + Enter: Productos"
         '
@@ -526,9 +546,10 @@ Partial Class F0_VentasSupermercado
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(599, 28)
+        Me.Label6.Location = New System.Drawing.Point(449, 23)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(141, 18)
+        Me.Label6.Size = New System.Drawing.Size(117, 14)
         Me.Label6.TabIndex = 12
         Me.Label6.Text = "Tecla Ctrl + S: Facturar"
         '
@@ -536,9 +557,10 @@ Partial Class F0_VentasSupermercado
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(599, 10)
+        Me.Label3.Location = New System.Drawing.Point(449, 8)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(206, 18)
+        Me.Label3.Size = New System.Drawing.Size(166, 14)
         Me.Label3.TabIndex = 11
         Me.Label3.Text = "Tecla Ctrl +C: Modificar Cantidad"
         '
@@ -546,9 +568,10 @@ Partial Class F0_VentasSupermercado
         '
         Me.lbUsuario.AutoSize = True
         Me.lbUsuario.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbUsuario.Location = New System.Drawing.Point(91, 25)
+        Me.lbUsuario.Location = New System.Drawing.Point(68, 20)
+        Me.lbUsuario.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lbUsuario.Name = "lbUsuario"
-        Me.lbUsuario.Size = New System.Drawing.Size(193, 18)
+        Me.lbUsuario.Size = New System.Drawing.Size(154, 14)
         Me.lbUsuario.TabIndex = 10
         Me.lbUsuario.Text = "Marco Antonio Mamani Chura"
         Me.lbUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -557,9 +580,10 @@ Partial Class F0_VentasSupermercado
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(12, 25)
+        Me.Label8.Location = New System.Drawing.Point(9, 20)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(60, 18)
+        Me.Label8.Size = New System.Drawing.Size(48, 14)
         Me.Label8.TabIndex = 9
         Me.Label8.Text = "Usuario:"
         '
@@ -567,9 +591,10 @@ Partial Class F0_VentasSupermercado
         '
         Me.lbNroCaja.AutoSize = True
         Me.lbNroCaja.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbNroCaja.Location = New System.Drawing.Point(91, 6)
+        Me.lbNroCaja.Location = New System.Drawing.Point(68, 5)
+        Me.lbNroCaja.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lbNroCaja.Name = "lbNroCaja"
-        Me.lbNroCaja.Size = New System.Drawing.Size(15, 18)
+        Me.lbNroCaja.Size = New System.Drawing.Size(13, 14)
         Me.lbNroCaja.TabIndex = 8
         Me.lbNroCaja.Text = "1"
         Me.lbNroCaja.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -578,9 +603,10 @@ Partial Class F0_VentasSupermercado
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(12, 6)
+        Me.Label5.Location = New System.Drawing.Point(9, 5)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(68, 18)
+        Me.Label5.Size = New System.Drawing.Size(55, 14)
         Me.Label5.TabIndex = 7
         Me.Label5.Text = "Nro. Caja:"
         '
@@ -588,9 +614,10 @@ Partial Class F0_VentasSupermercado
         '
         Me.lbNit.AutoSize = True
         Me.lbNit.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbNit.Location = New System.Drawing.Point(379, 42)
+        Me.lbNit.Location = New System.Drawing.Point(284, 34)
+        Me.lbNit.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lbNit.Name = "lbNit"
-        Me.lbNit.Size = New System.Drawing.Size(73, 17)
+        Me.lbNit.Size = New System.Drawing.Size(62, 13)
         Me.lbNit.TabIndex = 6
         Me.lbNit.Text = "8230749 SC"
         Me.lbNit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -600,9 +627,10 @@ Partial Class F0_VentasSupermercado
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(300, 43)
+        Me.Label9.Location = New System.Drawing.Point(225, 35)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(29, 17)
+        Me.Label9.Size = New System.Drawing.Size(24, 13)
         Me.Label9.TabIndex = 5
         Me.Label9.Text = "Nit:"
         Me.Label9.Visible = False
@@ -611,9 +639,10 @@ Partial Class F0_VentasSupermercado
         '
         Me.lbCliente.AutoSize = True
         Me.lbCliente.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbCliente.Location = New System.Drawing.Point(379, 25)
+        Me.lbCliente.Location = New System.Drawing.Point(284, 20)
+        Me.lbCliente.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lbCliente.Name = "lbCliente"
-        Me.lbCliente.Size = New System.Drawing.Size(178, 17)
+        Me.lbCliente.Size = New System.Drawing.Size(147, 13)
         Me.lbCliente.TabIndex = 4
         Me.lbCliente.Text = "Marco Antonio Mamani Chura"
         Me.lbCliente.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -623,9 +652,10 @@ Partial Class F0_VentasSupermercado
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(300, 26)
+        Me.Label7.Location = New System.Drawing.Point(225, 21)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(52, 17)
+        Me.Label7.Size = New System.Drawing.Size(44, 13)
         Me.Label7.TabIndex = 3
         Me.Label7.Text = "Cliente:"
         Me.Label7.Visible = False
@@ -634,9 +664,10 @@ Partial Class F0_VentasSupermercado
         '
         Me.lbFecha.AutoSize = True
         Me.lbFecha.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbFecha.Location = New System.Drawing.Point(379, 7)
+        Me.lbFecha.Location = New System.Drawing.Point(284, 6)
+        Me.lbFecha.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lbFecha.Name = "lbFecha"
-        Me.lbFecha.Size = New System.Drawing.Size(74, 17)
+        Me.lbFecha.Size = New System.Drawing.Size(63, 13)
         Me.lbFecha.TabIndex = 2
         Me.lbFecha.Text = "30/10/2020"
         Me.lbFecha.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -646,9 +677,10 @@ Partial Class F0_VentasSupermercado
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Calibri", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(300, 7)
+        Me.Label4.Location = New System.Drawing.Point(225, 6)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(46, 17)
+        Me.Label4.Size = New System.Drawing.Size(37, 13)
         Me.Label4.TabIndex = 1
         Me.Label4.Text = "Fecha:"
         Me.Label4.Visible = False
@@ -658,19 +690,19 @@ Partial Class F0_VentasSupermercado
         Me.PanelTop.Controls.Add(Me.PictureBox2)
         Me.PanelTop.Controls.Add(Me.QrFactura)
         Me.PanelTop.Dock = System.Windows.Forms.DockStyle.Top
-        Me.PanelTop.Location = New System.Drawing.Point(8, 7)
-        Me.PanelTop.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.PanelTop.Location = New System.Drawing.Point(6, 6)
+        Me.PanelTop.Margin = New System.Windows.Forms.Padding(2)
         Me.PanelTop.Name = "PanelTop"
-        Me.PanelTop.Size = New System.Drawing.Size(825, 190)
+        Me.PanelTop.Size = New System.Drawing.Size(619, 154)
         Me.PanelTop.TabIndex = 0
         '
         'PictureBox2
         '
         Me.PictureBox2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PictureBox2.Location = New System.Drawing.Point(0, 0)
-        Me.PictureBox2.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.PictureBox2.Margin = New System.Windows.Forms.Padding(2)
         Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(825, 190)
+        Me.PictureBox2.Size = New System.Drawing.Size(619, 154)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox2.TabIndex = 24
         Me.PictureBox2.TabStop = False
@@ -679,11 +711,11 @@ Partial Class F0_VentasSupermercado
         '
         Me.QrFactura.ErrorCorrectLevel = Gma.QrCodeNet.Encoding.ErrorCorrectionLevel.M
         Me.QrFactura.Image = CType(resources.GetObject("QrFactura.Image"), System.Drawing.Image)
-        Me.QrFactura.Location = New System.Drawing.Point(629, 22)
-        Me.QrFactura.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.QrFactura.Location = New System.Drawing.Point(472, 18)
+        Me.QrFactura.Margin = New System.Windows.Forms.Padding(2)
         Me.QrFactura.Name = "QrFactura"
         Me.QrFactura.QuietZoneModule = Gma.QrCodeNet.Encoding.Windows.Render.QuietZoneModules.Two
-        Me.QrFactura.Size = New System.Drawing.Size(67, 65)
+        Me.QrFactura.Size = New System.Drawing.Size(50, 53)
         Me.QrFactura.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.QrFactura.TabIndex = 23
         Me.QrFactura.TabStop = False
@@ -696,13 +728,13 @@ Partial Class F0_VentasSupermercado
         '
         'F0_VentasSupermercado
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1541, 731)
+        Me.ClientSize = New System.Drawing.Size(1156, 594)
         Me.Controls.Add(Me.PanelImagen)
         Me.Controls.Add(Me.PanelDatos)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
-        Me.Margin = New System.Windows.Forms.Padding(3, 2, 3, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "F0_VentasSupermercado"
         Me.Text = "Ventas"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
@@ -778,4 +810,5 @@ End Sub
     Friend WithEvents Label6 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label10 As Label
+    Friend WithEvents txtNumi As DevComponents.DotNetBar.Controls.TextBoxX
 End Class

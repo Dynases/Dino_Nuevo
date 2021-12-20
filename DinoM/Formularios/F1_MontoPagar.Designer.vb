@@ -32,7 +32,10 @@ Partial Class F1_MontoPagar
         Me.lbCambio = New DevComponents.DotNetBar.LabelX()
         Me.lbMontoPagado = New DevComponents.DotNetBar.LabelX()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btgrupo1 = New DevComponents.DotNetBar.ButtonX()
+        Me.LabelX20 = New DevComponents.DotNetBar.LabelX()
         Me.ButtonX3 = New DevComponents.DotNetBar.ButtonX()
+        Me.cbCambioDolar = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.tbMontoTarej = New DevComponents.Editors.DoubleInput()
         Me.ButtonX2 = New DevComponents.DotNetBar.ButtonX()
         Me.chbTarjeta = New DevComponents.DotNetBar.Controls.CheckBoxX()
@@ -46,16 +49,13 @@ Partial Class F1_MontoPagar
         Me.tbNit = New System.Windows.Forms.TextBox()
         Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
-        Me.LabelX20 = New DevComponents.DotNetBar.LabelX()
-        Me.cbCambioDolar = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
-        Me.btgrupo1 = New DevComponents.DotNetBar.ButtonX()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.cbCambioDolar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbMontoTarej, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbMontoBs, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbMontoDolar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
-        CType(Me.cbCambioDolar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox2
@@ -200,6 +200,36 @@ Partial Class F1_MontoPagar
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Efectivo:"
         '
+        'btgrupo1
+        '
+        Me.btgrupo1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
+        Me.btgrupo1.BackColor = System.Drawing.Color.Transparent
+        Me.btgrupo1.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
+        Me.btgrupo1.Image = Global.DinoM.My.Resources.Resources.add
+        Me.btgrupo1.ImageFixedSize = New System.Drawing.Size(25, 23)
+        Me.btgrupo1.Location = New System.Drawing.Point(239, 16)
+        Me.btgrupo1.Name = "btgrupo1"
+        Me.btgrupo1.Size = New System.Drawing.Size(28, 23)
+        Me.btgrupo1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.btgrupo1.TabIndex = 369
+        Me.btgrupo1.Visible = False
+        '
+        'LabelX20
+        '
+        Me.LabelX20.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.LabelX20.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.LabelX20.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold)
+        Me.LabelX20.ForeColor = System.Drawing.Color.White
+        Me.LabelX20.Location = New System.Drawing.Point(8, 18)
+        Me.LabelX20.Name = "LabelX20"
+        Me.LabelX20.SingleLineColor = System.Drawing.SystemColors.Control
+        Me.LabelX20.Size = New System.Drawing.Size(90, 18)
+        Me.LabelX20.TabIndex = 370
+        Me.LabelX20.Text = "Tipo Cambio:"
+        '
         'ButtonX3
         '
         Me.ButtonX3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
@@ -213,6 +243,24 @@ Partial Class F1_MontoPagar
         Me.ButtonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.ButtonX3.TabIndex = 363
         Me.ButtonX3.Visible = False
+        '
+        'cbCambioDolar
+        '
+        Me.cbCambioDolar.BorderStyle = Janus.Windows.GridEX.BorderStyle.Flat
+        Me.cbCambioDolar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        cbCambioDolar_DesignTimeLayout.LayoutString = resources.GetString("cbCambioDolar_DesignTimeLayout.LayoutString")
+        Me.cbCambioDolar.DesignTimeLayout = cbCambioDolar_DesignTimeLayout
+        Me.cbCambioDolar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbCambioDolar.Location = New System.Drawing.Point(113, 17)
+        Me.cbCambioDolar.Name = "cbCambioDolar"
+        Me.cbCambioDolar.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
+        Me.cbCambioDolar.Office2007CustomColor = System.Drawing.Color.DodgerBlue
+        Me.cbCambioDolar.ReadOnly = True
+        Me.cbCambioDolar.SelectedIndex = -1
+        Me.cbCambioDolar.SelectedItem = Nothing
+        Me.cbCambioDolar.Size = New System.Drawing.Size(120, 22)
+        Me.cbCambioDolar.TabIndex = 368
+        Me.cbCambioDolar.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'tbMontoTarej
         '
@@ -415,53 +463,6 @@ Partial Class F1_MontoPagar
         Me.LabelX4.TabIndex = 366
         Me.LabelX4.Text = "Razón Social:"
         '
-        'LabelX20
-        '
-        Me.LabelX20.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.LabelX20.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.LabelX20.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold)
-        Me.LabelX20.ForeColor = System.Drawing.Color.White
-        Me.LabelX20.Location = New System.Drawing.Point(8, 18)
-        Me.LabelX20.Name = "LabelX20"
-        Me.LabelX20.SingleLineColor = System.Drawing.SystemColors.Control
-        Me.LabelX20.Size = New System.Drawing.Size(90, 18)
-        Me.LabelX20.TabIndex = 370
-        Me.LabelX20.Text = "Tipo Cambio:"
-        '
-        'cbCambioDolar
-        '
-        Me.cbCambioDolar.BorderStyle = Janus.Windows.GridEX.BorderStyle.Flat
-        Me.cbCambioDolar.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        cbCambioDolar_DesignTimeLayout.LayoutString = resources.GetString("cbCambioDolar_DesignTimeLayout.LayoutString")
-        Me.cbCambioDolar.DesignTimeLayout = cbCambioDolar_DesignTimeLayout
-        Me.cbCambioDolar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cbCambioDolar.Location = New System.Drawing.Point(113, 17)
-        Me.cbCambioDolar.Name = "cbCambioDolar"
-        Me.cbCambioDolar.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
-        Me.cbCambioDolar.Office2007CustomColor = System.Drawing.Color.DodgerBlue
-        Me.cbCambioDolar.SelectedIndex = -1
-        Me.cbCambioDolar.SelectedItem = Nothing
-        Me.cbCambioDolar.Size = New System.Drawing.Size(120, 22)
-        Me.cbCambioDolar.TabIndex = 368
-        Me.cbCambioDolar.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
-        '
-        'btgrupo1
-        '
-        Me.btgrupo1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.btgrupo1.BackColor = System.Drawing.Color.Transparent
-        Me.btgrupo1.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
-        Me.btgrupo1.Image = Global.DinoM.My.Resources.Resources.add
-        Me.btgrupo1.ImageFixedSize = New System.Drawing.Size(25, 23)
-        Me.btgrupo1.Location = New System.Drawing.Point(239, 16)
-        Me.btgrupo1.Name = "btgrupo1"
-        Me.btgrupo1.Size = New System.Drawing.Size(28, 23)
-        Me.btgrupo1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.btgrupo1.TabIndex = 369
-        Me.btgrupo1.Visible = False
-        '
         'F1_MontoPagar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -478,12 +479,12 @@ Partial Class F1_MontoPagar
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.cbCambioDolar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbMontoTarej, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbMontoBs, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbMontoDolar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
-        CType(Me.cbCambioDolar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

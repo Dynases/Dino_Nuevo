@@ -338,4 +338,12 @@ Public Class F1_MontoPagar
             cbCambioDolar.SelectedIndex = CType(cbCambioDolar.DataSource, DataTable).Rows.Count - 1
         End If
     End Sub
+
+    Private Sub tbNit_KeyPress(sender As Object, e As KeyPressEventArgs) Handles tbNit.KeyPress
+        If Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
+            e.Handled = True
+            ToastNotification.Show(Me, "Solo puede digitar números".ToUpper, My.Resources.WARNING, 1200, eToastGlowColor.Red, eToastPosition.TopCenter)
+
+        End If
+    End Sub
 End Class
