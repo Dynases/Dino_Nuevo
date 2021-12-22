@@ -62,7 +62,7 @@ Public Class F1_MontoPagar
         Dim diferencia As Double = tbMontoBs.Value - TotalVenta
         If (diferencia >= 0) Then
             txtMontoPagado1.Text = TotalVenta.ToString
-            txtCambio1.Text = diferencia.ToString
+            txtCambio1.Text = Math.Round(diferencia, 2).ToString
 
         Else
             txtMontoPagado1.Text = "0.00"

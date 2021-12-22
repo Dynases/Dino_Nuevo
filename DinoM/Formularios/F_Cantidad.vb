@@ -7,6 +7,7 @@ Public Class F_Cantidad
     Public Producto As String
     Public bandera As Boolean
     Public Conversion As Decimal
+    Public CantidadPrevia As Decimal
 
 
     Private Sub F_Cantidad_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -16,6 +17,7 @@ Public Class F_Cantidad
         lbStock.Text = "Stock Disponible = " + Str(Stock)
         lbProducto.Text = Producto
         tbConversion.Value = Conversion
+        tbCantidadPrevia.Value = CantidadPrevia
     End Sub
 
 

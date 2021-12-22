@@ -33,10 +33,13 @@ Partial Class F_Cantidad
         Me.Label2 = New System.Windows.Forms.Label()
         Me.tbCantCajas = New DevComponents.Editors.IntegerInput()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.tbCantidadPrevia = New DevComponents.Editors.DoubleInput()
         Me.Panel1.SuspendLayout()
         CType(Me.tbCantidad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbConversion, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbCantCajas, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.tbCantidadPrevia, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -101,7 +104,7 @@ Partial Class F_Cantidad
         Me.tbCantidad.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
         Me.tbCantidad.Font = New System.Drawing.Font("Calibri", 22.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbCantidad.Increment = 1.0R
-        Me.tbCantidad.Location = New System.Drawing.Point(223, 218)
+        Me.tbCantidad.Location = New System.Drawing.Point(223, 247)
         Me.tbCantidad.Margin = New System.Windows.Forms.Padding(2)
         Me.tbCantidad.Name = "tbCantidad"
         Me.tbCantidad.Size = New System.Drawing.Size(213, 43)
@@ -143,7 +146,7 @@ Partial Class F_Cantidad
         'Label1
         '
         Me.Label1.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(90, 228)
+        Me.Label1.Location = New System.Drawing.Point(90, 257)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(128, 28)
         Me.Label1.TabIndex = 5
@@ -192,12 +195,40 @@ Partial Class F_Cantidad
         Me.Label3.Text = "Presione Enter"
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'Label4
+        '
+        Me.Label4.Font = New System.Drawing.Font("Calibri", 13.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(90, 214)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(128, 24)
+        Me.Label4.TabIndex = 11
+        Me.Label4.Text = "Cant.Previa:" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        '
+        'tbCantidadPrevia
+        '
+        '
+        '
+        '
+        Me.tbCantidadPrevia.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbCantidadPrevia.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbCantidadPrevia.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbCantidadPrevia.Font = New System.Drawing.Font("Calibri", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbCantidadPrevia.Increment = 1.0R
+        Me.tbCantidadPrevia.IsInputReadOnly = True
+        Me.tbCantidadPrevia.Location = New System.Drawing.Point(348, 212)
+        Me.tbCantidadPrevia.Margin = New System.Windows.Forms.Padding(2)
+        Me.tbCantidadPrevia.Name = "tbCantidadPrevia"
+        Me.tbCantidadPrevia.Size = New System.Drawing.Size(88, 24)
+        Me.tbCantidadPrevia.TabIndex = 10
+        '
         'F_Cantidad
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(520, 281)
+        Me.ClientSize = New System.Drawing.Size(520, 320)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.tbCantidadPrevia)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.tbCantCajas)
         Me.Controls.Add(Me.Label2)
@@ -217,6 +248,7 @@ Partial Class F_Cantidad
         CType(Me.tbCantidad, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbConversion, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbCantCajas, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tbCantidadPrevia, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -232,4 +264,6 @@ Partial Class F_Cantidad
     Friend WithEvents Label2 As Label
     Public WithEvents tbCantCajas As DevComponents.Editors.IntegerInput
     Friend WithEvents Label3 As Label
+    Friend WithEvents Label4 As Label
+    Friend WithEvents tbCantidadPrevia As DevComponents.Editors.DoubleInput
 End Class
