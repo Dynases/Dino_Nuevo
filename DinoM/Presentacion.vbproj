@@ -922,6 +922,30 @@
       <DependentUpon>R_StockMinimo.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reporte\R_VentasAtendidasAlmacenVendedorRS.vb">
+      <DependentUpon>R_VentasAtendidasAlmacenVendedorRS.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reporte\R_VentasAtendidasVendedorAlmacenRS.vb">
+      <DependentUpon>R_VentasAtendidasVendedorAlmacenRS.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reporte\R_VentasCajeraProveedorProd.vb">
+      <DependentUpon>R_VentasCajeraProveedorProd.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reporte\R_VentasCajeraProveedor.vb">
+      <DependentUpon>R_VentasCajeraProveedor.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Reporte\R_VentasCostosVendedorAlmacen.vb">
       <DependentUpon>R_VentasCostosVendedorAlmacen.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -1433,6 +1457,22 @@
     <EmbeddedResource Include="Reporte\R_StockMinimo.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>R_StockMinimo.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\R_VentasAtendidasAlmacenVendedorRS.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>R_VentasAtendidasAlmacenVendedorRS.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\R_VentasAtendidasVendedorAlmacenRS.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>R_VentasAtendidasVendedorAlmacenRS.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\R_VentasCajeraProveedorProd.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>R_VentasCajeraProveedorProd.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\R_VentasCajeraProveedor.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>R_VentasCajeraProveedor.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reporte\R_VentasCostosVendedorAlmacen.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

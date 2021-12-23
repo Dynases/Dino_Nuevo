@@ -372,7 +372,7 @@ Public Class AccesoLogica
     Public Shared Function L_ListarUsuarios() As DataTable
         Dim _Tabla As DataTable
         Dim _Where As String
-        _Where = "1=1"
+        _Where = "1=1 Order by ydnumi"
 
         _Tabla = D_Datos_Tabla("ydnumi,yduser,ydrol,yd_numiVend", "ZY003", _Where)
         Return _Tabla
@@ -4239,6 +4239,32 @@ Public Class AccesoLogica
         _listParam.Add(New Datos.DParametro("@fechaF", fechaF))
         _listParam.Add(New Datos.DParametro("@Vendedor", idVendedor))
         _listParam.Add(New Datos.DParametro("@Cliente", idCliente))
+        _listParam.Add(New Datos.DParametro("@almacen", idAlmacen))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Sp_Mam_ReporteVentas", _listParam)
+        Return _Tabla
+    End Function
+    Public Shared Function L_BuscarVentasCajerasProveedores(fechaI As String, fechaF As String, idAlmacen As Integer, idUsuario As Integer, idProveedor As Integer) As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 2))
+        _listParam.Add(New Datos.DParametro("@fechaI", fechaI))
+        _listParam.Add(New Datos.DParametro("@fechaF", fechaF))
+        _listParam.Add(New Datos.DParametro("@usuario", idUsuario))
+        _listParam.Add(New Datos.DParametro("@proveedor", idProveedor))
+        _listParam.Add(New Datos.DParametro("@almacen", idAlmacen))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Sp_Mam_ReporteVentas", _listParam)
+        Return _Tabla
+    End Function
+    Public Shared Function L_BuscarVentasCajerasProveedoresProductos(fechaI As String, fechaF As String, idAlmacen As Integer, idUsuario As Integer, idProveedor As Integer) As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 3))
+        _listParam.Add(New Datos.DParametro("@fechaI", fechaI))
+        _listParam.Add(New Datos.DParametro("@fechaF", fechaF))
+        _listParam.Add(New Datos.DParametro("@usuario", idUsuario))
+        _listParam.Add(New Datos.DParametro("@proveedor", idProveedor))
         _listParam.Add(New Datos.DParametro("@almacen", idAlmacen))
         _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
         _Tabla = D_ProcedimientoConParam("Sp_Mam_ReporteVentas", _listParam)

@@ -11,18 +11,21 @@ Public Class Pr_ReporteVentasCajeras
         tbFechaF.Value = Now.Date
         _PMIniciarTodo()
 
-        Me.Text = "REPORTE VENTAS POR CAJERA"
+        Me.Text = "REPORTE VENTAS CAJERAS-PROVEEDORES"
         MReportViewer.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         _IniciarComponentes()
     End Sub
     Public Sub _IniciarComponentes()
-        tbVendedor.ReadOnly = True
+
         tbAlmacen.ReadOnly = True
-        tbVendedor.Enabled = False
         tbAlmacen.Enabled = False
-        CheckTodosVendedor.CheckValue = True
         CheckTodosAlmacen.CheckValue = True
+        tbProveedor.ReadOnly = True
+        tbProveedor.Enabled = False
         ckTodosProveedor.CheckValue = True
+        tbUsuario.ReadOnly = True
+        tbUsuario.Enabled = False
+        CheckTodosUsuario.CheckValue = True
         If (gb_FacturaIncluirICE) Then
             'swIce.Visible = True
         Else
@@ -34,21 +37,27 @@ Public Class Pr_ReporteVentasCajeras
 
         Dim fechaDesde As DateTime = tbFechaI.Value.ToString("yyyy/MM/dd")
         Dim fechaHasta As DateTime = tbFechaF.Value.ToString("yyyy/MM/dd")
-        Dim idVendedor As Integer = 0
+        Dim idUsuario As Integer = 0
         Dim idProveedor As Integer = 0
         Dim idAlmacen As Integer = 0
+        Dim ventasAtendidas As DataTable
+
         If CheckTodosAlmacen.Checked = False And CheckUnaALmacen.Checked = True And tbCodAlmacen.Text <> String.Empty Then
             idAlmacen = tbCodAlmacen.Text
         End If
-        If CheckTodosVendedor.Checked = False And checkUnaVendedor.Checked = True And tbCodigoVendedor.Text <> String.Empty Then
-            idVendedor = tbCodigoVendedor.Text
+        If CheckTodosUsuario.Checked = False And checkUnUsuario.Checked = True And tbUsuario.Text <> String.Empty Then
+            idUsuario = tbCodigoUsuario.Text
         End If
         If ckTodosProveedor.Checked = False And ckUnoProveedor.Checked = True And tbCodigoProveedor.Text <> String.Empty Then
             idProveedor = tbCodigoProveedor.Text
         End If
 
-        'Obtiene las ventas con y sin factura
-        Dim ventasAtendidas As DataTable = L_BuscarVentasAtentidas(fechaDesde, fechaHasta, idAlmacen, idVendedor, idProveedor)
+        If swProducto.Value = True Then
+            ventasAtendidas = L_BuscarVentasCajerasProveedoresProductos(fechaDesde, fechaHasta, idAlmacen, idUsuario, idProveedor)
+        Else
+            ventasAtendidas = L_BuscarVentasCajerasProveedores(fechaDesde, fechaHasta, idAlmacen, idUsuario, idProveedor)
+        End If
+
         Return ventasAtendidas
 
     End Function
@@ -56,40 +65,29 @@ Public Class Pr_ReporteVentasCajeras
         Dim _ventasAtendidas As New DataTable
         _ventasAtendidas = _prValidadrFiltros()
         If (_ventasAtendidas.Rows.Count > 0) Then
-            Dim objrep As New R_VentasAtendidasAlmacenVendedor
-            objrep.SetDataSource(_ventasAtendidas)
-            Dim fechaI As String = tbFechaI.Value.ToString("dd/MM/yyyy")
-            Dim fechaF As String = tbFechaF.Value.ToString("dd/MM/yyyy")
-            objrep.SetParameterValue("usuario", L_Usuario)
-            objrep.SetParameterValue("fechaI", fechaI)
-            objrep.SetParameterValue("fechaF", fechaF)
-            MReportViewer.ReportSource = objrep
-            MReportViewer.Show()
-            MReportViewer.BringToFront()
-
-            'If (swTipoVenta.Value = True) Then
-            '    Dim objrep As New R_VentasAtendidasAlmacenVendedor
-            '    objrep.SetDataSource(_ventasAtendidas)
-            '    Dim fechaI As String = tbFechaI.Value.ToString("dd/MM/yyyy")
-            '    Dim fechaF As String = tbFechaF.Value.ToString("dd/MM/yyyy")
-            '    objrep.SetParameterValue("usuario", L_Usuario)
-            '    objrep.SetParameterValue("fechaI", fechaI)
-            '    objrep.SetParameterValue("fechaF", fechaF)
-            '    MReportViewer.ReportSource = objrep
-            '    MReportViewer.Show()
-            '    MReportViewer.BringToFront()
-            'Else
-            '    Dim objrep As New R_VentasAtendidasVendedorAlmacen
-            '    objrep.SetDataSource(_ventasAtendidas)
-            '    Dim fechaI As String = tbFechaI.Value.ToString("dd/MM/yyyy")
-            '    Dim fechaF As String = tbFechaF.Value.ToString("dd/MM/yyyy")
-            '    objrep.SetParameterValue("usuario", L_Usuario)
-            '    objrep.SetParameterValue("fechaI", fechaI)
-            '    objrep.SetParameterValue("fechaF", fechaF)
-            '    MReportViewer.ReportSource = objrep
-            '    MReportViewer.Show()
-            '    MReportViewer.BringToFront()
-            'End If
+            If (swProducto.Value = True) Then
+                Dim objrep As New R_VentasCajeraProveedorProd
+                objrep.SetDataSource(_ventasAtendidas)
+                Dim fechaI As String = tbFechaI.Value.ToString("dd/MM/yyyy")
+                Dim fechaF As String = tbFechaF.Value.ToString("dd/MM/yyyy")
+                objrep.SetParameterValue("usuario", L_Usuario)
+                objrep.SetParameterValue("fechaI", fechaI)
+                objrep.SetParameterValue("fechaF", fechaF)
+                MReportViewer.ReportSource = objrep
+                MReportViewer.Show()
+                MReportViewer.BringToFront()
+            Else
+                Dim objrep As New R_VentasCajeraProveedor
+                objrep.SetDataSource(_ventasAtendidas)
+                Dim fechaI As String = tbFechaI.Value.ToString("dd/MM/yyyy")
+                Dim fechaF As String = tbFechaF.Value.ToString("dd/MM/yyyy")
+                objrep.SetParameterValue("usuario", L_Usuario)
+                objrep.SetParameterValue("fechaI", fechaI)
+                objrep.SetParameterValue("fechaF", fechaF)
+                MReportViewer.ReportSource = objrep
+                MReportViewer.Show()
+                MReportViewer.BringToFront()
+            End If
 
         Else
             ToastNotification.Show(Me, "NO HAY DATOS PARA LOS PARAMETROS SELECCIONADOS..!!!",
@@ -105,24 +103,6 @@ Public Class Pr_ReporteVentasCajeras
 
     Private Sub Pr_VentasCajeras_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         _prIniciarTodo()
-    End Sub
-    Private Sub checkUnaVendedor_CheckValueChanged(sender As Object, e As EventArgs) Handles checkUnaVendedor.CheckValueChanged
-        If (checkUnaVendedor.Checked) Then
-            CheckTodosVendedor.CheckValue = False
-            tbVendedor.Enabled = True
-            tbVendedor.BackColor = Color.White
-            tbVendedor.Focus()
-        End If
-    End Sub
-
-    Private Sub CheckTodosVendedor_CheckValueChanged(sender As Object, e As EventArgs) Handles CheckTodosVendedor.CheckValueChanged
-        If (CheckTodosVendedor.Checked) Then
-            checkUnaVendedor.CheckValue = False
-            tbVendedor.Enabled = True
-            tbVendedor.BackColor = Color.Gainsboro
-            tbVendedor.Clear()
-            tbCodigoVendedor.Clear()
-        End If
     End Sub
 
     Private Sub CheckUnaALmacen_CheckValueChanged(sender As Object, e As EventArgs) Handles CheckUnaALmacen.CheckValueChanged
@@ -166,7 +146,6 @@ Public Class Pr_ReporteVentasCajeras
             _prCargarComboLibreriaSucursal(tbAlmacen)
             CType(tbAlmacen.DataSource, DataTable).Rows.Clear()
             tbAlmacen.SelectedIndex = -1
-
         End If
     End Sub
 
@@ -186,47 +165,6 @@ Public Class Pr_ReporteVentasCajeras
         End With
     End Sub
 
-    Private Sub tbVendedor_KeyDown_1(sender As Object, e As KeyEventArgs) Handles tbVendedor.KeyDown
-        If (checkUnaVendedor.Checked) Then
-            If e.KeyData = Keys.Control + Keys.Enter Then
-                Dim dt As DataTable
-                dt = L_fnListarEmpleado()
-                '              a.ydnumi, a.ydcod, a.yddesc, a.yddctnum, a.yddirec
-                ',a.ydtelf1 ,a.ydfnac 
-                Dim listEstCeldas As New List(Of Modelo.Celda)
-                listEstCeldas.Add(New Modelo.Celda("ydnumi,", False, "ID", 50))
-                listEstCeldas.Add(New Modelo.Celda("ydcod", True, "ID", 50))
-                listEstCeldas.Add(New Modelo.Celda("yddesc", True, "NOMBRE", 280))
-                listEstCeldas.Add(New Modelo.Celda("yddctnum", True, "N. Documento".ToUpper, 150))
-                listEstCeldas.Add(New Modelo.Celda("yddirec", True, "DIRECCION", 220))
-                listEstCeldas.Add(New Modelo.Celda("ydtelf1", True, "Telefono".ToUpper, 200))
-                listEstCeldas.Add(New Modelo.Celda("ydfnac", True, "F.Nacimiento".ToUpper, 150, "MM/dd,YYYY"))
-                Dim ef = New Efecto
-                ef.tipo = 3
-                ef.dt = dt
-                ef.SeleclCol = 1
-                ef.listEstCeldas = listEstCeldas
-                ef.alto = 50
-                ef.ancho = 350
-                ef.Context = "Seleccione Vendedor".ToUpper
-                ef.ShowDialog()
-                Dim bandera As Boolean = False
-                bandera = ef.band
-                If (bandera = True) Then
-                    Dim Row As Janus.Windows.GridEX.GridEXRow = ef.Row
-                    If (IsNothing(Row)) Then
-                        tbVendedor.Focus()
-                        Return
-                    End If
-                    tbCodigoVendedor.Text = Row.Cells("ydnumi").Value
-                    tbVendedor.Text = Row.Cells("yddesc").Value
-                    btnGenerar.Focus()
-                End If
-
-            End If
-
-        End If
-    End Sub
 
     Private Sub btnSalir_Click(sender As Object, e As EventArgs) Handles btnSalir.Click
         Me.Close()
@@ -275,14 +213,14 @@ Public Class Pr_ReporteVentasCajeras
     End Sub
 
     Private Sub tbUsuario_KeyDown(sender As Object, e As KeyEventArgs) Handles tbUsuario.KeyDown
-        If (checkUnaVendedor.Checked) Then
+        If (checkUnUsuario.Checked) Then
             If e.KeyData = Keys.Control + Keys.Enter Then
                 Dim dt As DataTable
                 dt = L_ListarUsuarios()
 
                 Dim listEstCeldas As New List(Of Modelo.Celda)
                 listEstCeldas.Add(New Modelo.Celda("ydnumi,", True, "ID", 50))
-                listEstCeldas.Add(New Modelo.Celda("yduser", True, "USUARIO", 150))
+                listEstCeldas.Add(New Modelo.Celda("yduser", True, "USUARIO", 180))
                 listEstCeldas.Add(New Modelo.Celda("ydrol", False, "IDROL".ToUpper, 150))
                 listEstCeldas.Add(New Modelo.Celda("yd_numiVend", False, "IDVENDEDOR", 220))
 
@@ -292,7 +230,7 @@ Public Class Pr_ReporteVentasCajeras
                 ef.SeleclCol = 1
                 ef.listEstCeldas = listEstCeldas
                 ef.alto = 50
-                ef.ancho = 350
+                ef.ancho = 250
                 ef.Context = "Seleccione Usuario".ToUpper
                 ef.ShowDialog()
                 Dim bandera As Boolean = False
@@ -310,6 +248,25 @@ Public Class Pr_ReporteVentasCajeras
 
             End If
 
+        End If
+    End Sub
+
+    Private Sub checkUnUsuario_CheckValueChanged(sender As Object, e As EventArgs) Handles checkUnUsuario.CheckValueChanged
+        If (checkUnUsuario.Checked) Then
+            CheckTodosUsuario.CheckValue = False
+            tbUsuario.Enabled = True
+            tbUsuario.BackColor = Color.White
+            tbUsuario.Focus()
+        End If
+    End Sub
+
+    Private Sub CheckTodosUsuario_CheckValueChanged(sender As Object, e As EventArgs) Handles CheckTodosUsuario.CheckValueChanged
+        If (CheckTodosUsuario.Checked) Then
+            checkUnUsuario.CheckValue = False
+            tbUsuario.Enabled = True
+            tbUsuario.BackColor = Color.Gainsboro
+            tbUsuario.Clear()
+            tbCodigoUsuario.Clear()
         End If
     End Sub
 End Class

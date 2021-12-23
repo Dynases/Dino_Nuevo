@@ -56,27 +56,54 @@ Public Class Pr_VentasAtendidas
         _ventasAtendidas = _prValidadrFiltros()
         If (_ventasAtendidas.Rows.Count > 0) Then
             If (swTipoVenta.Value = True) Then
-                Dim objrep As New R_VentasAtendidasAlmacenVendedor
-                objrep.SetDataSource(_ventasAtendidas)
-                Dim fechaI As String = tbFechaI.Value.ToString("dd/MM/yyyy")
-                Dim fechaF As String = tbFechaF.Value.ToString("dd/MM/yyyy")
-                objrep.SetParameterValue("usuario", L_Usuario)
-                objrep.SetParameterValue("fechaI", fechaI)
-                objrep.SetParameterValue("fechaF", fechaF)
-                MReportViewer.ReportSource = objrep
-                MReportViewer.Show()
-                MReportViewer.BringToFront()
+                If swMostrar.Value = True Then
+                    Dim objrep As New R_VentasAtendidasAlmacenVendedor
+                    objrep.SetDataSource(_ventasAtendidas)
+                    Dim fechaI As String = tbFechaI.Value.ToString("dd/MM/yyyy")
+                    Dim fechaF As String = tbFechaF.Value.ToString("dd/MM/yyyy")
+                    objrep.SetParameterValue("usuario", L_Usuario)
+                    objrep.SetParameterValue("fechaI", fechaI)
+                    objrep.SetParameterValue("fechaF", fechaF)
+                    MReportViewer.ReportSource = objrep
+                    MReportViewer.Show()
+                    MReportViewer.BringToFront()
+                Else
+                    Dim objrep As New R_VentasAtendidasAlmacenVendedorRS
+                    objrep.SetDataSource(_ventasAtendidas)
+                    Dim fechaI As String = tbFechaI.Value.ToString("dd/MM/yyyy")
+                    Dim fechaF As String = tbFechaF.Value.ToString("dd/MM/yyyy")
+                    objrep.SetParameterValue("usuario", L_Usuario)
+                    objrep.SetParameterValue("fechaI", fechaI)
+                    objrep.SetParameterValue("fechaF", fechaF)
+                    MReportViewer.ReportSource = objrep
+                    MReportViewer.Show()
+                    MReportViewer.BringToFront()
+                End If
             Else
-                Dim objrep As New R_VentasAtendidasVendedorAlmacen
-                objrep.SetDataSource(_ventasAtendidas)
-                Dim fechaI As String = tbFechaI.Value.ToString("dd/MM/yyyy")
-                Dim fechaF As String = tbFechaF.Value.ToString("dd/MM/yyyy")
-                objrep.SetParameterValue("usuario", L_Usuario)
-                objrep.SetParameterValue("fechaI", fechaI)
-                objrep.SetParameterValue("fechaF", fechaF)
-                MReportViewer.ReportSource = objrep
-                MReportViewer.Show()
-                MReportViewer.BringToFront()
+                If swMostrar.Value = True Then
+                    Dim objrep As New R_VentasAtendidasVendedorAlmacen
+                    objrep.SetDataSource(_ventasAtendidas)
+                    Dim fechaI As String = tbFechaI.Value.ToString("dd/MM/yyyy")
+                    Dim fechaF As String = tbFechaF.Value.ToString("dd/MM/yyyy")
+                    objrep.SetParameterValue("usuario", L_Usuario)
+                    objrep.SetParameterValue("fechaI", fechaI)
+                    objrep.SetParameterValue("fechaF", fechaF)
+                    MReportViewer.ReportSource = objrep
+                    MReportViewer.Show()
+                    MReportViewer.BringToFront()
+                Else
+                    Dim objrep As New R_VentasAtendidasVendedorAlmacenRS
+                    objrep.SetDataSource(_ventasAtendidas)
+                    Dim fechaI As String = tbFechaI.Value.ToString("dd/MM/yyyy")
+                    Dim fechaF As String = tbFechaF.Value.ToString("dd/MM/yyyy")
+                    objrep.SetParameterValue("usuario", L_Usuario)
+                    objrep.SetParameterValue("fechaI", fechaI)
+                    objrep.SetParameterValue("fechaF", fechaF)
+                    MReportViewer.ReportSource = objrep
+                    MReportViewer.Show()
+                    MReportViewer.BringToFront()
+                End If
+
             End If
 
         Else
