@@ -375,6 +375,12 @@
     <Compile Include="F1_IngresosEgresos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F1_ExcelVenta.Designer.vb">
+      <DependentUpon>F1_ExcelVenta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F1_ExcelVenta.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F1_Proveedor.Designer.vb">
       <DependentUpon>F1_Proveedor.vb</DependentUpon>
     </Compile>
@@ -1130,6 +1136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F1_IngresosEgresos.resx">
       <DependentUpon>F1_IngresosEgresos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F1_ExcelVenta.resx">
+      <DependentUpon>F1_ExcelVenta.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F1_Proveedor.resx">
       <DependentUpon>F1_Proveedor.vb</DependentUpon>

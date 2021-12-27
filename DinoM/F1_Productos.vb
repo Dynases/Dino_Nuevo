@@ -417,6 +417,7 @@ Public Class F1_Productos
         End If
         _PMInhabilitar()
         _PMPrimerRegistro()
+        PanelNavegacion.Enabled = True
         Return res
     End Function
 
@@ -994,7 +995,7 @@ Public Class F1_Productos
         If btnGrabar.Enabled = True Then
             _PMInhabilitar()
             _PMPrimerRegistro()
-
+            PanelNavegacion.Enabled = True
         Else
             '  Public _modulo As SideNavItem
             _modulo.Select()
