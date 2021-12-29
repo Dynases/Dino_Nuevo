@@ -14,7 +14,7 @@ Public Class Pr_StockUtilidad
         _prCargarComboLibreriaPrecioVenta(tbcatprecio)
 
         _PMIniciarTodo()
-        Me.Text = "UTILIDAD DE PRODUCTOS"
+        Me.Text = "SALDOS VALORADOS DE PRODUCTOS"
         MReportViewer.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         _IniciarComponentes()
         bandera = True
