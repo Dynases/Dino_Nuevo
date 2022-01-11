@@ -26,6 +26,7 @@ Partial Class Pr_VentasAtendidas
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Pr_VentasAtendidas))
         Dim tbAlmacen_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.swMostrar = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.swIce = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.swTipoVenta = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -49,7 +50,6 @@ Partial Class Pr_VentasAtendidas
         Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
         Me.tbFechaI = New DevComponents.Editors.DateTimeAdv.DateTimeInput()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.swMostrar = New DevComponents.DotNetBar.Controls.SwitchButton()
         CType(Me.SuperTabPrincipal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuperTabPrincipal.SuspendLayout()
         Me.SuperTabControlPanelRegistro.SuspendLayout()
@@ -221,6 +221,24 @@ Partial Class Pr_VentasAtendidas
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Agrupados"
+        '
+        'swMostrar
+        '
+        '
+        '
+        '
+        Me.swMostrar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.swMostrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.swMostrar.Location = New System.Drawing.Point(54, 61)
+        Me.swMostrar.Name = "swMostrar"
+        Me.swMostrar.OffBackColor = System.Drawing.Color.DarkSlateGray
+        Me.swMostrar.OffText = "MOSTRAR RAZÓN SOCIAL"
+        Me.swMostrar.OffTextColor = System.Drawing.Color.White
+        Me.swMostrar.OnBackColor = System.Drawing.Color.Gold
+        Me.swMostrar.OnText = "MOSTRAR CLIENTES"
+        Me.swMostrar.Size = New System.Drawing.Size(250, 22)
+        Me.swMostrar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.swMostrar.TabIndex = 253
         '
         'swIce
         '
@@ -647,26 +665,6 @@ Partial Class Pr_VentasAtendidas
         '
         Me.Timer1.Enabled = True
         Me.Timer1.Interval = 500
-        '
-        'swMostrar
-        '
-        '
-        '
-        '
-        Me.swMostrar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.swMostrar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.swMostrar.Location = New System.Drawing.Point(54, 61)
-        Me.swMostrar.Name = "swMostrar"
-        Me.swMostrar.OffBackColor = System.Drawing.Color.DarkSlateGray
-        Me.swMostrar.OffText = "MOSTRAR RAZÓN SOCIAL"
-        Me.swMostrar.OffTextColor = System.Drawing.Color.White
-        Me.swMostrar.OnBackColor = System.Drawing.Color.Gold
-        Me.swMostrar.OnText = "MOSTRAR CLIENTES"
-        Me.swMostrar.Size = New System.Drawing.Size(250, 22)
-        Me.swMostrar.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.swMostrar.TabIndex = 253
-        Me.swMostrar.Value = True
-        Me.swMostrar.ValueObject = "Y"
         '
         'Pr_VentasAtendidas
         '

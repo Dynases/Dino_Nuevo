@@ -11,7 +11,7 @@ Public Class Pr_ReporteVentasCajeras
         tbFechaF.Value = Now.Date
         _PMIniciarTodo()
 
-        Me.Text = "REPORTE VENTAS CAJERAS-PROVEEDORES"
+        Me.Text = "REPORTE VENTAS CAJAS-PROVEEDORES"
         MReportViewer.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None
         _IniciarComponentes()
     End Sub
@@ -52,11 +52,20 @@ Public Class Pr_ReporteVentasCajeras
             idProveedor = tbCodigoProveedor.Text
         End If
 
-        If swProducto.Value = True Then
-            ventasAtendidas = L_BuscarVentasCajerasProveedoresProductos(fechaDesde, fechaHasta, idAlmacen, idUsuario, idProveedor)
+        If swFiltroUsuarios.Value = True Then
+            If swProducto.Value = True Then
+                ventasAtendidas = L_BuscarVentasCajerasProveedoresProductos(fechaDesde, fechaHasta, idAlmacen, idUsuario, idProveedor)
+            Else
+                ventasAtendidas = L_BuscarVentasCajerasProveedores(fechaDesde, fechaHasta, idAlmacen, idUsuario, idProveedor)
+            End If
         Else
-            ventasAtendidas = L_BuscarVentasCajerasProveedores(fechaDesde, fechaHasta, idAlmacen, idUsuario, idProveedor)
+            If swProducto.Value = True Then
+                ventasAtendidas = L_BuscarVentasCajerasProveedoresProductosSinUsuario(fechaDesde, fechaHasta, idAlmacen, idProveedor)
+            Else
+                ventasAtendidas = L_BuscarVentasCajerasProveedoresSinUsuario(fechaDesde, fechaHasta, idAlmacen, idProveedor)
+            End If
         End If
+
 
         Return ventasAtendidas
 
@@ -65,29 +74,57 @@ Public Class Pr_ReporteVentasCajeras
         Dim _ventasAtendidas As New DataTable
         _ventasAtendidas = _prValidadrFiltros()
         If (_ventasAtendidas.Rows.Count > 0) Then
-            If (swProducto.Value = True) Then
-                Dim objrep As New R_VentasCajeraProveedorProd
-                objrep.SetDataSource(_ventasAtendidas)
-                Dim fechaI As String = tbFechaI.Value.ToString("dd/MM/yyyy")
-                Dim fechaF As String = tbFechaF.Value.ToString("dd/MM/yyyy")
-                objrep.SetParameterValue("usuario", L_Usuario)
-                objrep.SetParameterValue("fechaI", fechaI)
-                objrep.SetParameterValue("fechaF", fechaF)
-                MReportViewer.ReportSource = objrep
-                MReportViewer.Show()
-                MReportViewer.BringToFront()
+            If swFiltroUsuarios.Value = True Then
+                If (swProducto.Value = True) Then
+                    Dim objrep As New R_VentasCajeraProveedorProd
+                    objrep.SetDataSource(_ventasAtendidas)
+                    Dim fechaI As String = tbFechaI.Value.ToString("dd/MM/yyyy")
+                    Dim fechaF As String = tbFechaF.Value.ToString("dd/MM/yyyy")
+                    objrep.SetParameterValue("usuario", L_Usuario)
+                    objrep.SetParameterValue("fechaI", fechaI)
+                    objrep.SetParameterValue("fechaF", fechaF)
+                    MReportViewer.ReportSource = objrep
+                    MReportViewer.Show()
+                    MReportViewer.BringToFront()
+                Else
+                    Dim objrep As New R_VentasCajeraProveedor
+                    'Dim objrep As New R_VentasCajeraProveedorSinUsuario
+                    objrep.SetDataSource(_ventasAtendidas)
+                    Dim fechaI As String = tbFechaI.Value.ToString("dd/MM/yyyy")
+                    Dim fechaF As String = tbFechaF.Value.ToString("dd/MM/yyyy")
+                    objrep.SetParameterValue("usuario", L_Usuario)
+                    objrep.SetParameterValue("fechaI", fechaI)
+                    objrep.SetParameterValue("fechaF", fechaF)
+                    MReportViewer.ReportSource = objrep
+                    MReportViewer.Show()
+                    MReportViewer.BringToFront()
+                End If
             Else
-                Dim objrep As New R_VentasCajeraProveedor
-                objrep.SetDataSource(_ventasAtendidas)
-                Dim fechaI As String = tbFechaI.Value.ToString("dd/MM/yyyy")
-                Dim fechaF As String = tbFechaF.Value.ToString("dd/MM/yyyy")
-                objrep.SetParameterValue("usuario", L_Usuario)
-                objrep.SetParameterValue("fechaI", fechaI)
-                objrep.SetParameterValue("fechaF", fechaF)
-                MReportViewer.ReportSource = objrep
-                MReportViewer.Show()
-                MReportViewer.BringToFront()
+                If (swProducto.Value = True) Then
+                    Dim objrep As New R_VentasCajeraProveedorProdSinUsuario
+                    objrep.SetDataSource(_ventasAtendidas)
+                    Dim fechaI As String = tbFechaI.Value.ToString("dd/MM/yyyy")
+                    Dim fechaF As String = tbFechaF.Value.ToString("dd/MM/yyyy")
+                    objrep.SetParameterValue("usuario", L_Usuario)
+                    objrep.SetParameterValue("fechaI", fechaI)
+                    objrep.SetParameterValue("fechaF", fechaF)
+                    MReportViewer.ReportSource = objrep
+                    MReportViewer.Show()
+                    MReportViewer.BringToFront()
+                Else
+                    Dim objrep As New R_VentasCajeraProveedorSinUsuario
+                    objrep.SetDataSource(_ventasAtendidas)
+                    Dim fechaI As String = tbFechaI.Value.ToString("dd/MM/yyyy")
+                    Dim fechaF As String = tbFechaF.Value.ToString("dd/MM/yyyy")
+                    objrep.SetParameterValue("usuario", L_Usuario)
+                    objrep.SetParameterValue("fechaI", fechaI)
+                    objrep.SetParameterValue("fechaF", fechaF)
+                    MReportViewer.ReportSource = objrep
+                    MReportViewer.Show()
+                    MReportViewer.BringToFront()
+                End If
             End If
+
 
         Else
             ToastNotification.Show(Me, "NO HAY DATOS PARA LOS PARAMETROS SELECCIONADOS..!!!",
@@ -267,6 +304,16 @@ Public Class Pr_ReporteVentasCajeras
             tbUsuario.BackColor = Color.Gainsboro
             tbUsuario.Clear()
             tbCodigoUsuario.Clear()
+        End If
+    End Sub
+
+    Private Sub swFiltroUsuarios_ValueChanged(sender As Object, e As EventArgs) Handles swFiltroUsuarios.ValueChanged
+        If swFiltroUsuarios.Value = False Then
+            checkUnUsuario.Enabled = False
+            CheckTodosUsuario.Enabled = False
+        Else
+            checkUnUsuario.Enabled = True
+            CheckTodosUsuario.Enabled = True
         End If
     End Sub
 End Class

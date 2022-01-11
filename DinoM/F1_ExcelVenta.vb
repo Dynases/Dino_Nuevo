@@ -20,7 +20,7 @@ Public Class F1_ExcelVenta
 #End Region
 #Region "Metodos Privados"
     Private Sub _prIniciarTodo()
-        Me.Text = "VENTAS PRODUCTOS PARA EXPORTAR"
+        Me.Text = "VENTAS DETALLADAS POR PRODUCTOS PARA EXPORTAR"
         tbFechaI.Value = Now.Date
         tbFechaF.Value = Now.Date
 
@@ -114,19 +114,68 @@ Public Class F1_ExcelVenta
             JGrM_Buscador.RetrieveStructure()
             JGrM_Buscador.AlternatingColors = True
 
-
+            With JGrM_Buscador.RootTable.Columns("FechaVenta")
+                .Width = 90
+                .Visible = True
+                .Caption = "FECHA"
+            End With
+            With JGrM_Buscador.RootTable.Columns("Dia")
+                .Width = 60
+                .Visible = True
+                .Caption = "DÍA"
+            End With
+            With JGrM_Buscador.RootTable.Columns("Mes")
+                .Width = 60
+                .Visible = True
+                .Caption = "MES"
+            End With
+            With JGrM_Buscador.RootTable.Columns("Anio")
+                .Width = 60
+                .Visible = True
+                .Caption = "AÑO"
+            End With
+            With JGrM_Buscador.RootTable.Columns("Autorizacion")
+                .Width = 170
+                .Caption = "COD. AUTORIZACIÓN"
+                .Visible = True
+                .FormatString = "0"
+            End With
+            With JGrM_Buscador.RootTable.Columns("CodControl")
+                .Width = 100
+                .Visible = False
+            End With
+            With JGrM_Buscador.RootTable.Columns("NroCaja")
+                .Width = 90
+                .Caption = "NRO. CAJA"
+                .Visible = True
+            End With
+            With JGrM_Buscador.RootTable.Columns("NroFactura")
+                .Width = 120
+                .Caption = "NRO. FACTURA"
+                .Visible = True
+            End With
+            With JGrM_Buscador.RootTable.Columns("Nit")
+                .Width = 100
+                .Caption = "NIT"
+                .Visible = True
+            End With
+            With JGrM_Buscador.RootTable.Columns("RazonSocial")
+                .Width = 150
+                .Caption = "RAZÓN SOCIAL"
+                .Visible = True
+            End With
             With JGrM_Buscador.RootTable.Columns("tbty5prod")
                 .Width = 100
                 .Caption = "CODIGO"
                 .Visible = False
             End With
-            With JGrM_Buscador.RootTable.Columns("yfcprod")
+            With JGrM_Buscador.RootTable.Columns("CodDelta")
                 .Width = 100
-                .Caption = "COD. PROD."
+                .Caption = "COD. DELTA"
                 .Visible = True
             End With
             With JGrM_Buscador.RootTable.Columns("yfcdprod1")
-                .Width = 350
+                .Width = 380
                 .Caption = "DESCRIPCIÓN"
                 .Visible = True
             End With
@@ -186,12 +235,22 @@ Public Class F1_ExcelVenta
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
+            With JGrM_Buscador.RootTable.Columns("Vendedor")
+                .Width = 100
+                .Visible = True
+                .Caption = "VENDEDOR"
+            End With
+            With JGrM_Buscador.RootTable.Columns("Usuario")
+                .Width = 100
+                .Visible = True
+                .Caption = "USUARIO"
+            End With
             With JGrM_Buscador.RootTable.Columns("yccod3")
                 .Width = 90
                 .Visible = False
             End With
             With JGrM_Buscador.RootTable.Columns("Proveedor")
-                .Width = 120
+                .Width = 150
                 .Visible = True
                 .Caption = "PROVEEDOR"
             End With
@@ -220,10 +279,10 @@ Public Class F1_ExcelVenta
                 .Visible = True
                 .Caption = "CÓDIGO DE BARRAS"
             End With
-            With JGrM_Buscador.RootTable.Columns("FechaVenta")
-                .Width = 90
-                .Visible = False
-                .Caption = "FECHA"
+            With JGrM_Buscador.RootTable.Columns("CodOrigen")
+                .Width = 120
+                .Visible = True
+                .Caption = "CÓDIGO DE ORÍGEN"
             End With
 
             With JGrM_Buscador
