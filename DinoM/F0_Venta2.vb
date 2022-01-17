@@ -494,7 +494,7 @@ Public Class F0_Venta2
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = True
             .FormatString = "0.00"
-            .Caption = "Total".ToUpper
+            .Caption = "SubTotal".ToUpper
         End With
         With grdetalle.RootTable.Columns("tbporc")
             .Width = 100
@@ -506,14 +506,14 @@ Public Class F0_Venta2
         With grdetalle.RootTable.Columns("tbdesc")
             .Width = 100
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-            .Visible = False
+            .Visible = True
             .FormatString = "0.00"
             .Caption = "M.Desc".ToUpper
         End With
         With grdetalle.RootTable.Columns("tbtotdesc")
             .Width = 100
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
-            .Visible = False
+            .Visible = True
             .FormatString = "0.00"
             .Caption = "Total".ToUpper
         End With
@@ -589,6 +589,11 @@ Public Class F0_Venta2
             End With
         End If
         With grdetalle.RootTable.Columns("stock")
+            .Width = 120
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
+            .Visible = False
+        End With
+        With grdetalle.RootTable.Columns("tbfamilia")
             .Width = 120
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False

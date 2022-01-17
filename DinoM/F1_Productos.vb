@@ -1097,14 +1097,6 @@ Public Class F1_Productos
         End If
     End Sub
 
-    Private Sub UsImg_Load(sender As Object, e As EventArgs) Handles UsImg.Load
-
-    End Sub
-
-    Private Sub btnGrabar_Click(sender As Object, e As EventArgs) Handles btnGrabar.Click
-
-    End Sub
-
     Private Sub cbgrupo5_ValueChanged(sender As Object, e As EventArgs) Handles cbgrupo5.ValueChanged
         If cbgrupo5.SelectedIndex < 0 And cbgrupo5.Text <> String.Empty Then
             btgrupo5.Visible = True

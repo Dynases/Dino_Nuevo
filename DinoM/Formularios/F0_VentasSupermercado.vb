@@ -93,39 +93,168 @@ Public Class F0_VentasSupermercado
         tbDescuento.Value = sumaDescuento
 
     End Sub
-    Public Sub CalcularDescuentos(ProductoId As Integer, Cantidad As Integer, Precio As Decimal, Posicion As Integer)
+    'Public Sub CalcularDescuentos(ProductoId As Integer, Cantidad As Integer, Precio As Decimal, Posicion As Integer)
 
+
+    '    Dim fila As DataRow() = dtDescuentos.Select("ProductoId=" + Str(ProductoId).ToString.Trim + "", "")
+
+    '    For Each dr As DataRow In fila
+
+    '        Dim CantidadInicial As Integer = dr.Item("CantidadInicial")
+    '        Dim CantidadFinal As Integer = dr.Item("CantidadFinal")
+    '        Dim PrecioDescuento As Double = dr.Item("Precio")
+
+    '        If (Cantidad >= CantidadInicial And Cantidad <= CantidadFinal) Then
+
+    '            Dim SubTotalDescuento As Double = Cantidad * PrecioDescuento
+    '            Dim Descuento As Double = (Cantidad * Precio) - SubTotalDescuento
+    '            CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbdesc") = Descuento
+    '            'grdetalle.SetValue("tbdesc", Descuento)
+    '            CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbtotdesc") = (CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbpbas") * CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbcmin")) - Descuento
+
+    '            ' grdetalle.SetValue("tbtotdesc", ((CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbpbas") * CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbcmin")) - Descuento))
+    '            Return
+
+    '        Else
+
+    '            CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbdesc") = 0
+    '            CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbtotdesc") = (CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbpbas") * CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbcmin"))
+
+
+    '        End If
+
+    '    Next
+
+    'End Sub
+
+    Public Sub CalcularDescuentos(ProductoId As Integer, Cantidad As Integer, Precio As Decimal, Posicion As Integer)
+        Dim preciod, total1, total2, descuentof, cantf As Double
 
         Dim fila As DataRow() = dtDescuentos.Select("ProductoId=" + Str(ProductoId).ToString.Trim + "", "")
 
-        For Each dr As DataRow In fila
+        'Cálculo de descuentos si es sin familia
+        If CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbfamilia") = 1 Then
 
-            Dim CantidadInicial As Integer = dr.Item("CantidadInicial")
-            Dim CantidadFinal As Integer = dr.Item("CantidadFinal")
-            Dim PrecioDescuento As Double = dr.Item("Precio")
+            For Each dr As DataRow In fila
 
-            If (Cantidad >= CantidadInicial And Cantidad <= CantidadFinal) Then
+                Dim CantidadInicial As Integer = dr.Item("CantidadInicial")
+                Dim CantidadFinal As Integer = dr.Item("CantidadFinal")
+                Dim PrecioDescuento As Double = dr.Item("Precio")
 
-                Dim SubTotalDescuento As Double = Cantidad * PrecioDescuento
-                Dim Descuento As Double = (Cantidad * Precio) - SubTotalDescuento
-                CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbdesc") = Descuento
-                'grdetalle.SetValue("tbdesc", Descuento)
-                CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbtotdesc") = (CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbpbas") * CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbcmin")) - Descuento
+                If (Cantidad >= CantidadInicial And Cantidad <= CantidadFinal) Then
 
-                ' grdetalle.SetValue("tbtotdesc", ((CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbpbas") * CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbcmin")) - Descuento))
-                Return
+                    Dim SubTotalDescuento As Double = Cantidad * PrecioDescuento
+                    Dim Descuento As Double = (Cantidad * Precio) - SubTotalDescuento
+                    CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbdesc") = Descuento
+                    'grdetalle.SetValue("tbdesc", Descuento)
+                    CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbtotdesc") = (CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbpbas") * CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbcmin")) - Descuento
 
-            Else
+                    ' grdetalle.SetValue("tbtotdesc", ((CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbpbas") * CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbcmin")) - Descuento))
+                    Return
 
-                CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbdesc") = 0
-                CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbtotdesc") = (CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbpbas") * CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbcmin"))
+                Else
+
+                    CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbdesc") = 0
+                    CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbtotdesc") = (CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbpbas") * CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbcmin"))
 
 
-            End If
+                End If
 
-        Next
+            Next
+        Else
+            'Dim tabla As DataTable = CType(grdetalle.DataSource, DataTable).Select("estado=0", "").CopyToDataTable
+            'grdetalle.DataSource = tabla
+            For i = 0 To CType(grdetalle.DataSource, DataTable).Rows.Count - 1
+                'Cálculo de descuentos por familia
+                Dim familia = CType(grdetalle.DataSource, DataTable).Rows(i).Item("tbfamilia")
+                Dim cantnormal = CType(grdetalle.DataSource, DataTable).Rows(i).Item("tbcmin")
+                Dim Estado = CType(grdetalle.DataSource, DataTable).Rows(i).Item("estado")
+                total1 = CType(grdetalle.DataSource, DataTable).Rows(i).Item("tbptot")
+
+                If Estado = 0 And familia <> 1 Then
+                    'Recorre el grid para hacer la suma de las cantidades por familia
+                    For Each flia In grdetalle.GetRows
+                        If familia = flia.Cells("tbfamilia").Value Then
+                            cantf += flia.Cells("tbcmin").Value
+                        End If
+                    Next
+                    'Consulta la tabla de descuentos para ver cual aplicará segun la cantidad ingresada
+                    For Each preciodesc As DataRow In fila
+                        If cantf >= preciodesc.Item("CantidadInicial") And cantf <= preciodesc.Item("CantidadFinal") Then
+                            preciod = preciodesc.Item("Precio")
+                            total2 = cantnormal * preciod
+                        End If
+                    Next
+                    If total2 > 0 Then
+                        descuentof = total1 - total2
+                    Else
+                        descuentof = 0
+                    End If
+                    CType(grdetalle.DataSource, DataTable).Rows(i).Item("tbdesc") = descuentof
+                    CType(grdetalle.DataSource, DataTable).Rows(i).Item("tbtotdesc") = total1 - descuentof
+                    cantf = 0
+                    total2 = 0
+                    descuentof = 0
+                Else
+
+                End If
+            Next
+        End If
+
 
     End Sub
+
+    Public Sub CalcularDescuentosCuandoSeEliminaProductoFamilia(Posicion As Integer)
+        Dim preciod, total1, total2, descuentof, cantf As Double
+
+        Dim fila As DataRow()
+
+        'Cálculo de descuentos si es sin familia
+        If CType(grdetalle.DataSource, DataTable).Rows(Posicion).Item("tbfamilia") <> 1 Then
+
+            For i = 0 To CType(grdetalle.DataSource, DataTable).Rows.Count - 1
+                'Cálculo de descuentos por familia
+                Dim familia = CType(grdetalle.DataSource, DataTable).Rows(i).Item("tbfamilia")
+                Dim cantnormal = CType(grdetalle.DataSource, DataTable).Rows(i).Item("tbcmin")
+                Dim Estado = CType(grdetalle.DataSource, DataTable).Rows(i).Item("estado")
+                Dim CodProd = CType(grdetalle.DataSource, DataTable).Rows(i).Item("tbty5prod")
+                total1 = CType(grdetalle.DataSource, DataTable).Rows(i).Item("tbptot")
+
+                If Estado = 0 And familia <> 1 Then
+                    'Recorre el grid para hacer la suma de las cantidades por familia
+                    For Each flia In grdetalle.GetRows
+                        If familia = flia.Cells("tbfamilia").Value Then
+                            cantf += flia.Cells("tbcmin").Value
+                        End If
+                    Next
+
+                    fila = dtDescuentos.Select("ProductoId=" + CodProd.ToString + "", "")
+                    'Consulta la tabla de descuentos para ver cual aplicará segun la cantidad ingresada
+                    For Each preciodesc As DataRow In fila
+                        If cantf >= preciodesc.Item("CantidadInicial") And cantf <= preciodesc.Item("CantidadFinal") Then
+                            preciod = preciodesc.Item("Precio")
+                            total2 = cantnormal * preciod
+                        End If
+                    Next
+                    If total2 > 0 Then
+                        descuentof = total1 - total2
+                    Else
+                        descuentof = 0
+                    End If
+                    CType(grdetalle.DataSource, DataTable).Rows(i).Item("tbdesc") = descuentof
+                    CType(grdetalle.DataSource, DataTable).Rows(i).Item("tbtotdesc") = total1 - descuentof
+                    cantf = 0
+                    total2 = 0
+                    descuentof = 0
+                Else
+
+                End If
+            Next
+        End If
+
+
+    End Sub
+
     Private Sub AsignarClienteEmpleado()
         Dim _tabla11 As DataTable = L_fnListarClientesUsuario(gi_userNumi)
         If _tabla11.Rows.Count > 0 Then
@@ -398,6 +527,11 @@ Public Class F0_VentasSupermercado
             End With
         End If
         With grdetalle.RootTable.Columns("stock")
+            .Width = 120
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
+            .Visible = False
+        End With
+        With grdetalle.RootTable.Columns("tbfamilia")
             .Width = 120
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
@@ -762,7 +896,7 @@ Public Class F0_VentasSupermercado
         Dim Bin As New MemoryStream
         Dim img As New Bitmap(My.Resources.delete, 28, 28)
         img.Save(Bin, Imaging.ImageFormat.Png)
-        CType(grdetalle.DataSource, DataTable).Rows.Add(_fnSiguienteNumi() + 1, 0, 0, "", 0, "", 0, 0, 0, "", 0, 0, 0, 0, 0, "", 0, "20170101", CDate("2017/01/01"), 0, Now.Date, "", "", 0, Bin.GetBuffer, 0)
+        CType(grdetalle.DataSource, DataTable).Rows.Add(_fnSiguienteNumi() + 1, 0, 0, "", 0, "", 0, 0, 0, "", 0, 0, 0, 0, 0, "", 0, "20170101", CDate("2017/01/01"), 0, Now.Date, "", "", 0, Bin.GetBuffer, 0, 0)
     End Sub
 
     Public Function _fnSiguienteNumi()
@@ -927,11 +1061,17 @@ Public Class F0_VentasSupermercado
 
                 'grdetalle.RootTable.ApplyFilter(New Janus.Windows.GridEX.GridEXFilterCondition(grdetalle.RootTable.Columns("estado"), Janus.Windows.GridEX.ConditionOperator.GreaterThanOrEqualTo, -3))
 
+
                 grdetalle.Select()
                 grdetalle.UpdateData()
                 grdetalle.Col = grdetalle.RootTable.Columns("yfcbarra").Index
                 grdetalle.Row = grdetalle.RowCount - 1
                 grdetalle.RootTable.ApplyFilter(New Janus.Windows.GridEX.GridEXFilterCondition(grdetalle.RootTable.Columns("estado"), Janus.Windows.GridEX.ConditionOperator.GreaterThanOrEqualTo, 0))
+
+                If CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbfamilia") <> 1 Then
+                    CalcularDescuentosCuandoSeEliminaProductoFamilia(pos)
+                End If
+
                 _prCalcularPrecioTotal()
             End If
         End If
@@ -1307,6 +1447,7 @@ Public Class F0_VentasSupermercado
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("yfcbarra") = grProductos.GetValue("yfcbarra")
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto") = grProductos.GetValue("yfcdprod1")
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbumin") = grProductos.GetValue("yfumin")
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbfamilia") = grProductos.GetValue("yfgr4")
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("unidad") = grProductos.GetValue("UnidMin")
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpbas") = grProductos.GetValue("yhprecio")
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = grProductos.GetValue("yhprecio")
@@ -2382,6 +2523,7 @@ Public Class F0_VentasSupermercado
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("codigo") = fila(0).ItemArray(1)
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("yfcbarra") = fila(0).ItemArray(2)
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto") = fila(0).ItemArray(3)
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbfamilia") = fila(0).ItemArray(14)
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbumin") = fila(0).ItemArray(16)
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("unidad") = fila(0).ItemArray(17)
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpbas") = fila(0).ItemArray(18)
@@ -2571,6 +2713,7 @@ Public Class F0_VentasSupermercado
                             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto") = FilaSelectLote.Item("yfcdprod1")
                             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbumin") = FilaSelectLote.Item("yfumin")
                             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("unidad") = FilaSelectLote.Item("UnidMin")
+                            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbfamilia") = FilaSelectLote.Item("yfgr4")
                             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpbas") = FilaSelectLote.Item("yhprecio")
                             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = FilaSelectLote.Item("yhprecio")
                             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = FilaSelectLote.Item("yhprecio")
