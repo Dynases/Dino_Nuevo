@@ -169,6 +169,7 @@ Public Class F0_VentasSupermercado
                 Dim familia = CType(grdetalle.DataSource, DataTable).Rows(i).Item("tbfamilia")
                 Dim cantnormal = CType(grdetalle.DataSource, DataTable).Rows(i).Item("tbcmin")
                 Dim Estado = CType(grdetalle.DataSource, DataTable).Rows(i).Item("estado")
+                Dim CodProd = CType(grdetalle.DataSource, DataTable).Rows(i).Item("tbty5prod")
                 total1 = CType(grdetalle.DataSource, DataTable).Rows(i).Item("tbptot")
 
                 If Estado = 0 And familia <> 1 Then
@@ -178,7 +179,10 @@ Public Class F0_VentasSupermercado
                             cantf += flia.Cells("tbcmin").Value
                         End If
                     Next
+
                     'Consulta la tabla de descuentos para ver cual aplicará segun la cantidad ingresada
+                    fila = dtDescuentos.Select("ProductoId=" + CodProd.ToString + "", "")
+
                     For Each preciodesc As DataRow In fila
                         If cantf >= preciodesc.Item("CantidadInicial") And cantf <= preciodesc.Item("CantidadFinal") Then
                             preciod = preciodesc.Item("Precio")
