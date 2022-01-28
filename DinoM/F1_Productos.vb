@@ -1124,4 +1124,5 @@ Public Class F1_Productos
             Timer1.Enabled = False
         End If
     End Sub
+
 End Class

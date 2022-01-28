@@ -1146,6 +1146,14 @@ Public Class P_Principal
         frm.Show()
     End Sub
 
+    Private Sub btDescuentoProd_Click(sender As Object, e As EventArgs) Handles btDescuentoProd.Click
+        Dim frm As New F1_DescuentoProd
+        frm.Show()
+    End Sub
+
+
+
+
     'Private Sub btnCredPagoCliente_Click(sender As Object, e As EventArgs) Handles btnCredPagoCliente.Click
     '    SideNav1.IsMenuExpanded = False
     '    Ventana.Select()

@@ -4304,6 +4304,14 @@ Public Class AccesoLogica
         _Tabla = D_ProcedimientoConParam("Sp_Mam_ReporteVentas", _listParam)
         Return _Tabla
     End Function
+    Public Shared Function L_DescuentoProductos() As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 7))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("Sp_Mam_ReporteVentas", _listParam)
+        Return _Tabla
+    End Function
 #End Region
 #Region "REPORTES VS VENTAS"
 
