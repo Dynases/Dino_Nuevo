@@ -36,7 +36,8 @@ Public Class F0_Venta2
 
     Dim dtDescuentos As DataTable = Nothing
     Public Programa As String
-
+    Dim DescuentoXProveedorList As DataTable = New DataTable
+    Dim ExisteDescuentoXProveedor As Boolean = False
 
 #End Region
 #Region "Metodos Privados"
@@ -69,6 +70,13 @@ Public Class F0_Venta2
         Else
             tbObservacion.Visible = True
             lblObservacion.Visible = True
+        End If
+
+        DescuentoXProveedorList = ObtenerDescuentoPorProveedor()
+        If DescuentoXProveedorList.Rows.Count = 0 Then
+            ExisteDescuentoXProveedor = False
+        Else
+            ExisteDescuentoXProveedor = True
         End If
 
         Programa = P_Principal.btVentVenta.Text
@@ -594,6 +602,12 @@ Public Class F0_Venta2
             .Visible = False
         End With
         With grdetalle.RootTable.Columns("tbfamilia")
+            .Width = 120
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
+            .Visible = False
+        End With
+
+        With grdetalle.RootTable.Columns("tbProveedorId")
             .Width = 120
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
@@ -1688,6 +1702,7 @@ Public Class F0_Venta2
             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpbas") = grProductos.GetValue("yhprecio")
             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = grProductos.GetValue("yhprecio")
             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = grProductos.GetValue("yhprecio")
+            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbProveedorId") = grProductos.GetValue("yfgr1")
             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = 1
             If (gb_FacturaIncluirICE) Then
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = grProductos.GetValue("pcos")
@@ -2907,7 +2922,7 @@ salirIf:
             If (e.KeyData = Keys.Escape And grdetalle.Row >= 0) Then
 
                 _prEliminarFila()
-
+                CalculoDescuentoXProveedor()
 
             End If
             If (e.KeyData = Keys.Control + Keys.S) Then
@@ -3143,6 +3158,7 @@ salirIf:
                             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tblote") = grProductos.GetValue("iclot")
                             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbfechaVenc") = grProductos.GetValue("icfven")
                             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = grProductos.GetValue("iccven")
+                            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbProveedorId") = grProductos.GetValue("yfgr1")
                             _prCalcularPrecioTotal()
                             _DesHabilitarProductos()
                             FilaSelectLote = Nothing
@@ -3160,6 +3176,7 @@ salirIf:
             If e.KeyData = Keys.Escape Then
                 _DesHabilitarProductos()
                 FilaSelectLote = Nothing
+                CalculoDescuentoXProveedor()
             End If
         Catch ex As Exception
             MostrarMensajeError(ex.Message)
@@ -3262,6 +3279,7 @@ salirIf:
 
 
                         P_PonerTotal(rowIndex)
+                        CalculoDescuentoXProveedor()
 
                     Else
                         Dim rowIndex As Integer = grdetalle.Row
@@ -3283,6 +3301,7 @@ salirIf:
 
                         _prCalcularPrecioTotal()
                         P_PonerTotal(rowIndex)
+                        CalculoDescuentoXProveedor()
                         'grdetalle.SetValue("tbcmin", 1)
                         'grdetalle.SetValue("tbptot", grdetalle.GetValue("tbpbas"))
 
@@ -3316,7 +3335,7 @@ salirIf:
 
                         Dim rowIndex As Integer = grdetalle.Row
                         P_PonerTotal(rowIndex)
-
+                        CalculoDescuentoXProveedor()
                     Else
                         Dim lin As Integer = grdetalle.GetValue("tbnumi")
                         Dim pos As Integer = -1
@@ -3993,9 +4012,6 @@ salirIf:
         '    ToastNotification.Show(Me, "No existe bitácora para este registro".ToUpper, My.Resources.WARNING, 3000, eToastGlowColor.Blue, eToastPosition.TopCenter)
         'End If
     End Sub
-
-
-
     'Private Sub TbNombre1_KeyDown(sender As Object, e As KeyEventArgs) Handles TbNombre1.KeyDown
     '    If (e.KeyData = Keys.Enter) Then
     '        grdetalle.Col = 7
@@ -4005,9 +4021,72 @@ salirIf:
     '    End If
     'End Sub
 
+    Private Sub CalculoDescuentoXProveedor()
+        If grdetalle.RowCount < 0 Or DescuentoXProveedorList.Rows.Count < 0 Then
+            Return
+        End If
+        Dim productoId As Integer = 0
+        Dim totalDescontadoXAgrupacionProveedor As Decimal = 0, montoDescuento As Decimal = 0, subTotalDescuento As Decimal = 0, totalXProveedor As Decimal = 0, subTotalVenta As Decimal = 0
 
+        Dim detalle = CType(grdetalle.DataSource, DataTable)
+        Dim detalleLista As List(Of DataRow) = detalle.AsEnumerable().ToList()
+        Dim DescuentoXProveedorLista As List(Of DataRow) = DescuentoXProveedorList.AsEnumerable().ToList()
 
+        Dim proveedorIDArray = (From proc In detalleLista
+                                Where proc.ItemArray(ENDetalleVenta.estadoDetalle) <> -1
+                                Select proc.ItemArray(ENDetalleVenta.proveedorId)).Distinct().ToArray()
 
+        For Each proveedorID As Integer In proveedorIDArray
+
+            totalDescontadoXAgrupacionProveedor = 0
+            totalXProveedor = (From proc In detalleLista
+                               Where proc.ItemArray(ENDetalleVenta.estado) >= 0 _
+                                   And proc.ItemArray(ENDetalleVenta.proveedorId) = proveedorID
+                               Select Convert.ToDecimal(proc.ItemArray(ENDetalleVenta.totalDescuento))).Sum()
+
+            Dim porcentajeDescuento = (From desc In DescuentoXProveedorLista
+                                       Where desc.ItemArray(ENDescuentoXProveedor.proveedorId) = proveedorID _
+                            And desc.ItemArray(ENDescuentoXProveedor.MontoInicial) <= totalXProveedor _
+                            And desc.ItemArray(ENDescuentoXProveedor.MontoFinal) >= totalXProveedor
+                                       Select desc.ItemArray(ENDescuentoXProveedor.DescuentoPorcentaje)).ToArray()
+            If porcentajeDescuento.Count <> 0 Then
+                montoDescuento = (totalXProveedor * porcentajeDescuento(0)) / 100
+                'totalDescontadoXAgrupacionProveedor = totalXProveedor - montoDescuento
+
+                'subTotalVenta += totalDescontadoXAgrupacionProveedor
+                subTotalDescuento += montoDescuento
+            End If
+            subTotalVenta += totalXProveedor
+        Next
+        Dim montoDo As Decimal
+        tbSubTotal.Value = subTotalVenta
+        tbMdesc.Value = subTotalDescuento
+        tbTotalBs.Text = Format(subTotalVenta - subTotalDescuento, "0.00")
+        montoDo = Convert.ToDecimal(tbTotalBs.Text) / IIf(cbCambioDolar.Text = "", 1, Convert.ToDecimal(cbCambioDolar.Text))
+        tbTotalDo.Text = Format(montoDo, "0.00")
+        calcularCambio()
+    End Sub
+
+    Class detalleVenta
+        Private proveedorID As Integer
+        Public Property _proveedorID() As Integer
+            Get
+                Return proveedorID
+            End Get
+            Set(ByVal value As Integer)
+                proveedorID = value
+            End Set
+        End Property
+        Private productoId As Integer
+        Public Property _productoID() As Integer
+            Get
+                Return productoId
+            End Get
+            Set(ByVal value As Integer)
+                productoId = value
+            End Set
+        End Property
+    End Class
 
 #End Region
 End Class

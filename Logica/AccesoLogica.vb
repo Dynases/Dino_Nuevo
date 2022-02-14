@@ -6233,4 +6233,29 @@ Public Class AccesoLogica
     End Function
 #End Region
 
+#Region "Descuento por Proveedor"
+    Public Shared Function ObtenerDescuentoPorProveedor() As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 21))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TV001", _listParam)
+        Return _Tabla
+    End Function
+    Public Shared Function ObtenerProveedorIDXProducto(productoId As Integer) As Integer
+        Dim _Tabla As DataTable
+        Dim _resultado As Integer
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 22))
+        _listParam.Add(New Datos.DParametro("@producto", productoId))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TV001", _listParam)
+
+        If _Tabla.Rows.Count > 0 Then
+            _resultado = _Tabla.Rows(0).Item("ProveedorId")
+        Else
+            _resultado = 0
+        End If
+        Return _resultado
+
+    End Function
+#End Region
 End Class
