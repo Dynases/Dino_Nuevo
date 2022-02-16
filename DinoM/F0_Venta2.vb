@@ -1,22 +1,11 @@
-﻿Imports Logica.AccesoLogica
-Imports Janus.Windows.GridEX
-Imports DevComponents.DotNetBar
+﻿Imports System.Drawing.Printing
 Imports System.IO
-Imports DevComponents.DotNetBar.SuperGrid
-Imports GMap.NET.MapProviders
-Imports GMap.NET
-Imports GMap.NET.WindowsForms.Markers
-Imports GMap.NET.WindowsForms
-Imports GMap.NET.WindowsForms.ToolTips
-Imports System.Drawing
-Imports DevComponents.DotNetBar.Controls
-Imports System.Threading
-Imports System.Drawing.Text
-Imports System.Reflection
-Imports System.Runtime.InteropServices
-Imports System.Drawing.Printing
 Imports CrystalDecisions.Shared
+Imports DevComponents.DotNetBar
+Imports DevComponents.DotNetBar.Controls
 Imports Facturacion
+Imports Janus.Windows.GridEX
+Imports Logica.AccesoLogica
 Imports UTILITIES
 
 Public Class F0_Venta2
@@ -35,9 +24,11 @@ Public Class F0_Venta2
     Dim G_Lote As Boolean = False '1=igual a mostrar las columnas de lote y fecha de Vencimiento
 
     Dim dtDescuentos As DataTable = Nothing
+    Dim ConfiguracionDescuentoEsXCantidad As Boolean = True
     Public Programa As String
     Dim DescuentoXProveedorList As DataTable = New DataTable
     Dim ExisteDescuentoXProveedor As Boolean = False
+
 
 #End Region
 #Region "Metodos Privados"
@@ -73,6 +64,9 @@ Public Class F0_Venta2
         End If
 
         DescuentoXProveedorList = ObtenerDescuentoPorProveedor()
+        ConfiguracionDescuentoEsXCantidad = TipoDescuentoEsXCantidad()
+
+
         If DescuentoXProveedorList.Rows.Count = 0 Then
             ExisteDescuentoXProveedor = False
         Else
@@ -3204,7 +3198,9 @@ salirIf:
 
     End Sub
     Public Sub CalcularDescuentos(ProductoId As Integer, Cantidad As Integer, Precio As Integer, Posicion As Integer)
-
+        If ConfiguracionDescuentoEsXCantidad = False Then
+            Return
+        End If
 
         Dim fila As DataRow() = dtDescuentos.Select("ProductoId=" + Str(ProductoId).ToString.Trim + "", "")
 
@@ -4022,11 +4018,17 @@ salirIf:
     'End Sub
 
     Private Sub CalculoDescuentoXProveedor()
+        If ConfiguracionDescuentoEsXCantidad = True Then
+            Return
+        End If
+
         If grdetalle.RowCount < 0 Or DescuentoXProveedorList.Rows.Count < 0 Then
             Return
         End If
         Dim productoId As Integer = 0
-        Dim totalDescontadoXAgrupacionProveedor As Decimal = 0, montoDescuento As Decimal = 0, subTotalDescuento As Decimal = 0, totalXProveedor As Decimal = 0, subTotalVenta As Decimal = 0
+        Dim totalDescontadoXAgrupacionProveedor As Decimal = 0
+        Dim montoDescuento As Decimal = 0, subTotalDescuento As Decimal = 0
+        Dim totalXProveedor As Decimal = 0, subTotalVenta As Decimal = 0, totalAcumuladoDescEspecial As Decimal = 0
 
         Dim detalle = CType(grdetalle.DataSource, DataTable)
         Dim detalleLista As List(Of DataRow) = detalle.AsEnumerable().ToList()
@@ -4039,25 +4041,30 @@ salirIf:
         For Each proveedorID As Integer In proveedorIDArray
 
             totalDescontadoXAgrupacionProveedor = 0
-            totalXProveedor = (From proc In detalleLista
-                               Where proc.ItemArray(ENDetalleVenta.estado) >= 0 _
-                                   And proc.ItemArray(ENDetalleVenta.proveedorId) = proveedorID
-                               Select Convert.ToDecimal(proc.ItemArray(ENDetalleVenta.totalDescuento))).Sum()
+            'Obtiene la suma total por proveedor
+            totalXProveedor = ObtenerSumaTotalXProveedor(detalleLista, proveedorID)
+            Dim porcentajeDescuento = ObtenerPorcentajeDescuento(DescuentoXProveedorLista, totalXProveedor, False, proveedorID)
 
-            Dim porcentajeDescuento = (From desc In DescuentoXProveedorLista
-                                       Where desc.ItemArray(ENDescuentoXProveedor.proveedorId) = proveedorID _
-                            And desc.ItemArray(ENDescuentoXProveedor.MontoInicial) <= totalXProveedor _
-                            And desc.ItemArray(ENDescuentoXProveedor.MontoFinal) >= totalXProveedor
-                                       Select desc.ItemArray(ENDescuentoXProveedor.DescuentoPorcentaje)).ToArray()
-            If porcentajeDescuento.Count <> 0 Then
+            If porcentajeDescuento.Length <> 0 Then
                 montoDescuento = (totalXProveedor * porcentajeDescuento(0)) / 100
-                'totalDescontadoXAgrupacionProveedor = totalXProveedor - montoDescuento
-
-                'subTotalVenta += totalDescontadoXAgrupacionProveedor
                 subTotalDescuento += montoDescuento
+            Else
+                totalAcumuladoDescEspecial += totalXProveedor
             End If
             subTotalVenta += totalXProveedor
         Next
+        If totalAcumuladoDescEspecial <> 0 Then
+            Dim porcentajeDescuento = ObtenerPorcentajeDescuento(DescuentoXProveedorLista, totalAcumuladoDescEspecial, True, 0)
+            If porcentajeDescuento.Length <> 0 Then
+                montoDescuento = (totalAcumuladoDescEspecial * porcentajeDescuento(0)) / 100
+                subTotalDescuento += montoDescuento
+            End If
+        End If
+
+        If subTotalVenta = 0 Then
+            Return
+        End If
+
         Dim montoDo As Decimal
         tbSubTotal.Value = subTotalVenta
         tbMdesc.Value = subTotalDescuento
@@ -4067,26 +4074,28 @@ salirIf:
         calcularCambio()
     End Sub
 
-    Class detalleVenta
-        Private proveedorID As Integer
-        Public Property _proveedorID() As Integer
-            Get
-                Return proveedorID
-            End Get
-            Set(ByVal value As Integer)
-                proveedorID = value
-            End Set
-        End Property
-        Private productoId As Integer
-        Public Property _productoID() As Integer
-            Get
-                Return productoId
-            End Get
-            Set(ByVal value As Integer)
-                productoId = value
-            End Set
-        End Property
-    End Class
-
+    Private Function ObtenerPorcentajeDescuento(listaDescuento As List(Of DataRow), total As Decimal, esDescuentoEspecial As Boolean, proveedorID As Integer) As Object
+        If esDescuentoEspecial Then
+            'Obtiene el porcentaje de descuento especial
+            Return (From desc In listaDescuento
+                    Where desc.ItemArray(ENDescuentoXProveedor.Estado) = 2 _
+                     And desc.ItemArray(ENDescuentoXProveedor.MontoInicial) <= total _
+                     And desc.ItemArray(ENDescuentoXProveedor.MontoFinal) >= total
+                    Select desc.ItemArray(ENDescuentoXProveedor.DescuentoPorcentaje)).ToArray()
+        Else
+            'Obtiene el porcentaje de descuento por proveedor
+            Return (From desc In listaDescuento
+                    Where desc.ItemArray(ENDescuentoXProveedor.proveedorId) = proveedorID _
+                     And desc.ItemArray(ENDescuentoXProveedor.MontoInicial) <= total _
+                     And desc.ItemArray(ENDescuentoXProveedor.MontoFinal) >= total
+                    Select desc.ItemArray(ENDescuentoXProveedor.DescuentoPorcentaje)).ToArray()
+        End If
+    End Function
+    Private Function ObtenerSumaTotalXProveedor(detalleLista As List(Of DataRow), proveedorID As Integer) As Decimal
+        Return (From proc In detalleLista
+                Where proc.ItemArray(ENDetalleVenta.estado) >= 0 _
+                    And proc.ItemArray(ENDetalleVenta.proveedorId) = proveedorID
+                Select Convert.ToDecimal(proc.ItemArray(ENDetalleVenta.totalDescuento))).Sum()
+    End Function
 #End Region
 End Class

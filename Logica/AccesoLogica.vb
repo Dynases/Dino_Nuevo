@@ -369,6 +369,17 @@ Public Class AccesoLogica
         _Tabla = D_Datos_Tabla("VerServicios", "SY000", "1=1")
         Return _Tabla
     End Function
+    Public Shared Function TipoDescuentoEsXCantidad() As Boolean
+        Dim _Tabla As DataTable
+        _Tabla = D_Datos_Tabla("Count(*)", "SY000", "VerTipoDescuento = 0")
+        If _Tabla.Rows.Count > 0 Then
+            If _Tabla.Rows(0).Item(0) = 1 Then
+                Return True
+            Else
+                Return False
+            End If
+        End If
+    End Function
     Public Shared Function L_ListarUsuarios() As DataTable
         Dim _Tabla As DataTable
         Dim _Where As String
