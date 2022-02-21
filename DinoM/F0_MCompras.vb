@@ -1991,6 +1991,14 @@ salirIf:
         P_GenerarReporteCompra()
     End Sub
 
+    Private Sub cbSucursal_ValueChanged(sender As Object, e As EventArgs) Handles cbSucursal.ValueChanged
+        If (_fnAccesible() And tbCodigo.Text = String.Empty) Then
+            CType(grdetalle.DataSource, DataTable).Rows.Clear()
+            _prAddDetalleVenta()
+            _DesHabilitarProductos()
+        End If
+    End Sub
+
 #End Region
 
 

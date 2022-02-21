@@ -183,6 +183,11 @@ Public Class F0_Movimiento
         _prAddDetalleVenta()
         cbConcepto.Focus()
         FilaSelectLote = Nothing
+
+        If grproducto.RowCount > 0 Then
+            CType(grproducto.DataSource, DataTable).Rows.Clear()
+        End If
+
     End Sub
     Public Sub _prMostrarRegistro(_N As Integer)
         '      a.ibid ,a.ibfdoc ,a.ibconcep ,b.cpdesc as concepto,a.ibobs ,a.ibest ,a.ibalm ,a.ibiddc 
@@ -607,11 +612,9 @@ Public Class F0_Movimiento
         grproducto.RootTable.FormatConditions.Add(fc)
     End Sub
     Private Sub _prAddDetalleVenta()
-        'a.icid ,a.icibid ,a.iccprod ,b.cadesc as producto,a.iccant ,Cast(null as image ) as img,1 as estado
-
-        '      a.icid ,a.icibid ,a.iccprod ,b.yfcdprod1  as producto,a.iccant ,
-        'a.iclot ,a.icfvenc ,Cast(null as image ) as img,1 as estado,
-        '(Sum(inv.iccven )+a.iccant  ) as stock
+        If grdetalle.RowCount > 0 Then
+            Return
+        End If
         Dim Bin As New MemoryStream
         Dim img As New Bitmap(My.Resources.delete, 28, 28)
         img.Save(Bin, Imaging.ImageFormat.Png)
@@ -851,43 +854,45 @@ Public Class F0_Movimiento
     End Sub
 
     Public Sub InsertarProductosSinLote()
-        '      a.icid ,a.icibid ,a.iccprod ,b.yfcdprod1  as producto,a.iccant ,
-        'a.iclot ,a.icfvenc ,Cast(null as image ) as img,1 as estado,
-        '(Sum(inv.iccven )+a.iccant  ) as stock
-        Dim pos As Integer = -1
-        grdetalle.Row = grdetalle.RowCount - 1
-        _fnObtenerFilaDetalle(pos, grdetalle.GetValue("icid"))
+        Try
+            Dim pos As Integer = -1
+            grdetalle.Row = grdetalle.RowCount - 1
+            _fnObtenerFilaDetalle(pos, grdetalle.GetValue("icid"))
 
-        Dim existe As Boolean = _fnExisteProducto(grproducto.GetValue("yfnumi"))
-        If ((pos >= 0) And (Not existe)) Then
-            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("iccprod") = grproducto.GetValue("yfnumi")
-            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto") = grproducto.GetValue("yfcdprod1")
-            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = grproducto.GetValue("stock")
-            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("Laboratorio") = grproducto.GetValue("Laboratorio")
-            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("Presentacion") = grproducto.GetValue("Presentacion")
-            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("yfcprod") = grproducto.GetValue("yfcprod")
-            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("iccant") = 1
+            Dim existe As Boolean = _fnExisteProducto(grproducto.GetValue("yfnumi"))
+            If ((pos >= 0) And (Not existe)) Then
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("iccprod") = grproducto.GetValue("yfnumi")
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto") = grproducto.GetValue("yfcdprod1")
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = grproducto.GetValue("stock")
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("Laboratorio") = grproducto.GetValue("Laboratorio")
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("Presentacion") = grproducto.GetValue("Presentacion")
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("yfcprod") = grproducto.GetValue("yfcprod")
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("iccant") = 1
 
-            ''    _DesHabilitarProductos()
+                ''    _DesHabilitarProductos()
 
-            _prAddDetalleVenta()
+                _prAddDetalleVenta()
 
-            _prCargarProductos()
-            'grproducto.RemoveFilters()
-            grproducto.Focus()
-            grproducto.MoveTo(grproducto.FilterRow)
-            grproducto.Col = 1
-        Else
-            If (existe) Then
-                Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-                ToastNotification.Show(Me, "El producto ya existe en el detalle".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-                grproducto.RemoveFilters()
+                _prCargarProductos()
+                'grproducto.RemoveFilters()
                 grproducto.Focus()
                 grproducto.MoveTo(grproducto.FilterRow)
                 grproducto.Col = 1
-            End If
+            Else
+                If (existe) Then
+                    Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                    ToastNotification.Show(Me, "El producto ya existe en el detalle".ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                    grproducto.RemoveFilters()
+                    grproducto.Focus()
+                    grproducto.MoveTo(grproducto.FilterRow)
+                    grproducto.Col = 1
+                End If
 
-        End If
+            End If
+        Catch ex As Exception
+            MostrarMensajeError(ex.Message)
+        End Try
+
     End Sub
     Public Sub InsertarProductosConLote()
 
@@ -948,7 +953,23 @@ Public Class F0_Movimiento
 
     End Sub
 
+    Private Sub MostrarMensajeError(mensaje As String)
+        ToastNotification.Show(Me,
+                               mensaje.ToUpper,
+                               My.Resources.WARNING,
+                               5000,
+                               eToastGlowColor.Red,
+                               eToastPosition.TopCenter)
 
+    End Sub
+    Private Sub MostrarMensajeOk(mensaje As String)
+        ToastNotification.Show(Me,
+                               mensaje.ToUpper,
+                               My.Resources.OK,
+                               5000,
+                               eToastGlowColor.Green,
+                               eToastPosition.TopCenter)
+    End Sub
 #End Region
 
 #Region "Eventos Formulario"
