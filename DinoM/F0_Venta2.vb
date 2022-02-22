@@ -1080,12 +1080,13 @@ Public Class F0_Venta2
         With grProductos.RootTable.Columns("stockMinimo")
             .Width = 150
             .Visible = False
-
         End With
         With grProductos.RootTable.Columns("fechaVencimiento")
             .Width = 150
             .Visible = False
-
+        End With
+        With grProductos.RootTable.Columns("yfgr1")
+            .Visible = False
         End With
 
         With grProductos

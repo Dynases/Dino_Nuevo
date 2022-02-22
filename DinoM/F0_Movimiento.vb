@@ -1416,5 +1416,35 @@ salirIf:
         End If
     End Sub
 
+    Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
+        P_GenerarReporte()
+    End Sub
+    Private Sub P_GenerarReporte()
+        Try
+            Dim dtDetalle As DataTable = L_fnDetalleMovimiento(tbCodigo.Text)
+
+            If Not IsNothing(P_Global.Visualizador) Then
+                P_Global.Visualizador.Close()
+            End If
+
+            P_Global.Visualizador = New Visualizador
+            Dim objrep As New R_Movimiento
+
+            objrep.SetDataSource(dtDetalle)
+            objrep.SetParameterValue("idMovimiento", tbCodigo.Text)
+            objrep.SetParameterValue("fecha", tbFecha.Text)
+            objrep.SetParameterValue("concepto", cbConcepto.Text)
+            objrep.SetParameterValue("depositoOrigen", cbAlmacenOrigen.Text)
+            objrep.SetParameterValue("depositoDestino", cbDepositoDestino.Text)
+            objrep.SetParameterValue("obs", tbObservacion.Text)
+            objrep.SetParameterValue("usuario", L_Usuario)
+
+            P_Global.Visualizador.CrGeneral.ReportSource = objrep
+            P_Global.Visualizador.Show()
+            P_Global.Visualizador.BringToFront()
+        Catch ex As Exception
+            MostrarMensajeError(ex.Message)
+        End Try
+    End Sub
 #End Region
 End Class
