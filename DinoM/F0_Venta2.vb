@@ -2680,8 +2680,8 @@ Public Class F0_Venta2
             If (e.Column.Index = grdetalle.RootTable.Columns("yfcbarra").Index Or
                 e.Column.Index = grdetalle.RootTable.Columns("tbcmin").Index Or
                 e.Column.Index = grdetalle.RootTable.Columns("tbporc").Index Or
-                e.Column.Index = grdetalle.RootTable.Columns("tbpbas").Index Or
-                e.Column.Index = grdetalle.RootTable.Columns("tbdesc").Index) Then
+                e.Column.Index = grdetalle.RootTable.Columns("tbpbas").Index) Then
+                ''e.Column.Index = grdetalle.RootTable.Columns("tbdesc").Index
                 e.Cancel = False
             Else
                 e.Cancel = True
