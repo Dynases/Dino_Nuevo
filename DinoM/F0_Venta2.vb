@@ -3547,6 +3547,7 @@ salirIf:
             If (grdetalle.RowCount >= 2) Then
                 If (grdetalle.CurrentColumn.Index = grdetalle.RootTable.Columns("img").Index) Then
                     _prEliminarFila()
+                    CalculoDescuentoXProveedor()
                 End If
             End If
         Catch ex As Exception
