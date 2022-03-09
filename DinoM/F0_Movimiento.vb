@@ -612,9 +612,9 @@ Public Class F0_Movimiento
         grproducto.RootTable.FormatConditions.Add(fc)
     End Sub
     Private Sub _prAddDetalleVenta()
-        If grdetalle.RowCount > 0 Then
-            Return
-        End If
+        'If grdetalle.RowCount > 0 Then
+        '    Return
+        'End If
         Dim Bin As New MemoryStream
         Dim img As New Bitmap(My.Resources.delete, 28, 28)
         img.Save(Bin, Imaging.ImageFormat.Png)
