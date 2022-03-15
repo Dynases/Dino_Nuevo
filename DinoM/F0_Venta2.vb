@@ -27,8 +27,6 @@ Public Class F0_Venta2
     Dim ConfiguracionDescuentoEsXCantidad As Boolean = True
     Public Programa As String
     Dim DescuentoXProveedorList As DataTable = New DataTable
-    Dim ExisteDescuentoXProveedor As Boolean = False
-
 
 #End Region
 #Region "Metodos Privados"
@@ -62,16 +60,9 @@ Public Class F0_Venta2
             tbObservacion.Visible = True
             lblObservacion.Visible = True
         End If
-
         DescuentoXProveedorList = ObtenerDescuentoPorProveedor()
         ConfiguracionDescuentoEsXCantidad = TipoDescuentoEsXCantidad()
-
-
-        If DescuentoXProveedorList.Rows.Count = 0 Then
-            ExisteDescuentoXProveedor = False
-        Else
-            ExisteDescuentoXProveedor = True
-        End If
+        SwDescuentoProveedor.Visible = IIf(ConfiguracionDescuentoEsXCantidad, False, True)
 
         Programa = P_Principal.btVentVenta.Text
     End Sub
@@ -987,6 +978,11 @@ Public Class F0_Venta2
             .Visible = True
             .Caption = "Stock"
         End With
+        With grProductos.RootTable.Columns("DescuentoId")
+            .Width = 50
+            .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
+            .Visible = False
+        End With
 
         With grProductos
             .DefaultFilterRowComparison = FilterConditionOperator.Contains
@@ -1085,7 +1081,7 @@ Public Class F0_Venta2
             .Width = 150
             .Visible = False
         End With
-        With grProductos.RootTable.Columns("yfgr1")
+        With grProductos.RootTable.Columns("DescuentoId")
             .Visible = False
         End With
 
@@ -1698,7 +1694,7 @@ Public Class F0_Venta2
             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = grProductos.GetValue("yhprecio")
             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = grProductos.GetValue("yhprecio")
             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbFamilia") = grProductos.GetValue("yfgr4")
-            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbProveedorId") = grProductos.GetValue("yfgr1")
+            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbProveedorId") = grProductos.GetValue("DescuentoId")
             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = 1
             If (gb_FacturaIncluirICE) Then
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = grProductos.GetValue("pcos")
@@ -4031,7 +4027,7 @@ salirIf:
             Return
         End If
 
-        If grdetalle.RowCount < 0 Or DescuentoXProveedorList.Rows.Count < 0 Or DescuentoXProveedorList.Rows.Count = 0 Then
+        If grdetalle.RowCount < 0 Or DescuentoXProveedorList.Rows.Count < 0 Or DescuentoXProveedorList.Rows.Count = 0 Or SwDescuentoProveedor.Value = False Then
             Return
         End If
         Dim productoId As Integer = 0
