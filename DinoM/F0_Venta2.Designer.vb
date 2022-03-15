@@ -122,6 +122,7 @@ Partial Class F0_Venta2
         Me.PanelFacturaYCobranza = New System.Windows.Forms.Panel()
         Me.PanelEncabezado = New System.Windows.Forms.Panel()
         Me.btnBitacora = New DevComponents.DotNetBar.ButtonX()
+        Me.SwDescuentoProveedor = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.PanelSuperior.SuspendLayout()
         Me.PanelInferior.SuspendLayout()
         CType(Me.BubbleBarUsuario, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -176,6 +177,7 @@ Partial Class F0_Venta2
         '
         'PanelSuperior
         '
+        Me.PanelSuperior.Controls.Add(Me.SwDescuentoProveedor)
         Me.PanelSuperior.Margin = New System.Windows.Forms.Padding(2)
         Me.PanelSuperior.Size = New System.Drawing.Size(1319, 72)
         Me.PanelSuperior.Style.Alignment = System.Drawing.StringAlignment.Center
@@ -191,6 +193,11 @@ Partial Class F0_Venta2
         Me.PanelSuperior.StyleMouseOver.BackColor1.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
         Me.PanelSuperior.StyleMouseOver.BackColor2.Color = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(150, Byte), Integer))
         Me.PanelSuperior.StyleMouseOver.BackgroundImage = CType(resources.GetObject("PanelSuperior.StyleMouseOver.BackgroundImage"), System.Drawing.Image)
+        Me.PanelSuperior.Controls.SetChildIndex(Me.PanelToolBar1, 0)
+        Me.PanelSuperior.Controls.SetChildIndex(Me.PanelToolBar2, 0)
+        Me.PanelSuperior.Controls.SetChildIndex(Me.MRlAccion, 0)
+        Me.PanelSuperior.Controls.SetChildIndex(Me.PictureBox1, 0)
+        Me.PanelSuperior.Controls.SetChildIndex(Me.SwDescuentoProveedor, 0)
         '
         'PanelInferior
         '
@@ -2161,6 +2168,26 @@ Partial Class F0_Venta2
         Me.btnBitacora.TextColor = System.Drawing.Color.White
         Me.btnBitacora.Visible = False
         '
+        'SwDescuentoProveedor
+        '
+        '
+        '
+        '
+        Me.SwDescuentoProveedor.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.SwDescuentoProveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SwDescuentoProveedor.Location = New System.Drawing.Point(883, 22)
+        Me.SwDescuentoProveedor.Name = "SwDescuentoProveedor"
+        Me.SwDescuentoProveedor.OffBackColor = System.Drawing.Color.LawnGreen
+        Me.SwDescuentoProveedor.OffText = "DESC. MANUAL"
+        Me.SwDescuentoProveedor.OnBackColor = System.Drawing.Color.Gold
+        Me.SwDescuentoProveedor.OnText = "DESC. AUTOMATICO"
+        Me.SwDescuentoProveedor.Size = New System.Drawing.Size(170, 28)
+        Me.SwDescuentoProveedor.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.SwDescuentoProveedor.TabIndex = 387
+        Me.SwDescuentoProveedor.Value = True
+        Me.SwDescuentoProveedor.ValueObject = "Y"
+        Me.SwDescuentoProveedor.Visible = False
+        '
         'F0_Venta2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2325,4 +2352,5 @@ Partial Class F0_Venta2
     Friend WithEvents lbNroCaja As Label
     Friend WithEvents LabelX24 As DevComponents.DotNetBar.LabelX
     Protected WithEvents btnBitacora As DevComponents.DotNetBar.ButtonX
+    Friend WithEvents SwDescuentoProveedor As DevComponents.DotNetBar.Controls.SwitchButton
 End Class

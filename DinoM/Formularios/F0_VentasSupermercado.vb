@@ -763,7 +763,9 @@ Public Class F0_VentasSupermercado
             .Visible = True
             .Caption = "Stock"
         End With
-
+        With grProductos.RootTable.Columns("DescuentoId")
+            .Visible = False
+        End With
         With grProductos
             .DefaultFilterRowComparison = FilterConditionOperator.Contains
             .FilterMode = FilterMode.Automatic

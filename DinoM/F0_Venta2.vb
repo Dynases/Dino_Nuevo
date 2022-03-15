@@ -27,8 +27,6 @@ Public Class F0_Venta2
     Dim ConfiguracionDescuentoEsXCantidad As Boolean = True
     Public Programa As String
     Dim DescuentoXProveedorList As DataTable = New DataTable
-    Dim ExisteDescuentoXProveedor As Boolean = False
-
 
 #End Region
 #Region "Metodos Privados"
@@ -65,13 +63,7 @@ Public Class F0_Venta2
 
         DescuentoXProveedorList = ObtenerDescuentoPorProveedor()
         ConfiguracionDescuentoEsXCantidad = TipoDescuentoEsXCantidad()
-
-
-        If DescuentoXProveedorList.Rows.Count = 0 Then
-            ExisteDescuentoXProveedor = False
-        Else
-            ExisteDescuentoXProveedor = True
-        End If
+        SwDescuentoProveedor.Visible = IIf(ConfiguracionDescuentoEsXCantidad, False, True)
 
         Programa = P_Principal.btVentVenta.Text
     End Sub
@@ -239,10 +231,6 @@ Public Class F0_Venta2
     End Sub
 
 
-
-
-
-
     Public Sub _prFiltrar()
         'cargo el buscador
         Dim _Mpos As Integer
@@ -321,11 +309,6 @@ Public Class F0_Venta2
         Table_Producto = Nothing
     End Sub
     Public Sub _prMostrarRegistro(_N As Integer)
-        '' grVentas.Row = _N
-        '     a.tanumi ,a.taalm ,a.tafdoc ,a.taven ,vendedor .yddesc as vendedor ,a.tatven ,a.tafvcr ,a.taclpr,
-        'cliente.yddesc as cliente ,a.tamon ,IIF(tamon=1,'Boliviano','Dolar') as moneda,a.taest ,a.taobs ,
-        'a.tadesc ,a.tafact ,a.tahact ,a.tauact,(Sum(b.tbptot)-a.tadesc ) as total,taproforma
-
         With grVentas
             cbSucursal.Value = .GetValue("taalm")
             tbCodigo.Text = .GetValue("tanumi")
@@ -409,8 +392,6 @@ Public Class F0_Venta2
         grdetalle.DataSource = dt
         grdetalle.RetrieveStructure()
         grdetalle.AlternatingColors = True
-        ' a.tbnumi ,a.tbtv1numi ,a.tbty5prod ,b.yfcdprod1 as producto,a.tbest ,a.tbcmin ,a.tbumin ,Umin .ycdes3 as unidad,a.tbpbas ,a.tbptot,a.tbdesc ,a.tbobs ,
-        'a.tbfact ,a.tbhact ,a.tbuact
 
         With grdetalle.RootTable.Columns("tbnumi")
             .Width = 100
@@ -619,8 +600,6 @@ Public Class F0_Venta2
         grVentas.DataSource = dt
         grVentas.RetrieveStructure()
         grVentas.AlternatingColors = True
-        '   a.tamon ,IIF(tamon=1,'Boliviano','Dolar') as moneda,a.taest ,a.taobs ,
-        'a.tadesc ,a.tafact ,a.tahact ,a.tauact,(Sum(b.tbptot)-a.tadesc ) as total
 
         With grVentas.RootTable.Columns("tanumi")
             .Width = 100
@@ -767,11 +746,7 @@ Public Class F0_Venta2
         End If
     End Sub
     Public Sub actualizarSaldoSinLote(ByRef dt As DataTable)
-        'b.yfcdprod1 ,a.iclot ,a.icfven  ,a.iccven 
 
-        '      a.tbnumi ,a.tbtv1numi ,a.tbty5prod ,b.yfcdprod1 as producto,a.tbest ,a.tbcmin ,a.tbumin ,Umin .ycdes3 as unidad,a.tbpbas ,a.tbptot ,a.tbobs ,
-        'a.tbpcos,a.tblote ,a.tbfechaVenc , a.tbptot2, a.tbfact ,a.tbhact ,a.tbuact,1 as estado,Cast(null as Image) as img,
-        'Cast (0 as decimal (18,2)) as stock
         Dim _detalle As DataTable = CType(grdetalle.DataSource, DataTable)
 
         For i As Integer = 0 To dt.Rows.Count - 1 Step 1
@@ -987,7 +962,9 @@ Public Class F0_Venta2
             .Visible = True
             .Caption = "Stock"
         End With
-
+        With grProductos.RootTable.Columns("DescuentoId")
+            .Visible = False
+        End With
         With grProductos
             .DefaultFilterRowComparison = FilterConditionOperator.Contains
             .FilterMode = FilterMode.Automatic
@@ -1014,11 +991,6 @@ Public Class F0_Venta2
 
 
     Public Sub actualizarSaldo(ByRef dt As DataTable, CodProducto As Integer)
-        'b.yfcdprod1 ,a.iclot ,a.icfven  ,a.iccven 
-
-        '      a.tbnumi ,a.tbtv1numi ,a.tbty5prod ,b.yfcdprod1 as producto,a.tbest ,a.tbcmin ,a.tbumin ,Umin .ycdes3 as unidad,a.tbpbas ,a.tbptot ,a.tbobs ,
-        'a.tbpcos,a.tblote ,a.tbfechaVenc , a.tbptot2, a.tbfact ,a.tbhact ,a.tbuact,1 as estado,Cast(null as Image) as img,
-        'Cast (0 as decimal (18,2)) as stock
         Dim _detalle As DataTable = CType(grdetalle.DataSource, DataTable)
 
         For i As Integer = 0 To dt.Rows.Count - 1 Step 1
@@ -1121,8 +1093,6 @@ Public Class F0_Venta2
 
     End Sub
     Private Sub _prAddDetalleVenta()
-        '   a.tbnumi ,a.tbtv1numi ,a.tbty5prod ,b.yfcdprod1 as producto,a.tbest ,a.tbcmin ,a.tbumin ,Umin .ycdes3 as unidad,a.tbpbas ,a.tbptot ,a.tbobs ,
-        'a.tbpcos,a.tblote ,a.tbfechaVenc , a.tbptot2, a.tbfact ,a.tbhact ,a.tbuact,1 as estado,Cast(null as Image) as img
         Dim Bin As New MemoryStream
         Dim img As New Bitmap(My.Resources.delete, 28, 28)
         img.Save(Bin, Imaging.ImageFormat.Png)
@@ -1696,7 +1666,7 @@ Public Class F0_Venta2
             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpbas") = grProductos.GetValue("yhprecio")
             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = grProductos.GetValue("yhprecio")
             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = grProductos.GetValue("yhprecio")
-            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbProveedorId") = grProductos.GetValue("yfgr1")
+            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbProveedorId") = grProductos.GetValue("DescuentoId")
             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = 1
             If (gb_FacturaIncluirICE) Then
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = grProductos.GetValue("pcos")
@@ -4018,13 +3988,9 @@ salirIf:
     'End Sub
 
     Private Sub CalculoDescuentoXProveedor()
-        If ConfiguracionDescuentoEsXCantidad = True Then
-            Return
-        End If
+        If ConfiguracionDescuentoEsXCantidad = True Then Return
+        If grdetalle.RowCount < 0 Or DescuentoXProveedorList.Rows.Count < 0 Or DescuentoXProveedorList.Rows.Count = 0 Or SwDescuentoProveedor.Value = False Then Return
 
-        If grdetalle.RowCount < 0 Or DescuentoXProveedorList.Rows.Count < 0 Or DescuentoXProveedorList.Rows.Count = 0 Then
-            Return
-        End If
         Dim productoId As Integer = 0
         Dim totalDescontadoXAgrupacionProveedor As Decimal = 0
         Dim montoDescuento As Decimal = 0, subTotalDescuento As Decimal = 0
@@ -4070,9 +4036,7 @@ salirIf:
             End If
         End If
 
-        If subTotalVenta = 0 Then
-            Return
-        End If
+        If subTotalVenta = 0 Then Return
 
         Dim montoDo As Decimal
         tbSubTotal.Value = subTotalVenta
@@ -4094,8 +4058,6 @@ salirIf:
                     Select desc.ItemArray(ENDescuentoXProveedor.DescuentoPorcentaje)).ToArray()
         Else
             'Obtiene el porcentaje de descuento por proveedor
-
-
             Return (From desc In listaDescuento
                     Where desc.ItemArray(ENDescuentoXProveedor.proveedorId) = proveedorID _
                      And desc.ItemArray(ENDescuentoXProveedor.MontoInicial) <= total _
