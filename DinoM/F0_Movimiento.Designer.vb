@@ -170,7 +170,6 @@ Partial Class F0_Movimiento
         '
         'btnImprimir
         '
-        Me.btnImprimir.Visible = False
         '
         'btnUltimo
         '

@@ -304,7 +304,7 @@ Public Class F1_IngresosEgresos
         If btnGrabar.Enabled = True Then
             _PMInhabilitar()
             _PMPrimerRegistro()
-
+            PanelNavegacion.Enabled = True
         Else
             Close()
         End If

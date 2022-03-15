@@ -34,6 +34,15 @@ Public Class F1_Productos
         _prCargarComboLibreria(cbUnidMaxima, 1, 6)
         _prAsignarPermisos()
         armarGrillaDetalleProducto(0)
+
+        ''Mostrar u ocultar el grupo 4(Familia)
+        If gb_MostrarFamilia = 0 Then
+            lbgrupo4.Visible = False
+            cbgrupo4.Visible = False
+        Else
+            lbgrupo4.Visible = True
+            cbgrupo4.Visible = True
+        End If
         _PMIniciarTodo()
 
         'Ocultar/Mostrar ingreso de detalle de producto

@@ -27,6 +27,8 @@ Public Class F0_Venta2
     Dim ConfiguracionDescuentoEsXCantidad As Boolean = True
     Public Programa As String
     Dim DescuentoXProveedorList As DataTable = New DataTable
+    Dim ExisteDescuentoXProveedor As Boolean = False
+
 
 #End Region
 #Region "Metodos Privados"
@@ -63,7 +65,13 @@ Public Class F0_Venta2
 
         DescuentoXProveedorList = ObtenerDescuentoPorProveedor()
         ConfiguracionDescuentoEsXCantidad = TipoDescuentoEsXCantidad()
-        SwDescuentoProveedor.Visible = IIf(ConfiguracionDescuentoEsXCantidad, False, True)
+
+
+        If DescuentoXProveedorList.Rows.Count = 0 Then
+            ExisteDescuentoXProveedor = False
+        Else
+            ExisteDescuentoXProveedor = True
+        End If
 
         Programa = P_Principal.btVentVenta.Text
     End Sub
@@ -231,6 +239,10 @@ Public Class F0_Venta2
     End Sub
 
 
+
+
+
+
     Public Sub _prFiltrar()
         'cargo el buscador
         Dim _Mpos As Integer
@@ -309,6 +321,11 @@ Public Class F0_Venta2
         Table_Producto = Nothing
     End Sub
     Public Sub _prMostrarRegistro(_N As Integer)
+        '' grVentas.Row = _N
+        '     a.tanumi ,a.taalm ,a.tafdoc ,a.taven ,vendedor .yddesc as vendedor ,a.tatven ,a.tafvcr ,a.taclpr,
+        'cliente.yddesc as cliente ,a.tamon ,IIF(tamon=1,'Boliviano','Dolar') as moneda,a.taest ,a.taobs ,
+        'a.tadesc ,a.tafact ,a.tahact ,a.tauact,(Sum(b.tbptot)-a.tadesc ) as total,taproforma
+
         With grVentas
             cbSucursal.Value = .GetValue("taalm")
             tbCodigo.Text = .GetValue("tanumi")
@@ -392,6 +409,8 @@ Public Class F0_Venta2
         grdetalle.DataSource = dt
         grdetalle.RetrieveStructure()
         grdetalle.AlternatingColors = True
+        ' a.tbnumi ,a.tbtv1numi ,a.tbty5prod ,b.yfcdprod1 as producto,a.tbest ,a.tbcmin ,a.tbumin ,Umin .ycdes3 as unidad,a.tbpbas ,a.tbptot,a.tbdesc ,a.tbobs ,
+        'a.tbfact ,a.tbhact ,a.tbuact
 
         With grdetalle.RootTable.Columns("tbnumi")
             .Width = 100
@@ -600,6 +619,8 @@ Public Class F0_Venta2
         grVentas.DataSource = dt
         grVentas.RetrieveStructure()
         grVentas.AlternatingColors = True
+        '   a.tamon ,IIF(tamon=1,'Boliviano','Dolar') as moneda,a.taest ,a.taobs ,
+        'a.tadesc ,a.tafact ,a.tahact ,a.tauact,(Sum(b.tbptot)-a.tadesc ) as total
 
         With grVentas.RootTable.Columns("tanumi")
             .Width = 100
@@ -746,7 +767,11 @@ Public Class F0_Venta2
         End If
     End Sub
     Public Sub actualizarSaldoSinLote(ByRef dt As DataTable)
+        'b.yfcdprod1 ,a.iclot ,a.icfven  ,a.iccven 
 
+        '      a.tbnumi ,a.tbtv1numi ,a.tbty5prod ,b.yfcdprod1 as producto,a.tbest ,a.tbcmin ,a.tbumin ,Umin .ycdes3 as unidad,a.tbpbas ,a.tbptot ,a.tbobs ,
+        'a.tbpcos,a.tblote ,a.tbfechaVenc , a.tbptot2, a.tbfact ,a.tbhact ,a.tbuact,1 as estado,Cast(null as Image) as img,
+        'Cast (0 as decimal (18,2)) as stock
         Dim _detalle As DataTable = CType(grdetalle.DataSource, DataTable)
 
         For i As Integer = 0 To dt.Rows.Count - 1 Step 1
@@ -962,9 +987,7 @@ Public Class F0_Venta2
             .Visible = True
             .Caption = "Stock"
         End With
-        With grProductos.RootTable.Columns("DescuentoId")
-            .Visible = False
-        End With
+
         With grProductos
             .DefaultFilterRowComparison = FilterConditionOperator.Contains
             .FilterMode = FilterMode.Automatic
@@ -991,6 +1014,11 @@ Public Class F0_Venta2
 
 
     Public Sub actualizarSaldo(ByRef dt As DataTable, CodProducto As Integer)
+        'b.yfcdprod1 ,a.iclot ,a.icfven  ,a.iccven 
+
+        '      a.tbnumi ,a.tbtv1numi ,a.tbty5prod ,b.yfcdprod1 as producto,a.tbest ,a.tbcmin ,a.tbumin ,Umin .ycdes3 as unidad,a.tbpbas ,a.tbptot ,a.tbobs ,
+        'a.tbpcos,a.tblote ,a.tbfechaVenc , a.tbptot2, a.tbfact ,a.tbhact ,a.tbuact,1 as estado,Cast(null as Image) as img,
+        'Cast (0 as decimal (18,2)) as stock
         Dim _detalle As DataTable = CType(grdetalle.DataSource, DataTable)
 
         For i As Integer = 0 To dt.Rows.Count - 1 Step 1
@@ -1052,12 +1080,13 @@ Public Class F0_Venta2
         With grProductos.RootTable.Columns("stockMinimo")
             .Width = 150
             .Visible = False
-
         End With
         With grProductos.RootTable.Columns("fechaVencimiento")
             .Width = 150
             .Visible = False
-
+        End With
+        With grProductos.RootTable.Columns("yfgr1")
+            .Visible = False
         End With
 
         With grProductos
@@ -1093,6 +1122,8 @@ Public Class F0_Venta2
 
     End Sub
     Private Sub _prAddDetalleVenta()
+        '   a.tbnumi ,a.tbtv1numi ,a.tbty5prod ,b.yfcdprod1 as producto,a.tbest ,a.tbcmin ,a.tbumin ,Umin .ycdes3 as unidad,a.tbpbas ,a.tbptot ,a.tbobs ,
+        'a.tbpcos,a.tblote ,a.tbfechaVenc , a.tbptot2, a.tbfact ,a.tbhact ,a.tbuact,1 as estado,Cast(null as Image) as img
         Dim Bin As New MemoryStream
         Dim img As New Bitmap(My.Resources.delete, 28, 28)
         img.Save(Bin, Imaging.ImageFormat.Png)
@@ -1666,7 +1697,8 @@ Public Class F0_Venta2
             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpbas") = grProductos.GetValue("yhprecio")
             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = grProductos.GetValue("yhprecio")
             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = grProductos.GetValue("yhprecio")
-            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbProveedorId") = grProductos.GetValue("DescuentoId")
+            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbFamilia") = grProductos.GetValue("yfgr4")
+            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbProveedorId") = grProductos.GetValue("yfgr1")
             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = 1
             If (gb_FacturaIncluirICE) Then
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = grProductos.GetValue("pcos")
@@ -2649,8 +2681,8 @@ Public Class F0_Venta2
             If (e.Column.Index = grdetalle.RootTable.Columns("yfcbarra").Index Or
                 e.Column.Index = grdetalle.RootTable.Columns("tbcmin").Index Or
                 e.Column.Index = grdetalle.RootTable.Columns("tbporc").Index Or
-                e.Column.Index = grdetalle.RootTable.Columns("tbpbas").Index Or
-                e.Column.Index = grdetalle.RootTable.Columns("tbdesc").Index) Then
+                e.Column.Index = grdetalle.RootTable.Columns("tbpbas").Index) Then
+                ''e.Column.Index = grdetalle.RootTable.Columns("tbdesc").Index
                 e.Cancel = False
             Else
                 e.Cancel = True
@@ -2975,31 +3007,36 @@ salirIf:
             Dim fila As DataRow() = Table_Producto.Select("yfcbarra='" + codigo.Trim + "'", "")
             If (fila.Count > 0) Then
                 'Si tiene stock > 0
-                If fila(0).ItemArray(19) > 0 Then
+                If fila(0).ItemArray(20) > 0 Then
                     Dim pos As Integer = -1
                     _fnObtenerFilaDetalle(pos, grdetalle.GetValue("tbnumi"))
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbty5prod") = fila(0).ItemArray(0)
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("codigo") = fila(0).ItemArray(1)
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("yfcbarra") = fila(0).ItemArray(2)
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto") = fila(0).ItemArray(3)
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbumin") = fila(0).ItemArray(15)
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("unidad") = fila(0).ItemArray(16)
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpbas") = fila(0).ItemArray(17)
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = fila(0).ItemArray(17)
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = fila(0).ItemArray(17)
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbfamilia") = fila(0).ItemArray(14)
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbumin") = fila(0).ItemArray(16)
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("unidad") = fila(0).ItemArray(17)
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpbas") = fila(0).ItemArray(18)
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = fila(0).ItemArray(18)
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = fila(0).ItemArray(18)
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = 1
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbFamilia") = fila(0).ItemArray(8)
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbProveedorId") = fila(0).ItemArray(8)
                     If (gb_FacturaIncluirICE) Then
-                        CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = fila(0).ItemArray(17)
+                        CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = fila(0).ItemArray(19)
                     Else
                         CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = 0
                     End If
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = fila(0).ItemArray(18)
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = fila(0).ItemArray(18)
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = fila(0).ItemArray(19)
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = fila(0).ItemArray(19)
                     'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = fila(0).ItemArray(17)
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = fila(0).ItemArray(19)
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = fila(0).ItemArray(20)
                     'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tblote") = grProductos.GetValue("iclot")
                     'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbfechaVenc") = grProductos.GetValue("icfven")
                     'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = grProductos.GetValue("iccven")
+
+                    CalcularDescuentos(grdetalle.GetValue("tbty5prod"), 1, grdetalle.GetValue("tbpbas"), pos)
                     _prCalcularPrecioTotal()
                     resultado = True
                 Else
@@ -3016,21 +3053,21 @@ salirIf:
 
     Private Sub sumarCantidad(codigo As String)
         Try
-            Dim fila As DataRow() = CType(grdetalle.DataSource, DataTable).Select("yfcbarra='" + codigo.Trim + "'", "")
+            Dim fila As DataRow() = CType(grdetalle.DataSource, DataTable).Select(" estado=0 and yfcbarra='" + codigo.Trim + "'", "")
             If (fila.Count > 0) Then
                 grdetalle.UpdateData()
                 Dim pos1 As Integer = -1
                 _fnObtenerFilaDetalle(pos1, fila(0).Item("tbnumi"))
-                Dim cant As Integer = grdetalle.GetRow(pos1).Cells("tbcmin").Value + 1
-                Dim stock As Integer = grdetalle.GetRow(pos1).Cells("stock").Value
+                Dim cant As Integer = fila(0).Item("tbcmin") + 1
+                Dim stock As Integer = fila(0).Item("stock")
                 'If (cant > stock) Then
                 Dim lin As Integer = grdetalle.GetRow(pos1).Cells("tbnumi").Value
-                Dim pos2 As Integer = -1
-                _fnObtenerFilaDetalle(pos2, lin)
-                CType(grdetalle.DataSource, DataTable).Rows(pos2).Item("tbcmin") = cant
-                CType(grdetalle.DataSource, DataTable).Rows(pos2).Item("tbptot") = CType(grdetalle.DataSource, DataTable).Rows(pos2).Item("tbpbas") * cant
-                CType(grdetalle.DataSource, DataTable).Rows(pos2).Item("tbptot2") = grdetalle.GetRow(pos1).Cells("tbpcos").Value * cant
-                CType(grdetalle.DataSource, DataTable).Rows(pos2).Item("tbtotdesc") = CType(grdetalle.DataSource, DataTable).Rows(pos2).Item("tbpbas") * cant
+                'Dim pos2 As Integer = -1
+                '_fnObtenerFilaDetalle(pos2, lin)
+                CType(grdetalle.DataSource, DataTable).Rows(pos1).Item("tbcmin") = cant
+                CType(grdetalle.DataSource, DataTable).Rows(pos1).Item("tbptot") = CType(grdetalle.DataSource, DataTable).Rows(pos1).Item("tbpbas") * cant
+                CType(grdetalle.DataSource, DataTable).Rows(pos1).Item("tbptot2") = grdetalle.GetRow(pos1).Cells("tbpcos").Value * cant
+                CType(grdetalle.DataSource, DataTable).Rows(pos1).Item("tbtotdesc") = CType(grdetalle.DataSource, DataTable).Rows(pos1).Item("tbpbas") * cant
                 Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
                 'ToastNotification.Show(Me, "La cantidad de la venta no debe ser mayor al del stock" & vbCrLf &
                 '        "Stock=" + Str(stock).ToUpper, img, 2000, eToastGlowColor.Red, eToastPosition.BottomCenter)
@@ -3106,6 +3143,7 @@ salirIf:
                             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("codigo") = FilaSelectLote.Item("yfcprod")
                             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("yfcbarra") = FilaSelectLote.Item("yfcbarra")
                             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto") = FilaSelectLote.Item("yfcdprod1")
+                            CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbFamilia") = FilaSelectLote.Item("yfgr4")
                             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbumin") = FilaSelectLote.Item("yfumin")
                             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("unidad") = FilaSelectLote.Item("UnidMin")
                             CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpbas") = FilaSelectLote.Item("yhprecio")
@@ -3516,6 +3554,7 @@ salirIf:
             If (grdetalle.RowCount >= 2) Then
                 If (grdetalle.CurrentColumn.Index = grdetalle.RootTable.Columns("img").Index) Then
                     _prEliminarFila()
+                    CalculoDescuentoXProveedor()
                 End If
             End If
         Catch ex As Exception
@@ -3988,9 +4027,13 @@ salirIf:
     'End Sub
 
     Private Sub CalculoDescuentoXProveedor()
-        If ConfiguracionDescuentoEsXCantidad = True Then Return
-        If grdetalle.RowCount < 0 Or DescuentoXProveedorList.Rows.Count < 0 Or DescuentoXProveedorList.Rows.Count = 0 Or SwDescuentoProveedor.Value = False Then Return
+        If ConfiguracionDescuentoEsXCantidad = True Then
+            Return
+        End If
 
+        If grdetalle.RowCount < 0 Or DescuentoXProveedorList.Rows.Count < 0 Or DescuentoXProveedorList.Rows.Count = 0 Then
+            Return
+        End If
         Dim productoId As Integer = 0
         Dim totalDescontadoXAgrupacionProveedor As Decimal = 0
         Dim montoDescuento As Decimal = 0, subTotalDescuento As Decimal = 0
@@ -4036,7 +4079,9 @@ salirIf:
             End If
         End If
 
-        If subTotalVenta = 0 Then Return
+        If subTotalVenta = 0 Then
+            Return
+        End If
 
         Dim montoDo As Decimal
         tbSubTotal.Value = subTotalVenta
@@ -4058,6 +4103,8 @@ salirIf:
                     Select desc.ItemArray(ENDescuentoXProveedor.DescuentoPorcentaje)).ToArray()
         Else
             'Obtiene el porcentaje de descuento por proveedor
+
+
             Return (From desc In listaDescuento
                     Where desc.ItemArray(ENDescuentoXProveedor.proveedorId) = proveedorID _
                      And desc.ItemArray(ENDescuentoXProveedor.MontoInicial) <= total _
