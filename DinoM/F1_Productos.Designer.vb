@@ -707,7 +707,7 @@ Partial Class F1_Productos
         Me.LabelX8.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX8.Size = New System.Drawing.Size(117, 23)
         Me.LabelX8.TabIndex = 213
-        Me.LabelX8.Text = "Unidad Medida:"
+        Me.LabelX8.Text = "GRUPO DESCT.º:"
         '
         'LabelX11
         '

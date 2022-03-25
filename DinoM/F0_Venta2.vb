@@ -983,7 +983,11 @@ Public Class F0_Venta2
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
         End With
-
+        With grProductos.RootTable.Columns("grupoDesc")
+            .Width = 130
+            .Visible = True
+            .Caption = "Grupo Desc."
+        End With
         With grProductos
             .DefaultFilterRowComparison = FilterConditionOperator.Contains
             .FilterMode = FilterMode.Automatic
@@ -2562,7 +2566,7 @@ Public Class F0_Venta2
 
                 Dim listEstCeldas As New List(Of Modelo.Celda)
                 listEstCeldas.Add(New Modelo.Celda("ydnumi,", True, "ID", 50))
-                listEstCeldas.Add(New Modelo.Celda("ydcod", False, "ID", 50))
+                listEstCeldas.Add(New Modelo.Celda("ydcod", True, "COD. CLI", 100))
                 listEstCeldas.Add(New Modelo.Celda("ydrazonsocial", True, "RAZÓN SOCIAL", 180))
                 listEstCeldas.Add(New Modelo.Celda("yddesc", True, "NOMBRE", 280))
                 listEstCeldas.Add(New Modelo.Celda("yddctnum", True, "N. Documento".ToUpper, 150))
@@ -2580,7 +2584,7 @@ Public Class F0_Venta2
                 ef.SeleclCol = 2
                 ef.listEstCeldas = listEstCeldas
                 ef.alto = 50
-                ef.ancho = 350
+                ef.ancho = 200
                 ef.Context = "Seleccione Cliente".ToUpper
                 ef.ShowDialog()
                 Dim bandera As Boolean = False
@@ -2674,8 +2678,7 @@ Public Class F0_Venta2
         If (_fnAccesible()) Then
             'Habilitar solo las columnas de Precio, %, Monto y Observación
             'If (e.Column.Index = grdetalle.RootTable.Columns("yfcbarra").Index Or
-            If (e.Column.Index = grdetalle.RootTable.Columns("yfcbarra").Index Or
-                e.Column.Index = grdetalle.RootTable.Columns("tbcmin").Index Or
+            If (e.Column.Index = grdetalle.RootTable.Columns("tbcmin").Index Or
                 e.Column.Index = grdetalle.RootTable.Columns("tbporc").Index Or
                 e.Column.Index = grdetalle.RootTable.Columns("tbpbas").Index) Then
                 ''e.Column.Index = grdetalle.RootTable.Columns("tbdesc").Index

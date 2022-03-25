@@ -540,6 +540,9 @@ Public Class F0_VentasSupermercado
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Near
             .Visible = False
         End With
+        With grdetalle.RootTable.Columns("tbProveedorId")
+            .Visible = False
+        End With
         With grdetalle
             .GroupByBoxVisible = False
             'diseño de la grilla
@@ -766,6 +769,12 @@ Public Class F0_VentasSupermercado
         With grProductos.RootTable.Columns("DescuentoId")
             .Visible = False
         End With
+        With grProductos.RootTable.Columns("grupoDesc")
+            .Width = 100
+            .Visible = False
+            .Caption = "Grupo Desc."
+        End With
+
         With grProductos
             .DefaultFilterRowComparison = FilterConditionOperator.Contains
             .FilterMode = FilterMode.Automatic

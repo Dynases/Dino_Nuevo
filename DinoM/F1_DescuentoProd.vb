@@ -121,6 +121,20 @@ Public Class F1_DescuentoProd
                 .Caption = "FAMILIA"
                 .Visible = True
             End With
+            With JGrM_Buscador.RootTable.Columns("PrecioCosto")
+                .Width = 120
+                .Caption = "PRECIO COSTO"
+                .Visible = True
+                .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            End With
+            With JGrM_Buscador.RootTable.Columns("PrecioPDV")
+                .Width = 120
+                .Caption = "PRECIO PDV"
+                .Visible = True
+                .FormatString = "0.00"
+                .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
+            End With
             With JGrM_Buscador.RootTable.Columns("PrecioVenta")
                 .Width = 120
                 .Caption = "PRECIO VENTA"
@@ -181,6 +195,11 @@ Public Class F1_DescuentoProd
                 .Width = 120
                 .Visible = True
                 .Caption = "CÓDIGO DE ORÍGEN"
+            End With
+            With JGrM_Buscador.RootTable.Columns("Estado")
+                .Width = 100
+                .Visible = True
+                .Caption = "ESTADO"
             End With
 
             With JGrM_Buscador

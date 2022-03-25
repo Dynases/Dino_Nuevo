@@ -232,7 +232,7 @@ Public Class F0_LibroVenta2
 
         'Codigo
         col = New GridColumn("fvanumi")
-        col.HeaderText = "Codigo"
+        col.HeaderText = "CODIGO"
         col.EditorType = GetType(GridTextBoxXEditControl)
         col.CellStyles.Default.Alignment = Style.Alignment.MiddleRight
         col.ReadOnly = True
@@ -242,7 +242,7 @@ Public Class F0_LibroVenta2
 
         'Fecha
         col = New GridColumn("fvafec")
-        col.HeaderText = "Fecha"
+        col.HeaderText = "FECHA"
         col.EditorType = GetType(GridDateTimePickerEditControl)
         col.CellStyles.Default.Alignment = Style.Alignment.MiddleRight
         col.ReadOnly = True
@@ -252,7 +252,7 @@ Public Class F0_LibroVenta2
 
         'Nro de Factura
         col = New GridColumn("fvanfac")
-        col.HeaderText = "Factura"
+        col.HeaderText = "Nº FACTURA"
         col.EditorType = GetType(GridTextBoxXEditControl)
         col.CellStyles.Default.Alignment = Style.Alignment.MiddleRight
         col.ReadOnly = True
@@ -262,7 +262,7 @@ Public Class F0_LibroVenta2
 
         'Nro Autorizacion
         col = New GridColumn("fvaautoriz")
-        col.HeaderText = "Autorizacion"
+        col.HeaderText = "Nº AUTORIZACION"
         col.EditorType = GetType(GridTextBoxXEditControl)
         col.CellStyles.Default.Alignment = Style.Alignment.MiddleRight
         col.ReadOnly = True
@@ -272,7 +272,7 @@ Public Class F0_LibroVenta2
 
         'Estado
         col = New GridColumn("fvaest")
-        col.HeaderText = "Estado"
+        col.HeaderText = "ESTADO"
         col.EditorType = GetType(GridTextBoxXEditControl)
         col.CellStyles.Default.Alignment = Style.Alignment.MiddleCenter
         col.ReadOnly = True
@@ -292,7 +292,7 @@ Public Class F0_LibroVenta2
 
         'Razon Social
         col = New GridColumn("fvadescli")
-        col.HeaderText = "Razon Social"
+        col.HeaderText = "NOMBRE O RAZON SOCIAL"
         col.EditorType = GetType(GridTextBoxXEditControl)
         col.CellStyles.Default.Alignment = Style.Alignment.MiddleLeft
         col.ReadOnly = True
@@ -302,7 +302,7 @@ Public Class F0_LibroVenta2
 
         'A
         col = New GridColumn("fvastot")
-        col.HeaderText = "A"
+        col.HeaderText = "IMPORTE TOTAL"
         col.EditorType = GetType(GridTextBoxXEditControl)
         col.CellStyles.Default.Alignment = Style.Alignment.MiddleRight
         col.ReadOnly = True
@@ -312,7 +312,7 @@ Public Class F0_LibroVenta2
 
         'B
         col = New GridColumn("fvaimpsi")
-        col.HeaderText = "B"
+        col.HeaderText = "ICE"
         col.EditorType = GetType(GridTextBoxXEditControl)
         col.CellStyles.Default.Alignment = Style.Alignment.MiddleRight
         col.ReadOnly = True
@@ -322,7 +322,7 @@ Public Class F0_LibroVenta2
 
         'C
         col = New GridColumn("fvaimpeo")
-        col.HeaderText = "C"
+        col.HeaderText = "EXPORTACION"
         col.EditorType = GetType(GridTextBoxXEditControl)
         col.CellStyles.Default.Alignment = Style.Alignment.MiddleLeft
         col.ReadOnly = True
@@ -332,7 +332,7 @@ Public Class F0_LibroVenta2
 
         'D
         col = New GridColumn("fvaimptc")
-        col.HeaderText = "D"
+        col.HeaderText = "TASA"
         col.EditorType = GetType(GridTextBoxXEditControl)
         col.CellStyles.Default.Alignment = Style.Alignment.MiddleRight
         col.ReadOnly = True
@@ -342,7 +342,7 @@ Public Class F0_LibroVenta2
 
         'E
         col = New GridColumn("fvasubtotal")
-        col.HeaderText = "E"
+        col.HeaderText = "SUBTOTAL"
         col.EditorType = GetType(GridTextBoxXEditControl)
         col.CellStyles.Default.Alignment = Style.Alignment.MiddleRight
         col.ReadOnly = True
@@ -352,7 +352,7 @@ Public Class F0_LibroVenta2
 
         'F
         col = New GridColumn("fvadesc")
-        col.HeaderText = "F"
+        col.HeaderText = "DESCUENTOS"
         col.EditorType = GetType(GridTextBoxXEditControl)
         col.CellStyles.Default.Alignment = Style.Alignment.MiddleRight
         col.ReadOnly = True
@@ -362,7 +362,7 @@ Public Class F0_LibroVenta2
 
         'G
         col = New GridColumn("fvatotal")
-        col.HeaderText = "G"
+        col.HeaderText = "IMP. BASE"
         col.EditorType = GetType(GridTextBoxXEditControl)
         col.CellStyles.Default.Alignment = Style.Alignment.MiddleRight
         col.ReadOnly = True
@@ -372,7 +372,7 @@ Public Class F0_LibroVenta2
 
         'H
         col = New GridColumn("fvadebfis")
-        col.HeaderText = "H"
+        col.HeaderText = "DEBITO FISCAL"
         col.EditorType = GetType(GridTextBoxXEditControl)
         col.CellStyles.Default.Alignment = Style.Alignment.MiddleRight
         col.ReadOnly = True
@@ -382,7 +382,7 @@ Public Class F0_LibroVenta2
 
         'Codigo de Control
         col = New GridColumn("fvaccont")
-        col.HeaderText = "Cod Control"
+        col.HeaderText = "COD CONTROL"
         col.EditorType = GetType(GridTextBoxXEditControl)
         col.CellStyles.Default.Alignment = Style.Alignment.MiddleLeft
         col.ReadOnly = True

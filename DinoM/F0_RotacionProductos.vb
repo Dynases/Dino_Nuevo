@@ -34,7 +34,7 @@ Public Class F0_RotacionProductos
 
     Function _prCargarAnos() As DataTable
         Dim dt As DataTable = New DataTable()
-        Dim ano As Integer = 2020
+        Dim ano As Integer = Date.Now.Year - 1
         Dim numicol As New DataColumn("numi")
         numicol.DataType = GetType(Integer)
         Dim mescol As New DataColumn("ano")
@@ -423,6 +423,9 @@ Public Class F0_RotacionProductos
             End If
             _fdgs.Cells.Add(_cdgs)
 
+
+
+
             Dim _Cant1 As Integer
             ' = _fdt.Item("Cantidad")
             Dim _AcuP As Integer = 0
@@ -515,6 +518,8 @@ Public Class F0_RotacionProductos
             If (i = CInt(tbCantProducto.Text) + 1) Then
                 Exit For
             End If
+
+
         Next
 
     End Sub

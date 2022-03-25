@@ -78,6 +78,12 @@ Public Class Descuentos
             .WordWrap = True
             .MaxLines = 3
         End With
+        With grProducto.RootTable.Columns("PrecioCosto")
+            .Caption = "Precio Costo"
+            .Width = 50
+            .Visible = True
+            .FormatString = "0.00"
+        End With
         With grProducto.RootTable.Columns("PrecioVenta")
             .Caption = "Precio Venta"
             .Width = 50
@@ -104,6 +110,7 @@ Public Class Descuentos
         Dim dt As New DataTable
         dt = L_fnListarDescuentos(ProductoId)
         grdetalle.DataSource = dt
+
         grdetalle.RetrieveStructure()
         grdetalle.AlternatingColors = True
 
