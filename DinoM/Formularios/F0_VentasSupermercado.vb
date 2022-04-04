@@ -1468,11 +1468,12 @@ Public Class F0_VentasSupermercado
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = grProductos.GetValue("yhprecio")
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = grProductos.GetValue("yhprecio")
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = 1
-                If (gb_FacturaIncluirICE) Then
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = grProductos.GetValue("pcos")
-                Else
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = 0
-                End If
+                'If (gb_FacturaIncluirICE) Then
+                '    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = grProductos.GetValue("pcos")
+                'Else
+                '    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = 0
+                'End If
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = grProductos.GetValue("pcos")
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = grProductos.GetValue("pcos")
 
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = grProductos.GetValue("stock")
