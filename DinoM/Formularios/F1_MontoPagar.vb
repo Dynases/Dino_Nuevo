@@ -17,6 +17,7 @@ Public Class F1_MontoPagar
     Public TotalBs As Double = 0
     Public TotalSus As Double = 0
     Public TotalTarjeta As Double = 0
+    Public TotalQR As Double = 0
     Public Nit As String = ""
     Public RazonSocial As String = ""
     Public TipoCambio As Double = 0
@@ -34,6 +35,8 @@ Public Class F1_MontoPagar
         tbMontoDolar.Value = 0
         tbMontoTarej.Value = 0
         tbMontoTarej.Enabled = False
+        tbMontoQR.Value = 0
+        tbMontoQR.Enabled = False
         tbNit.Text = Nit
         tbRazonSocial.Text = RazonSocial
 
@@ -119,6 +122,7 @@ Public Class F1_MontoPagar
             TotalBs = 0
             TotalSus = 0
             TotalTarjeta = 0
+            TotalQR = 0
             Bandera = False
             Me.Close()
 
@@ -130,6 +134,7 @@ Public Class F1_MontoPagar
                 TotalBs = tbMontoBs.Value
                 TotalSus = tbMontoDolar.Value
                 TotalTarjeta = tbMontoTarej.Value
+                TotalQR = tbMontoQR.Value
                 Nit = tbNit.Text
                 RazonSocial = tbRazonSocial.Text
                 Me.Close()
@@ -156,6 +161,7 @@ Public Class F1_MontoPagar
             TotalBs = 0
             TotalSus = 0
             TotalTarjeta = 0
+            TotalQR = 0
             Bandera = False
             Me.Close()
 
@@ -167,6 +173,7 @@ Public Class F1_MontoPagar
                 TotalBs = tbMontoBs.Value
                 TotalSus = tbMontoDolar.Value
                 TotalTarjeta = tbMontoTarej.Value
+                TotalQR = tbMontoQR.Value
                 Nit = tbNit.Text
                 RazonSocial = tbRazonSocial.Text
                 Me.Close()
@@ -192,6 +199,7 @@ Public Class F1_MontoPagar
             TotalBs = 0
             TotalSus = 0
             TotalTarjeta = 0
+            TotalQR = 0
             Bandera = False
             Me.Close()
 
@@ -203,6 +211,7 @@ Public Class F1_MontoPagar
                 TotalBs = tbMontoBs.Value
                 TotalSus = tbMontoDolar.Value
                 TotalTarjeta = tbMontoTarej.Value
+                TotalQR = tbMontoQR.Value
                 Nit = tbNit.Text
                 RazonSocial = tbRazonSocial.Text
                 Me.Close()
@@ -245,6 +254,7 @@ Public Class F1_MontoPagar
                 TotalBs = tbMontoBs.Value
                 TotalSus = tbMontoDolar.Value
                 TotalTarjeta = tbMontoTarej.Value
+                TotalQR = tbMontoQR.Value
                 Nit = tbNit.Text
                 RazonSocial = tbRazonSocial.Text
                 Me.Close()
@@ -268,6 +278,7 @@ Public Class F1_MontoPagar
                 TotalBs = tbMontoBs.Value
                 TotalSus = tbMontoDolar.Value
                 TotalTarjeta = tbMontoTarej.Value
+                TotalQR = tbMontoQR.Value
                 Nit = tbNit.Text
                 RazonSocial = tbRazonSocial.Text
                 Me.Close()
@@ -280,11 +291,12 @@ Public Class F1_MontoPagar
     End Sub
 
     Private Sub btnContinuar_Click(sender As Object, e As EventArgs) Handles btnContinuar.Click
-        If (tbMontoTarej.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value >= TotalVenta) Then
+        If (tbMontoTarej.Value + tbMontoQR.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value >= TotalVenta) Then
             Bandera = True
             TotalBs = tbMontoBs.Value
             TotalSus = tbMontoDolar.Value
             TotalTarjeta = tbMontoTarej.Value
+            TotalQR = tbMontoQR.Value
             Nit = tbNit.Text
             RazonSocial = tbRazonSocial.Text
             TipoCambio = cbCambioDolar.Text
@@ -300,6 +312,7 @@ Public Class F1_MontoPagar
         TotalBs = 0
         TotalSus = 0
         TotalTarjeta = 0
+        TotalQR = 0
         Bandera = False
         Me.Close()
 
@@ -309,16 +322,22 @@ Public Class F1_MontoPagar
         If chbTarjeta.Checked Then
             tbMontoBs.Value = 0
             tbMontoDolar.Value = 0
+            tbMontoQR.Value = 0
             tbMontoTarej.Enabled = True
             tbMontoTarej.Value = Convert.ToDecimal(TotalVenta)
             tbMontoBs.Enabled = False
             tbMontoDolar.Enabled = False
+            tbMontoQR.Enabled = False
+            chbQR.Enabled = False
             tbMontoTarej.IsInputReadOnly = True
             tbMontoTarej.Focus()
         Else
             tbMontoBs.Enabled = True
             tbMontoDolar.Enabled = True
+            tbMontoQR.Enabled = True
+            chbQR.Enabled = True
             tbMontoTarej.Value = 0
+
         End If
     End Sub
 
@@ -343,6 +362,28 @@ Public Class F1_MontoPagar
         If Not IsNumeric(e.KeyChar) And Not Char.IsControl(e.KeyChar) Then
             e.Handled = True
             ToastNotification.Show(Me, "Solo puede digitar números".ToUpper, My.Resources.WARNING, 1200, eToastGlowColor.Red, eToastPosition.TopCenter)
+
+        End If
+    End Sub
+
+    Private Sub chbQR_CheckedChanged(sender As Object, e As EventArgs) Handles chbQR.CheckedChanged
+        If chbQR.Checked Then
+            tbMontoBs.Value = 0
+            tbMontoDolar.Value = 0
+            tbMontoTarej.Value = 0
+            tbMontoQR.Value = Convert.ToDecimal(TotalVenta)
+            tbMontoBs.Enabled = False
+            tbMontoDolar.Enabled = False
+            tbMontoTarej.Enabled = False
+            chbTarjeta.Enabled = False
+            tbMontoQR.IsInputReadOnly = True
+            tbMontoQR.Focus()
+        Else
+            tbMontoBs.Enabled = True
+            tbMontoDolar.Enabled = True
+            tbMontoTarej.Enabled = True
+            chbTarjeta.Enabled = True
+            tbMontoQR.Value = 0
 
         End If
     End Sub

@@ -32,6 +32,7 @@ Public Class F0_VentasSupermercado
     Public TotalBs As Double = 0
     Public TotalSus As Double = 0
     Public TotalTarjeta As Double = 0
+    Public TotalQR As Double = 0
     Public TipoCambio As Double = 0
     Dim ListImagenes As String()
     Dim contador As Integer = 0
@@ -870,9 +871,10 @@ Public Class F0_VentasSupermercado
         With grProductos.RootTable.Columns("fechaVencimiento")
             .Width = 150
             .Visible = False
-
         End With
-
+        With grProductos.RootTable.Columns("yfgr1")
+            .Visible = False
+        End With
         With grProductos
             .DefaultFilterRowComparison = FilterConditionOperator.Contains
             .FilterMode = FilterMode.Automatic
@@ -1333,7 +1335,7 @@ Public Class F0_VentasSupermercado
         Return True
     End Function
     Private Sub _prInsertarMontoNuevo(ByRef tabla As DataTable)
-        tabla.Rows.Add(0, TotalBs, TotalSus, TotalTarjeta, TipoCambio, 0)
+        tabla.Rows.Add(0, TotalBs, TotalSus, TotalTarjeta, TipoCambio, 0, TotalQR)
     End Sub
 
     'Private Sub _prInsertarMontoModificar(ByRef tabla As DataTable)
@@ -2370,6 +2372,7 @@ Public Class F0_VentasSupermercado
                 TotalBs = ef.TotalBs
                 TotalSus = ef.TotalSus
                 TotalTarjeta = ef.TotalTarjeta
+                TotalQR = ef.TotalQR
                 lbNit.Text = ef.Nit
                 lbCliente.Text = ef.RazonSocial
                 TipoCambio = ef.TipoCambio
@@ -2698,7 +2701,11 @@ Public Class F0_VentasSupermercado
                     If (IsNothing(FilaSelectLote)) Then
                         ''''''''''''''''''''''''
                         If (G_Lote = True) Then
-                            InsertarProductosConLote()
+                            'InsertarProductosConLote()
+
+                            ''Para que ya no aparezca los lotes
+                            InsertarProductosSinLote()
+                            tbProducto.Clear()
                         Else
                             InsertarProductosSinLote()
                             'VentanaCantidad()

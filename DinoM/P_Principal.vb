@@ -114,6 +114,7 @@ Public Class P_Principal
         gb_NotaAdicional = dtConfSistema.Rows(0).Item("cccnotaadic")
         gb_TipoAyuda = dtConfSistema.Rows(0).Item("cccTipoAyuda")
         gb_MostrarFamilia = dtConfSistema.Rows(0).Item("cccMostrarFamilia")
+        gb_TipoCierreCaja = dtConfSistema.Rows(0).Item("cccTipoCierreCaja")
     End Sub
 
     Private Sub _prCargarConfiguracionSistema()
@@ -1039,7 +1040,13 @@ Public Class P_Principal
     End Sub
 
     Private Sub btCierreCaja_Click(sender As Object, e As EventArgs) Handles btCierreCaja.Click
-        Dim frm As New F0_CierreCaja
+        Dim frm
+        If gb_TipoCierreCaja = 1 Then
+            frm = New F0_CierreCaja
+        Else
+            frm = New F0_CierreCaja2
+        End If
+
         frm._nameButton = btCierreCaja.Name
         frm.Show()
     End Sub

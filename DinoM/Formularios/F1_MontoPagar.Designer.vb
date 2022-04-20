@@ -22,8 +22,8 @@ Partial Class F1_MontoPagar
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F1_MontoPagar))
         Dim cbCambioDolar_DesignTimeLayout As Janus.Windows.GridEX.GridEXLayout = New Janus.Windows.GridEX.GridEXLayout()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F1_MontoPagar))
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.BtnSalir = New DevComponents.DotNetBar.ButtonX()
         Me.btnContinuar = New DevComponents.DotNetBar.ButtonX()
@@ -34,12 +34,9 @@ Partial Class F1_MontoPagar
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btgrupo1 = New DevComponents.DotNetBar.ButtonX()
         Me.LabelX20 = New DevComponents.DotNetBar.LabelX()
-        Me.ButtonX3 = New DevComponents.DotNetBar.ButtonX()
         Me.cbCambioDolar = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
         Me.tbMontoTarej = New DevComponents.Editors.DoubleInput()
-        Me.ButtonX2 = New DevComponents.DotNetBar.ButtonX()
         Me.chbTarjeta = New DevComponents.DotNetBar.Controls.CheckBoxX()
-        Me.ButtonX1 = New DevComponents.DotNetBar.ButtonX()
         Me.tbMontoBs = New DevComponents.Editors.DoubleInput()
         Me.LabelX5 = New DevComponents.DotNetBar.LabelX()
         Me.tbMontoDolar = New DevComponents.Editors.DoubleInput()
@@ -49,6 +46,8 @@ Partial Class F1_MontoPagar
         Me.tbNit = New System.Windows.Forms.TextBox()
         Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
+        Me.tbMontoQR = New DevComponents.Editors.DoubleInput()
+        Me.chbQR = New DevComponents.DotNetBar.Controls.CheckBoxX()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.cbCambioDolar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -56,6 +55,7 @@ Partial Class F1_MontoPagar
         CType(Me.tbMontoBs, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbMontoDolar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
+        CType(Me.tbMontoQR, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox2
@@ -178,14 +178,13 @@ Partial Class F1_MontoPagar
         '
         Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
         Me.GroupBox1.BackgroundImage = Global.DinoM.My.Resources.Resources.fondo1
+        Me.GroupBox1.Controls.Add(Me.tbMontoQR)
+        Me.GroupBox1.Controls.Add(Me.chbQR)
         Me.GroupBox1.Controls.Add(Me.btgrupo1)
         Me.GroupBox1.Controls.Add(Me.LabelX20)
-        Me.GroupBox1.Controls.Add(Me.ButtonX3)
         Me.GroupBox1.Controls.Add(Me.cbCambioDolar)
         Me.GroupBox1.Controls.Add(Me.tbMontoTarej)
-        Me.GroupBox1.Controls.Add(Me.ButtonX2)
         Me.GroupBox1.Controls.Add(Me.chbTarjeta)
-        Me.GroupBox1.Controls.Add(Me.ButtonX1)
         Me.GroupBox1.Controls.Add(Me.tbMontoBs)
         Me.GroupBox1.Controls.Add(Me.LabelX5)
         Me.GroupBox1.Controls.Add(Me.tbMontoDolar)
@@ -230,20 +229,6 @@ Partial Class F1_MontoPagar
         Me.LabelX20.TabIndex = 370
         Me.LabelX20.Text = "Tipo Cambio:"
         '
-        'ButtonX3
-        '
-        Me.ButtonX3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX3.BackColor = System.Drawing.Color.Transparent
-        Me.ButtonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
-        Me.ButtonX3.Image = CType(resources.GetObject("ButtonX3.Image"), System.Drawing.Image)
-        Me.ButtonX3.ImageFixedSize = New System.Drawing.Size(25, 23)
-        Me.ButtonX3.Location = New System.Drawing.Point(375, 84)
-        Me.ButtonX3.Name = "ButtonX3"
-        Me.ButtonX3.Size = New System.Drawing.Size(60, 20)
-        Me.ButtonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX3.TabIndex = 363
-        Me.ButtonX3.Visible = False
-        '
         'cbCambioDolar
         '
         Me.cbCambioDolar.BorderStyle = Janus.Windows.GridEX.BorderStyle.Flat
@@ -280,20 +265,6 @@ Partial Class F1_MontoPagar
         Me.tbMontoTarej.TabIndex = 101
         Me.tbMontoTarej.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
         '
-        'ButtonX2
-        '
-        Me.ButtonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX2.BackColor = System.Drawing.Color.Transparent
-        Me.ButtonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
-        Me.ButtonX2.Image = CType(resources.GetObject("ButtonX2.Image"), System.Drawing.Image)
-        Me.ButtonX2.ImageFixedSize = New System.Drawing.Size(25, 23)
-        Me.ButtonX2.Location = New System.Drawing.Point(317, 85)
-        Me.ButtonX2.Name = "ButtonX2"
-        Me.ButtonX2.Size = New System.Drawing.Size(60, 20)
-        Me.ButtonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX2.TabIndex = 362
-        Me.ButtonX2.Visible = False
-        '
         'chbTarjeta
         '
         Me.chbTarjeta.BackColor = System.Drawing.Color.Transparent
@@ -309,20 +280,6 @@ Partial Class F1_MontoPagar
         Me.chbTarjeta.TabIndex = 279
         Me.chbTarjeta.Text = "Tarjeta:"
         Me.chbTarjeta.TextColor = System.Drawing.Color.White
-        '
-        'ButtonX1
-        '
-        Me.ButtonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton
-        Me.ButtonX1.BackColor = System.Drawing.Color.Transparent
-        Me.ButtonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat
-        Me.ButtonX1.Image = CType(resources.GetObject("ButtonX1.Image"), System.Drawing.Image)
-        Me.ButtonX1.ImageFixedSize = New System.Drawing.Size(25, 23)
-        Me.ButtonX1.Location = New System.Drawing.Point(258, 84)
-        Me.ButtonX1.Name = "ButtonX1"
-        Me.ButtonX1.Size = New System.Drawing.Size(60, 20)
-        Me.ButtonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.ButtonX1.TabIndex = 360
-        Me.ButtonX1.Visible = False
         '
         'tbMontoBs
         '
@@ -463,6 +420,40 @@ Partial Class F1_MontoPagar
         Me.LabelX4.TabIndex = 366
         Me.LabelX4.Text = "Razón Social:"
         '
+        'tbMontoQR
+        '
+        '
+        '
+        '
+        Me.tbMontoQR.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbMontoQR.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbMontoQR.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbMontoQR.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbMontoQR.ForeColor = System.Drawing.Color.Black
+        Me.tbMontoQR.Increment = 1.0R
+        Me.tbMontoQR.Location = New System.Drawing.Point(328, 79)
+        Me.tbMontoQR.MinValue = 0R
+        Me.tbMontoQR.Name = "tbMontoQR"
+        Me.tbMontoQR.Size = New System.Drawing.Size(110, 26)
+        Me.tbMontoQR.TabIndex = 371
+        Me.tbMontoQR.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
+        '
+        'chbQR
+        '
+        Me.chbQR.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.chbQR.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.chbQR.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chbQR.Location = New System.Drawing.Point(262, 78)
+        Me.chbQR.Name = "chbQR"
+        Me.chbQR.Size = New System.Drawing.Size(49, 30)
+        Me.chbQR.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.chbQR.TabIndex = 372
+        Me.chbQR.Text = "QR:"
+        Me.chbQR.TextColor = System.Drawing.Color.White
+        '
         'F1_MontoPagar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -485,16 +476,14 @@ Partial Class F1_MontoPagar
         CType(Me.tbMontoDolar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        CType(Me.tbMontoQR, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents ButtonX3 As DevComponents.DotNetBar.ButtonX
     Friend WithEvents tbMontoTarej As DevComponents.Editors.DoubleInput
-    Friend WithEvents ButtonX2 As DevComponents.DotNetBar.ButtonX
     Friend WithEvents chbTarjeta As DevComponents.DotNetBar.Controls.CheckBoxX
-    Friend WithEvents ButtonX1 As DevComponents.DotNetBar.ButtonX
     Friend WithEvents tbMontoBs As DevComponents.Editors.DoubleInput
     Friend WithEvents LabelX5 As DevComponents.DotNetBar.LabelX
     Friend WithEvents tbMontoDolar As DevComponents.Editors.DoubleInput
@@ -514,4 +503,6 @@ Partial Class F1_MontoPagar
     Friend WithEvents btgrupo1 As DevComponents.DotNetBar.ButtonX
     Friend WithEvents LabelX20 As DevComponents.DotNetBar.LabelX
     Friend WithEvents cbCambioDolar As Janus.Windows.GridEX.EditControls.MultiColumnCombo
+    Friend WithEvents tbMontoQR As DevComponents.Editors.DoubleInput
+    Friend WithEvents chbQR As DevComponents.DotNetBar.Controls.CheckBoxX
 End Class
