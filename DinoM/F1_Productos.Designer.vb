@@ -691,6 +691,7 @@ Partial Class F1_Productos
         Me.cbUMed.SelectedItem = Nothing
         Me.cbUMed.Size = New System.Drawing.Size(144, 22)
         Me.cbUMed.TabIndex = 4
+        Me.cbUMed.Visible = False
         Me.cbUMed.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'LabelX8
@@ -708,6 +709,7 @@ Partial Class F1_Productos
         Me.LabelX8.Size = New System.Drawing.Size(117, 23)
         Me.LabelX8.TabIndex = 213
         Me.LabelX8.Text = "GRUPO DESCT.º:"
+        Me.LabelX8.Visible = False
         '
         'LabelX11
         '

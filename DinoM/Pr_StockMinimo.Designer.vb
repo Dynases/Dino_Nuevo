@@ -253,10 +253,13 @@ Partial Class Pr_StockMinimo
         Me.btn_Salir.BackColor = System.Drawing.Color.Transparent
         Me.btn_Salir.FlatAppearance.BorderSize = 0
         Me.btn_Salir.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_Salir.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_Salir.ForeColor = System.Drawing.Color.White
         Me.btn_Salir.Image = Global.DinoM.My.Resources.Resources.atras1
+        Me.btn_Salir.ImageAlign = System.Drawing.ContentAlignment.TopCenter
         Me.btn_Salir.Location = New System.Drawing.Point(177, 1)
         Me.btn_Salir.Name = "btn_Salir"
-        Me.btn_Salir.Size = New System.Drawing.Size(72, 72)
+        Me.btn_Salir.Size = New System.Drawing.Size(73, 72)
         Me.btn_Salir.TabIndex = 262
         Me.btn_Salir.Text = "SALIR"
         Me.btn_Salir.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -266,7 +269,10 @@ Partial Class Pr_StockMinimo
         '
         Me.btn_Generar.FlatAppearance.BorderSize = 0
         Me.btn_Generar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_Generar.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_Generar.ForeColor = System.Drawing.Color.White
         Me.btn_Generar.Image = Global.DinoM.My.Resources.Resources.pie_chart1
+        Me.btn_Generar.ImageAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.btn_Generar.Location = New System.Drawing.Point(99, 0)
         Me.btn_Generar.Name = "btn_Generar"
         Me.btn_Generar.Size = New System.Drawing.Size(72, 72)
