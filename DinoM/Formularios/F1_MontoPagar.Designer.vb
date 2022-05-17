@@ -32,6 +32,8 @@ Partial Class F1_MontoPagar
         Me.lbCambio = New DevComponents.DotNetBar.LabelX()
         Me.lbMontoPagado = New DevComponents.DotNetBar.LabelX()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.tbMontoQR = New DevComponents.Editors.DoubleInput()
+        Me.chbQR = New DevComponents.DotNetBar.Controls.CheckBoxX()
         Me.btgrupo1 = New DevComponents.DotNetBar.ButtonX()
         Me.LabelX20 = New DevComponents.DotNetBar.LabelX()
         Me.cbCambioDolar = New Janus.Windows.GridEX.EditControls.MultiColumnCombo()
@@ -46,16 +48,14 @@ Partial Class F1_MontoPagar
         Me.tbNit = New System.Windows.Forms.TextBox()
         Me.LabelX3 = New DevComponents.DotNetBar.LabelX()
         Me.LabelX4 = New DevComponents.DotNetBar.LabelX()
-        Me.tbMontoQR = New DevComponents.Editors.DoubleInput()
-        Me.chbQR = New DevComponents.DotNetBar.Controls.CheckBoxX()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.tbMontoQR, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.cbCambioDolar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbMontoTarej, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbMontoBs, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbMontoDolar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
-        CType(Me.tbMontoQR, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox2
@@ -198,6 +198,40 @@ Partial Class F1_MontoPagar
         Me.GroupBox1.TabIndex = 362
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Efectivo:"
+        '
+        'tbMontoQR
+        '
+        '
+        '
+        '
+        Me.tbMontoQR.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbMontoQR.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbMontoQR.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbMontoQR.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbMontoQR.ForeColor = System.Drawing.Color.Black
+        Me.tbMontoQR.Increment = 1.0R
+        Me.tbMontoQR.Location = New System.Drawing.Point(328, 79)
+        Me.tbMontoQR.MinValue = 0R
+        Me.tbMontoQR.Name = "tbMontoQR"
+        Me.tbMontoQR.Size = New System.Drawing.Size(110, 26)
+        Me.tbMontoQR.TabIndex = 371
+        Me.tbMontoQR.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
+        '
+        'chbQR
+        '
+        Me.chbQR.BackColor = System.Drawing.Color.Transparent
+        '
+        '
+        '
+        Me.chbQR.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.chbQR.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chbQR.Location = New System.Drawing.Point(262, 78)
+        Me.chbQR.Name = "chbQR"
+        Me.chbQR.Size = New System.Drawing.Size(49, 30)
+        Me.chbQR.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.chbQR.TabIndex = 372
+        Me.chbQR.Text = "QR:"
+        Me.chbQR.TextColor = System.Drawing.Color.White
         '
         'btgrupo1
         '
@@ -420,40 +454,6 @@ Partial Class F1_MontoPagar
         Me.LabelX4.TabIndex = 366
         Me.LabelX4.Text = "Razón Social:"
         '
-        'tbMontoQR
-        '
-        '
-        '
-        '
-        Me.tbMontoQR.BackgroundStyle.Class = "DateTimeInputBackground"
-        Me.tbMontoQR.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.tbMontoQR.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.tbMontoQR.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.tbMontoQR.ForeColor = System.Drawing.Color.Black
-        Me.tbMontoQR.Increment = 1.0R
-        Me.tbMontoQR.Location = New System.Drawing.Point(328, 79)
-        Me.tbMontoQR.MinValue = 0R
-        Me.tbMontoQR.Name = "tbMontoQR"
-        Me.tbMontoQR.Size = New System.Drawing.Size(110, 26)
-        Me.tbMontoQR.TabIndex = 371
-        Me.tbMontoQR.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
-        '
-        'chbQR
-        '
-        Me.chbQR.BackColor = System.Drawing.Color.Transparent
-        '
-        '
-        '
-        Me.chbQR.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.chbQR.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chbQR.Location = New System.Drawing.Point(262, 78)
-        Me.chbQR.Name = "chbQR"
-        Me.chbQR.Size = New System.Drawing.Size(49, 30)
-        Me.chbQR.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
-        Me.chbQR.TabIndex = 372
-        Me.chbQR.Text = "QR:"
-        Me.chbQR.TextColor = System.Drawing.Color.White
-        '
         'F1_MontoPagar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -470,13 +470,13 @@ Partial Class F1_MontoPagar
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.tbMontoQR, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.cbCambioDolar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbMontoTarej, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbMontoBs, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbMontoDolar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
-        CType(Me.tbMontoQR, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

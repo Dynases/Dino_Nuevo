@@ -211,6 +211,7 @@ Public Class F0_Movimiento
 
     Private Sub _prCargarDetalleVenta(_numi As String)
         Dim dt As New DataTable
+        Dim dtGrupo As DataTable = L_fnNameLabel()
         dt = L_fnDetalleMovimiento(_numi)
         grdetalle.DataSource = dt
         grdetalle.RetrieveStructure()
@@ -245,18 +246,19 @@ Public Class F0_Movimiento
 
         End With
         With grdetalle.RootTable.Columns("Laboratorio")
-            .Caption = "ORIGEN"
             .Width = 200
             .Visible = True
-
+            If (dtGrupo.Rows.Count > 0) Then
+                .Caption = dtGrupo.Rows(0).Item("Grupo 3").ToString.ToUpper
+            Else
+                .Caption = ""
+            End If
 
         End With
         With grdetalle.RootTable.Columns("Presentacion")
             .Caption = "PRESENTACION"
             .Width = 150
-            .Visible = True
-
-
+            .Visible = False
         End With
         With grdetalle.RootTable.Columns("iccant")
             .Width = 160
@@ -438,6 +440,7 @@ Public Class F0_Movimiento
     End Sub
     Private Sub _prCargarProductos()
         Dim dt As New DataTable
+        Dim dtGrupo As DataTable = L_fnNameLabel()
 
         If (Lote = True And cbConcepto.Value <> 1) Then
             dt = L_prMovimientoListarProductosConLote(cbAlmacenOrigen.Value)  ''1=Almacen
@@ -482,11 +485,16 @@ Public Class F0_Movimiento
         With grproducto.RootTable.Columns("Laboratorio")
             .Width = 200
             .Visible = True
-            .Caption = "ORIGEN"
+            If (dtGrupo.Rows.Count > 0) Then
+                .Caption = dtGrupo.Rows(0).Item("Grupo 3").ToString.ToUpper
+            Else
+                .Caption = ""
+            End If
+
         End With
         With grproducto.RootTable.Columns("Presentacion")
             .Width = 120
-            .Visible = True
+            .Visible = False
             .Caption = "PRESENTACION"
         End With
         With grproducto.RootTable.Columns("yfcdprod2")
