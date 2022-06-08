@@ -815,7 +815,6 @@ Partial Class F0_MCompras
         Me.swEmision.Size = New System.Drawing.Size(120, 22)
         Me.swEmision.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.swEmision.TabIndex = 367
-        Me.swEmision.Visible = False
         '
         'LabelX16
         '
@@ -830,7 +829,6 @@ Partial Class F0_MCompras
         Me.LabelX16.Size = New System.Drawing.Size(60, 23)
         Me.LabelX16.TabIndex = 368
         Me.LabelX16.Text = "Emisión:"
-        Me.LabelX16.Visible = False
         '
         'GroupPanelFactura2
         '

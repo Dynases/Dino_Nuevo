@@ -1085,7 +1085,7 @@ Public Class F0_Venta2
             .Width = 150
             .Visible = False
         End With
-        With grProductos.RootTable.Columns("DescuentoId")
+        With grProductos.RootTable.Columns("yfgr1")
             .Visible = False
         End With
 
@@ -1593,8 +1593,15 @@ Public Class F0_Venta2
                                     dtDetalle.Rows(pos).Item("tbptot") = total
 
                                     'Dim descuento As Double = (dt.Rows(i).Item("tbtotdesc") / dt.Rows(i).Item("tbcmin"))
-
-                                    dtDetalle.Rows(pos).Item("tbtotdesc") = total - dtDetalle.Rows(pos).Item("tbdesc")
+                                    dtDetalle.DefaultView.RowFilter = "tbty5prod =  '" + codProducto.ToString() + "'"
+                                    ContarCodProd = dtDetalle.DefaultView.Count()
+                                    If ContarCodProd > 1 Then
+                                        dtDetalle.Rows(pos).Item("tbdesc") = 0
+                                        dtDetalle.Rows(pos).Item("tbtotdesc") = total
+                                    Else
+                                        dtDetalle.Rows(pos).Item("tbtotdesc") = total - dtDetalle.Rows(pos).Item("tbdesc")
+                                    End If
+                                    'dtDetalle.Rows(pos).Item("tbtotdesc") = total - dtDetalle.Rows(pos).Item("tbdesc")
                                     'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = total
                                     'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = inventario
                                     dtDetalle.Rows(pos).Item("tbcmin") = inventario
@@ -3429,7 +3436,7 @@ salirIf:
 
 
                         P_PonerTotal(rowIndex)
-                        CalculoDescuentoXProveedor()
+                        'CalculoDescuentoXProveedor()
 
                     Else
                         Dim rowIndex As Integer = grdetalle.Row
@@ -3451,7 +3458,7 @@ salirIf:
 
                         _prCalcularPrecioTotal()
                         P_PonerTotal(rowIndex)
-                        CalculoDescuentoXProveedor()
+                        'CalculoDescuentoXProveedor()
                         'grdetalle.SetValue("tbcmin", 1)
                         'grdetalle.SetValue("tbptot", grdetalle.GetValue("tbpbas"))
 
@@ -4264,5 +4271,7 @@ salirIf:
                     And proc.ItemArray(ENDetalleVenta.proveedorId) = proveedorID
                 Select Convert.ToDecimal(proc.ItemArray(ENDetalleVenta.totalDescuento))).Sum()
     End Function
+
+
 #End Region
 End Class

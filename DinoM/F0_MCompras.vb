@@ -155,7 +155,7 @@ Public Class F0_MCompras
 
 
         tbNitProv.ReadOnly = False
-        'swEmision.IsReadOnly = False
+        swEmision.IsReadOnly = False
         swConsigna.IsReadOnly = False
         swRetencion.IsReadOnly = False
         tbNFactura.ReadOnly = False
