@@ -21,6 +21,8 @@ Public Class F1_MontoPagar
     Public Nit As String = ""
     Public RazonSocial As String = ""
     Public TipoCambio As Double = 0
+    Public tipoVenta As Integer = 1
+
 
 
     Private Sub F1_MontoPagar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -291,7 +293,23 @@ Public Class F1_MontoPagar
     End Sub
 
     Private Sub btnContinuar_Click(sender As Object, e As EventArgs) Handles btnContinuar.Click
-        If (tbMontoTarej.Value + tbMontoQR.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value >= TotalVenta) Then
+        If tipoVenta = 1 Then
+            If (tbMontoTarej.Value + tbMontoQR.Value + (tbMontoDolar.Value * cbCambioDolar.Text) + tbMontoBs.Value >= TotalVenta) Then
+                Bandera = True
+                TotalBs = tbMontoBs.Value
+                TotalSus = tbMontoDolar.Value
+                TotalTarjeta = tbMontoTarej.Value
+                TotalQR = tbMontoQR.Value
+                Nit = tbNit.Text
+                RazonSocial = tbRazonSocial.Text
+                TipoCambio = cbCambioDolar.Text
+                Me.Close()
+
+            Else
+                ToastNotification.Show(Me, "Debe Ingresar un Monto a Cobrar Valido igual o mayor A = " + Str(TotalVenta), My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
+                tbMontoBs.Focus()
+            End If
+        Else
             Bandera = True
             TotalBs = tbMontoBs.Value
             TotalSus = tbMontoDolar.Value
@@ -301,11 +319,9 @@ Public Class F1_MontoPagar
             RazonSocial = tbRazonSocial.Text
             TipoCambio = cbCambioDolar.Text
             Me.Close()
-
-        Else
-            ToastNotification.Show(Me, "Debe Ingresar un Monto a Cobrar Valido igual o mayor A = " + Str(TotalVenta), My.Resources.WARNING, 4000, eToastGlowColor.Red, eToastPosition.TopCenter)
-            tbMontoBs.Focus()
         End If
+
+
     End Sub
 
     Private Sub BtnSalir_Click(sender As Object, e As EventArgs) Handles BtnSalir.Click

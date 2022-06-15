@@ -22,6 +22,7 @@ Public Class Efecto
     Public TotalVenta As Double
     Public NameProducto As String = ""
     Public TipoCambio As Double = 0
+    Public TipoVenta As Integer = 1
 
     Public Stock As Double = 0
     Public Cantidad As Double = 0
@@ -90,6 +91,7 @@ Public Class Efecto
         frmAyuda.TotalVenta = TotalVenta
         frmAyuda.Nit = Nit
         frmAyuda.RazonSocial = RazonSocial
+        frmAyuda.tipoVenta = TipoVenta
 
         frmAyuda.ShowDialog()
         If frmAyuda.Bandera = True Then
@@ -101,6 +103,7 @@ Public Class Efecto
             Nit = frmAyuda.Nit
             RazonSocial = frmAyuda.RazonSocial
             TipoCambio = frmAyuda.TipoCambio
+            TipoVenta = frmAyuda.tipoVenta
             band = True
             Me.Close()
         Else

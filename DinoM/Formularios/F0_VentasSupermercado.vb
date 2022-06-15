@@ -34,6 +34,7 @@ Public Class F0_VentasSupermercado
     Public TotalTarjeta As Double = 0
     Public TotalQR As Double = 0
     Public TipoCambio As Double = 0
+    Public TipoVenta As Integer = 1
     Dim ListImagenes As String()
     Dim contador As Integer = 0
 
@@ -306,6 +307,8 @@ Public Class F0_VentasSupermercado
         lbCliente.Text = ""
         lbNit.Text = ""
 
+        swTipoVenta.Value = True
+        tbFechaVenc.Value = Now.Date.ToString("dd/MM/yyyy")
 
         _prCargarDetalleVenta(-1)
 
@@ -411,7 +414,7 @@ Public Class F0_VentasSupermercado
             .Width = 70
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = True
-            .FormatString = "0.00"
+            .FormatString = "0.000"
             .Caption = "Cantidad"
         End With
         With grdetalle.RootTable.Columns("tbumin")
@@ -1389,7 +1392,8 @@ Public Class F0_VentasSupermercado
                 dtDetalle = CType(grdetalle.DataSource, DataTable)
             End If
 
-            Dim res As Boolean = L_fnGrabarVenta(numi, "", Now.Date.ToString("yyyy/MM/dd"), Vendedor, 1, Now.Date.ToString("yyyy/MM/dd"), _CodCliente, 1, "", tbDescuento.Value, 0, Str(tbTotal.Value), dtDetalle, Sucursal, 0, tabla, gs_NroCaja, Programa, dtDetalleReplica)
+            Dim res As Boolean = L_fnGrabarVenta(numi, "", Now.Date.ToString("yyyy/MM/dd"), Vendedor, IIf(swTipoVenta.Value = True, 1, 0), IIf(swTipoVenta.Value = True,
+                                                Now.Date.ToString("yyyy/MM/dd"), tbFechaVenc.Value.ToString("yyyy/MM/dd")), _CodCliente, 1, "", tbDescuento.Value, 0, Str(tbTotal.Value), dtDetalle, Sucursal, 0, tabla, gs_NroCaja, Programa, dtDetalleReplica)
             If res Then
                 'res = P_fnGrabarFacturarTFV001(numi)
                 'Emite factura
@@ -2398,6 +2402,8 @@ Public Class F0_VentasSupermercado
             ef.TotalVenta = Math.Round(tbTotal.Value, 2)
             ef.Nit = lbNit.Text
             ef.RazonSocial = lbCliente.Text
+            ef.TipoVenta = IIf(swTipoVenta.Value = True, 1, 0)
+
             ef.ShowDialog()
             Dim bandera As Boolean = False
             bandera = ef.band
@@ -2410,6 +2416,7 @@ Public Class F0_VentasSupermercado
                 lbNit.Text = ef.Nit
                 lbCliente.Text = ef.RazonSocial
                 TipoCambio = ef.TipoCambio
+                TipoVenta = ef.TipoVenta
 
                 _prGuardar()
             Else
@@ -2629,8 +2636,8 @@ Public Class F0_VentasSupermercado
                     End If
                     _fnObtenerFilaDetalle(pos, grdetalle.GetValue("tbnumi"))
                 End If
-                Dim cantidad = Format(total / CDbl(fila(0).ItemArray(15)), "0.00")
-                Dim precio = fila(0).ItemArray(15)
+                Dim cantidad = Format(total / CDbl(fila(0).ItemArray(18)), "0.00")
+                Dim precio = fila(0).ItemArray(18)
                 total = cantidad * precio
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbty5prod") = fila(0).ItemArray(0)
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("codigo") = fila(0).ItemArray(1)
@@ -3246,5 +3253,14 @@ Public Class F0_VentasSupermercado
         End If
     End Sub
 
-
+    Private Sub swTipoVenta_ValueChanged(sender As Object, e As EventArgs) Handles swTipoVenta.ValueChanged
+        If (swTipoVenta.Value = False) Then
+            lbCredito.Visible = True
+            tbFechaVenc.Visible = True
+            tbFechaVenc.Value = DateAdd(DateInterval.Day, _dias, Now.Date)
+        Else
+            lbCredito.Visible = False
+            tbFechaVenc.Visible = False
+        End If
+    End Sub
 End Class

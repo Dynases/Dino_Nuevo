@@ -102,6 +102,7 @@ Partial Class F_Cantidad
         Me.tbCantidad.BackgroundStyle.Class = "DateTimeInputBackground"
         Me.tbCantidad.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbCantidad.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
+        Me.tbCantidad.DisplayFormat = "0.000"
         Me.tbCantidad.Font = New System.Drawing.Font("Calibri", 22.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbCantidad.Increment = 1.0R
         Me.tbCantidad.Location = New System.Drawing.Point(223, 247)

@@ -52,6 +52,10 @@ Partial Class F0_VentasSupermercado
         Me.tbTotal = New DevComponents.Editors.DoubleInput()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.lbCredito = New System.Windows.Forms.Label()
+        Me.tbFechaVenc = New DevComponents.Editors.DateTimeAdv.DateTimeInput()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.swTipoVenta = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -88,6 +92,7 @@ Partial Class F0_VentasSupermercado
         CType(Me.tbDescuento, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbTotal, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
+        CType(Me.tbFechaVenc, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.PanelTop.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.QrFactura, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -408,7 +413,7 @@ Partial Class F0_VentasSupermercado
         Me.grdetalle.Office2007ColorScheme = Janus.Windows.GridEX.Office2007ColorScheme.Custom
         Me.grdetalle.Office2007CustomColor = System.Drawing.Color.DodgerBlue
         Me.grdetalle.RowFormatStyle.Font = New System.Drawing.Font("Calibri", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grdetalle.Size = New System.Drawing.Size(619, 257)
+        Me.grdetalle.Size = New System.Drawing.Size(619, 265)
         Me.grdetalle.TabIndex = 4
         Me.grdetalle.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
@@ -418,10 +423,10 @@ Partial Class F0_VentasSupermercado
         Me.PanelButtom.Controls.Add(Me.PanelTotal)
         Me.PanelButtom.Controls.Add(Me.Panel1)
         Me.PanelButtom.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PanelButtom.Location = New System.Drawing.Point(6, 417)
+        Me.PanelButtom.Location = New System.Drawing.Point(6, 425)
         Me.PanelButtom.Margin = New System.Windows.Forms.Padding(2)
         Me.PanelButtom.Name = "PanelButtom"
-        Me.PanelButtom.Size = New System.Drawing.Size(619, 171)
+        Me.PanelButtom.Size = New System.Drawing.Size(619, 163)
         Me.PanelButtom.TabIndex = 5
         '
         'PanelTotal
@@ -433,10 +438,10 @@ Partial Class F0_VentasSupermercado
         Me.PanelTotal.Controls.Add(Me.tbTotal)
         Me.PanelTotal.Controls.Add(Me.Label2)
         Me.PanelTotal.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PanelTotal.Location = New System.Drawing.Point(0, -2)
+        Me.PanelTotal.Location = New System.Drawing.Point(0, 0)
         Me.PanelTotal.Margin = New System.Windows.Forms.Padding(2)
         Me.PanelTotal.Name = "PanelTotal"
-        Me.PanelTotal.Size = New System.Drawing.Size(619, 117)
+        Me.PanelTotal.Size = New System.Drawing.Size(619, 90)
         Me.PanelTotal.TabIndex = 0
         '
         'tbDescuento
@@ -454,7 +459,7 @@ Partial Class F0_VentasSupermercado
         Me.tbDescuento.ForeColor = System.Drawing.Color.White
         Me.tbDescuento.Increment = 1.0R
         Me.tbDescuento.IsInputReadOnly = True
-        Me.tbDescuento.Location = New System.Drawing.Point(393, 19)
+        Me.tbDescuento.Location = New System.Drawing.Point(393, 10)
         Me.tbDescuento.Margin = New System.Windows.Forms.Padding(2)
         Me.tbDescuento.Name = "tbDescuento"
         Me.tbDescuento.Size = New System.Drawing.Size(207, 34)
@@ -466,7 +471,7 @@ Partial Class F0_VentasSupermercado
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Calibri", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(13, 26)
+        Me.Label1.Location = New System.Drawing.Point(13, 17)
         Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(100, 23)
@@ -484,14 +489,14 @@ Partial Class F0_VentasSupermercado
         Me.tbTotal.BackgroundStyle.Class = "DateTimeInputBackground"
         Me.tbTotal.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.tbTotal.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2
-        Me.tbTotal.Font = New System.Drawing.Font("Calibri", 28.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbTotal.Font = New System.Drawing.Font("Calibri", 20.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tbTotal.ForeColor = System.Drawing.Color.White
         Me.tbTotal.Increment = 1.0R
         Me.tbTotal.IsInputReadOnly = True
-        Me.tbTotal.Location = New System.Drawing.Point(393, 54)
+        Me.tbTotal.Location = New System.Drawing.Point(393, 47)
         Me.tbTotal.Margin = New System.Windows.Forms.Padding(2)
         Me.tbTotal.Name = "tbTotal"
-        Me.tbTotal.Size = New System.Drawing.Size(207, 53)
+        Me.tbTotal.Size = New System.Drawing.Size(207, 40)
         Me.tbTotal.TabIndex = 2
         '
         'Label2
@@ -500,7 +505,7 @@ Partial Class F0_VentasSupermercado
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Font = New System.Drawing.Font("Calibri", 24.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.White
-        Me.Label2.Location = New System.Drawing.Point(10, 60)
+        Me.Label2.Location = New System.Drawing.Point(10, 48)
         Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(129, 39)
@@ -511,6 +516,10 @@ Partial Class F0_VentasSupermercado
         '
         Me.Panel1.BackColor = System.Drawing.Color.Azure
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.lbCredito)
+        Me.Panel1.Controls.Add(Me.tbFechaVenc)
+        Me.Panel1.Controls.Add(Me.Label11)
+        Me.Panel1.Controls.Add(Me.swTipoVenta)
         Me.Panel1.Controls.Add(Me.Label10)
         Me.Panel1.Controls.Add(Me.Label6)
         Me.Panel1.Controls.Add(Me.Label3)
@@ -525,11 +534,100 @@ Partial Class F0_VentasSupermercado
         Me.Panel1.Controls.Add(Me.lbFecha)
         Me.Panel1.Controls.Add(Me.Label4)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel1.Location = New System.Drawing.Point(0, 115)
+        Me.Panel1.Location = New System.Drawing.Point(0, 90)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(619, 56)
+        Me.Panel1.Size = New System.Drawing.Size(619, 73)
         Me.Panel1.TabIndex = 9
+        '
+        'lbCredito
+        '
+        Me.lbCredito.AutoSize = True
+        Me.lbCredito.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lbCredito.Location = New System.Drawing.Point(2, 52)
+        Me.lbCredito.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.lbCredito.Name = "lbCredito"
+        Me.lbCredito.Size = New System.Drawing.Size(71, 14)
+        Me.lbCredito.TabIndex = 360
+        Me.lbCredito.Text = "Venc.Crédito:"
+        Me.lbCredito.Visible = False
+        '
+        'tbFechaVenc
+        '
+        '
+        '
+        '
+        Me.tbFechaVenc.BackgroundStyle.Class = "DateTimeInputBackground"
+        Me.tbFechaVenc.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbFechaVenc.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown
+        Me.tbFechaVenc.ButtonDropDown.Visible = True
+        Me.tbFechaVenc.Font = New System.Drawing.Font("Georgia", 8.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.tbFechaVenc.IsPopupCalendarOpen = False
+        Me.tbFechaVenc.Location = New System.Drawing.Point(76, 49)
+        '
+        '
+        '
+        '
+        '
+        '
+        Me.tbFechaVenc.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbFechaVenc.MonthCalendar.CalendarDimensions = New System.Drawing.Size(1, 1)
+        Me.tbFechaVenc.MonthCalendar.ClearButtonVisible = True
+        '
+        '
+        '
+        Me.tbFechaVenc.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2
+        Me.tbFechaVenc.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90
+        Me.tbFechaVenc.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground
+        Me.tbFechaVenc.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid
+        Me.tbFechaVenc.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder
+        Me.tbFechaVenc.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1
+        Me.tbFechaVenc.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbFechaVenc.MonthCalendar.DisplayMonth = New Date(2017, 2, 1, 0, 0, 0, 0)
+        Me.tbFechaVenc.MonthCalendar.FirstDayOfWeek = System.DayOfWeek.Monday
+        '
+        '
+        '
+        Me.tbFechaVenc.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2
+        Me.tbFechaVenc.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90
+        Me.tbFechaVenc.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground
+        Me.tbFechaVenc.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.tbFechaVenc.MonthCalendar.TodayButtonVisible = True
+        Me.tbFechaVenc.Name = "tbFechaVenc"
+        Me.tbFechaVenc.Size = New System.Drawing.Size(100, 20)
+        Me.tbFechaVenc.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.tbFechaVenc.TabIndex = 359
+        Me.tbFechaVenc.Visible = False
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(2, 33)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(62, 14)
+        Me.Label11.TabIndex = 358
+        Me.Label11.Text = "Tipo Venta:"
+        '
+        'swTipoVenta
+        '
+        '
+        '
+        '
+        Me.swTipoVenta.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.swTipoVenta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.swTipoVenta.Location = New System.Drawing.Point(75, 30)
+        Me.swTipoVenta.Name = "swTipoVenta"
+        Me.swTipoVenta.OffBackColor = System.Drawing.Color.LawnGreen
+        Me.swTipoVenta.OffText = "CREDITO"
+        Me.swTipoVenta.OnBackColor = System.Drawing.Color.Gold
+        Me.swTipoVenta.OnText = "CONTADO"
+        Me.swTipoVenta.Size = New System.Drawing.Size(100, 18)
+        Me.swTipoVenta.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.swTipoVenta.TabIndex = 357
+        Me.swTipoVenta.Value = True
+        Me.swTipoVenta.ValueObject = "Y"
         '
         'Label10
         '
@@ -568,7 +666,7 @@ Partial Class F0_VentasSupermercado
         '
         Me.lbUsuario.AutoSize = True
         Me.lbUsuario.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbUsuario.Location = New System.Drawing.Point(68, 20)
+        Me.lbUsuario.Location = New System.Drawing.Point(73, 16)
         Me.lbUsuario.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lbUsuario.Name = "lbUsuario"
         Me.lbUsuario.Size = New System.Drawing.Size(154, 14)
@@ -580,7 +678,7 @@ Partial Class F0_VentasSupermercado
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(9, 20)
+        Me.Label8.Location = New System.Drawing.Point(2, 16)
         Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(48, 14)
@@ -591,7 +689,7 @@ Partial Class F0_VentasSupermercado
         '
         Me.lbNroCaja.AutoSize = True
         Me.lbNroCaja.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbNroCaja.Location = New System.Drawing.Point(68, 5)
+        Me.lbNroCaja.Location = New System.Drawing.Point(73, 1)
         Me.lbNroCaja.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.lbNroCaja.Name = "lbNroCaja"
         Me.lbNroCaja.Size = New System.Drawing.Size(13, 14)
@@ -603,7 +701,7 @@ Partial Class F0_VentasSupermercado
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(9, 5)
+        Me.Label5.Location = New System.Drawing.Point(2, 1)
         Me.Label5.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(55, 14)
@@ -733,38 +831,39 @@ Partial Class F0_VentasSupermercado
         Me.ClientSize = New System.Drawing.Size(1156, 594)
         Me.Controls.Add(Me.PanelImagen)
         Me.Controls.Add(Me.PanelDatos)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "F0_VentasSupermercado"
         Me.Text = "Ventas"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
-        Me.PanelImagen.ResumeLayout(false)
-        Me.PanelRight.ResumeLayout(false)
-        Me.PanelC.ResumeLayout(false)
-        Me.GPanelProductos.ResumeLayout(false)
-        Me.Panel5.ResumeLayout(false)
-        CType(Me.grProductos,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.pictureImagen,System.ComponentModel.ISupportInitialize).EndInit
-        Me.Panel2.ResumeLayout(false)
-        Me.Panel3.ResumeLayout(false)
-        CType(Me.tbPrecio,System.ComponentModel.ISupportInitialize).EndInit
-        Me.Panel4.ResumeLayout(false)
-        Me.CmDetalle.ResumeLayout(false)
-        Me.PanelDatos.ResumeLayout(false)
-        CType(Me.grdetalle,System.ComponentModel.ISupportInitialize).EndInit
-        Me.PanelButtom.ResumeLayout(false)
-        Me.PanelTotal.ResumeLayout(false)
-        Me.PanelTotal.PerformLayout
-        CType(Me.tbDescuento,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbTotal,System.ComponentModel.ISupportInitialize).EndInit
-        Me.Panel1.ResumeLayout(false)
-        Me.Panel1.PerformLayout
-        Me.PanelTop.ResumeLayout(false)
-        CType(Me.PictureBox2,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.QrFactura,System.ComponentModel.ISupportInitialize).EndInit
-        Me.ResumeLayout(false)
+        Me.PanelImagen.ResumeLayout(False)
+        Me.PanelRight.ResumeLayout(False)
+        Me.PanelC.ResumeLayout(False)
+        Me.GPanelProductos.ResumeLayout(False)
+        Me.Panel5.ResumeLayout(False)
+        CType(Me.grProductos, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pictureImagen, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel3.ResumeLayout(False)
+        CType(Me.tbPrecio, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel4.ResumeLayout(False)
+        Me.CmDetalle.ResumeLayout(False)
+        Me.PanelDatos.ResumeLayout(False)
+        CType(Me.grdetalle, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelButtom.ResumeLayout(False)
+        Me.PanelTotal.ResumeLayout(False)
+        Me.PanelTotal.PerformLayout()
+        CType(Me.tbDescuento, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tbTotal, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
+        CType(Me.tbFechaVenc, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanelTop.ResumeLayout(False)
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.QrFactura, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ResumeLayout(False)
 
-End Sub
+    End Sub
 
     Friend WithEvents PanelDatos As Panel
     Friend WithEvents PanelImagen As Panel
@@ -811,4 +910,8 @@ End Sub
     Friend WithEvents Label3 As Label
     Friend WithEvents Label10 As Label
     Friend WithEvents txtNumi As DevComponents.DotNetBar.Controls.TextBoxX
+    Friend WithEvents Label11 As Label
+    Friend WithEvents swTipoVenta As DevComponents.DotNetBar.Controls.SwitchButton
+    Friend WithEvents lbCredito As Label
+    Friend WithEvents tbFechaVenc As DevComponents.Editors.DateTimeAdv.DateTimeInput
 End Class

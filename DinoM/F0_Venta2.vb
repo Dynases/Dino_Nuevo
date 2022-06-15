@@ -461,7 +461,7 @@ Public Class F0_Venta2
             .Width = 110
             .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             .Visible = True
-            .FormatString = "0.00000"
+            .FormatString = "0.000"
             .Caption = "Cantidad".ToUpper
         End With
         With grdetalle.RootTable.Columns("tbumin")
