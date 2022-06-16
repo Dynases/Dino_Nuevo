@@ -166,6 +166,8 @@ Module P_Global
     Public gb_TipoAyuda As Integer = 1
     Public gb_MostrarFamilia As Integer = 0 '0 no muestra grupo Familia en producto, 1 muestra grupo Familia en producto
     Public gb_TipoCierreCaja As Integer = 1 '1=Muestra CierreCaja Normal, 2= Muestra CierreCaja2(Cierre Caja Negra)
+    Public gb_CodBarraPeso As Integer = 0 '0=Para que no entre al codigo de barra por peso, 1=Para que entre al codigo de barra por peso
+
 #End Region
 
 End Module

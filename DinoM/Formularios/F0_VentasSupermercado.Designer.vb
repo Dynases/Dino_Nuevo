@@ -73,6 +73,7 @@ Partial Class F0_VentasSupermercado
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.QrFactura = New Gma.QrCodeNet.Encoding.Windows.Forms.QrCodeImgControl()
         Me.TimerImagenes = New System.Windows.Forms.Timer(Me.components)
+        Me.Label12 = New System.Windows.Forms.Label()
         Me.PanelImagen.SuspendLayout()
         Me.PanelRight.SuspendLayout()
         Me.PanelC.SuspendLayout()
@@ -516,6 +517,7 @@ Partial Class F0_VentasSupermercado
         '
         Me.Panel1.BackColor = System.Drawing.Color.Azure
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.Label12)
         Me.Panel1.Controls.Add(Me.lbCredito)
         Me.Panel1.Controls.Add(Me.tbFechaVenc)
         Me.Panel1.Controls.Add(Me.Label11)
@@ -824,6 +826,17 @@ Partial Class F0_VentasSupermercado
         '
         Me.TimerImagenes.Interval = 10000
         '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(449, 51)
+        Me.Label12.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(142, 14)
+        Me.Label12.TabIndex = 361
+        Me.Label12.Text = "Tecla Ctrl + A: Elegir Cliente"
+        '
         'F0_VentasSupermercado
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -914,4 +927,5 @@ Partial Class F0_VentasSupermercado
     Friend WithEvents swTipoVenta As DevComponents.DotNetBar.Controls.SwitchButton
     Friend WithEvents lbCredito As Label
     Friend WithEvents tbFechaVenc As DevComponents.Editors.DateTimeAdv.DateTimeInput
+    Friend WithEvents Label12 As Label
 End Class

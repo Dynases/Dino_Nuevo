@@ -326,8 +326,8 @@ Public Class F0_Venta2
             _CodCliente = .GetValue("taclpr")
             tbCliente.Text = .GetValue("cliente")
             swMoneda.Value = .GetValue("tamon")
-            tbFechaVenc.Value = .GetValue("tafvcr")
             swTipoVenta.Value = .GetValue("tatven")
+            tbFechaVenc.Value = .GetValue("tafvcr")
             tbObservacion.Text = .GetValue("taobs")
             lbNroCaja.Text = .GetValue("NroCaja")
 

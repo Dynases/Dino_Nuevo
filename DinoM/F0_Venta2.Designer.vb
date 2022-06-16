@@ -248,6 +248,7 @@ Partial Class F0_Venta2
         '
         'btnGrabar
         '
+        Me.btnGrabar.Visible = False
         '
         'btnEliminar
         '
@@ -255,9 +256,11 @@ Partial Class F0_Venta2
         '
         'btnModificar
         '
+        Me.btnModificar.Visible = False
         '
         'btnNuevo
         '
+        Me.btnNuevo.Visible = False
         '
         'PanelToolBar2
         '

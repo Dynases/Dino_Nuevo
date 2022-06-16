@@ -115,6 +115,8 @@ Public Class P_Principal
         gb_TipoAyuda = dtConfSistema.Rows(0).Item("cccTipoAyuda")
         gb_MostrarFamilia = dtConfSistema.Rows(0).Item("cccMostrarFamilia")
         gb_TipoCierreCaja = dtConfSistema.Rows(0).Item("cccTipoCierreCaja")
+        gb_CodBarraPeso = dtConfSistema.Rows(0).Item("cccCodBarraPeso")
+
     End Sub
 
     Private Sub _prCargarConfiguracionSistema()

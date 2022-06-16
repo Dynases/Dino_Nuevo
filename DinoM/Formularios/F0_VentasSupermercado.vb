@@ -1802,7 +1802,7 @@ Public Class F0_VentasSupermercado
                 objrep.SetParameterValue("ELey", _Ds1.Tables(0).Rows(0).Item("sbnota2").ToString)
                 objrep.SetParameterValue("FechaLim", _Ds1.Tables(0).Rows(0).Item("sbfal"))
                 objrep.SetParameterValue("Usuario", gs_user)
-                objrep.SetParameterValue("TipoVenta", "CONTADO")
+                objrep.SetParameterValue("TipoVenta", IIf(swTipoVenta.Value = True, "CONTADO", "CRÉDITO"))
                 objrep.SetParameterValue("PlazoPago", Now.Date)
             Case ENReporteTipo.FACTURA_MediaCarta
                 objrep.SetDataSource(_Ds.Tables(0))
@@ -1820,7 +1820,7 @@ Public Class F0_VentasSupermercado
                 objrep.SetParameterValue("EActividad", _Ds2.Tables(0).Rows(0).Item("scact").ToString)
                 objrep.SetParameterValue("Tipo", "ORIGINAL")
                 objrep.SetParameterValue("Logo", gb_UbiLogo)
-                objrep.SetParameterValue("TipoPago", "CONTADO")
+                objrep.SetParameterValue("TipoPago", IIf(swTipoVenta.Value = True, "CONTADO", "CRÉDITO"))
                 objrep.SetParameterValue("Nota2", _Ds1.Tables(0).Rows(0).Item("sbnota").ToString)
             Case ENReporteTipo.FACTURA_Carta
                 objrep.SetDataSource(_Ds.Tables(0))
@@ -2335,7 +2335,7 @@ Public Class F0_VentasSupermercado
     End Sub
 
     Private Sub tbProducto_KeyDown(sender As Object, e As KeyEventArgs) Handles tbProducto.KeyDown
-        If e.KeyData = Keys.Control + Keys.C Then
+        If e.KeyData = Keys.Control + Keys.A Then
 
             Dim dt As DataTable
             'dt = L_fnListarClientes()
@@ -2434,72 +2434,72 @@ Public Class F0_VentasSupermercado
             Dim codigoBarrasCompleto = tbProducto.Text.Trim
             Dim primerDigito As String = Mid(codigoBarrasCompleto, 1, 1)
 
-            'If primerDigito = "2" Then
-            '    Dim codigoBarrasProducto As Integer
-            '    Dim totalEntero, totalDecimal, total2, total As Decimal
-            '    codigoBarrasProducto = Mid(codigoBarrasCompleto, 1, 6)
-            '    'CUANDO EL COD BARRA TENGA 6 DIGITOS  EJEM: 200001
-            '    If (existeProducto(codigoBarrasProducto)) Then
+            If primerDigito = "2" And gb_CodBarraPeso = 1 Then
+                Dim codigoBarrasProducto As Integer
+                Dim totalEntero, totalDecimal, total2, total As Decimal
+                codigoBarrasProducto = Mid(codigoBarrasCompleto, 1, 6)
+                'CUANDO EL COD BARRA TENGA 6 DIGITOS  EJEM: 200001
+                If (existeProducto(codigoBarrasProducto)) Then
 
-            '        totalEntero = Mid(codigoBarrasCompleto, 7, 4)
-            '        totalDecimal = Mid(codigoBarrasCompleto, 11, 2)
-            '        total2 = CDbl(totalEntero).ToString() + "." + CDbl(totalDecimal).ToString()
-            '        total = CDbl(total2)
-            '        If (Not verificarExistenciaUnica(codigoBarrasProducto)) Then
-            '            ponerProducto2(codigoBarrasProducto, total, -1)
+                    totalEntero = Mid(codigoBarrasCompleto, 7, 4)
+                    totalDecimal = Mid(codigoBarrasCompleto, 11, 2)
+                    total2 = CDbl(totalEntero).ToString() + "." + CDbl(totalDecimal).ToString()
+                    total = CDbl(total2)
+                    If (Not verificarExistenciaUnica(codigoBarrasProducto)) Then
+                        ponerProducto2(codigoBarrasProducto, total, -1)
 
-            '        Else
-            '            ponerProducto2(codigoBarrasProducto, total, grdetalle.RowCount - 1)
-            '        End If
+                    Else
+                        ponerProducto2(codigoBarrasProducto, total, grdetalle.RowCount - 1)
+                    End If
 
-            '    Else
-            '        ''CUANDO EL CODIGO DE BARRAS TENGA 7 DIGITOS EJEM: 2000001
-            '        codigoBarrasProducto = Mid(codigoBarrasCompleto, 1, 7)
-            '        If (existeProducto(codigoBarrasProducto)) Then
-            '            totalEntero = Mid(codigoBarrasCompleto, 8, 3)
-            '            totalDecimal = Mid(codigoBarrasCompleto, 11, 2)
-            '            total2 = CDbl(totalEntero).ToString() + "." + CDbl(totalDecimal).ToString()
-            '            total = CDbl(total2)
-            '            If (Not verificarExistenciaUnica(codigoBarrasProducto)) Then
-            '                ponerProducto2(codigoBarrasProducto, total, -1)
-
-            '            Else
-            '                ponerProducto2(codigoBarrasProducto, total, grdetalle.RowCount - 1)
-
-            '            End If
-            '        Else
-            '            grdetalle.DataChanged = False
-            '            ToastNotification.Show(Me, "El código de barra del producto no existe", My.Resources.WARNING, 3000, eToastGlowColor.Red, eToastPosition.TopCenter)
-            '        End If
-            '    End If
-            'Else
-
-            If (existeProducto(tbProducto.Text.Trim)) Then
-                If (Not verificarExistenciaUnica(tbProducto.Text.Trim)) Then
-                    Dim resultado As Boolean = False
-                    ponerProducto(tbProducto.Text.Trim, resultado)
-
-                    'VentanaCantidad()
-                    VentanaCantidad(False)
                 Else
-                    'If (grdetalle.GetValue("producto").ToString <> String.Empty) Then
+                    ''CUANDO EL CODIGO DE BARRAS TENGA 7 DIGITOS EJEM: 2000001
+                    codigoBarrasProducto = Mid(codigoBarrasCompleto, 1, 7)
+                    If (existeProducto(codigoBarrasProducto)) Then
+                        totalEntero = Mid(codigoBarrasCompleto, 8, 3)
+                        totalDecimal = Mid(codigoBarrasCompleto, 11, 2)
+                        total2 = CDbl(totalEntero).ToString() + "." + CDbl(totalDecimal).ToString()
+                        total = CDbl(total2)
+                        If (Not verificarExistenciaUnica(codigoBarrasProducto)) Then
+                            ponerProducto2(codigoBarrasProducto, total, -1)
 
-                    'sumarCantidad(tbProducto.Text.Trim)
-                    'VentanaCantidad()
-                    VentanaCantidad(True)
+                        Else
+                            ponerProducto2(codigoBarrasProducto, total, grdetalle.RowCount - 1)
 
-                    'Else
-                    '    Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
-                    '    ToastNotification.Show(Me, "El Producto: NO CUENTA CON STOCK DISPONIBLE", img, 5000, eToastGlowColor.Red, eToastPosition.BottomCenter)
-                    '    FilaSelectLote = Nothing
-                    'End If
+                        End If
+                    Else
+                        grdetalle.DataChanged = False
+                        ToastNotification.Show(Me, "El código de barra del producto no existe", My.Resources.WARNING, 3000, eToastGlowColor.Red, eToastPosition.TopCenter)
+                    End If
                 End If
             Else
-                grdetalle.DataChanged = False
-                ToastNotification.Show(Me, "El código de barra del producto no existe o no tiene precio asignado aún", My.Resources.WARNING, 3000, eToastGlowColor.Red, eToastPosition.TopCenter)
-            End If
 
-            'End If
+                If (existeProducto(tbProducto.Text.Trim)) Then
+                    If (Not verificarExistenciaUnica(tbProducto.Text.Trim)) Then
+                        Dim resultado As Boolean = False
+                        ponerProducto(tbProducto.Text.Trim, resultado)
+
+                        'VentanaCantidad()
+                        VentanaCantidad(False)
+                    Else
+                        'If (grdetalle.GetValue("producto").ToString <> String.Empty) Then
+
+                        'sumarCantidad(tbProducto.Text.Trim)
+                        'VentanaCantidad()
+                        VentanaCantidad(True)
+
+                        'Else
+                        '    Dim img As Bitmap = New Bitmap(My.Resources.mensaje, 50, 50)
+                        '    ToastNotification.Show(Me, "El Producto: NO CUENTA CON STOCK DISPONIBLE", img, 5000, eToastGlowColor.Red, eToastPosition.BottomCenter)
+                        '    FilaSelectLote = Nothing
+                        'End If
+                    End If
+                Else
+                    grdetalle.DataChanged = False
+                    ToastNotification.Show(Me, "El código de barra del producto no existe o no tiene precio asignado aún", My.Resources.WARNING, 3000, eToastGlowColor.Red, eToastPosition.TopCenter)
+                End If
+
+            End If
 
             tbProducto.Clear()
             tbProducto.Focus()
@@ -2636,30 +2636,30 @@ Public Class F0_VentasSupermercado
                     End If
                     _fnObtenerFilaDetalle(pos, grdetalle.GetValue("tbnumi"))
                 End If
-                Dim cantidad = Format(total / CDbl(fila(0).ItemArray(18)), "0.00")
+                Dim cantidad = Format(total / CDbl(fila(0).ItemArray(18)), "0.000")
                 Dim precio = fila(0).ItemArray(18)
                 total = cantidad * precio
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbty5prod") = fila(0).ItemArray(0)
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("codigo") = fila(0).ItemArray(1)
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("yfcbarra") = fila(0).ItemArray(2)
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("producto") = fila(0).ItemArray(3)
-                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbumin") = fila(0).ItemArray(13)
-                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("unidad") = fila(0).ItemArray(14)
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbumin") = fila(0).ItemArray(16)
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("unidad") = fila(0).ItemArray(17)
                 'tbcmin
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpbas") = precio
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot") = total
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbtotdesc") = total
                 CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbcmin") = cantidad
                 If (gb_FacturaIncluirICE) Then
-                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = fila(0).ItemArray(17)
+                    CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = fila(0).ItemArray(19)
                 Else
                     CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = 0
                 End If
                 ''Modif
-                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = fila(0).ItemArray(16)
-                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = fila(0).ItemArray(16) * cantidad
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbpcos") = fila(0).ItemArray(19)
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbptot2") = fila(0).ItemArray(19) * cantidad
                 '
-                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = fila(0).ItemArray(17) - cantidad
+                CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = fila(0).ItemArray(20) - cantidad
                 'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tblote") = grProductos.GetValue("iclot")
                 'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("tbfechaVenc") = grProductos.GetValue("icfven")
                 'CType(grdetalle.DataSource, DataTable).Rows(pos).Item("stock") = grProductos.GetValue("iccven")
