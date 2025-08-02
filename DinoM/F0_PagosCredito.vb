@@ -1261,7 +1261,7 @@ Public Class F0_PagosCredito
         ParteDecimal = Math.Round((CDbl(ParteDecimal) * 100), 2)
 
         Dim li As String = Facturacion.ConvertirLiteral.A_fnConvertirLiteral(CDbl(ParteEntera)) + " con " +
-        IIf(ParteDecimal.ToString.Equals("0"), "00", ParteDecimal.ToString) + "/100 Bolivianos"
+        IIf(ParteDecimal.ToString.Equals("0"), "00", ParteDecimal.ToString) + "/100 Pesos"
 
         P_Global.Visualizador = New Visualizador
 
@@ -1291,5 +1291,9 @@ Public Class F0_PagosCredito
             Me.Opacity = 100
             Timer1.Enabled = False
         End If
+    End Sub
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+
     End Sub
 End Class

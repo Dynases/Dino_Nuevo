@@ -784,6 +784,7 @@ Partial Class F0_Venta2
         Me.TbNombre1.PreventEnterBeep = True
         Me.TbNombre1.Size = New System.Drawing.Size(230, 21)
         Me.TbNombre1.TabIndex = 2
+        Me.TbNombre1.Visible = False
         '
         'LabelX4
         '
@@ -800,6 +801,7 @@ Partial Class F0_Venta2
         Me.LabelX4.Size = New System.Drawing.Size(90, 23)
         Me.LabelX4.TabIndex = 279
         Me.LabelX4.Text = "Razon Social:"
+        Me.LabelX4.Visible = False
         '
         'tbNit
         '
@@ -831,7 +833,7 @@ Partial Class F0_Venta2
         Me.LabelX3.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX3.Size = New System.Drawing.Size(60, 23)
         Me.LabelX3.TabIndex = 277
-        Me.LabelX3.Text = "Nit/Ci:"
+        Me.LabelX3.Text = "Cuil:"
         '
         'LabelX10
         '
@@ -1146,7 +1148,7 @@ Partial Class F0_Venta2
         Me.LabelX13.SingleLineColor = System.Drawing.Color.Black
         Me.LabelX13.Size = New System.Drawing.Size(115, 30)
         Me.LabelX13.TabIndex = 52
-        Me.LabelX13.Text = "BS:"
+        Me.LabelX13.Text = "$:"
         Me.LabelX13.TextAlignment = System.Drawing.StringAlignment.Far
         '
         'LabelX20
@@ -1164,6 +1166,7 @@ Partial Class F0_Venta2
         Me.LabelX20.Size = New System.Drawing.Size(140, 18)
         Me.LabelX20.TabIndex = 357
         Me.LabelX20.Text = "TIPO DE CAMBIO:"
+        Me.LabelX20.Visible = False
         '
         'LabelX19
         '
@@ -1246,6 +1249,7 @@ Partial Class F0_Venta2
         Me.cbCambioDolar.SelectedItem = Nothing
         Me.cbCambioDolar.Size = New System.Drawing.Size(144, 22)
         Me.cbCambioDolar.TabIndex = 8
+        Me.cbCambioDolar.Visible = False
         Me.cbCambioDolar.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'btgrupo1
@@ -1416,7 +1420,7 @@ Partial Class F0_Venta2
         Me.LabelX11.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX11.Size = New System.Drawing.Size(210, 18)
         Me.LabelX11.TabIndex = 50
-        Me.LabelX11.Text = "SUBTOTAL BS.:"
+        Me.LabelX11.Text = "SUBTOTAL $:"
         '
         'tbPdesc
         '
@@ -1451,7 +1455,7 @@ Partial Class F0_Venta2
         Me.LabelX9.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX9.Size = New System.Drawing.Size(210, 18)
         Me.LabelX9.TabIndex = 49
-        Me.LabelX9.Text = "DESCUENTO BS.:"
+        Me.LabelX9.Text = "DESCUENTO $:"
         '
         'GroupBox1
         '
@@ -1600,6 +1604,7 @@ Partial Class F0_Venta2
         Me.tbMontoDolar.Name = "tbMontoDolar"
         Me.tbMontoDolar.Size = New System.Drawing.Size(110, 26)
         Me.tbMontoDolar.TabIndex = 4
+        Me.tbMontoDolar.Visible = False
         Me.tbMontoDolar.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
         '
         'LabelX6
@@ -1617,6 +1622,7 @@ Partial Class F0_Venta2
         Me.LabelX6.Size = New System.Drawing.Size(70, 18)
         Me.LabelX6.TabIndex = 66
         Me.LabelX6.Text = "Mont. $:"
+        Me.LabelX6.Visible = False
         '
         'GroupBox2
         '

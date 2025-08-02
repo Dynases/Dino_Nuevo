@@ -726,7 +726,7 @@ Partial Class F0_MCompras
         Me.swMoneda.OffBackColor = System.Drawing.Color.LawnGreen
         Me.swMoneda.OffText = "DOLAR"
         Me.swMoneda.OnBackColor = System.Drawing.Color.Gold
-        Me.swMoneda.OnText = "BOLIVIANO"
+        Me.swMoneda.OnText = "PESOS"
         Me.swMoneda.Size = New System.Drawing.Size(120, 22)
         Me.swMoneda.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
         Me.swMoneda.TabIndex = 672

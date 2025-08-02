@@ -151,7 +151,7 @@ Public Class F0_CierreCaja
             End With
 
             With Dgv_Cortes.RootTable.Columns("cdCorteB")
-                .Caption = "CORTE BS."
+                .Caption = "CORTE $."
                 .Width = 130
                 .FormatString = "0.00"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -159,7 +159,7 @@ Public Class F0_CierreCaja
                 .Position = 3
             End With
             With Dgv_Cortes.RootTable.Columns("cdCantB")
-                .Caption = "CANTIDAD BS."
+                .Caption = "CANTIDAD $."
                 .Width = 130
                 .FormatString = "0"
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
@@ -167,7 +167,7 @@ Public Class F0_CierreCaja
                 .Position = 4
             End With
             With Dgv_Cortes.RootTable.Columns("cdTotalB")
-                .Caption = "TOTAL BS."
+                .Caption = "TOTAL $."
                 .Width = 170
                 .FormatString = "0.00"
                 .AggregateFunction = AggregateFunction.Sum
@@ -267,7 +267,7 @@ Public Class F0_CierreCaja
 
             End With
             With Dgv_Depositos.RootTable.Columns("ceMonto")
-                .Caption = "MONTO BS"
+                .Caption = "MONTO $"
                 .Width = 150
                 .AggregateFunction = AggregateFunction.Sum
                 .FormatString = "0.00"
@@ -309,7 +309,7 @@ Public Class F0_CierreCaja
             End With
 
             With Dgv_VentasPagos.RootTable.Columns("contado")
-                .Caption = "CONTADO BS."
+                .Caption = "CONTADO $."
                 .Width = 120
                 .Visible = True
                 .FormatString = "0.00"
@@ -326,7 +326,7 @@ Public Class F0_CierreCaja
 
             End With
             With Dgv_VentasPagos.RootTable.Columns("credito")
-                .Caption = "CRÉDITO BS."
+                .Caption = "CRÉDITO $."
                 .Width = 120
                 .Visible = True
                 .FormatString = "0.00"
@@ -335,7 +335,7 @@ Public Class F0_CierreCaja
             End With
 
             With Dgv_VentasPagos.RootTable.Columns("tarjeta")
-                .Caption = "TARJETA BS."
+                .Caption = "TARJETA $."
                 .Width = 100
                 .Visible = True
                 .FormatString = "0.00"
@@ -343,7 +343,7 @@ Public Class F0_CierreCaja
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
             With Dgv_VentasPagos.RootTable.Columns("QR")
-                .Caption = "QR BS."
+                .Caption = "QR $."
                 .Width = 100
                 .Visible = True
                 .FormatString = "0.00"
@@ -351,7 +351,7 @@ Public Class F0_CierreCaja
                 .CellStyle.TextAlignment = Janus.Windows.GridEX.TextAlignment.Far
             End With
             With Dgv_VentasPagos.RootTable.Columns("pagos")
-                .Caption = "PAGOS BS."
+                .Caption = "PAGOS $."
                 .Width = 100
                 .Visible = True
                 .FormatString = "0.00"
@@ -367,7 +367,7 @@ Public Class F0_CierreCaja
                 .AggregateFunction = AggregateFunction.Sum
             End With
             With Dgv_VentasPagos.RootTable.Columns("totalbs")
-                .Caption = "TOTAL BS."
+                .Caption = "TOTAL $."
                 .Width = 120
                 .Visible = True
                 .FormatString = "0.00"
@@ -413,7 +413,7 @@ Public Class F0_CierreCaja
             End With
 
             With Dgv_VentasPagos.RootTable.Columns("contado")
-                .Caption = "CONTADO BS."
+                .Caption = "CONTADO $."
                 .Width = 120
                 .Visible = True
                 .FormatString = "0.00"
@@ -432,7 +432,7 @@ Public Class F0_CierreCaja
 
             End With
             With Dgv_VentasPagos.RootTable.Columns("credito")
-                .Caption = "CRÉDITO BS."
+                .Caption = "CRÉDITO $."
                 .Width = 120
                 .Visible = True
                 .FormatString = "0.00"
@@ -442,7 +442,7 @@ Public Class F0_CierreCaja
             End With
 
             With Dgv_VentasPagos.RootTable.Columns("tarjeta")
-                .Caption = "TARJETA BS."
+                .Caption = "TARJETA $."
                 .Width = 100
                 .Visible = True
                 .FormatString = "0.00"
@@ -451,7 +451,7 @@ Public Class F0_CierreCaja
                 .HeaderAlignment = TextAlignment.Far
             End With
             With Dgv_VentasPagos.RootTable.Columns("QR")
-                .Caption = "QR BS."
+                .Caption = "QR $."
                 .Width = 100
                 .Visible = True
                 .FormatString = "0.00"
@@ -460,7 +460,7 @@ Public Class F0_CierreCaja
                 .HeaderAlignment = TextAlignment.Far
             End With
             With Dgv_VentasPagos.RootTable.Columns("pagos")
-                .Caption = "PAGOS BS."
+                .Caption = "PAGOS $."
                 .Width = 120
                 .Visible = True
                 .FormatString = "0.00"
@@ -477,7 +477,7 @@ Public Class F0_CierreCaja
                 .AggregateFunction = AggregateFunction.Sum
             End With
             With Dgv_VentasPagos.RootTable.Columns("totalbs")
-                .Caption = "TOTAL BS"
+                .Caption = "TOTAL $"
                 .Width = 120
                 .Visible = True
                 .FormatString = "0.00"

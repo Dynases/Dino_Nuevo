@@ -1529,6 +1529,17 @@ Public Class AccesoLogica
 
         Return _Tabla
     End Function
+
+    Public Shared Function L_fnTraerClientes(cod As Integer) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 22))
+        _listParam.Add(New Datos.DParametro("@tanumi", cod))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TV001", _listParam)
+
+        Return _Tabla
+    End Function
     Public Shared Function L_fnListarProforma() As DataTable
         Dim _Tabla As DataTable
 
@@ -1893,6 +1904,15 @@ Public Class AccesoLogica
 
         Dim _listParam As New List(Of Datos.DParametro)
         _listParam.Add(New Datos.DParametro("@tipo", 6))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TC001", _listParam)
+
+        Return _Tabla
+    End Function
+    Public Shared Function L_fnListarProveedores2() As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 13))
         _Tabla = D_ProcedimientoConParam("sp_Mam_TC001", _listParam)
 
         Return _Tabla
@@ -3099,7 +3119,7 @@ Public Class AccesoLogica
 
         Dim _listParam As New List(Of Datos.DParametro)
 
-        _listParam.Add(New Datos.DParametro("@tipo", 11))
+        _listParam.Add(New Datos.DParametro("@tipo", 10))
         '_listParam.Add(New Datos.DParametro("@tduact", L_Usuario))
         _listParam.Add(New Datos.DParametro("@tenumi", _numi))
         _listParam.Add(New Datos.DParametro("@tefdoc", _fecha))
@@ -3260,6 +3280,59 @@ Public Class AccesoLogica
         End If
 
         Return _resultado
+    End Function
+
+    Public Shared Function _GuadarCobroCliente(codCliente As Integer, glosa As String, monto As Double, fecha As String, cobrar As Double, cobrado As Double, saldo As Double,
+                                              detalle As DataTable) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+        '   @canumi ,@caalm,@cafdoc ,@caty4prov  ,@catven,
+        '@cafvcr,@camon ,@caest  ,@caobs ,@cadesc ,@newFecha,@newHora,@cauact
+        _listParam.Add(New Datos.DParametro("@tipo", 11))
+        _listParam.Add(New Datos.DParametro("@tenumi", codCliente))
+        _listParam.Add(New Datos.DParametro("@tefdoc", fecha))
+        _listParam.Add(New Datos.DParametro("@monto", monto))
+        _listParam.Add(New Datos.DParametro("@teobs", glosa))
+        _listParam.Add(New Datos.DParametro("@cobrar", cobrar))
+        _listParam.Add(New Datos.DParametro("@cobrado", cobrado))
+        _listParam.Add(New Datos.DParametro("@saldo", saldo))
+        _listParam.Add(New Datos.DParametro("@teuact", L_Usuario))
+        _listParam.Add(New Datos.DParametro("@cobro", "", detalle))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TV00121Cheque", _listParam)
+
+        Return _Tabla
+    End Function
+
+
+    Public Shared Function L_fnListarClientesTodos() As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 30))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TV001", _listParam)
+
+        Return _Tabla
+    End Function
+
+    Public Shared Function TraerPagosTodos() As DataTable
+
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 6))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TV00121", _listParam)
+        Return _Tabla
+    End Function
+    Public Shared Function TraerPagos(cod As Integer) As DataTable
+
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 7))
+        _listParam.Add(New Datos.DParametro("@tdnumi", cod))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_TV00121", _listParam)
+        Return _Tabla
     End Function
 
     Public Shared Function L_fnGrabarCobranza2(_tenumi As String, _tefdoc As String, _tety4vend As Integer, _teobs As String, detalle As DataTable) As Boolean
@@ -4355,6 +4428,23 @@ Public Class AccesoLogica
 
         Return _Tabla
     End Function
+
+    Public Shared Function L_prVentasVsProductosxProveedor(fechaI As String, fechaF As String, almacen As Integer, proveedor As Integer) As DataTable
+        Dim _Tabla As DataTable
+
+        Dim _listParam As New List(Of Datos.DParametro)
+
+        _listParam.Add(New Datos.DParametro("@tipo", 8))
+        _listParam.Add(New Datos.DParametro("@fechaI", fechaI))
+        _listParam.Add(New Datos.DParametro("@fechaF", fechaF))
+        _listParam.Add(New Datos.DParametro("@almacen", almacen))
+        _listParam.Add(New Datos.DParametro("@vendedor", proveedor))
+        _listParam.Add(New Datos.DParametro("@uact", L_Usuario))
+
+        _Tabla = D_ProcedimientoConParam("Sp_Mam_ReporteVentasVsCostos", _listParam)
+
+        Return _Tabla
+    End Function
     Public Shared Function L_prVentasVsProductosTodosALmacenesPrecio(fechaI As String, fechaF As String) As DataTable
         Dim _Tabla As DataTable
 
@@ -4931,6 +5021,17 @@ Public Class AccesoLogica
         Dim _Tabla As DataTable
         Dim _listParam As New List(Of Datos.DParametro)
         _listParam.Add(New Datos.DParametro("@tipo", 4))
+        _listParam.Add(New Datos.DParametro("@cliente", idCliente))
+        _listParam.Add(New Datos.DParametro("@fechai", fechai))
+        _listParam.Add(New Datos.DParametro("@fechaf", fechaf))
+        _listParam.Add(New Datos.DParametro("@cauact", L_Usuario))
+        _Tabla = D_ProcedimientoConParam("sp_Mam_EstadoCuentas", _listParam)
+        Return _Tabla
+    End Function
+    Public Shared Function L_prListarEstadoCuentasCliente2(idCliente As Integer, fechai As String, fechaf As String) As DataTable
+        Dim _Tabla As DataTable
+        Dim _listParam As New List(Of Datos.DParametro)
+        _listParam.Add(New Datos.DParametro("@tipo", 9))
         _listParam.Add(New Datos.DParametro("@cliente", idCliente))
         _listParam.Add(New Datos.DParametro("@fechai", fechai))
         _listParam.Add(New Datos.DParametro("@fechaf", fechaf))

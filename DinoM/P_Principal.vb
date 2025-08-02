@@ -1161,6 +1161,11 @@ Public Class P_Principal
         frm.Show()
     End Sub
 
+    Private Sub btEstadoCuentasClientes2_Click(sender As Object, e As EventArgs) Handles btEstadoCuentasClientes2.Click
+        Dim frm As New Pr_EstadoCuentasClientes2
+        frm.Show()
+    End Sub
+
 
 
 

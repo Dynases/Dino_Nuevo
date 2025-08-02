@@ -808,7 +808,7 @@ Public Class F0_PagosCreditoCompraUlt
         ParteDecimal = Math.Round((CDbl(ParteDecimal) * 100), 2)
 
         Dim li As String = Facturacion.ConvertirLiteral.A_fnConvertirLiteral(CDbl(ParteEntera)) + " con " +
-        IIf(ParteDecimal.ToString.Equals("0"), "00", ParteDecimal.ToString) + "/100 Bolivianos"
+        IIf(ParteDecimal.ToString.Equals("0"), "00", ParteDecimal.ToString) + "/100 Pesos"
 
         P_Global.Visualizador = New Visualizador
 

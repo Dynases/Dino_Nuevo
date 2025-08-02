@@ -2400,7 +2400,7 @@ Public Class F0_VentasSupermercado
             Dim ef = New Efecto
             ef.tipo = 6
             ef.TotalVenta = Math.Round(tbTotal.Value, 2)
-            ef.Nit = lbNit.Text
+            ef.Nit = "0" 'lbNit.Text
             ef.RazonSocial = lbCliente.Text
             ef.TipoVenta = IIf(swTipoVenta.Value = True, 1, 0)
 
@@ -2943,6 +2943,7 @@ Public Class F0_VentasSupermercado
             End If
 
             ef.NameProducto = fila(0).Item("producto")
+
             ef.Conversion = dtProdConversion.Rows(0).Item("yfvsup")
             Dim Cantidad As Double = fila(0).Item("tbcmin")
 

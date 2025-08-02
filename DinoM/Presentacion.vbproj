@@ -66,7 +66,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AxInterop.AcroPDFLib">
-      <HintPath>C:\libreriasDiego\PDF\AxInterop.AcroPDFLib.dll</HintPath>
+      <HintPath>C:\librerias\PDF\AxInterop.AcroPDFLib.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -133,48 +133,54 @@
       <HintPath>..\..\..\Google Drive\Librerias\DotNet\DevComponents.TreeGX.dll</HintPath>
     </Reference>
     <Reference Include="FlashControlV71">
-      <HintPath>C:\libreriasDiego\FlashControlV71.dll</HintPath>
+      <HintPath>C:\librerias\FlashControlV71.dll</HintPath>
     </Reference>
     <Reference Include="Gma.QrCodeNet.Encoding">
-      <HintPath>C:\libreriasDiego\QrCode\Gma.QrCodeNet.Encoding.dll</HintPath>
+      <HintPath>C:\librerias\QrCode\Gma.QrCodeNet.Encoding.dll</HintPath>
     </Reference>
     <Reference Include="GMap.NET.Core">
-      <HintPath>C:\libreriasDiego\Gmap\GMap.NET.Core.dll</HintPath>
+      <HintPath>C:\librerias\Gmap\GMap.NET.Core.dll</HintPath>
     </Reference>
     <Reference Include="GMap.NET.WindowsForms">
-      <HintPath>C:\libreriasDiego\Gmap\GMap.NET.WindowsForms.dll</HintPath>
+      <HintPath>C:\librerias\Gmap\GMap.NET.WindowsForms.dll</HintPath>
     </Reference>
     <Reference Include="Interop.AcroPDFLib">
-      <HintPath>C:\libreriasDiego\PDF\Interop.AcroPDFLib.dll</HintPath>
+      <HintPath>C:\librerias\PDF\Interop.AcroPDFLib.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Interop.AcroPDFLib.1.0">
-      <HintPath>C:\libreriasDiego\PDF\Interop.AcroPDFLib.1.0.dll</HintPath>
+      <HintPath>C:\librerias\Interop.AcroPDFLib.1.0.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="itextsharp">
-      <HintPath>C:\libreriasDiego\itextsharp.dll</HintPath>
+      <HintPath>C:\librerias\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Data.v3">
-      <HintPath>C:\libreriasDiego\Janus\Janus.Data.v3.dll</HintPath>
+      <HintPath>C:\librerias\Janus\Janus.Data.v3.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Windows.CalendarCombo.v3">
-      <HintPath>C:\libreriasDiego\Janus\Janus.Windows.CalendarCombo.v3.dll</HintPath>
+      <HintPath>C:\librerias\Janus\Janus.Windows.CalendarCombo.v3.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Windows.Common.v3">
-      <HintPath>C:\libreriasDiego\Janus\Janus.Windows.Common.v3.dll</HintPath>
+      <HintPath>C:\librerias\Janus\Janus.Windows.Common.v3.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Windows.GridEX.v3">
-      <HintPath>C:\libreriasDiego\Janus\Janus.Windows.GridEX.v3.dll</HintPath>
+      <HintPath>C:\librerias\Janus\Janus.Windows.GridEX.v3.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Windows.Ribbon.v3">
-      <HintPath>C:\libreriasDiego\Janus\Janus.Windows.Ribbon.v3.dll</HintPath>
+      <HintPath>C:\librerias\Janus\Janus.Windows.Ribbon.v3.dll</HintPath>
     </Reference>
     <Reference Include="Janus.Windows.UI.v3">
-      <HintPath>C:\libreriasDiego\Janus\Janus.Windows.UI.v3.dll</HintPath>
+      <HintPath>C:\librerias\Janus\Janus.Windows.UI.v3.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="OnBarcode.Barcode.WinForms">
-      <HintPath>C:\libreriasDiego\QrCode\OnBarcode.Barcode.WinForms.dll</HintPath>
+      <HintPath>C:\librerias\QrCode\OnBarcode.Barcode.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net45\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -451,6 +457,10 @@
     <Compile Include="F1_Zonas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Facturacion\DBApi.vb" />
+    <Compile Include="Facturacion\EmisorEnvio.vb" />
+    <Compile Include="Facturacion\EmisorResp.vb" />
+    <Compile Include="Facturacion\Parametro.vb" />
     <Compile Include="Font\Custom.vb" />
     <Compile Include="Formularios\F0_DetalleServicio.Designer.vb">
       <DependentUpon>F0_DetalleServicio.vb</DependentUpon>
@@ -498,6 +508,12 @@
       <DependentUpon>NroCaja.vb</DependentUpon>
     </Compile>
     <Compile Include="NroCaja.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pr_EstadoCuentasClientes2.Designer.vb">
+      <DependentUpon>Pr_EstadoCuentasClientes2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Pr_EstadoCuentasClientes2.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Pr_EstadoCuentasClientesTodos.Designer.vb">
@@ -697,6 +713,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>R_NotaCompra.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reporte\R_NotaVenta_Carta2.vb">
+      <DependentUpon>R_NotaVenta_Carta2.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Reporte\R_NotaVenta_MediaCarta.vb">
       <AutoGen>True</AutoGen>
@@ -1010,6 +1032,12 @@
       <DependentUpon>R_VentasAtendidasAlmacenVendedor.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reporte\R_VentasProductosProveedor.vb">
+      <DependentUpon>R_VentasProductosProveedor.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Reporte\R_VentasProductosAgrupado.vb">
       <DependentUpon>R_VentasProductosAgrupado.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -1232,6 +1260,9 @@
     <EmbeddedResource Include="NroCaja.resx">
       <DependentUpon>NroCaja.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pr_EstadoCuentasClientes2.resx">
+      <DependentUpon>Pr_EstadoCuentasClientes2.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pr_EstadoCuentasClientesTodos.resx">
       <DependentUpon>Pr_EstadoCuentasClientesTodos.vb</DependentUpon>
     </EmbeddedResource>
@@ -1343,6 +1374,10 @@
     <EmbeddedResource Include="Reporte\R_NotaCompra.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>R_NotaCompra.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\R_NotaVenta_Carta2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>R_NotaVenta_Carta2.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reporte\R_NotaVenta_MediaCarta.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -1551,6 +1586,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>R_VentasAtendidasAlmacenVendedor.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\R_VentasProductosProveedor.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>R_VentasProductosProveedor.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reporte\R_VentasProductosAgrupado.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>R_VentasProductosAgrupado.vb</LastGenOutput>
@@ -1622,6 +1661,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\addimg.png" />
   </ItemGroup>
   <ItemGroup>

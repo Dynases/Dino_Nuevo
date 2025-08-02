@@ -742,4 +742,39 @@ Public Class F0_Precios
             Timer1.Enabled = False
         End If
     End Sub
+
+    Private Sub grprecio_CellValueChanged(sender As Object, e As ColumnActionEventArgs) Handles grprecio.CellValueChanged
+
+        If btnGrabar.Enabled = False Then
+
+            Return
+        End If
+        'Deshabilitar la columna de Productos y solo habilitar la de los precios
+        If e.Column.Index = grprecio.RootTable.Columns("1099").Index Then 'Or e.Column.Index = grprecio.RootTable.Columns("73").Index
+            If grprecio.GetValue("1099") = String.Empty Or Not IsNumeric(grprecio.GetValue("1099")) Then
+                grprecio.SetValue("1099", 0)
+            End If
+        End If
+        If e.Column.Index = grprecio.RootTable.Columns("70").Index Then 'Or e.Column.Index = grprecio.RootTable.Columns("73").Index
+            If grprecio.GetValue("70") = String.Empty Or Not IsNumeric(grprecio.GetValue("70")) Then
+                grprecio.SetValue("70", 0)
+            End If
+        End If
+        'If (e.Column.Index = grprecio.RootTable.Columns("80").Index) Then 'Or e.Column.Index = grprecio.RootTable.Columns("73").Index
+        '    If grprecio.GetValue("80") = String.Empty Or Not IsNumeric(grprecio.GetValue("80")) Then
+        '        grprecio.SetValue("80", 0)
+        '    End If
+        'End If
+        'If (e.Column.Index = grprecio.RootTable.Columns("90").Index) Then 'Or e.Column.Index = grprecio.RootTable.Columns("73").Index
+        '    If grprecio.GetValue("90") = String.Empty Or Not IsNumeric(grprecio.GetValue("90")) Then
+        '        grprecio.SetValue("90", 0)
+        '    End If
+        'End If
+        'If (e.Column.Index = grprecio.RootTable.Columns("100").Index) Then 'Or e.Column.Index = grprecio.RootTable.Columns("73").Index
+        '    If grprecio.GetValue("100") = String.Empty Or Not IsNumeric(grprecio.GetValue("100")) Then
+        '        grprecio.SetValue("100", 0)
+        '    End If
+        'End If
+
+    End Sub
 End Class

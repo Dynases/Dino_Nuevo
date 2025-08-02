@@ -156,7 +156,7 @@ Partial Class F1_MontoPagar
         Me.lbCambio.SingleLineColor = System.Drawing.SystemColors.Control
         Me.lbCambio.Size = New System.Drawing.Size(80, 40)
         Me.lbCambio.TabIndex = 367
-        Me.lbCambio.Text = "Cambio Bs.:"
+        Me.lbCambio.Text = "Cambio $:"
         '
         'lbMontoPagado
         '
@@ -172,7 +172,7 @@ Partial Class F1_MontoPagar
         Me.lbMontoPagado.SingleLineColor = System.Drawing.SystemColors.Control
         Me.lbMontoPagado.Size = New System.Drawing.Size(110, 33)
         Me.lbMontoPagado.TabIndex = 366
-        Me.lbMontoPagado.Text = "Total Venta Bs. :"
+        Me.lbMontoPagado.Text = "Total Venta $ :"
         '
         'GroupBox1
         '
@@ -262,6 +262,7 @@ Partial Class F1_MontoPagar
         Me.LabelX20.Size = New System.Drawing.Size(90, 18)
         Me.LabelX20.TabIndex = 370
         Me.LabelX20.Text = "Tipo Cambio:"
+        Me.LabelX20.Visible = False
         '
         'cbCambioDolar
         '
@@ -279,6 +280,7 @@ Partial Class F1_MontoPagar
         Me.cbCambioDolar.SelectedItem = Nothing
         Me.cbCambioDolar.Size = New System.Drawing.Size(120, 22)
         Me.cbCambioDolar.TabIndex = 368
+        Me.cbCambioDolar.Visible = False
         Me.cbCambioDolar.VisualStyle = Janus.Windows.GridEX.VisualStyle.Office2007
         '
         'tbMontoTarej
@@ -347,7 +349,7 @@ Partial Class F1_MontoPagar
         Me.LabelX5.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX5.Size = New System.Drawing.Size(98, 18)
         Me.LabelX5.TabIndex = 64
-        Me.LabelX5.Text = "M.Pagado Bs.:"
+        Me.LabelX5.Text = "M.Pagado $:"
         '
         'tbMontoDolar
         '
@@ -365,6 +367,7 @@ Partial Class F1_MontoPagar
         Me.tbMontoDolar.Name = "tbMontoDolar"
         Me.tbMontoDolar.Size = New System.Drawing.Size(110, 26)
         Me.tbMontoDolar.TabIndex = 100
+        Me.tbMontoDolar.Visible = False
         Me.tbMontoDolar.WatermarkAlignment = DevComponents.Editors.eTextAlignment.Right
         '
         'LabelX6
@@ -382,6 +385,7 @@ Partial Class F1_MontoPagar
         Me.LabelX6.Size = New System.Drawing.Size(60, 18)
         Me.LabelX6.TabIndex = 66
         Me.LabelX6.Text = "Mont. $:"
+        Me.LabelX6.Visible = False
         '
         'GroupBox3
         '
@@ -421,6 +425,7 @@ Partial Class F1_MontoPagar
         Me.tbNit.Name = "tbNit"
         Me.tbNit.Size = New System.Drawing.Size(245, 25)
         Me.tbNit.TabIndex = 0
+        Me.tbNit.Text = "0"
         '
         'LabelX3
         '
@@ -436,7 +441,7 @@ Partial Class F1_MontoPagar
         Me.LabelX3.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX3.Size = New System.Drawing.Size(65, 18)
         Me.LabelX3.TabIndex = 367
-        Me.LabelX3.Text = "Nit:"
+        Me.LabelX3.Text = "Cuil:"
         '
         'LabelX4
         '
@@ -452,7 +457,7 @@ Partial Class F1_MontoPagar
         Me.LabelX4.SingleLineColor = System.Drawing.SystemColors.Control
         Me.LabelX4.Size = New System.Drawing.Size(89, 18)
         Me.LabelX4.TabIndex = 366
-        Me.LabelX4.Text = "Razón Social:"
+        Me.LabelX4.Text = "Nombre:"
         '
         'F1_MontoPagar
         '

@@ -1,5 +1,6 @@
 ﻿Imports System.Drawing.Printing
 Imports System.IO
+Imports System.Net
 Imports CrystalDecisions.Shared
 Imports DevComponents.DotNetBar
 Imports DevComponents.DotNetBar.Controls
@@ -7,6 +8,9 @@ Imports Facturacion
 Imports Janus.Windows.GridEX
 Imports Logica.AccesoLogica
 Imports UTILITIES
+Imports Newtonsoft.Json
+Imports DinoM.EmisorResp
+
 
 Public Class F0_Venta2
     Dim _Inter As Integer = 0
@@ -1715,16 +1719,17 @@ Public Class F0_Venta2
             If res Then
                 'res = P_fnGrabarFacturarTFV001(numi)
                 'Emite factura
-                If (gb_FacturaEmite) Then
-                    If tbNit.Text <> String.Empty Then
-                        P_fnGenerarFactura(numi)
-                        _prImiprimirNotaVenta(numi)
-                    Else
-                        _prImiprimirNotaVenta(numi)
-                    End If
-                Else
-                    _prImiprimirNotaVenta(numi)
-                End If
+                P_fnGenerarFactura(numi)
+                'If (gb_FacturaEmite) Then
+                '    If tbNit.Text <> String.Empty Then
+                '        P_fnGenerarFactura(numi)
+                '        _prImiprimirNotaVenta(numi)
+                '    Else
+                '        _prImiprimirNotaVenta(numi)
+                '    End If
+                'Else
+                _prImiprimirNotaVenta(numi)
+                'End If
 
 
                 Dim img As Bitmap = New Bitmap(My.Resources.checked, 50, 50)
@@ -1888,32 +1893,177 @@ Public Class F0_Venta2
         End If
 
     End Sub
+    'Private Function P_fnGenerarFactura(numi As String) As Boolean
+    '    Dim res As Boolean = False
+    '    res = P_fnGrabarFacturarTFV001(numi) ' Grabar en la TFV001
+    '    If (res) Then
+    '        If (P_fnValidarFactura()) Then
+    '            'Validar para facturar
+    '            P_prImprimirFacturar(numi, True, True) '_Codigo de a tabla TV001
+    '        Else
+    '            'Volver todo al estada anterior
+    '            ToastNotification.Show(Me, "No es posible facturar, vuelva a ingresar he intente nuevamente!!!".ToUpper,
+    '                                   My.Resources.OK,
+    '                                   5 * 1000,
+    '                                   eToastGlowColor.Red,
+    '                                   eToastPosition.MiddleCenter)
+    '        End If
+
+    '        If (Not tbNit.Text.Trim.Equals("0")) Then
+    '            L_Grabar_Nit(tbNit.Text.Trim, TbNombre1.Text.Trim, TbNombre2.Text.Trim)
+    '        Else
+    '            L_Grabar_Nit(tbNit.Text, "S/N", "")
+    '        End If
+    '    End If
+
+    '    Return res
+    'End Function
+
     Private Function P_fnGenerarFactura(numi As String) As Boolean
         Dim res As Boolean = False
-        res = P_fnGrabarFacturarTFV001(numi) ' Grabar en la TFV001
-        If (res) Then
-            If (P_fnValidarFactura()) Then
-                'Validar para facturar
-                P_prImprimirFacturar(numi, True, True) '_Codigo de a tabla TV001
-            Else
-                'Volver todo al estada anterior
-                ToastNotification.Show(Me, "No es posible facturar, vuelva a ingresar he intente nuevamente!!!".ToUpper,
-                                       My.Resources.OK,
-                                       5 * 1000,
-                                       eToastGlowColor.Red,
-                                       eToastPosition.MiddleCenter)
-            End If
+        ' L_BuscarCodCanero(_CodCliente)
+        'Randomize()
 
-            If (Not tbNit.Text.Trim.Equals("0")) Then
-                L_Grabar_Nit(tbNit.Text.Trim, TbNombre1.Text.Trim, TbNombre2.Text.Trim)
-            Else
-                L_Grabar_Nit(tbNit.Text, "S/N", "")
-            End If
+
+
+        Dim api = New DBApi()
+        Dim Emenvio = New EmisorEnvio.Emisor()
+
+        'Dim TDoc = tipoDocumento 'obtiene el 'Codigo Tipo de documento' 
+
+
+        Dim array(rearmarDetalle().Rows.Count - 1) As EmisorEnvio.Detalle
+        Dim val = 0
+        Dim PrecioTot = 0.00000
+        For Each row In rearmarDetalle().Rows
+
+            Dim EmenvioProducto = New EmisorEnvio.producto
+            EmenvioProducto.descripcion = row(5).ToString
+            EmenvioProducto.codigo = row(2)
+            EmenvioProducto.lista_precios = "standard"
+            EmenvioProducto.leyenda = ""
+            EmenvioProducto.unidad_bulto = 1
+            EmenvioProducto.alicuota = 0
+            EmenvioProducto.actualiza_precio = "S"
+            EmenvioProducto.rg5329 = "N"
+            EmenvioProducto.precio_unitario_sin_iva = row(10)
+
+            Dim EmenvioDetalle = New EmisorEnvio.Detalle()
+            EmenvioDetalle.cantidad = row("tbcmin").ToString
+            EmenvioDetalle.afecta_stock = "S"
+            EmenvioDetalle.actualiza_precio = "S"
+            EmenvioDetalle.bonificacion_porcentaje = 0
+            EmenvioDetalle.producto = EmenvioProducto
+
+            PrecioTot = PrecioTot + (EmenvioDetalle.cantidad * EmenvioProducto.precio_unitario_sin_iva) 'Format(PrecioTot + Format((Convert.ToDecimal(row("tbpbas")) * 6.96), "0.00000") * (row("tbcmin")), "0.00") 'total
+
+
+            array(val) = EmenvioDetalle
+            'vector = array
+            val = val + 1
+
+        Next
+
+        Dim doc As Integer
+
+
+        Dim dt As DataTable = L_fnTraerClientes(_CodCliente)
+
+        If dt.Rows(0).Item("yddctnum") = "" Then
+            doc = 123
+        Else
+            doc = CInt(dt.Rows(0).Item("yddctnum"))
+        End If
+        Dim EnvioCliente = New EmisorEnvio.cliente
+        EnvioCliente.documento_tipo = "DNI"
+        EnvioCliente.condicion_iva = "CF"
+        EnvioCliente.domicilio = dt.Rows(0).Item("yddirec")
+        EnvioCliente.condicion_pago = "201"
+        EnvioCliente.documento_nro = doc
+        EnvioCliente.razon_social = dt.Rows(0).Item("ydrazonsocial")
+        EnvioCliente.provincia = 2
+        EnvioCliente.email = "prueba1@gmail.com"
+        EnvioCliente.envia_por_mail = "N"
+        EnvioCliente.rg5329 = "N"
+
+        Dim EnvioComprobante = New EmisorEnvio.comprobante
+        EnvioComprobante.rubro = "Distribución de Alimentos"
+        EnvioComprobante.percepciones_iva = 0
+        EnvioComprobante.tipo = "FACTURA C"
+        EnvioComprobante.numero = 2144
+        EnvioComprobante.bonificacion = 0
+        EnvioComprobante.operacion = "V"
+        EnvioComprobante.detalle = array
+        EnvioComprobante.fecha = tbFechaVenta.Value.ToString("dd/MM/yyyy")
+        EnvioComprobante.vencimiento = "31/12/2025" 'tbFechaVenc.Value.ToString("dd/MM/yyyy")
+        EnvioComprobante.rubro_grupo_contable = "Productos"
+        EnvioComprobante.total = PrecioTot
+        EnvioComprobante.cotizacion = 1
+        EnvioComprobante.moneda = "PES"
+        EnvioComprobante.punto_venta = 1
+
+
+
+
+        Emenvio.apitoken = "6f478656a47bd32906ad89afece5e52c"
+        Emenvio.cliente = EnvioCliente
+        Emenvio.apikey = 63694
+        Emenvio.usertoken = "2c6e8b87c3007a094a3180b0123b8dfd36a65d0003b084b501eb40e0fa6bb3fb"
+        Emenvio.comprobante = EnvioComprobante
+
+        'Emenvio.comprobante = 
+
+        '--------------------
+        'Emenvio.codigoDocumentoSector = 1 '-------------------
+
+
+
+
+
+
+
+
+        'Emenvio.actividadEconomica = 692000 'falta
+        ServicePointManager.Expect100Continue = True
+        ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
+        Dim json = JsonConvert.SerializeObject(Emenvio)
+        Dim url = "https://www.tusfacturas.app/app/api/v2/facturacion/nuevo"
+
+        Dim headers = New List(Of Parametro) From {
+            New Parametro("Content-Type", "application/json")
+        }
+
+        'Dim parametros = New List(Of Parametro)
+
+        Dim response = api.Post(url, headers, Emenvio)
+
+        Dim result = JsonConvert.DeserializeObject(Of RespEmisor)(response)
+        'Dim resultError = JsonConvert.DeserializeObject(Of Resp400)(response)
+
+        'codigoRecepcion = result.codigoRecepcion
+        'estadoEmisionEdoc = result.estadoEmisionEDOC
+        'fechaEmision1 = result.fechaEmision
+        'cuf = result.cuf
+        'cuis = result.cuis
+        'cufd = result.cufd
+        'codigoControl = result.codigoControl
+        'linkCodigoQr = result.linkCodigoQR
+        'codigoError = result.codigoError
+        'mensajeRespuesta = result.mensajeRespuesta
+        'If estadoEmisionEdoc = 2 Then
+        '    mensajeRespuesta = "Factura validada correctamente por Impuestos."
+        'End If
+
+
+        Dim codigo = result.rta
+        Dim xml As String
+
+        If codigo <> "" Then
+            res = True
         End If
 
         Return res
     End Function
-
     Private Function P_fnGrabarFacturarTFV001(numi As String) As Boolean
         Dim a As Double = CDbl(Convert.ToDouble(tbTotalBs.Text) + tbMdesc.Value)
         'Dim b As Double = CDbl(IIf(IsDBNull(tbIce.Value), 0, tbIce.Value)) 'Ya esta calculado el 55% del ICE
@@ -2822,9 +2972,20 @@ Public Class F0_Venta2
             lbCredito.Visible = True
             tbFechaVenc.Visible = True
             tbFechaVenc.Value = DateAdd(DateInterval.Day, _dias, Now.Date)
+
+            tbMontoBs.Value = 0
+            tbMontoDolar.Value = 0
+            tbMontoTarej.Value = 0
+            tbMontoBs.IsInputReadOnly = True
+            tbMontoDolar.IsInputReadOnly = True
+            tbMontoTarej.IsInputReadOnly = True
         Else
             lbCredito.Visible = False
             tbFechaVenc.Visible = False
+
+            tbMontoBs.IsInputReadOnly = False
+            tbMontoDolar.IsInputReadOnly = False
+            tbMontoTarej.IsInputReadOnly = False
         End If
     End Sub
 
@@ -3894,35 +4055,35 @@ salirIf:
         End If
     End Sub
     Private Sub btnImprimir_Click(sender As Object, e As EventArgs) Handles btnImprimir.Click
-        Try
-            If (Not _fnAccesible()) Then
+        'Try
+        '    If (Not _fnAccesible()) Then
 
-                If (gb_FacturaEmite) Then
-                    If tbCodigo.Text = String.Empty Then
-                        Throw New Exception("Venta no encontrada")
-                    End If
-                    If tbNit.Text = String.Empty Then
-                        _prImiprimirNotaVenta(tbCodigo.Text)
-                        Return
-                    ElseIf (Not P_fnValidarFacturaVigente()) Then
+        '        If (gb_FacturaEmite) Then
+        '            If tbCodigo.Text = String.Empty Then
+        '                Throw New Exception("Venta no encontrada")
+        '            End If
+        '            If tbNit.Text = String.Empty Then
+        '                _prImiprimirNotaVenta(tbCodigo.Text)
+        '                Return
+        '            ElseIf (Not P_fnValidarFacturaVigente()) Then
 
-                        Dim img As Bitmap = New Bitmap(My.Resources.WARNING, 50, 50)
+        '                Dim img As Bitmap = New Bitmap(My.Resources.WARNING, 50, 50)
 
-                        ToastNotification.Show(Me, "No se puede imprimir la factura con numero ".ToUpper + tbNroFactura.Text + ", su factura esta anulada".ToUpper,
-                                              img, 3000,
-                                              eToastGlowColor.Green,
-                                              eToastPosition.TopCenter)
-                        Exit Sub
-                    End If
-                    ReimprimirFactura(tbCodigo.Text, True, True)
-                    _prImiprimirNotaVenta(tbCodigo.Text)
-                Else
-                    _prImiprimirNotaVenta(tbCodigo.Text)
-                End If
-            End If
-        Catch ex As Exception
-            MostrarMensajeError(ex.Message)
-        End Try
+        '                ToastNotification.Show(Me, "No se puede imprimir la factura con numero ".ToUpper + tbNroFactura.Text + ", su factura esta anulada".ToUpper,
+        '                                      img, 3000,
+        '                                      eToastGlowColor.Green,
+        '                                      eToastPosition.TopCenter)
+        '                Exit Sub
+        '            End If
+        '            ReimprimirFactura(tbCodigo.Text, True, True)
+        '            _prImiprimirNotaVenta(tbCodigo.Text)
+        '        Else
+        '            _prImiprimirNotaVenta(tbCodigo.Text)
+        '        End If
+        '    End If
+        'Catch ex As Exception
+        '    MostrarMensajeError(ex.Message)
+        'End Try
     End Sub
 
     Private Sub TbNit_KeyPress(sender As Object, e As KeyPressEventArgs) Handles tbNit.KeyPress

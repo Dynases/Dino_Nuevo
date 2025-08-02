@@ -18,7 +18,7 @@ Public Class F1_MontoPagar
     Public TotalSus As Double = 0
     Public TotalTarjeta As Double = 0
     Public TotalQR As Double = 0
-    Public Nit As String = ""
+    Public Nit As String = "0"
     Public RazonSocial As String = ""
     Public TipoCambio As Double = 0
     Public tipoVenta As Integer = 1
@@ -410,5 +410,9 @@ Public Class F1_MontoPagar
         Else
             e.Handled = True
         End If
+    End Sub
+
+    Private Sub GroupBox3_Enter(sender As Object, e As EventArgs) Handles GroupBox3.Enter
+
     End Sub
 End Class
